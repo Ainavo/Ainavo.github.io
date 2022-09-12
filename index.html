@@ -6,12 +6,12 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
         <title>
-            Hexo
+            Ainavo
         </title>
         <meta name="author" content="">
         <meta name="description" content="">
         <meta name="keywords" content="">
-        <link rel="icon" href="">
+        <link rel="icon" href="/head_img.jpg">
         <script src="https://cdn.staticfile.org/instant.page/5.1.0/instantpage.min.js" type="module"></script>
         <script src="https://cdn.staticfile.org/font-awesome/6.1.1/js/all.min.js"></script>
         
@@ -46,7 +46,7 @@
 <nav id="menu">
     <div class="desktop-menu">
         <a href="/">
-            <span class="title">Hexo</span>
+            <span class="title">Ainavo</span>
         </a>
         
         <a href="/">
@@ -74,12 +74,17 @@
             <span>&ensp;tags</span>
         </a>
         
+        <a href="/eeg">
+            <i class="fa-solid fa-eeg fa-fw"></i>
+            <span>&ensp;eeg</span>
+        </a>
+        
     </div>
     <div :class="'phone-menu ' + menu_show" id="phone-menu">
         <div class="curtain" @click="menu_show = !menu_show" v-show="menu_show"></div>
         <div :class="'title'" @click="menu_show = !menu_show">
             <i class="fa-solid fa-bars fa-fw"></i>
-            <span>&emsp;Hexo</span>
+            <span>&emsp;Ainavo</span>
         </div>
         <transition name="slide">
         <div class="items" v-show="menu_show">
@@ -129,6 +134,15 @@
                 </div>
             </a>
             
+            <a href="/eeg">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-eeg fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">eeg</div>
+                </div>
+            </a>
+            
         </div>
         </transition>
     </div>
@@ -136,7 +150,7 @@
                     </div>
                     <div id="main">
                         <div id="home-head">
-    <div id="home-background" style="background-image: url(/background.png)"></div>
+    <div id="home-background" style="background-image: url(/background2.png)"></div>
     
     <div id="home-info" class="home-info" @click="home_click">
         <span class="loop"></span>
@@ -145,7 +159,7 @@
         <span class="loop"></span>
         <span class="info">
             <div class="wrap">
-                <h1>Hexo</h1>
+                <h1>Ainavo</h1>
                 <h3></h3>
                 <h5></h5>
             </div>
@@ -158,6 +172,44 @@
     <div id="home-posts">
         <div id="posts">
             
+
+<div class="post">
+    <a href="/2022/09/12/Few-Shot-Relation-Learning-with-Attention-for-EEG-based-Motor-Imagery-Classification/">
+        <h2 class="post-title">Few-Shot Relation Learning With Attention for EEG-Based Motor Imagery Classification</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/9/12
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/eeg/" style="color: #ffa2c4">
+                eeg
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/09/12/Few-Shot-Relation-Learning-with-Attention-for-EEG-based-Motor-Imagery-Classification/" class="go-post">阅读全文</a>
+</div>
 
 <div class="post">
     <a href="/2022/09/11/hello-world/">
@@ -222,7 +274,7 @@
         <div id="card-div">
     <div class="card-style" style="width: 300px">
         <div class="avatar">
-            <img src=" " alt="avatar">
+            <img src="/head_img.jpg " alt="avatar">
         </div>
         <div class="name">
             
@@ -230,7 +282,7 @@
         <div class="descriptions">
             
             <div class="description">
-                Description...
+                ~~~
             </div>
             
         </div>
@@ -249,7 +301,7 @@
 <footer id="footer">
     <div class="footer-wrap">
         <div>
-            © 20xx - 2022 Hexo
+            © 20xx - 2022 Ainavo
             <span class="footer-icon">
                 <i class="fa-solid fa-font-awesome fa-fw"></i>
             </span>
