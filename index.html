@@ -191,6 +191,11 @@ mjx-container[display="true"] + br {
             <span>&ensp;eeg</span>
         </a>
         
+        <a href="/few-shot">
+            <i class="fa-solid fa-few-shot fa-fw"></i>
+            <span>&ensp;few-shot</span>
+        </a>
+        
     </div>
     <div :class="'phone-menu ' + menu_show" id="phone-menu">
         <div class="curtain" @click="menu_show = !menu_show" v-show="menu_show"></div>
@@ -255,6 +260,15 @@ mjx-container[display="true"] + br {
                 </div>
             </a>
             
+            <a href="/few-shot">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-few-shot fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">few-shot</div>
+                </div>
+            </a>
+            
         </div>
         </transition>
     </div>
@@ -262,7 +276,7 @@ mjx-container[display="true"] + br {
                     </div>
                     <div id="main">
                         <div id="home-head">
-    <div id="home-background" style="background-image: url(/background2.jpg)"></div>
+    <div id="home-background" style="background-image: url(/background3.jpg)"></div>
     
     <div id="home-info" class="home-info" @click="home_click">
         <span class="loop"></span>
@@ -307,6 +321,17 @@ mjx-container[display="true"] + br {
     </div>
     <div class="post-tags">
         
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/few-shot/" style="color: #ff7d73">
+                few-shot
+            </a>
+        </span>
         
     </div>
     <a href="/2022/09/13/Few-shot-fault-diagnosis-of-rotating-machinery-with-two-branch-prototypical-networks/" class="go-post">阅读全文</a>
@@ -328,7 +353,7 @@ mjx-container[display="true"] + br {
     <div class="excerpt">
         <div class="content" v-pre>
             
-            
+            <p><strong>《基于运动想象分类的注意力小样本学习》</strong></p>
             
         </div>
     </div>
@@ -341,7 +366,7 @@ mjx-container[display="true"] + br {
         
         <span class="tag">
             
-            <a href="/tags/eeg/" style="color: #ff7d73">
+            <a href="/tags/eeg/" style="color: #03a9f4">
                 eeg
             </a>
         </span>

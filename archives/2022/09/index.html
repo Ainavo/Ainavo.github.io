@@ -79,6 +79,11 @@
             <span>&ensp;eeg</span>
         </a>
         
+        <a href="/few-shot">
+            <i class="fa-solid fa-few-shot fa-fw"></i>
+            <span>&ensp;few-shot</span>
+        </a>
+        
     </div>
     <div :class="'phone-menu ' + menu_show" id="phone-menu">
         <div class="curtain" @click="menu_show = !menu_show" v-show="menu_show"></div>
@@ -143,6 +148,15 @@
                 </div>
             </a>
             
+            <a href="/few-shot">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-few-shot fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">few-shot</div>
+                </div>
+            </a>
+            
         </div>
         </transition>
     </div>
@@ -161,6 +175,20 @@
             </a>
             <div class="info">
                 
+                
+                <span class="tags">
+                    <span class="icon">
+                        <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+                    </span>
+                    
+                    <span class="tag">
+                        
+                        <a href="/tags/few-shot/" style="color: #ff7d73">
+                            few-shot
+                        </a>
+                    </span>
+                    
+                </span>
                 
             </div>
         </div>
