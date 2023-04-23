@@ -268,14 +268,14 @@ mjx-container[display="true"] + br {
             
             <span class="tag">
                 
-                <a href="/tags/Prototypes-Network/" style="color: #ffa2c4">
+                <a href="/tags/Prototypes-Network/" style="color: #ff7d73">
                     Prototypes Network
                 </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/Class-level-Prototypes/" style="color: #ff7d73">
+                <a href="/tags/Class-level-Prototypes/" style="color: #00a596">
                     Class-level Prototypes
                 </a>
             </span>
@@ -293,7 +293,10 @@ episode
 <h2 id="introduction">Introduction</h2>
 <p>尽管原型网络已经取得了令人满意的成果，但是他们很少专注于设计一个好的原型来表示支持集中的每个类。在一些小样本学习中，由于支持集样本较少，一个离群点就会对平均策略有很大的影响，这种现象被命名为类级原型抖动，如图
 1 所示。</p>
-<p><img src="\imgs\Learning-Class-level-Prototypes-for-Few-shot-Learning\类级原型抖动.png"></p>
+<figure>
+<img src="\imgs\Learning-Class-level-Prototypes-for-Few-shot-Learning\类级原型抖动.png" alt="图 1.类级原型抖动">
+<figcaption aria-hidden="true">图 1.类级原型抖动</figcaption>
+</figure>
 <center>
 图1.类级原型抖动
 </center>
@@ -319,7 +322,10 @@ episode
 <p>为了克服原型抖动的问题，作者提出了一种使用少量支持样本的来拟合类级原型。图
 2 展示了作者提出的总体架构，由三部分组成：类级原型生成器、episode
 原型生成器、度量模块。</p>
-<p><img src="\imgs\Learning-Class-level-Prototypes-for-Few-shot-Learning\总体框架.png"></p>
+<figure>
+<img src="\imgs\Learning-Class-level-Prototypes-for-Few-shot-Learning\总体框架.png" alt="图 2.总体框架">
+<figcaption aria-hidden="true">图 2.总体框架</figcaption>
+</figure>
 <center>
 图2.总体框架
 </center>
@@ -369,7 +375,10 @@ CUB-200-2011: 验证模型的跨域学习能力。</p>
 </ul>
 <h3 id="comparison-with-state-of-the-arts">Comparison with
 State-of-the-arts</h3>
-<p><img src="\imgs\Learning-Class-level-Prototypes-for-Few-shot-Learning\结果.png"></p>
+<figure>
+<img src="\imgs\Learning-Class-level-Prototypes-for-Few-shot-Learning\结果.png" alt="图 3.结果">
+<figcaption aria-hidden="true">图 3.结果</figcaption>
+</figure>
 <center>
 图3.实验结果
 </center>
@@ -378,7 +387,10 @@ State-of-the-arts</h3>
 分别提出通过学习形成放仿射空间或通过迭代机制来优化类级原型。</p>
 <h3 id="performance-in-cross-domain-scenario">Performance in
 Cross-domain Scenario</h3>
-<p><img src="\imgs\Learning-Class-level-Prototypes-for-Few-shot-Learning\跨域任务小样本准确率.png"></p>
+<figure>
+<img src="\imgs\Learning-Class-level-Prototypes-for-Few-shot-Learning\跨域任务小样本准确率.png" alt="图4.跨域实验结果">
+<figcaption aria-hidden="true">图4.跨域实验结果</figcaption>
+</figure>
 <p>图 4 表现了作者在跨任务域上的实验，该方法在 MinnieImageNet
 上训练，并在 CUB-2011 上测试，backbone 同用
 ResNet-12，与其他方法相比，展现了本文算法的优越性。</p>
@@ -390,12 +402,18 @@ Episodic Prototype Generator</h3>
 <em>ProtoNet+Lock</em> 并应用了特征生成器模块。与 <em>ProtoNet+Lock</em>
 相比，所提模块在 <em>one-shot</em>
 实验上改进最大，证明了本文机制的有效性。</p>
-<p><img src="\imgs\Learning-Class-level-Prototypes-for-Few-shot-Learning\消融实验.png"></p>
+<figure>
+<img src="\imgs\Learning-Class-level-Prototypes-for-Few-shot-Learning\消融实验.png" alt="图5.消融实验">
+<figcaption aria-hidden="true">图5.消融实验</figcaption>
+</figure>
 <center>
 图 5.消融实验
 </center>
 <p>如图所示当使用类级原型进行预测时，预测精度可以达到89.1%，与其他方法还是有很大差距的，因此本文通过改进episode原型生成器，进一步缩小差距。为了验证所提方法的有效性，图图6所示，作者使用t-sne可视化了支持样本、类级原型、episode原型、均值原型，不同颜色表示不同类别，<strong>星形</strong>点表示类级原型、<strong>三角形</strong>表示平均原型、<strong>五边形</strong>表示本文算法形成的原型，<strong>大圆点</strong>表示支持集特征、<strong>小圆点</strong>表示样本特征。</p>
-<p><img src="\imgs\Learning-Class-level-Prototypes-for-Few-shot-Learning\不同情境下原型特征的可视化.png"></p>
+<figure>
+<img src="\imgs\Learning-Class-level-Prototypes-for-Few-shot-Learning\不同情境下原型特征的可视化.png" alt="图6T-SNE可视化">
+<figcaption aria-hidden="true">图6T-SNE可视化</figcaption>
+</figure>
 <center>
 图6.不同模式下原型的可视化
 </center>
