@@ -268,7 +268,7 @@ mjx-container[display="true"] + br {
             
             <span class="tag">
                 
-                <a href="/tags/C/" style="color: #ffa2c4">
+                <a href="/tags/C/" style="color: #00a596">
                     C++
                 </a>
             </span>
@@ -279,52 +279,54 @@ mjx-container[display="true"] + br {
     <div class="content" v-pre>
         <p><strong>nullptr、shared_ptr、unique_ptr、weak_ptr</strong></p>
 <span id="more"></span>
-<h1 id="nullptr-空指针">nullptr 空指针</h1>
-<p>"野指针"，又称"悬挂指针"，是指没有明确指向的指针。野指针往往指向那些不可用的内存区域，极可能造成程序异常。</p>
+
+<h1 id="nullptr-空指针"><a href="#nullptr-空指针" class="headerlink" title="nullptr 空指针"></a>nullptr 空指针</h1><p>“野指针”，又称”悬挂指针”，是指没有明确指向的指针。野指针往往指向那些不可用的内存区域，极可能造成程序异常。</p>
 <ul>
 <li><p>在 C++98/03 标准中，将一个指针初始化空指针的方式有两种：</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode c++"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> <span class="op">*</span>p <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> <span class="co">// 不推荐使用</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> <span class="op">*</span>p <span class="op">=</span> NULL<span class="op">;</span> <span class="co">// 推荐使用</span></span></code></pre></div></li>
-<li><p>在 C++ 11 标准下相比 <code>NULL</code>，推荐使用
-<code>nullptr</code>:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode c++"><code class="sourceCode cpp"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">auto</span> <span class="op">*</span>p <span class="op">=</span> <span class="kw">nullptr</span><span class="op">;</span></span></code></pre></div></li>
+<pre><code class="C++">    int *p = 0; // 不推荐使用
+    int *p = NULL; // 推荐使用
+</code></pre>
+</li>
+<li><p>在 C++ 11 标准下相比 <code>NULL</code>，推荐使用 <code>nullptr</code>:</p>
+<pre><code class="C++">    auto *p = nullptr;
+</code></pre>
+</li>
 </ul>
-<h1 id="auto_ptr-c11-已弃用">auto_ptr (C++11 已弃用)</h1>
-<ul>
-<li><p>复制或者赋值会改变资源的所有权；</p></li>
-<li><p>在 STL 容器中使用 auto_ptr
-存在着重大风险，因为容器中的元素必须支持可复制和可赋值；</p></li>
-<li><p>不支持对象数组的内存管理；</p></li>
+<h1 id="auto-ptr-C-11-已弃用"><a href="#auto-ptr-C-11-已弃用" class="headerlink" title="auto_ptr (C++11 已弃用)"></a>auto_ptr (C++11 已弃用)</h1><ul>
+<li><p>复制或者赋值会改变资源的所有权；</p>
+</li>
+<li><p>在 STL 容器中使用 auto_ptr 存在着重大风险，因为容器中的元素必须支持可复制和可赋值；</p>
+</li>
+<li><p>不支持对象数组的内存管理；</p>
+</li>
 </ul>
-<h1 id="unique_ptr-智能指针">unique_ptr 智能指针</h1>
-<p>（与 auto_ptr 的区别）：</p>
+<h1 id="unique-ptr-智能指针"><a href="#unique-ptr-智能指针" class="headerlink" title="unique_ptr 智能指针"></a>unique_ptr 智能指针</h1><p>（与 auto_ptr 的区别）：</p>
 <ul>
 <li>无法左值赋值及复制，允许临时右值赋值及复制；</li>
 <li>在 STL 容器中使用 unique_ptr，不允许直接赋值；</li>
-<li>支持对象数组的内存管理； （与 auto_ptr 的相同点）：</li>
+<li>支持对象数组的内存管理；<br>（与 auto_ptr 的相同点）：</li>
 <li>支持构造；</li>
 </ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode c++"><code class="sourceCode cpp"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>   unique_ptr <span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> x1<span class="op">(</span><span class="kw">new</span> <span class="dt">int</span><span class="op">(</span><span class="dv">5</span><span class="op">));</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>   unique_ptr <span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> x2<span class="op">(</span><span class="kw">new</span> <span class="dt">int</span><span class="op">(</span><span class="dv">7</span><span class="op">));</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>   x1 <span class="op">=</span> move<span class="op">(</span>x2<span class="op">);</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>   cout <span class="op">&lt;&lt;</span> x1<span class="op">.</span>get<span class="op">()</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>   cout <span class="op">&lt;&lt;</span> x2<span class="op">.</span>get<span class="op">()</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>   <span class="co">// 0x84de90</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>   <span class="co">// 0</span></span></code></pre></div>
+<pre><code class="C++">   unique_ptr &lt;int&gt; x1(new int(5));
+   unique_ptr &lt;int&gt; x2(new int(7));
+   x1 = move(x2);
+   cout &lt;&lt; x1.get() &lt;&lt; endl;
+   cout &lt;&lt; x2.get() &lt;&lt; endl;
+   // 0x84de90
+   // 0
+</code></pre>
 <ul>
 <li>主动释放对象；</li>
 </ul>
-<div class="sourceCode" id="cb4"><pre class="sourceCode c++"><code class="sourceCode cpp"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>  x1<span class="op">.</span>reset<span class="op">();</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  x1 <span class="op">=</span> <span class="kw">nullptr</span><span class="op">;</span></span></code></pre></div>
+<pre><code class="C++">  x1.reset();
+  x1 = nullptr;
+</code></pre>
 <ul>
-<li><p>放弃对象的控制权；</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode c++"><code class="sourceCode cpp"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> <span class="op">*</span>x3 <span class="op">=</span> x2<span class="op">.</span>release<span class="op">();</span> <span class="co">// 控制对象移交 x3</span></span></code></pre></div></li>
+<li>放弃对象的控制权；<pre><code class="C++">  int *x3 = x2.release(); // 控制对象移交 x3
+</code></pre>
+</li>
 </ul>
-<h1 id="shared_ptr-智能指针">shared_ptr 智能指针</h1>
-<h1 id="weak_ptr-智能指针">weak_ptr 智能指针</h1>
-<h1 id="参考文献">参考文献：</h1>
-<p>[1] http://c.biancheng.net/view/7887.html [2]
-https://zhuanlan.zhihu.com/p/526147194</p>
+<h1 id="shared-ptr-智能指针"><a href="#shared-ptr-智能指针" class="headerlink" title="shared_ptr 智能指针"></a>shared_ptr 智能指针</h1><h1 id="weak-ptr-智能指针"><a href="#weak-ptr-智能指针" class="headerlink" title="weak_ptr 智能指针"></a>weak_ptr 智能指针</h1><h1 id="参考文献："><a href="#参考文献：" class="headerlink" title="参考文献："></a>参考文献：</h1><p>[1] <a target="_blank" rel="noopener" href="http://c.biancheng.net/view/7887.html">http://c.biancheng.net/view/7887.html</a><br>[2] <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/526147194">https://zhuanlan.zhihu.com/p/526147194</a></p>
 
     </div>
     
