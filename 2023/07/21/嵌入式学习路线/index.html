@@ -1,0 +1,677 @@
+
+    <!DOCTYPE html>
+    <html lang="">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+        <title>
+            嵌入式学习路线 | Ainavo
+        </title>
+        <meta name="author" content="">
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <link rel="icon" href="/head_img.jpg">
+        <script src="https://cdn.staticfile.org/instant.page/5.1.0/instantpage.min.js" type="module"></script>
+        <script src="https://cdn.staticfile.org/font-awesome/6.1.1/js/all.min.js"></script>
+        
+                <link rel="stylesheet" href="/css/fonts.min.css">
+                <link rel="stylesheet" href="/css/particlex.css">
+                
+                    <script src="https://cdn.staticfile.org/vue/3.2.33/vue.global.prod.min.js"></script>
+    <meta name="generator" content="Hexo 6.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+
+    <body>
+        <div id="loading"
+            style="height:100vh;width:100vw;position:fixed;display:flex;z-index:200;justify-content:space-between;background:#fff;transition:opacity 0.3s ease-out">
+            <div style="position:fixed;height:100vh;width:100vw;display:flex;justify-content:center;align-items:center">
+                <div id="loadcontent"
+                    style="width:50vmin;height:50vmin;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px #a3ddfb;text-align:center">
+                    <div>
+                        <h2>LOADING...</h2>
+                        <p style="word-break:keep-all">加载过慢请开启缓存(浏览器默认开启)</p>
+                        <div><img alt="loading" src="/loading.gif"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="layout">
+            <i data-fa-symbol="calendar-solid" class="fa-solid fa-calendar fa-fw"></i>
+            <i data-fa-symbol="bookmark-solid" class="fa-solid fa-bookmark fa-fw"></i>
+            <i data-fa-symbol="tags-solid" class="fa-solid fa-tags fa-fw"></i>
+            <transition name="into">
+                <div v-show="show_page" style="display: -not-none">
+                    <div id="menu_show">
+                         
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">Ainavo</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;about</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;archives</span>
+        </a>
+        
+        <a href="/categories/">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;categories</span>
+        </a>
+        
+        <a href="/tags/">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;tags</span>
+        </a>
+        
+    </div>
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div class="curtain" @click="menu_show = !menu_show" v-show="menu_show"></div>
+        <div :class="'title'" @click="menu_show = !menu_show">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;Ainavo</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="menu_show">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">home</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">about</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">archives</div>
+                </div>
+            </a>
+            
+            <a href="/categories/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">categories</div>
+                </div>
+            </a>
+            
+            <a href="/tags/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">tags</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+                    </div>
+                    <div id="main">
+                        
+<div class="article">
+    <div>
+        <h1>嵌入式学习路线 </h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2023/7/21
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/嵌入式/" style="color: #00bcd4">
+                    嵌入式
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    <div class="content" v-pre>
+        <p>嵌入式学习路线~</p>
+<span id="more"></span>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>
+Markmap
+</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+}
+#mindmap {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+}
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/markmap-toolbar@0.15.0/dist/style.css">
+</head>
+<body>
+<svg id="mindmap" class="markmap mindmap">
+<style>.markmap{font:300 16px/20px sans-serif}.markmap-link{fill:none}.markmap-node&gt;circle{cursor:pointer}.markmap-foreign{display:inline-block}.markmap-foreign a{color:#0097e6}.markmap-foreign a:hover{color:#00a8ff}.markmap-foreign code{background-color:#f0f0f0;border-radius:2px;color:#555;font-size:calc(1em - 2px);padding:.25em}.markmap-foreign pre{margin:0}.markmap-foreign pre&gt;code{display:block}.markmap-foreign del{text-decoration:line-through}.markmap-foreign em{font-style:italic}.markmap-foreign strong{font-weight:700}.markmap-foreign mark{background:#ffeaa7}</style>
+<g transform="translate(828.6709999999999,602.5378948608223) scale(0.8860000000000001)"><path class="markmap-link" data-depth="1" data-path="1.2" d="M129,10C169,10,169,-570,209,-570" stroke="rgb(255, 127, 14)" stroke-width="2"></path><path class="markmap-link" data-depth="1" data-path="1.8" d="M129,10C169,10,169,-415,209,-415" stroke="rgb(127, 127, 127)" stroke-width="2"></path><path class="markmap-link" data-depth="1" data-path="1.16" d="M129,10C169,10,169,-136.25,209,-136.25" stroke="rgb(140, 86, 75)" stroke-width="2"></path><path class="markmap-link" data-depth="1" data-path="1.39" d="M129,10C169,10,169,235,209,235" stroke="rgb(188, 189, 34)" stroke-width="2"></path><path class="markmap-link" data-depth="1" data-path="1.50" d="M129,10C169,10,169,590,209,590" stroke="rgb(23, 190, 207)" stroke-width="2"></path><path class="markmap-link" data-depth="2" data-path="1.2.3" d="M370,-570C410,-570,410,-620,450,-620" stroke="rgb(44, 160, 44)" stroke-width="1.5"></path><path class="markmap-link" data-depth="2" data-path="1.2.4" d="M370,-570C410,-570,410,-595,450,-595" stroke="rgb(214, 39, 40)" stroke-width="1.5"></path><path class="markmap-link" data-depth="2" data-path="1.2.5" d="M370,-570C410,-570,410,-570,450,-570" stroke="rgb(148, 103, 189)" stroke-width="1.5"></path><path class="markmap-link" data-depth="2" data-path="1.2.6" d="M370,-570C410,-570,410,-545,450,-545" stroke="rgb(140, 86, 75)" stroke-width="1.5"></path><path class="markmap-link" data-depth="2" data-path="1.2.7" d="M370,-570C410,-570,410,-520,450,-520" stroke="rgb(227, 119, 194)" stroke-width="1.5"></path><path class="markmap-link" data-depth="2" data-path="1.8.9" d="M294,-415C334,-415,334,-490,374,-490" stroke="rgb(188, 189, 34)" stroke-width="1.5"></path><path class="markmap-link" data-depth="2" data-path="1.8.10" d="M294,-415C334,-415,334,-465,374,-465" stroke="rgb(23, 190, 207)" stroke-width="1.5"></path><path class="markmap-link" data-depth="2" data-path="1.8.11" d="M294,-415C334,-415,334,-440,374,-440" stroke="rgb(31, 119, 180)" stroke-width="1.5"></path><path class="markmap-link" data-depth="2" data-path="1.8.12" d="M294,-415C334,-415,334,-415,374,-415" stroke="rgb(255, 127, 14)" stroke-width="1.5"></path><path class="markmap-link" data-depth="2" data-path="1.8.13" d="M294,-415C334,-415,334,-390,374,-390" stroke="rgb(44, 160, 44)" stroke-width="1.5"></path><path class="markmap-link" data-depth="2" data-path="1.8.14" d="M294,-415C334,-415,334,-365,374,-365" stroke="rgb(214, 39, 40)" stroke-width="1.5"></path><path class="markmap-link" data-depth="2" data-path="1.8.15" d="M294,-415C334,-415,334,-340,374,-340" stroke="rgb(148, 103, 189)" stroke-width="1.5"></path><path class="markmap-link" data-depth="2" data-path="1.16.17" d="M329,-136.25C369,-136.25,369,-310,409,-310" stroke="rgb(227, 119, 194)" stroke-width="1.5"></path><path class="markmap-link" data-depth="2" data-path="1.16.23" d="M329,-136.25C369,-136.25,369,-142.5,409,-142.5" stroke="rgb(44, 160, 44)" stroke-width="1.5"></path><path class="markmap-link" data-depth="2" data-path="1.16.32" d="M329,-136.25C369,-136.25,369,37.5,409,37.5" stroke="rgb(255, 127, 14)" stroke-width="1.5"></path><path class="markmap-link" data-depth="2" data-path="1.39.40" d="M371,235C411,235,411,130,451,130" stroke="rgb(23, 190, 207)" stroke-width="1.5"></path><path class="markmap-link" data-depth="2" data-path="1.39.41" d="M371,235C411,235,411,235,451,235" stroke="rgb(31, 119, 180)" stroke-width="1.5"></path><path class="markmap-link" data-depth="2" data-path="1.39.49" d="M371,235C411,235,411,340,451,340" stroke="rgb(188, 189, 34)" stroke-width="1.5"></path><path class="markmap-link" data-depth="2" data-path="1.50.51" d="M310,590C350,590,350,420,390,420" stroke="rgb(31, 119, 180)" stroke-width="1.5"></path><path class="markmap-link" data-depth="2" data-path="1.50.57" d="M310,590C350,590,350,537.5,390,537.5" stroke="rgb(227, 119, 194)" stroke-width="1.5"></path><path class="markmap-link" data-depth="2" data-path="1.50.67" d="M310,590C350,590,350,655,390,655" stroke="rgb(227, 119, 194)" stroke-width="1.5"></path><path class="markmap-link" data-depth="2" data-path="1.50.73" d="M310,590C350,590,350,760,390,760" stroke="rgb(44, 160, 44)" stroke-width="1.5"></path><path class="markmap-link" data-depth="3" data-path="1.16.17.18" d="M490,-310C530,-310,530,-360,570,-360" stroke="rgb(127, 127, 127)" stroke-width="1.5"></path><path class="markmap-link" data-depth="3" data-path="1.16.17.19" d="M490,-310C530,-310,530,-335,570,-335" stroke="rgb(188, 189, 34)" stroke-width="1.5"></path><path class="markmap-link" data-depth="3" data-path="1.16.17.20" d="M490,-310C530,-310,530,-310,570,-310" stroke="rgb(23, 190, 207)" stroke-width="1.5"></path><path class="markmap-link" data-depth="3" data-path="1.16.17.21" d="M490,-310C530,-310,530,-285,570,-285" stroke="rgb(31, 119, 180)" stroke-width="1.5"></path><path class="markmap-link" data-depth="3" data-path="1.16.17.22" d="M490,-310C530,-310,530,-260,570,-260" stroke="rgb(255, 127, 14)" stroke-width="1.5"></path><path class="markmap-link" data-depth="3" data-path="1.16.23.24" d="M490,-142.5C530,-142.5,530,-230,570,-230" stroke="rgb(214, 39, 40)" stroke-width="1.5"></path><path class="markmap-link" data-depth="3" data-path="1.16.23.25" d="M490,-142.5C530,-142.5,530,-205,570,-205" stroke="rgb(148, 103, 189)" stroke-width="1.5"></path><path class="markmap-link" data-depth="3" data-path="1.16.23.26" d="M490,-142.5C530,-142.5,530,-180,570,-180" stroke="rgb(140, 86, 75)" stroke-width="1.5"></path><path class="markmap-link" data-depth="3" data-path="1.16.23.27" d="M490,-142.5C530,-142.5,530,-155,570,-155" stroke="rgb(227, 119, 194)" stroke-width="1.5"></path><path class="markmap-link" data-depth="3" data-path="1.16.23.28" d="M490,-142.5C530,-142.5,530,-130,570,-130" stroke="rgb(127, 127, 127)" stroke-width="1.5"></path><path class="markmap-link" data-depth="3" data-path="1.16.23.29" d="M490,-142.5C530,-142.5,530,-105,570,-105" stroke="rgb(188, 189, 34)" stroke-width="1.5"></path><path class="markmap-link" data-depth="3" data-path="1.16.23.30" d="M490,-142.5C530,-142.5,530,-80,570,-80" stroke="rgb(23, 190, 207)" stroke-width="1.5"></path><path class="markmap-link" data-depth="3" data-path="1.16.23.31" d="M490,-142.5C530,-142.5,530,-55,570,-55" stroke="rgb(31, 119, 180)" stroke-width="1.5"></path><path class="markmap-link" data-depth="3" data-path="1.16.32.33" d="M490,37.5C530,37.5,530,-25,570,-25" stroke="rgb(44, 160, 44)" stroke-width="1.5"></path><path class="markmap-link" data-depth="3" data-path="1.16.32.34" d="M490,37.5C530,37.5,530,0,570,0" stroke="rgb(214, 39, 40)" stroke-width="1.5"></path><path class="markmap-link" data-depth="3" data-path="1.16.32.35" d="M490,37.5C530,37.5,530,25,570,25" stroke="rgb(148, 103, 189)" stroke-width="1.5"></path><path class="markmap-link" data-depth="3" data-path="1.16.32.36" d="M490,37.5C530,37.5,530,50,570,50" stroke="rgb(140, 86, 75)" stroke-width="1.5"></path><path class="markmap-link" data-depth="3" data-path="1.16.32.37" d="M490,37.5C530,37.5,530,75,570,75" stroke="rgb(227, 119, 194)" stroke-width="1.5"></path><path class="markmap-link" data-depth="3" data-path="1.16.32.38" d="M490,37.5C530,37.5,530,100,570,100" stroke="rgb(127, 127, 127)" stroke-width="1.5"></path><path class="markmap-link" data-depth="3" data-path="1.39.41.42" d="M507,235C547,235,547,160,587,160" stroke="rgb(255, 127, 14)" stroke-width="1.5"></path><path class="markmap-link" data-depth="3" data-path="1.39.41.43" d="M507,235C547,235,547,185,587,185" stroke="rgb(44, 160, 44)" stroke-width="1.5"></path><path class="markmap-link" data-depth="3" data-path="1.39.41.44" d="M507,235C547,235,547,210,587,210" stroke="rgb(214, 39, 40)" stroke-width="1.5"></path><path class="markmap-link" data-depth="3" data-path="1.39.41.45" d="M507,235C547,235,547,235,587,235" stroke="rgb(148, 103, 189)" stroke-width="1.5"></path><path class="markmap-link" data-depth="3" data-path="1.39.41.46" d="M507,235C547,235,547,260,587,260" stroke="rgb(140, 86, 75)" stroke-width="1.5"></path><path class="markmap-link" data-depth="3" data-path="1.39.41.47" d="M507,235C547,235,547,285,587,285" stroke="rgb(227, 119, 194)" stroke-width="1.5"></path><path class="markmap-link" data-depth="3" data-path="1.39.41.48" d="M507,235C547,235,547,310,587,310" stroke="rgb(127, 127, 127)" stroke-width="1.5"></path><path class="markmap-link" data-depth="3" data-path="1.50.51.52" d="M497,420C537,420,537,370,577,370" stroke="rgb(255, 127, 14)" stroke-width="1.5"></path><path class="markmap-link" data-depth="3" data-path="1.50.51.53" d="M497,420C537,420,537,395,577,395" stroke="rgb(44, 160, 44)" stroke-width="1.5"></path><path class="markmap-link" data-depth="3" data-path="1.50.51.54" d="M497,420C537,420,537,420,577,420" stroke="rgb(214, 39, 40)" stroke-width="1.5"></path><path class="markmap-link" data-depth="3" data-path="1.50.51.55" d="M497,420C537,420,537,445,577,445" stroke="rgb(148, 103, 189)" stroke-width="1.5"></path><path class="markmap-link" data-depth="3" data-path="1.50.51.56" d="M497,420C537,420,537,470,577,470" stroke="rgb(140, 86, 75)" stroke-width="1.5"></path><path class="markmap-link" data-depth="3" data-path="1.50.57.58" d="M455,537.5C495,537.5,495,500,535,500" stroke="rgb(127, 127, 127)" stroke-width="1.5"></path><path class="markmap-link" data-depth="3" data-path="1.50.57.59" d="M455,537.5C495,537.5,495,525,535,525" stroke="rgb(188, 189, 34)" stroke-width="1.5"></path><path class="markmap-link" data-depth="3" data-path="1.50.57.60" d="M455,537.5C495,537.5,495,550,535,550" stroke="rgb(23, 190, 207)" stroke-width="1.5"></path><path class="markmap-link" data-depth="3" data-path="1.50.57.61" d="M455,537.5C495,537.5,495,575,535,575" stroke="rgb(31, 119, 180)" stroke-width="1.5"></path><path class="markmap-link" data-depth="3" data-path="1.50.67.68" d="M455,655C495,655,495,605,535,605" stroke="rgb(127, 127, 127)" stroke-width="1.5"></path><path class="markmap-link" data-depth="3" data-path="1.50.67.69" d="M455,655C495,655,495,630,535,630" stroke="rgb(188, 189, 34)" stroke-width="1.5"></path><path class="markmap-link" data-depth="3" data-path="1.50.67.70" d="M455,655C495,655,495,655,535,655" stroke="rgb(23, 190, 207)" stroke-width="1.5"></path><path class="markmap-link" data-depth="3" data-path="1.50.67.71" d="M455,655C495,655,495,680,535,680" stroke="rgb(31, 119, 180)" stroke-width="1.5"></path><path class="markmap-link" data-depth="3" data-path="1.50.67.72" d="M455,655C495,655,495,705,535,705" stroke="rgb(255, 127, 14)" stroke-width="1.5"></path><path class="markmap-link" data-depth="3" data-path="1.50.73.74" d="M455,760C495,760,495,735,535,735" stroke="rgb(214, 39, 40)" stroke-width="1.5"></path><path class="markmap-link" data-depth="3" data-path="1.50.73.75" d="M455,760C495,760,495,760,535,760" stroke="rgb(148, 103, 189)" stroke-width="1.5"></path><path class="markmap-link" data-depth="3" data-path="1.50.73.76" d="M455,760C495,760,495,785,535,785" stroke="rgb(140, 86, 75)" stroke-width="1.5"></path><path class="markmap-link" data-depth="4" data-path="1.50.57.61.62" d="M680,575C720,575,720,525,760,525" stroke="rgb(255, 127, 14)" stroke-width="1.5"></path><path class="markmap-link" data-depth="4" data-path="1.50.57.61.63" d="M680,575C720,575,720,550,760,550" stroke="rgb(44, 160, 44)" stroke-width="1.5"></path><path class="markmap-link" data-depth="4" data-path="1.50.57.61.64" d="M680,575C720,575,720,575,760,575" stroke="rgb(214, 39, 40)" stroke-width="1.5"></path><path class="markmap-link" data-depth="4" data-path="1.50.57.61.65" d="M680,575C720,575,720,600,760,600" stroke="rgb(148, 103, 189)" stroke-width="1.5"></path><path class="markmap-link" data-depth="4" data-path="1.50.57.61.66" d="M680,575C720,575,720,625,760,625" stroke="rgb(140, 86, 75)" stroke-width="1.5"></path><g data-depth="4" data-path="1.50.57.61.66" transform="translate(760, 605)" class="markmap-node"><line x1="-1" x2="147" y1="20" y2="20" stroke="rgb(140, 86, 75)" stroke-width="1.5"></line><foreignobject class="markmap-foreign" x="8" y="0" width="129" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+网络设备驱动框架
+</div>
+</foreignobject></g><g data-depth="4" data-path="1.50.57.61.65" transform="translate(760, 580)" class="markmap-node"><line x1="-1" x2="245" y1="20" y2="20" stroke="rgb(148, 103, 189)" stroke-width="1.5"></line><foreignobject class="markmap-foreign" x="8" y="0" width="227" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+块设备驱动框架 -- SDIO 子系统
+</div>
+</foreignobject></g><g data-depth="4" data-path="1.50.57.61.64" transform="translate(760, 555)" class="markmap-node"><line x1="-1" x2="99" y1="20" y2="20" stroke="rgb(214, 39, 40)" stroke-width="1.5"></line><foreignobject class="markmap-foreign" x="8" y="0" width="81" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+中断子系统
+</div>
+</foreignobject></g><g data-depth="4" data-path="1.50.57.61.63" transform="translate(760, 530)" class="markmap-node"><line x1="-1" x2="91" y1="20" y2="20" stroke="rgb(44, 160, 44)" stroke-width="1.5"></line><foreignobject class="markmap-foreign" x="8" y="0" width="73" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+IIC 子系统
+</div>
+</foreignobject></g><g data-depth="4" data-path="1.50.57.61.62" transform="translate(760, 505)" class="markmap-node"><line x1="-1" x2="116" y1="20" y2="20" stroke="rgb(255, 127, 14)" stroke-width="1.5"></line><foreignobject class="markmap-foreign" x="8" y="0" width="98" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+Pinctrl 子系统
+</div>
+</foreignobject></g><g data-depth="3" data-path="1.50.73.76" transform="translate(535, 765)" class="markmap-node"><line x1="-1" x2="95" y1="20" y2="20" stroke="rgb(140, 86, 75)" stroke-width="1.5"></line><foreignobject class="markmap-foreign" x="8" y="0" width="77" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+HTTP 协议
+</div>
+</foreignobject></g><g data-depth="3" data-path="1.50.73.75" transform="translate(535, 740)" class="markmap-node"><line x1="-1" x2="104" y1="20" y2="20" stroke="rgb(148, 103, 189)" stroke-width="1.5"></line><foreignobject class="markmap-foreign" x="8" y="0" width="86" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+TCP/IP 协议
+</div>
+</foreignobject></g><g data-depth="3" data-path="1.50.73.74" transform="translate(535, 715)" class="markmap-node"><line x1="-1" x2="77" y1="20" y2="20" stroke="rgb(214, 39, 40)" stroke-width="1.5"></line><foreignobject class="markmap-foreign" x="8" y="0" width="59" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+QT 编程
+</div>
+</foreignobject></g><g data-depth="3" data-path="1.50.67.72" transform="translate(535, 685)" class="markmap-node"><line x1="-1" x2="83" y1="20" y2="20" stroke="rgb(255, 127, 14)" stroke-width="1.5"></line><foreignobject class="markmap-foreign" x="8" y="0" width="65" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+文件管理
+</div>
+</foreignobject></g><g data-depth="3" data-path="1.50.67.71" transform="translate(535, 660)" class="markmap-node"><line x1="-1" x2="83" y1="20" y2="20" stroke="rgb(31, 119, 180)" stroke-width="1.5"></line><foreignobject class="markmap-foreign" x="8" y="0" width="65" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+内存管理
+</div>
+</foreignobject></g><g data-depth="3" data-path="1.50.67.70" transform="translate(535, 635)" class="markmap-node"><line x1="-1" x2="83" y1="20" y2="20" stroke="rgb(23, 190, 207)" stroke-width="1.5"></line><foreignobject class="markmap-foreign" x="8" y="0" width="65" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+进程管理
+</div>
+</foreignobject></g><g data-depth="3" data-path="1.50.67.69" transform="translate(535, 610)" class="markmap-node"><line x1="-1" x2="83" y1="20" y2="20" stroke="rgb(188, 189, 34)" stroke-width="1.5"></line><foreignobject class="markmap-foreign" x="8" y="0" width="65" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+存储管理
+</div>
+</foreignobject></g><g data-depth="3" data-path="1.50.67.68" transform="translate(535, 585)" class="markmap-node"><line x1="-1" x2="83" y1="20" y2="20" stroke="rgb(127, 127, 127)" stroke-width="1.5"></line><foreignobject class="markmap-foreign" x="8" y="0" width="65" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+系统调用
+</div>
+</foreignobject></g><g data-depth="3" data-path="1.50.57.61" transform="translate(535, 555)" class="markmap-node"><line x1="-1" x2="147" y1="20" y2="20" stroke="rgb(31, 119, 180)" stroke-width="1.5"></line><circle stroke-width="1.5" cx="145" cy="20" r="6" stroke="rgb(31, 119, 180)" fill="rgb(255, 255, 255)"></circle><foreignobject class="markmap-foreign" x="8" y="0" width="129" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+字符设备驱动框架
+</div>
+</foreignobject></g><g data-depth="3" data-path="1.50.57.60" transform="translate(535, 530)" class="markmap-node"><line x1="-1" x2="67" y1="20" y2="20" stroke="rgb(23, 190, 207)" stroke-width="1.5"></line><foreignobject class="markmap-foreign" x="8" y="0" width="49" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+设备树
+</div>
+</foreignobject></g><g data-depth="3" data-path="1.50.57.59" transform="translate(535, 505)" class="markmap-node"><line x1="-1" x2="147" y1="20" y2="20" stroke="rgb(188, 189, 34)" stroke-width="1.5"></line><foreignobject class="markmap-foreign" x="8" y="0" width="129" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+平台设备驱动框架
+</div>
+</foreignobject></g><g data-depth="3" data-path="1.50.57.58" transform="translate(535, 480)" class="markmap-node"><line x1="-1" x2="147" y1="20" y2="20" stroke="rgb(127, 127, 127)" stroke-width="1.5"></line><foreignobject class="markmap-foreign" x="8" y="0" width="129" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+内核模块编译原理
+</div>
+</foreignobject></g><g data-depth="3" data-path="1.50.51.56" transform="translate(577, 450)" class="markmap-node"><line x1="-1" x2="79" y1="20" y2="20" stroke="rgb(140, 86, 75)" stroke-width="1.5"></line><foreignobject class="markmap-foreign" x="8" y="0" width="61" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+Makefile
+</div>
+</foreignobject></g><g data-depth="3" data-path="1.50.51.55" transform="translate(577, 425)" class="markmap-node"><line x1="-1" x2="83" y1="20" y2="20" stroke="rgb(148, 103, 189)" stroke-width="1.5"></line><foreignobject class="markmap-foreign" x="8" y="0" width="65" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+Gcc 编译
+</div>
+</foreignobject></g><g data-depth="3" data-path="1.50.51.54" transform="translate(577, 400)" class="markmap-node"><line x1="-1" x2="151" y1="20" y2="20" stroke="rgb(214, 39, 40)" stroke-width="1.5"></line><foreignobject class="markmap-foreign" x="8" y="0" width="133" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+Linux 的 shell 编程
+</div>
+</foreignobject></g><g data-depth="3" data-path="1.50.51.53" transform="translate(577, 375)" class="markmap-node"><line x1="-1" x2="85" y1="20" y2="20" stroke="rgb(44, 160, 44)" stroke-width="1.5"></line><foreignobject class="markmap-foreign" x="8" y="0" width="67" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+VIM 学习
+</div>
+</foreignobject></g><g data-depth="3" data-path="1.50.51.52" transform="translate(577, 350)" class="markmap-node"><line x1="-1" x2="125" y1="20" y2="20" stroke="rgb(255, 127, 14)" stroke-width="1.5"></line><foreignobject class="markmap-foreign" x="8" y="0" width="107" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+Linux 常用命令
+</div>
+</foreignobject></g><g data-depth="3" data-path="1.39.41.48" transform="translate(587, 290)" class="markmap-node"><line x1="-1" x2="83" y1="20" y2="20" stroke="rgb(127, 127, 127)" stroke-width="1.5"></line><foreignobject class="markmap-foreign" x="8" y="0" width="65" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+内存管理
+</div>
+</foreignobject></g><g data-depth="3" data-path="1.39.41.47" transform="translate(587, 265)" class="markmap-node"><line x1="-1" x2="51" y1="20" y2="20" stroke="rgb(227, 119, 194)" stroke-width="1.5"></line><foreignobject class="markmap-foreign" x="8" y="0" width="33" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+事件
+</div>
+</foreignobject></g><g data-depth="3" data-path="1.39.41.46" transform="translate(587, 240)" class="markmap-node"><line x1="-1" x2="115" y1="20" y2="20" stroke="rgb(140, 86, 75)" stroke-width="1.5"></line><foreignobject class="markmap-foreign" x="8" y="0" width="97" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+信号量互斥量
+</div>
+</foreignobject></g><g data-depth="3" data-path="1.39.41.45" transform="translate(587, 215)" class="markmap-node"><line x1="-1" x2="83" y1="20" y2="20" stroke="rgb(148, 103, 189)" stroke-width="1.5"></line><foreignobject class="markmap-foreign" x="8" y="0" width="65" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+消息队列
+</div>
+</foreignobject></g><g data-depth="3" data-path="1.39.41.44" transform="translate(587, 190)" class="markmap-node"><line x1="-1" x2="83" y1="20" y2="20" stroke="rgb(214, 39, 40)" stroke-width="1.5"></line><foreignobject class="markmap-foreign" x="8" y="0" width="65" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+调度算法
+</div>
+</foreignobject></g><g data-depth="3" data-path="1.39.41.43" transform="translate(587, 165)" class="markmap-node"><line x1="-1" x2="99" y1="20" y2="20" stroke="rgb(44, 160, 44)" stroke-width="1.5"></line><foreignobject class="markmap-foreign" x="8" y="0" width="81" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+多任务管理
+</div>
+</foreignobject></g><g data-depth="3" data-path="1.39.41.42" transform="translate(587, 140)" class="markmap-node"><line x1="-1" x2="128" y1="20" y2="20" stroke="rgb(255, 127, 14)" stroke-width="1.5"></line><foreignobject class="markmap-foreign" x="8" y="0" width="110" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+移植 Ucos 系统
+</div>
+</foreignobject></g><g data-depth="3" data-path="1.16.32.38" transform="translate(570, 80)" class="markmap-node"><line x1="-1" x2="85" y1="20" y2="20" stroke="rgb(127, 127, 127)" stroke-width="1.5"></line><foreignobject class="markmap-foreign" x="8" y="0" width="67" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+USB 通信
+</div>
+</foreignobject></g><g data-depth="3" data-path="1.16.32.37" transform="translate(570, 55)" class="markmap-node"><line x1="-1" x2="94" y1="20" y2="20" stroke="rgb(227, 119, 194)" stroke-width="1.5"></line><foreignobject class="markmap-foreign" x="8" y="0" width="76" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+SDIO 通信
+</div>
+</foreignobject></g><g data-depth="3" data-path="1.16.32.36" transform="translate(570, 30)" class="markmap-node"><line x1="-1" x2="83" y1="20" y2="20" stroke="rgb(140, 86, 75)" stroke-width="1.5"></line><foreignobject class="markmap-foreign" x="8" y="0" width="65" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+代码框架
+</div>
+</foreignobject></g><g data-depth="3" data-path="1.16.32.35" transform="translate(570, 5)" class="markmap-node"><line x1="-1" x2="83" y1="20" y2="20" stroke="rgb(148, 103, 189)" stroke-width="1.5"></line><foreignobject class="markmap-foreign" x="8" y="0" width="65" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+电源管理
+</div>
+</foreignobject></g><g data-depth="3" data-path="1.16.32.34" transform="translate(570, -20)" class="markmap-node"><line x1="-1" x2="83" y1="20" y2="20" stroke="rgb(214, 39, 40)" stroke-width="1.5"></line><foreignobject class="markmap-foreign" x="8" y="0" width="65" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+总线架构
+</div>
+</foreignobject></g><g data-depth="3" data-path="1.16.32.33" transform="translate(570, -45)" class="markmap-node"><line x1="-1" x2="138" y1="20" y2="20" stroke="rgb(44, 160, 44)" stroke-width="1.5"></line><foreignobject class="markmap-foreign" x="8" y="0" width="120" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+STM32 时钟架构
+</div>
+</foreignobject></g><g data-depth="3" data-path="1.16.23.31" transform="translate(570, -75)" class="markmap-node"><line x1="-1" x2="59" y1="20" y2="20" stroke="rgb(31, 119, 180)" stroke-width="1.5"></line><foreignobject class="markmap-foreign" x="8" y="0" width="41" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+PWM
+</div>
+</foreignobject></g><g data-depth="3" data-path="1.16.23.30" transform="translate(570, -100)" class="markmap-node"><line x1="-1" x2="47" y1="20" y2="20" stroke="rgb(23, 190, 207)" stroke-width="1.5"></line><foreignobject class="markmap-foreign" x="8" y="0" width="29" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+RTC
+</div>
+</foreignobject></g><g data-depth="3" data-path="1.16.23.29" transform="translate(570, -125)" class="markmap-node"><line x1="-1" x2="96" y1="20" y2="20" stroke="rgb(188, 189, 34)" stroke-width="1.5"></line><foreignobject class="markmap-foreign" x="8" y="0" width="78" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+WatchDog
+</div>
+</foreignobject></g><g data-depth="3" data-path="1.16.23.28" transform="translate(570, -150)" class="markmap-node"><line x1="-1" x2="53" y1="20" y2="20" stroke="rgb(127, 127, 127)" stroke-width="1.5"></line><foreignobject class="markmap-foreign" x="8" y="0" width="35" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+ADC
+</div>
+</foreignobject></g><g data-depth="3" data-path="1.16.23.27" transform="translate(570, -175)" class="markmap-node"><line x1="-1" x2="102" y1="20" y2="20" stroke="rgb(227, 119, 194)" stroke-width="1.5"></line><foreignobject class="markmap-foreign" x="8" y="0" width="84" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+LCD 显示屏
+</div>
+</foreignobject></g><g data-depth="3" data-path="1.16.23.26" transform="translate(570, -200)" class="markmap-node"><line x1="-1" x2="90" y1="20" y2="20" stroke="rgb(140, 86, 75)" stroke-width="1.5"></line><foreignobject class="markmap-foreign" x="8" y="0" width="72" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+CAN 通信
+</div>
+</foreignobject></g><g data-depth="3" data-path="1.16.23.25" transform="translate(570, -225)" class="markmap-node"><line x1="-1" x2="78" y1="20" y2="20" stroke="rgb(148, 103, 189)" stroke-width="1.5"></line><foreignobject class="markmap-foreign" x="8" y="0" width="60" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+SPI 通信
+</div>
+</foreignobject></g><g data-depth="3" data-path="1.16.23.24" transform="translate(570, -250)" class="markmap-node"><line x1="-1" x2="93" y1="20" y2="20" stroke="rgb(214, 39, 40)" stroke-width="1.5"></line><foreignobject class="markmap-foreign" x="8" y="0" width="75" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+DMA 通信
+</div>
+</foreignobject></g><g data-depth="3" data-path="1.16.17.22" transform="translate(570, -280)" class="markmap-node"><line x1="-1" x2="75" y1="20" y2="20" stroke="rgb(255, 127, 14)" stroke-width="1.5"></line><foreignobject class="markmap-foreign" x="8" y="0" width="57" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+IIC 通信
+</div>
+</foreignobject></g><g data-depth="3" data-path="1.16.17.21" transform="translate(570, -305)" class="markmap-node"><line x1="-1" x2="96" y1="20" y2="20" stroke="rgb(31, 119, 180)" stroke-width="1.5"></line><foreignobject class="markmap-foreign" x="8" y="0" width="78" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+UART 通信
+</div>
+</foreignobject></g><g data-depth="3" data-path="1.16.17.20" transform="translate(570, -330)" class="markmap-node"><line x1="-1" x2="83" y1="20" y2="20" stroke="rgb(23, 190, 207)" stroke-width="1.5"></line><foreignobject class="markmap-foreign" x="8" y="0" width="65" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+中断操作
+</div>
+</foreignobject></g><g data-depth="3" data-path="1.16.17.19" transform="translate(570, -355)" class="markmap-node"><line x1="-1" x2="174" y1="20" y2="20" stroke="rgb(188, 189, 34)" stroke-width="1.5"></line><foreignobject class="markmap-foreign" x="8" y="0" width="156" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+GPIO 的输入输出操作
+</div>
+</foreignobject></g><g data-depth="3" data-path="1.16.17.18" transform="translate(570, -380)" class="markmap-node"><line x1="-1" x2="105" y1="20" y2="20" stroke="rgb(127, 127, 127)" stroke-width="1.5"></line><foreignobject class="markmap-foreign" x="8" y="0" width="87" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+点亮 LED 灯
+</div>
+</foreignobject></g><g data-depth="2" data-path="1.50.73" transform="translate(390, 740)" class="markmap-node"><line x1="-1" x2="67" y1="20" y2="20" stroke="rgb(44, 160, 44)" stroke-width="1.5"></line><circle stroke-width="1.5" cx="65" cy="20" r="6" stroke="rgb(44, 160, 44)" fill="rgb(255, 255, 255)"></circle><foreignobject class="markmap-foreign" x="8" y="0" width="49" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+应用篇
+</div>
+</foreignobject></g><g data-depth="2" data-path="1.50.67" transform="translate(390, 635)" class="markmap-node"><line x1="-1" x2="67" y1="20" y2="20" stroke="rgb(227, 119, 194)" stroke-width="1.5"></line><circle stroke-width="1.5" cx="65" cy="20" r="6" stroke="rgb(227, 119, 194)" fill="rgb(255, 255, 255)"></circle><foreignobject class="markmap-foreign" x="8" y="0" width="49" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+内核篇
+</div>
+</foreignobject></g><g data-depth="2" data-path="1.50.57" transform="translate(390, 517.5)" class="markmap-node"><line x1="-1" x2="67" y1="20" y2="20" stroke="rgb(227, 119, 194)" stroke-width="1.5"></line><circle stroke-width="1.5" cx="65" cy="20" r="6" stroke="rgb(227, 119, 194)" fill="rgb(255, 255, 255)"></circle><foreignobject class="markmap-foreign" x="8" y="0" width="49" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+驱动篇
+</div>
+</foreignobject></g><g data-depth="2" data-path="1.50.51" transform="translate(390, 400)" class="markmap-node"><line x1="-1" x2="109" y1="20" y2="20" stroke="rgb(31, 119, 180)" stroke-width="1.5"></line><circle stroke-width="1.5" cx="107" cy="20" r="6" stroke="rgb(31, 119, 180)" fill="rgb(255, 255, 255)"></circle><foreignobject class="markmap-foreign" x="8" y="0" width="91" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+Linux 基础篇
+</div>
+</foreignobject></g><g data-depth="2" data-path="1.39.49" transform="translate(451, 320)" class="markmap-node"><line x1="-1" x2="86" y1="20" y2="20" stroke="rgb(188, 189, 34)" stroke-width="1.5"></line><foreignobject class="markmap-foreign" x="8" y="0" width="68" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+freeRTOS
+</div>
+</foreignobject></g><g data-depth="2" data-path="1.39.41" transform="translate(451, 215)" class="markmap-node"><line x1="-1" x2="58" y1="20" y2="20" stroke="rgb(31, 119, 180)" stroke-width="1.5"></line><circle stroke-width="1.5" cx="56" cy="20" r="6" stroke="rgb(31, 119, 180)" fill="rgb(255, 255, 255)"></circle><foreignobject class="markmap-foreign" x="8" y="0" width="40" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+UCos
+</div>
+</foreignobject></g><g data-depth="2" data-path="1.39.40" transform="translate(451, 110)" class="markmap-node"><line x1="-1" x2="79" y1="20" y2="20" stroke="rgb(23, 190, 207)" stroke-width="1.5"></line><foreignobject class="markmap-foreign" x="8" y="0" width="61" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+RThread
+</div>
+</foreignobject></g><g data-depth="2" data-path="1.16.32" transform="translate(409, 17.5)" class="markmap-node"><line x1="-1" x2="83" y1="20" y2="20" stroke="rgb(255, 127, 14)" stroke-width="1.5"></line><circle stroke-width="1.5" cx="81" cy="20" r="6" stroke="rgb(255, 127, 14)" fill="rgb(255, 255, 255)"></circle><foreignobject class="markmap-foreign" x="8" y="0" width="65" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+高阶练习
+</div>
+</foreignobject></g><g data-depth="2" data-path="1.16.23" transform="translate(409, -162.5)" class="markmap-node"><line x1="-1" x2="83" y1="20" y2="20" stroke="rgb(44, 160, 44)" stroke-width="1.5"></line><circle stroke-width="1.5" cx="81" cy="20" r="6" stroke="rgb(44, 160, 44)" fill="rgb(255, 255, 255)"></circle><foreignobject class="markmap-foreign" x="8" y="0" width="65" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+进阶练习
+</div>
+</foreignobject></g><g data-depth="2" data-path="1.16.17" transform="translate(409, -330)" class="markmap-node"><line x1="-1" x2="83" y1="20" y2="20" stroke="rgb(227, 119, 194)" stroke-width="1.5"></line><circle stroke-width="1.5" cx="81" cy="20" r="6" stroke="rgb(227, 119, 194)" fill="rgb(255, 255, 255)"></circle><foreignobject class="markmap-foreign" x="8" y="0" width="65" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+基础练习
+</div>
+</foreignobject></g><g data-depth="2" data-path="1.8.15" transform="translate(374, -360)" class="markmap-node"><line x1="-1" x2="51" y1="20" y2="20" stroke="rgb(148, 103, 189)" stroke-width="1.5"></line><foreignobject class="markmap-foreign" x="8" y="0" width="33" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+中断
+</div>
+</foreignobject></g><g data-depth="2" data-path="1.8.14" transform="translate(374, -385)" class="markmap-node"><line x1="-1" x2="67" y1="20" y2="20" stroke="rgb(214, 39, 40)" stroke-width="1.5"></line><foreignobject class="markmap-foreign" x="8" y="0" width="49" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+定时器
+</div>
+</foreignobject></g><g data-depth="2" data-path="1.8.13" transform="translate(374, -410)" class="markmap-node"><line x1="-1" x2="83" y1="20" y2="20" stroke="rgb(44, 160, 44)" stroke-width="1.5"></line><foreignobject class="markmap-foreign" x="8" y="0" width="65" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+串口通信
+</div>
+</foreignobject></g><g data-depth="2" data-path="1.8.12" transform="translate(374, -435)" class="markmap-node"><line x1="-1" x2="83" y1="20" y2="20" stroke="rgb(255, 127, 14)" stroke-width="1.5"></line><foreignobject class="markmap-foreign" x="8" y="0" width="65" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+按键检测
+</div>
+</foreignobject></g><g data-depth="2" data-path="1.8.11" transform="translate(374, -460)" class="markmap-node"><line x1="-1" x2="105" y1="20" y2="20" stroke="rgb(31, 119, 180)" stroke-width="1.5"></line><foreignobject class="markmap-foreign" x="8" y="0" width="87" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+点亮 LED 灯
+</div>
+</foreignobject></g><g data-depth="2" data-path="1.8.10" transform="translate(374, -485)" class="markmap-node"><line x1="-1" x2="115" y1="20" y2="20" stroke="rgb(23, 190, 207)" stroke-width="1.5"></line><foreignobject class="markmap-foreign" x="8" y="0" width="97" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+熟悉逻辑运算
+</div>
+</foreignobject></g><g data-depth="2" data-path="1.8.9" transform="translate(374, -510)" class="markmap-node"><line x1="-1" x2="99" y1="20" y2="20" stroke="rgb(188, 189, 34)" stroke-width="1.5"></line><foreignobject class="markmap-foreign" x="8" y="0" width="81" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+认识单片机
+</div>
+</foreignobject></g><g data-depth="2" data-path="1.2.7" transform="translate(450, -540)" class="markmap-node"><line x1="-1" x2="83" y1="20" y2="20" stroke="rgb(227, 119, 194)" stroke-width="1.5"></line><foreignobject class="markmap-foreign" x="8" y="0" width="65" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+操作系统
+</div>
+</foreignobject></g><g data-depth="2" data-path="1.2.6" transform="translate(450, -565)" class="markmap-node"><line x1="-1" x2="131" y1="20" y2="20" stroke="rgb(140, 86, 75)" stroke-width="1.5"></line><foreignobject class="markmap-foreign" x="8" y="0" width="113" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+计算机组成原理
+</div>
+</foreignobject></g><g data-depth="2" data-path="1.2.5" transform="translate(450, -590)" class="markmap-node"><line x1="-1" x2="83" y1="20" y2="20" stroke="rgb(148, 103, 189)" stroke-width="1.5"></line><foreignobject class="markmap-foreign" x="8" y="0" width="65" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+数据结构
+</div>
+</foreignobject></g><g data-depth="2" data-path="1.2.4" transform="translate(450, -615)" class="markmap-node"><line x1="-1" x2="115" y1="20" y2="20" stroke="rgb(214, 39, 40)" stroke-width="1.5"></line><foreignobject class="markmap-foreign" x="8" y="0" width="97" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+硬件基础知识
+</div>
+</foreignobject></g><g data-depth="2" data-path="1.2.3" transform="translate(450, -640)" class="markmap-node"><line x1="-1" x2="99" y1="20" y2="20" stroke="rgb(44, 160, 44)" stroke-width="1.5"></line><foreignobject class="markmap-foreign" x="8" y="0" width="81" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+C 语言基础
+</div>
+</foreignobject></g><g data-depth="1" data-path="1.50" transform="translate(209, 570)" class="markmap-node"><line x1="-1" x2="103" y1="20" y2="20" stroke="rgb(23, 190, 207)" stroke-width="2"></line><circle stroke-width="1.5" cx="101" cy="20" r="6" stroke="rgb(23, 190, 207)" fill="rgb(255, 255, 255)"></circle><foreignobject class="markmap-foreign" x="8" y="0" width="85" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+ARM+Linux
+</div>
+</foreignobject></g><g data-depth="1" data-path="1.39" transform="translate(209, 215)" class="markmap-node"><line x1="-1" x2="164" y1="20" y2="20" stroke="rgb(188, 189, 34)" stroke-width="2"></line><circle stroke-width="1.5" cx="162" cy="20" r="6" stroke="rgb(188, 189, 34)" fill="rgb(255, 255, 255)"></circle><foreignobject class="markmap-foreign" x="8" y="0" width="146" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+RTOS(实时操作系统)
+</div>
+</foreignobject></g><g data-depth="1" data-path="1.16" transform="translate(209, -156.25)" class="markmap-node"><line x1="-1" x2="122" y1="20" y2="20" stroke="rgb(140, 86, 75)" stroke-width="2"></line><circle stroke-width="1.5" cx="120" cy="20" r="6" stroke="rgb(140, 86, 75)" fill="rgb(255, 255, 255)"></circle><foreignobject class="markmap-foreign" x="8" y="0" width="104" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+STM32 单片机
+</div>
+</foreignobject></g><g data-depth="1" data-path="1.8" transform="translate(209, -435)" class="markmap-node"><line x1="-1" x2="87" y1="20" y2="20" stroke="rgb(127, 127, 127)" stroke-width="2"></line><circle stroke-width="1.5" cx="85" cy="20" r="6" stroke="rgb(127, 127, 127)" fill="rgb(255, 255, 255)"></circle><foreignobject class="markmap-foreign" x="8" y="0" width="69" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+51 单片机
+</div>
+</foreignobject></g><g data-depth="1" data-path="1.2" transform="translate(209, -590)" class="markmap-node"><line x1="-1" x2="163" y1="20" y2="20" stroke="rgb(255, 127, 14)" stroke-width="2"></line><circle stroke-width="1.5" cx="161" cy="20" r="6" stroke="rgb(255, 127, 14)" fill="rgb(255, 255, 255)"></circle><foreignobject class="markmap-foreign" x="8" y="0" width="145" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+嵌入式基础必备知识
+</div>
+</foreignobject></g><g data-depth="0" data-path="1" transform="translate(0,-10)" class="markmap-node"><line x1="-1" x2="131" y1="20" y2="20" stroke="rgb(31, 119, 180)" stroke-width="4"></line><circle stroke-width="1.5" cx="129" cy="20" r="6" stroke="rgb(31, 119, 180)" fill="rgb(255, 255, 255)"></circle><foreignobject class="markmap-foreign" x="8" y="0" width="113" height="20" style="opacity: 1;">
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+嵌入式学习路线
+</div>
+</foreignobject></g></g>
+</svg>
+<script src="https://cdn.jsdelivr.net/npm/d3@7.8.5/dist/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/markmap-view@0.15.0/dist/browser/index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/markmap-toolbar@0.15.0/dist/index.js"></script>
+<script>(r => {
+                setTimeout(r);
+              })(() => {
+  const {
+    markmap,
+    mm
+  } = window;
+  const {
+    el
+  } = markmap.Toolbar.create(mm);
+  el.setAttribute('style', 'position:absolute;bottom:20px;right:20px');
+  document.body.append(el);
+})</script>
+<script>((getMarkmap, getOptions, root, jsonOptions) => {
+          const markmap = getMarkmap();
+          window.mm = markmap.Markmap.create('svg#mindmap', (getOptions || markmap.deriveOptions)(jsonOptions), root);
+        })(() => window.markmap,null,{"type":"heading","depth":0,"payload":{"lines":[0,1]},"content":"嵌入式学习路线","children":[{"type":"heading","depth":1,"payload":{"lines":[2,3]},"content":"嵌入式基础必备知识","children":[{"type":"heading","depth":2,"payload":{"lines":[4,5]},"content":"C 语言基础","children":[]},{"type":"heading","depth":2,"payload":{"lines":[6,7]},"content":"硬件基础知识","children":[]},{"type":"heading","depth":2,"payload":{"lines":[8,9]},"content":"数据结构","children":[]},{"type":"heading","depth":2,"payload":{"lines":[10,11]},"content":"计算机组成原理","children":[]},{"type":"heading","depth":2,"payload":{"lines":[12,13]},"content":"操作系统","children":[]}]},{"type":"heading","depth":1,"payload":{"lines":[14,15]},"content":"51 单片机","children":[{"type":"heading","depth":2,"payload":{"lines":[16,17]},"content":"认识单片机","children":[]},{"type":"heading","depth":2,"payload":{"lines":[18,19]},"content":"熟悉逻辑运算","children":[]},{"type":"heading","depth":2,"payload":{"lines":[20,21]},"content":"点亮 LED 灯","children":[]},{"type":"heading","depth":2,"payload":{"lines":[22,23]},"content":"按键检测","children":[]},{"type":"heading","depth":2,"payload":{"lines":[24,25]},"content":"串口通信","children":[]},{"type":"heading","depth":2,"payload":{"lines":[26,27]},"content":"定时器","children":[]},{"type":"heading","depth":2,"payload":{"lines":[28,29]},"content":"中断","children":[]}]},{"type":"heading","depth":1,"payload":{"lines":[30,31]},"content":"STM32 单片机","children":[{"type":"heading","depth":2,"payload":{"lines":[32,33]},"content":"基础练习","children":[{"type":"list_item","depth":3,"payload":{"lines":[34,35]},"content":"点亮 LED 灯","children":[]},{"type":"list_item","depth":3,"payload":{"lines":[35,36]},"content":"GPIO 的输入输出操作","children":[]},{"type":"list_item","depth":3,"payload":{"lines":[36,37]},"content":"中断操作","children":[]},{"type":"list_item","depth":3,"payload":{"lines":[37,38]},"content":"UART 通信","children":[]},{"type":"list_item","depth":3,"payload":{"lines":[38,39]},"content":"IIC 通信","children":[]}]},{"type":"heading","depth":2,"payload":{"lines":[40,41]},"content":"进阶练习","children":[{"type":"list_item","depth":3,"payload":{"lines":[42,43]},"content":"DMA 通信","children":[]},{"type":"list_item","depth":3,"payload":{"lines":[43,44]},"content":"SPI 通信","children":[]},{"type":"list_item","depth":3,"payload":{"lines":[44,45]},"content":"CAN 通信","children":[]},{"type":"list_item","depth":3,"payload":{"lines":[45,46]},"content":"LCD 显示屏","children":[]},{"type":"list_item","depth":3,"payload":{"lines":[46,47]},"content":"ADC","children":[]},{"type":"list_item","depth":3,"payload":{"lines":[47,48]},"content":"WatchDog","children":[]},{"type":"list_item","depth":3,"payload":{"lines":[48,49]},"content":"RTC","children":[]},{"type":"list_item","depth":3,"payload":{"lines":[49,50]},"content":"PWM","children":[]}]},{"type":"heading","depth":2,"payload":{"lines":[51,52]},"content":"高阶练习","children":[{"type":"list_item","depth":3,"payload":{"lines":[53,54]},"content":"STM32 时钟架构","children":[]},{"type":"list_item","depth":3,"payload":{"lines":[54,55]},"content":"总线架构","children":[]},{"type":"list_item","depth":3,"payload":{"lines":[55,56]},"content":"电源管理","children":[]},{"type":"list_item","depth":3,"payload":{"lines":[56,57]},"content":"代码框架","children":[]},{"type":"list_item","depth":3,"payload":{"lines":[57,58]},"content":"SDIO 通信","children":[]},{"type":"list_item","depth":3,"payload":{"lines":[58,59]},"content":"USB 通信","children":[]}]}]},{"type":"heading","depth":1,"payload":{"lines":[60,61]},"content":"RTOS(实时操作系统)","children":[{"type":"heading","depth":2,"payload":{"lines":[62,63]},"content":"RThread","children":[]},{"type":"heading","depth":2,"payload":{"lines":[64,65]},"content":"UCos","children":[{"type":"list_item","depth":3,"payload":{"lines":[66,67]},"content":"移植 Ucos 系统","children":[]},{"type":"list_item","depth":3,"payload":{"lines":[67,68]},"content":"多任务管理","children":[]},{"type":"list_item","depth":3,"payload":{"lines":[68,69]},"content":"调度算法","children":[]},{"type":"list_item","depth":3,"payload":{"lines":[69,70]},"content":"消息队列","children":[]},{"type":"list_item","depth":3,"payload":{"lines":[70,71]},"content":"信号量互斥量","children":[]},{"type":"list_item","depth":3,"payload":{"lines":[71,72]},"content":"事件","children":[]},{"type":"list_item","depth":3,"payload":{"lines":[72,73]},"content":"内存管理","children":[]}]},{"type":"heading","depth":2,"payload":{"lines":[74,75]},"content":"freeRTOS","children":[]}]},{"type":"heading","depth":1,"payload":{"lines":[76,77]},"content":"ARM+Linux","children":[{"type":"heading","depth":2,"payload":{"lines":[78,79]},"content":"Linux 基础篇","children":[{"type":"list_item","depth":3,"payload":{"lines":[80,81]},"content":"Linux 常用命令","children":[]},{"type":"list_item","depth":3,"payload":{"lines":[81,82]},"content":"VIM 学习","children":[]},{"type":"list_item","depth":3,"payload":{"lines":[82,83]},"content":"Linux 的 shell 编程","children":[]},{"type":"list_item","depth":3,"payload":{"lines":[83,84]},"content":"Gcc 编译","children":[]},{"type":"list_item","depth":3,"payload":{"lines":[84,85]},"content":"Makefile","children":[]}]},{"type":"heading","depth":2,"payload":{"lines":[86,87]},"content":"驱动篇","children":[{"type":"list_item","depth":3,"payload":{"lines":[88,89]},"content":"内核模块编译原理","children":[]},{"type":"list_item","depth":3,"payload":{"lines":[89,90]},"content":"平台设备驱动框架","children":[]},{"type":"list_item","depth":3,"payload":{"lines":[90,91]},"content":"设备树","children":[]},{"type":"list_item","depth":3,"payload":{"lines":[91,92]},"content":"字符设备驱动框架","children":[{"type":"list_item","depth":4,"payload":{"lines":[92,93]},"content":"Pinctrl 子系统","children":[]},{"type":"list_item","depth":4,"payload":{"lines":[93,94]},"content":"IIC 子系统","children":[]},{"type":"list_item","depth":4,"payload":{"lines":[94,95]},"content":"中断子系统","children":[]},{"type":"list_item","depth":4,"payload":{"lines":[95,96]},"content":"块设备驱动框架 -- SDIO 子系统","children":[]},{"type":"list_item","depth":4,"payload":{"lines":[96,97]},"content":"网络设备驱动框架","children":[]}]}]},{"type":"heading","depth":2,"payload":{"lines":[98,99]},"content":"内核篇","children":[{"type":"list_item","depth":3,"payload":{"lines":[100,101]},"content":"系统调用","children":[]},{"type":"list_item","depth":3,"payload":{"lines":[101,102]},"content":"存储管理","children":[]},{"type":"list_item","depth":3,"payload":{"lines":[102,103]},"content":"进程管理","children":[]},{"type":"list_item","depth":3,"payload":{"lines":[103,104]},"content":"内存管理","children":[]},{"type":"list_item","depth":3,"payload":{"lines":[104,105]},"content":"文件管理","children":[]}]},{"type":"heading","depth":2,"payload":{"lines":[106,107]},"content":"应用篇","children":[{"type":"list_item","depth":3,"payload":{"lines":[108,109]},"content":"QT 编程","children":[]},{"type":"list_item","depth":3,"payload":{"lines":[109,110]},"content":"TCP/IP 协议","children":[]},{"type":"list_item","depth":3,"payload":{"lines":[110,111]},"content":"HTTP 协议","children":[]}]}]}]},{})</script>
+</body>
+</html>
+
+    </div>
+    
+</div>
+                             
+<footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 2022 - 2023 Ainavo
+            <span class="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            @
+        </div>
+        <div></div>
+        <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
+                target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a></div>
+        
+    </div>
+</footer>
+                    </div>
+                </div>
+            </transition>
+            <div id="img_show">
+                <img id="img_content" alt="img_show">
+            </div>
+        </div>
+        <script src="https://cdn.staticfile.org/highlight.js/11.5.1/highlight.min.js"></script>
+        <script src="/js/particlex.js"></script>
+        <script src="/js/showimg.js"></script>
+        <canvas id="background"
+            style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:-1"></canvas>
+        <script src="/js/background.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"
+            integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <canvas id="fireworks"
+            style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:2147483647"></canvas>
+        <script src="/js/fireworks.js"></script>
+        
+
+    </body>
+
+    </html>
