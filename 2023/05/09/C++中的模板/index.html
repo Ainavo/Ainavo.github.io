@@ -268,7 +268,7 @@ mjx-container[display="true"] + br {
             
             <span class="tag">
                 
-                <a href="/tags/C/" style="color: #03a9f4">
+                <a href="/tags/C/" style="color: #ffa2c4">
                     C++
                 </a>
             </span>
@@ -277,82 +277,84 @@ mjx-container[display="true"] + br {
         
     </div>
     <div class="content" v-pre>
-        <p>在 C++ 中模板分为函数模板和类模板两种，函数模板用于生成函数，类模板用于生成类。</p>
+        <p>在 C++
+中模板分为函数模板和类模板两种，函数模板用于生成函数，类模板用于生成类。</p>
 <span id="more"></span>
-
-<h1 id="函数模板"><a href="#函数模板" class="headerlink" title="函数模板"></a>函数模板</h1><p>函数模板写法如下：</p>
+<h1 id="函数模板">函数模板</h1>
+<p>函数模板写法如下：</p>
 <pre><code>template &lt;class 类型参数1, class 类型参数2, ...&gt;
 返回值类型 模板名（形参表）
 {
     函数体
-}
-</code></pre>
-<p>其中 <code>class</code> 的关键字可以用 <code>typename</code> 替换，例如：</p>
-<pre><code>template &lt;typename 类型参数1, typename 类型参数2, ...&gt;
-</code></pre>
+}</code></pre>
+<p>其中 <code>class</code> 的关键字可以用 <code>typename</code>
+替换，例如：</p>
+<pre><code>template &lt;typename 类型参数1, typename 类型参数2, ...&gt;</code></pre>
 <p>example1:</p>
-<pre><code class="C++">template &lt;typename T&gt;
-void Swap(T &amp;x, T &amp;y)
-{
-    T tmp = x;
-    x = y;
-    y = tmp;
-}
-</code></pre>
-<p>其中，<code>T</code> 是类型参数，在编译时由模板对应的类型自动替换，当编译器编译到调用函数模板语句时， 会根据实参的类型判断如何替换模板中的类型参数。</p>
-<pre><code class="C++">#include &lt;iostream&gt;
-
-template &lt;typename T&gt;
-void Swap(T &amp;x, T&amp;y)
-{
-    T tmp = x;
-    x = y;
-    y = tmp;
-}
-
-int main()
-{
-    int x1 = 1;
-    int y1 = 2;
-    std::cout &lt;&lt; Swap(x1, y1) &lt;&lt; std::endl; //当输入参数为 int 时，自动调用 int 型函数，T--&gt; int
-
-    float x2 = 1.0;
-    float y2 = 2.0;
-    std::cout &lt;&lt; Swap(x2, y2) &lt;&lt; std::endl; //当输入参数为 float 时，自动调用 float 型函数 T--&gt; float
-}
-</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode c++"><code class="sourceCode cpp"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">template</span> <span class="op">&lt;</span><span class="kw">typename</span> T<span class="op">&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> Swap<span class="op">(</span>T <span class="op">&amp;</span>x<span class="op">,</span> T <span class="op">&amp;</span>y<span class="op">)</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    T tmp <span class="op">=</span> x<span class="op">;</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> y<span class="op">;</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> tmp<span class="op">;</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>其中，<code>T</code>
+是类型参数，在编译时由模板对应的类型自动替换，当编译器编译到调用函数模板语句时，
+会根据实参的类型判断如何替换模板中的类型参数。</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode c++"><code class="sourceCode cpp"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">template</span> <span class="op">&lt;</span><span class="kw">typename</span> T<span class="op">&gt;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> Swap<span class="op">(</span>T <span class="op">&amp;</span>x<span class="op">,</span> T<span class="op">&amp;</span>y<span class="op">)</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    T tmp <span class="op">=</span> x<span class="op">;</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> y<span class="op">;</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> tmp<span class="op">;</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> x1 <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> y1 <span class="op">=</span> <span class="dv">2</span><span class="op">;</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>cout<span class="op"> &lt;&lt;</span> Swap<span class="op">(</span>x1<span class="op">,</span> y1<span class="op">)</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span> <span class="co">//当输入参数为 int 时，自动调用 int 型函数，T--&gt; int</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    <span class="dt">float</span> x2 <span class="op">=</span> <span class="fl">1.0</span><span class="op">;</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    <span class="dt">float</span> y2 <span class="op">=</span> <span class="fl">2.0</span><span class="op">;</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>cout<span class="op"> &lt;&lt;</span> Swap<span class="op">(</span>x2<span class="op">,</span> y2<span class="op">)</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span> <span class="co">//当输入参数为 float 时，自动调用 float 型函数 T--&gt; float</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>编译器有模板自动生成函数的过程叫模板的实例化。有模板实例化的函数乘坐模板函数。在某些编译器中，只有模板被实例化时候才检查其语法的正确性，如果一个模板没有被调用，则不会报告模板中存在的语法错误。</p>
-<h1 id="类模板"><a href="#类模板" class="headerlink" title="类模板"></a>类模板</h1><p>类模板逻辑同类，使用同函数模板。<br>exp1：</p>
-<pre><code class="C++">    // member_function_templates1.cpp
-    template&lt;class T, int i&gt;
-    class MyStack
-    {
-        T*  pStack;
-        T StackBuffer[i];
-        static const int cItems = i * sizeof(T);
-    public:
-        MyStack( void );
-        void push( const T item );
-        T&amp; pop( void );
-    };
-
-    template&lt; class T, int i &gt; MyStack&lt; T, i &gt;::MyStack( void )
-    {
-    };
-
-    template&lt; class T, int i &gt; void MyStack&lt; T, i &gt;::push( const T item )
-    {
-    };
-
-    template&lt; class T, int i &gt; T&amp; MyStack&lt; T, i &gt;::pop( void )
-    {
-    };
-
-    int main()
-    {
-    }
-</code></pre>
-<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] <a target="_blank" rel="noopener" href="http://c.biancheng.net/view/315.html">http://c.biancheng.net/view/315.html</a><br>[2] <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/cpp/cpp/class-templates?view=msvc-170">https://learn.microsoft.com/zh-cn/cpp/cpp/class-templates?view=msvc-170</a></p>
+<h1 id="类模板">类模板</h1>
+<p>类模板逻辑同类，使用同函数模板。 exp1：</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode c++"><code class="sourceCode cpp"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>    <span class="co">// member_function_templates1.cpp</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">template</span><span class="op">&lt;</span><span class="kw">class</span> T<span class="op">,</span> <span class="dt">int</span> i<span class="op">&gt;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">class</span> MyStack</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>        T<span class="op">*</span>  pStack<span class="op">;</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>        T StackBuffer<span class="op">[</span>i<span class="op">];</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">static</span> <span class="at">const</span> <span class="dt">int</span> cItems <span class="op">=</span> i <span class="op">*</span> <span class="kw">sizeof</span><span class="op">(</span>T<span class="op">);</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span><span class="op">:</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>        MyStack<span class="op">(</span> <span class="dt">void</span> <span class="op">);</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>        <span class="dt">void</span> push<span class="op">(</span> <span class="at">const</span> T item <span class="op">);</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>        T<span class="op">&amp;</span> pop<span class="op">(</span> <span class="dt">void</span> <span class="op">);</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="op">};</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">template</span><span class="op">&lt;</span> <span class="kw">class</span> T<span class="op">,</span> <span class="dt">int</span> i <span class="op">&gt;</span> MyStack<span class="op">&lt;</span> T<span class="op">,</span> i <span class="op">&gt;::</span>MyStack<span class="op">(</span> <span class="dt">void</span> <span class="op">)</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="op">};</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    <span class="kw">template</span><span class="op">&lt;</span> <span class="kw">class</span> T<span class="op">,</span> <span class="dt">int</span> i <span class="op">&gt;</span> <span class="dt">void</span> MyStack<span class="op">&lt;</span> T<span class="op">,</span> i <span class="op">&gt;::</span>push<span class="op">(</span> <span class="at">const</span> T item <span class="op">)</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    <span class="op">};</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    <span class="kw">template</span><span class="op">&lt;</span> <span class="kw">class</span> T<span class="op">,</span> <span class="dt">int</span> i <span class="op">&gt;</span> T<span class="op">&amp;</span> MyStack<span class="op">&lt;</span> T<span class="op">,</span> i <span class="op">&gt;::</span>pop<span class="op">(</span> <span class="dt">void</span> <span class="op">)</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    <span class="op">};</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> main<span class="op">()</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span></code></pre></div>
+<h1 id="参考文献">参考文献</h1>
+<p>[1] http://c.biancheng.net/view/315.html [2]
+https://learn.microsoft.com/zh-cn/cpp/cpp/class-templates?view=msvc-170</p>
 
     </div>
     
