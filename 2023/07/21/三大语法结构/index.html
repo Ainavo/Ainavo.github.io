@@ -268,7 +268,7 @@ mjx-container[display="true"] + br {
             
             <span class="tag">
                 
-                <a href="/tags/C/" style="color: #ffa2c4">
+                <a href="/tags/C/" style="color: #03a9f4">
                     C
                 </a>
             </span>
@@ -287,8 +287,8 @@ mjx-container[display="true"] + br {
 </ul>
 <h2 id="选择结构">选择结构</h2>
 <ul>
-<li><p>选择结构根据条件的真假，决定程序的执行路径，常用的选择结构有 if
-和 switch-case</p></li>
+<li><p>选择结构根据条件的真假，决定程序的执行路径，常用的选择结构有
+<code>if</code> 和 <code>switch-case</code></p></li>
 <li><p>if 语句：</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>  <span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -312,12 +312,13 @@ mjx-container[display="true"] + br {
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span></code></pre></div></li>
 <li><p>switch-case 语句：</p>
 <ul>
-<li>计算 switch(表达式)中表达式的值</li>
-<li>将表达式的值与各个 case 相匹配，执行对应的代码；</li>
-<li>在执行代码块的过程中，如果遇到 break 语句，则跳出 switch
-语句，否则继续执行下一个 case 的代码块。</li>
-<li>如果表达式的值与所有 case 的值都不匹配，则执行 default
-中的代码块。</li>
+<li>计算 <code>switch(表达式)</code> 中表达式的值</li>
+<li>将表达式的值与各个 <code>case</code> 相匹配，执行对应的代码；</li>
+<li>在执行代码块的过程中，如果遇到 <code>break</code> 语句，则跳出
+<code>switch</code> 语句，否则继续执行下一个 <code>case</code>
+的代码块。</li>
+<li>如果表达式的值与所有 <code>case</code> 的值都不匹配，则执行
+<code>default</code> 中的代码块。</li>
 </ul>
 <div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>  <span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -401,20 +402,41 @@ mjx-container[display="true"] + br {
 </ul>
 <h3 id="循环小-tips">循环小 tips：</h3>
 <ul>
-<li>如果有固定次数，首选 for 循环：for(; ; ;)</li>
-<li>如果判断前必须执行一次，用 do_while 循环</li>
-<li>其他情况用 while 循环</li>
+<li>如果有固定次数，首选 for 循环：<code>for(; ; ;)</code></li>
+<li>如果判断前必须执行一次，用 <code>do_while</code> 循环</li>
+<li>其他情况用 <code>while</code> 循环</li>
 <li>跳出循环：
 <ul>
-<li><p>break：跳出循环</p></li>
-<li><p>continue：跳出本轮循环，继续下一轮</p></li>
-<li><p>goto：</p>
+<li><p><code>break</code>：跳出循环</p></li>
+<li><p><code>continue</code>：跳出本轮循环，继续下一轮</p></li>
+<li><p><code>goto</code>：</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>    <span class="op">....</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">goto</span> out<span class="op">:</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>out<span class="op">:</span></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span></code></pre></div></li>
 </ul></li>
 </ul>
+<h3 id="补求两数最大公约数的例子">(补)求两数最大公约数的例子</h3>
+<div class="sourceCode" id="cb7"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">// 辗转相除法:</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">// 如果 b=0，计算结束；a 就是最大公约数</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">// 否则 a 除以 b 的余数，让 a 等于 b，b 等于那个余数；</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="co">// 构建循环体</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> main<span class="op">()</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="op">{</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> a<span class="op">,</span> b<span class="op">;</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    scanf<span class="op">(</span><span class="st">"%d %d"</span><span class="op">,</span> <span class="op">&amp;</span>a<span class="op">,</span> <span class="op">&amp;</span>b<span class="op">);</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> temp<span class="op">;</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span><span class="op">(</span>b <span class="op">!=</span> <span class="dv">0</span><span class="op">)</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>      temp <span class="op">=</span> a <span class="op">%</span> b<span class="op">;</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>      a <span class="op">=</span> b<span class="op">;</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>      b <span class="op">=</span> temp<span class="op">;</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>      printf<span class="op">(</span><span class="st">"a=%d, b=%d, temp=d%"</span><span class="op">,</span> a<span class="op">,</span> b<span class="op">,</span> temp<span class="op">);</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>    printf<span class="op">(</span><span class="st">"a与b的最大公约数为 %d"</span><span class="op">,</span> a<span class="op">);</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span></code></pre></div>
 
     </div>
     
