@@ -1,0 +1,488 @@
+
+    <!DOCTYPE html>
+    <html lang="">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+        <title>
+            Git 的一些常用命令~ | Ainavo
+        </title>
+        <meta name="author" content="">
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <link rel="icon" href="/head_img.jpg">
+        <script src="https://cdn.staticfile.org/instant.page/5.1.0/instantpage.min.js" type="module"></script>
+        <script src="https://cdn.staticfile.org/font-awesome/6.1.1/js/all.min.js"></script>
+        
+                <link rel="stylesheet" href="/css/fonts.min.css">
+                <link rel="stylesheet" href="/css/particlex.css">
+                
+                    <script src="https://cdn.staticfile.org/vue/3.2.33/vue.global.prod.min.js"></script>
+    <meta name="generator" content="Hexo 6.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+
+    <body>
+        <div id="loading"
+            style="height:100vh;width:100vw;position:fixed;display:flex;z-index:200;justify-content:space-between;background:#fff;transition:opacity 0.3s ease-out">
+            <div style="position:fixed;height:100vh;width:100vw;display:flex;justify-content:center;align-items:center">
+                <div id="loadcontent"
+                    style="width:50vmin;height:50vmin;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px #a3ddfb;text-align:center">
+                    <div>
+                        <h2>LOADING...</h2>
+                        <p style="word-break:keep-all">加载过慢请开启缓存(浏览器默认开启)</p>
+                        <div><img alt="loading" src="/loading.gif"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="layout">
+            <i data-fa-symbol="calendar-solid" class="fa-solid fa-calendar fa-fw"></i>
+            <i data-fa-symbol="bookmark-solid" class="fa-solid fa-bookmark fa-fw"></i>
+            <i data-fa-symbol="tags-solid" class="fa-solid fa-tags fa-fw"></i>
+            <transition name="into">
+                <div v-show="show_page" style="display: -not-none">
+                    <div id="menu_show">
+                         
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">Ainavo</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;about</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;archives</span>
+        </a>
+        
+        <a href="/categories/">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;categories</span>
+        </a>
+        
+        <a href="/tags/">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;tags</span>
+        </a>
+        
+    </div>
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div class="curtain" @click="menu_show = !menu_show" v-show="menu_show"></div>
+        <div :class="'title'" @click="menu_show = !menu_show">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;Ainavo</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="menu_show">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">home</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">about</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">archives</div>
+                </div>
+            </a>
+            
+            <a href="/categories/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">categories</div>
+                </div>
+            </a>
+            
+            <a href="/tags/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">tags</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+                    </div>
+                    <div id="main">
+                        
+<div class="article">
+    <div>
+        <h1>Git 的一些常用命令~ </h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2023/7/24
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/git/" style="color: #ff7d73">
+                    git
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/github/" style="color: #ffa2c4">
+                    github
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    <div class="content" v-pre>
+        <figure>
+<img src="/imgs/Git%20相关操作/Git%20常用命令速查表.png" alt="Git 常用命令速查表">
+<figcaption aria-hidden="true">Git 常用命令速查表</figcaption>
+</figure>
+<span id="more"></span>
+<h2 id="什么是-git">什么是 Git ？</h2>
+<p>Git
+是一个分布式版本控制系统，用于跟踪文件的变化并协调多人之间的文件更改。它允许多个用户在不同的分支上独立工作，并能够合并不同分支上的更改。Git
+可以存储文件的完整历史记录，方便回溯和恢复文件的不同版本。它广泛用于软件开发中，特别是用于团队合作开发和开源项目。通过使用
+Git，开发人员可以更好地管理和追踪代码的变化，确保团队成员之间的协作无缝进行。(来自
+ChatGPT)</p>
+<h2 id="git-的安装">Git 的安装</h2>
+<ul>
+<li>Git 支持 Linux/Unix、macOS、Windows
+平台使用，安装包地址：http://git-scm.com/downloads</li>
+<li>Git 安装之后，在终端输入 git version 或 git --version
+查看版本信息（顺便确保安装成功）。</li>
+</ul>
+<h2 id="git-的配置">Git 的配置</h2>
+<ul>
+<li>设置个人用户名和电子邮件</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>  <span class="ex">$</span> git config <span class="at">--global</span> user.name <span class="st">"miaomiaomiao"</span>  <span class="co"># 设置个人用户名</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">$</span> git config <span class="at">--global</span> user.email miaomiao@163.com  <span class="co"># 设置电子邮件</span></span></code></pre></div>
+<ul>
+<li>设置提交文件大小的上限</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">git</span> config http.postBuffer 524288000</span></code></pre></div>
+<ul>
+<li>Git 查看已有配置</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">git</span> config <span class="at">--list</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># http.postbuffer=2M   // 这个什么</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># user.name=miaomiaomiao</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># user.email=miaomiaomiao@163.com</span></span></code></pre></div>
+<h2 id="git-的工作流程和原理">Git 的工作流程和原理</h2>
+<p>（待补充~）</p>
+<h2 id="git-创建和克隆仓库">Git 创建和克隆仓库</h2>
+<ul>
+<li>git init</li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">git</span> init  <span class="co"># 初始化空的 Git 存储库</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">git</span> init miaomiao <span class="co"># 指目录作为 git repo</span></span></code></pre></div>
+<ul>
+<li>git clone xxxx</li>
+</ul>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">git</span> clone https://github.com/yutto-dev/yutto.git  <span class="co"># 想 clone 到本地的 repo，以一个B站下载器为例</span></span></code></pre></div>
+<figure>
+<img src="/imgs/Git%20相关操作/repo%20链接.png" alt="repo 链接如下">
+<figcaption aria-hidden="true">repo 链接如下</figcaption>
+</figure>
+<h2 id="git-基本操作">Git 基本操作</h2>
+<ul>
+<li>git init 初始化仓库</li>
+<li>git add . 添加所有文件到暂存区</li>
+<li>git commit -m "xxxx" 添加 message
+将暂存区提交到本地仓库，形成一个新的版本，生成一个指定 commit ID
+标识号</li>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">git</span> commit <span class="at">-a</span> <span class="co"># 不需要 git add 直接提交</span></span></code></pre></div>
+<ul>
+<li>git status 查看仓库当前状态，显示有变更的文件</li>
+<li>git diff 比较文件的不同，即暂存区和工作区的差异</li>
+<li>git reset 回退版本</li>
+</ul>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">git</span> reset HEAD^ <span class="co"># 回退到上一个版本</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">git</span> reset HEAD^2 <span class="co"># 回退到上上一个版本</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">git</span> reset <span class="at">--hard</span> HEAD^ <span class="co">#（强）回退到上一个版本，会删除之前所有的提交信息</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">git</span> reset  d4d0b27adcc07b4c1af2aa945157b196b98c8feb <span class="co"># 回退到指定版本号</span></span></code></pre></div>
+<p><img src="/imgs/Git%20相关操作/提交记录.png" alt="commit记录"> <img src="/imgs/Git%20相关操作/指定commit%20id.png" alt="指定commit id"></p>
+<ul>
+<li>git rm 将文件从暂存区和工作区中删除</li>
+<li>git mv 移动或重命名工作区文件</li>
+<li>git remote 用于管理远程仓库
+<ul>
+<li>git remote：列出当前仓库中的远程仓库</li>
+<li>git remote -v：列出当前仓库中已配置的远程仓库，并显示它们的 URL</li>
+<li>git remote add <remote_name>
+<remote_url>：添加一个新的远程仓库，指定一个远程仓库的名称和
+URL，将其添加到当前的仓库中。</remote_url></remote_name></li>
+<li>git remote rename <old_name>
+<new_name>：将已配置的远程仓库重命名。</new_name></old_name></li>
+<li>git remote remove <remote>：从当前仓库删除指定远程仓库</remote></li>
+<li>git remote set-url <remote_name> <new_url>：修改指定远程仓库的
+URL</new_url></remote_name></li>
+<li>git remote show <remote_name>：显示指定远程仓库的详细信息，包括 URL
+和跟踪分支</remote_name></li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">git</span> remote</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">git</span> remote <span class="at">-v</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">git</span> remote add miaomiao https://github.com/Ainavo/yutto.git</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">git</span> remote rename miaomaio wangwang</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">git</span> remote remove miaomiao</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">git</span> remote set-url miaomiao https://github.com/Ainavo/miaomaio.git</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">git</span> remote show miaomiao</span></code></pre></div>
+<ul>
+<li>git fetch 从远程获取代码</li>
+</ul>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">git</span> fetch <span class="co"># 从远程获取代码</span></span></code></pre></div>
+<ul>
+<li>git pull 拉取并合并远程 repo 的最新代码:git pull = git fetch + git
+merge</li>
+</ul>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">git</span> pull <span class="op">&lt;</span>远程主机名<span class="op">&gt;</span> <span class="op">&lt;</span>远程分支名<span class="op">&gt;</span>:<span class="op">&lt;</span>本地分支名<span class="op">&gt;</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">git</span> pull origin master:brantest <span class="co">#将远程主机 origin 的 master 分支拉取过来，与本地的 brantest 分支合并</span></span></code></pre></div>
+<ul>
+<li>git push 将本地分支推送到远程并合并</li>
+</ul>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">git</span> push <span class="op">&lt;</span>远程主机名<span class="op">&gt;</span> <span class="op">&lt;</span>本地分支名<span class="op">&gt;</span>:<span class="op">&lt;</span>远程分支名<span class="op">&gt;</span>  # 如果本地分支名和远程分支名相同则可以忽略省略号</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">git</span> push <span class="at">--force-with-lease</span> <span class="co"># 强制推送（最小差异）</span></span></code></pre></div>
+<h2 id="git-开发简单流程">Git 开发简单流程</h2>
+<ul>
+<li>首先，fork 一个想要贡献代码的 repo，然后 clone 到本地。</li>
+</ul>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">git</span> clone https://github.com/Ainavo/yutto.git  <span class="co"># 还是以某个B站下载器为例</span></span></code></pre></div>
+<p><img src="/imgs/Git%20相关操作/fork别人repo.png" alt="fork别人repo"><br>
+<img src="/imgs/Git%20相关操作/fork第二步.png" alt="fork第二步"><br>
+<img src="/imgs/Git%20相关操作/repo%20链接.png" alt="repo 链接如下"></p>
+<ul>
+<li>git 创建一个新分支</li>
+</ul>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">git</span> checkout <span class="at">-b</span> miaomiao  <span class="co"># 创建一个新分支叫 miaomiao，至于为什么要创建新分支--因为不能直接在 develop/master 等主分支直接提交</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">git</span> switch <span class="at">-c</span> xxxx <span class="co"># 同样创建一个新分支 xxxx，建议用这种</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">git</span> branch <span class="co"># 查看所有本地分支</span></span></code></pre></div>
+<ul>
+<li>git 提交修改内容</li>
+</ul>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">git</span> add .  <span class="co"># 添加所有更改内容到暂存区</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"miaomiaomiao"</span> <span class="co"># 将暂存区提交到本地仓库，形成一个新的版本，生成一个指定 commit ID 标识号</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">git</span> push</span></code></pre></div>
+<h2 id="遇到的一些小问题">遇到的一些小问题</h2>
+<ul>
+<li>在与别人协作开发时，有时常常会因为别人先合入
+repo，产生冲突，对于简单的冲突：</li>
+</ul>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 假设目前处在 miaomiao 分支</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">git</span> checkout master  <span class="co"># 以master为例，切入主分支</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">git</span> pull <span class="co"># 拉取最新的 develop 代码</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">git</span> checkout miaomiao <span class="co"># 切回 miaomiao 分支</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">git</span> merge master <span class="co"># 合并 master 分支</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">git</span> push <span class="at">--force-with-lease</span> <span class="co"># 强制推送最小改变到远程分支</span></span></code></pre></div>
+<ul>
+<li>某些冲突太多，不能直接解决冲突(直接重组)</li>
+</ul>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">git</span>   <span class="co"># 假设目前处在 miaomiao 分支</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">git</span> checkout master  <span class="co"># 以master为例，切入主分支</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">git</span> pull <span class="co"># 拉取最新的 develop 代码</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">git</span> checkout miaomiao <span class="co"># 切回 miaomiao 分支</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">git</span> reset <span class="at">--hard</span> master <span class="co"># 将 miaomiao 分支上的代码回退到 master 上</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">git</span> push <span class="at">--force-with-lease</span> <span class="co"># 强制推送最小改变到远程分支</span></span></code></pre></div>
+<h2 id="参考文献">参考文献</h2>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://git-scm.com/book/zh/v2">Git Book</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.runoob.com/git/git-branch.html">Git
+基本操作</a></li>
+</ul>
+
+    </div>
+    
+</div>
+                             
+<footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 2022 - 2023 Ainavo
+            <span class="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            @
+        </div>
+        <div></div>
+        <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
+                target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a></div>
+        
+    </div>
+</footer>
+                    </div>
+                </div>
+            </transition>
+            <div id="img_show">
+                <img id="img_content" alt="img_show">
+            </div>
+        </div>
+        <script src="https://cdn.staticfile.org/highlight.js/11.5.1/highlight.min.js"></script>
+        <script src="/js/particlex.js"></script>
+        <script src="/js/showimg.js"></script>
+        <canvas id="background"
+            style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:-1"></canvas>
+        <script src="/js/background.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"
+            integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <canvas id="fireworks"
+            style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:2147483647"></canvas>
+        <script src="/js/fireworks.js"></script>
+        
+
+    </body>
+
+    </html>
