@@ -6,7 +6,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
         <title>
-            函数 | Ainavo
+            函数 &amp;&amp; 链表 | Ainavo
         </title>
         <meta name="author" content="">
         <meta name="description" content="">
@@ -250,7 +250,7 @@ mjx-container[display="true"] + br {
                         
 <div class="article">
     <div>
-        <h1>函数 </h1>
+        <h1>函数 &amp;&amp; 链表 </h1>
     </div>
     <div class="info">
         <span class="date">
@@ -268,7 +268,7 @@ mjx-container[display="true"] + br {
             
             <span class="tag">
                 
-                <a href="/tags/C/" style="color: #ffa2c4">
+                <a href="/tags/C/" style="color: #00bcd4">
                     C
                 </a>
             </span>
@@ -277,17 +277,95 @@ mjx-container[display="true"] + br {
         
     </div>
     <div class="content" v-pre>
-        <span id="more"></span>
+        <p>C 函数包含了函数声明、函数定义、函数调用等介绍以及链表的定义。</p>
+<span id="more"></span>
 <p>C 语言是一种广泛用于系统编程的编程语言，C
 语言函数的定义和调用通常包括以下几个部分：</p>
 <ul>
 <li><h2 id="函数声明函数原型">函数声明（函数原型）</h2>
-<p>在使用函数前，需要对函数进行声明。函数声明包括函数的返回类型、函数名和参数列表，用于告诉编译器函数的存在和接口。</p>
+<ul>
+<li><p>在使用函数前，需要对函数进行声明。函数声明包括函数的返回类型、函数名和参数列表，用于告诉编译器函数的存在和接口。</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">// 返回类型 函数名(参数列表);</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">void</span> swap<span class="op">(</span><span class="dt">double</span> a<span class="op">,</span> <span class="dt">double</span> b<span class="op">);</span> <span class="co">// 与函数名称相同</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">void</span> swap<span class="op">(</span><span class="dt">void</span><span class="op">);</span> <span class="co">// 无参数</span></span></code></pre></div></li>
-<li><h2 id="函数定义">函数定义</h2></li>
-<li><h2 id="函数调用">函数调用</h2></li>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> sum<span class="op">();</span> <span class="co">// 无参数函数原型，返回类型 int</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">double</span> swap<span class="op">(</span><span class="dt">double</span> a<span class="op">,</span> <span class="dt">double</span> b<span class="op">);</span> <span class="co">// 声明函数 swap 的原型，返回类型为 double，参数列表为两个 double 类型参数</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">float</span> average<span class="op">(</span><span class="dt">float</span> arr<span class="op">[],</span> <span class="dt">int</span> size<span class="op">);</span> <span class="co">// 声明函数 average 的原型，返回类型 float，参数列表是数组 arr，但是 arr 的长度必须通过 int size 输入</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">void</span> swap<span class="op">(</span><span class="dt">void</span><span class="op">);</span> <span class="co">// 无参数</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">void</span> swap<span class="op">(</span><span class="dt">int</span> <span class="op">*</span>a<span class="op">,</span> <span class="dt">int</span> <span class="op">*</span>b<span class="op">);</span> <span class="co">// 输入参数为两个指针，可以通过函数修改指针指向的值</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> applyFunction<span class="op">(</span><span class="dt">int</span> <span class="op">(*</span>func<span class="op">)</span><span class="dt">int</span><span class="op">,</span> <span class="dt">int</span> num<span class="op">);</span> <span class="co">// 函数原型使用函数只恨作为参数，函数指针指向一个接受整数参数并返回整数值的函数</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span><span class="op">*</span> createArray<span class="op">(</span><span class="dt">int</span> size<span class="op">);</span> <span class="co">// 指针函数原型，返回类型时指针的函数</span></span></code></pre></div></li>
+<li><p>以下四种函数原型是等价的：</p></li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> arr<span class="op">[</span><span class="dv">10</span><span class="op">];</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> <span class="op">*</span>p<span class="op">;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> arr<span class="op">;</span>  <span class="co">// 无需 &amp; 取地址符，但是结构体必须用 &amp;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> sum<span class="op">(</span><span class="dt">int</span> <span class="op">*</span>p<span class="op">,</span> <span class="dt">int</span> size<span class="op">);</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> sum<span class="op">(</span><span class="dt">int</span> arr<span class="op">[],</span> <span class="dt">int</span> size<span class="op">);</span>  <span class="co">// 输入[]不能加数字</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> sum<span class="op">(</span><span class="dt">int</span> <span class="op">*,</span> <span class="dt">int</span> size<span class="op">);</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> sum<span class="op">(</span><span class="dt">int</span> <span class="op">[],</span> <span class="dt">int</span> size<span class="op">);</span></span></code></pre></div></li>
+<li><h2 id="函数定义">函数定义</h2>
+<ul>
+<li>函数定义是一种在编程中用来创建可重复代码块的方式，用于封装一段代码，在程序任何地方都能被调用执行。函数定义包括函数名称、参数列表、函数体和返回值。</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>  def 函数名<span class="op">(</span>参数列表<span class="op">)</span>：</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    函数体</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> 返回值</span></code></pre></div>
+<ul>
+<li>函数名的构建参考函数原型</li>
+<li>注意：函数中创建的变量，只在函数中起作用（局部变量）。</li>
+</ul></li>
+<li><h2 id="函数调用">函数调用</h2>
+<ul>
+<li>函数调用是指在程序中使用函数的过程。通过函数调用，可以执行函数内部代码，完成函数的功能。</li>
+<li>调用函数时，是指调用函数的名称，参数列表是传递给函数的实际参数：实际参数可以是敞亮、变量、表达式</li>
+</ul></li>
+<li><h2 id="返回指针的函数">返回指针的函数：</h2>
+<ul>
+<li>返回本地变量的地址是危险的</li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>  <span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span><span class="op">*</span> f<span class="op">(</span><span class="dt">void</span><span class="op">)</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">{</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> i<span class="op">=</span><span class="dv">12</span><span class="op">;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="op">&amp;</span>i<span class="op">;</span> <span class="co">// 不好，返回本地变量容易出错；正确的做法应该是传入指针</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span></code></pre></div>
+<ul>
+<li>返回全局变量或静态本地变量的地址是安全的</li>
+<li>返回在函数内的 malloc 的内存是安全的，但容易造成问题</li>
+<li>最好的做法是传入指针</li>
+</ul>
+<div class="sourceCode" id="cb5"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>  <span class="pp">#include</span><span class="im">&lt;stdio.h&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span><span class="op">*</span> f<span class="op">(</span><span class="dt">void</span><span class="op">);</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">void</span> g<span class="op">(</span><span class="dt">void</span><span class="op">);</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">void</span> g<span class="op">(</span><span class="dt">void</span><span class="op">){</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> k<span class="op">=</span><span class="dv">24</span><span class="op">;</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    printf<span class="op">(</span><span class="st">"k=%d</span><span class="sc">\n</span><span class="st">"</span><span class="op">,</span> k<span class="op">);</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> main<span class="op">(</span><span class="dt">int</span> argc<span class="op">,</span> <span class="dt">char</span> <span class="dt">const</span> <span class="op">*</span>argv<span class="op">[])</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="op">{</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>      <span class="dt">int</span> <span class="op">*</span>p <span class="op">=</span> f<span class="op">();</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>      printf<span class="op">(</span><span class="st">"*p=%d</span><span class="sc">\n</span><span class="st">"</span><span class="op">,</span> <span class="op">*</span>p<span class="op">);</span>  <span class="co">// 12</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>      g<span class="op">();</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>      printf<span class="op">(</span><span class="st">"*p=%d</span><span class="sc">\n</span><span class="st">"</span><span class="op">,</span> <span class="op">*</span>p<span class="op">);</span>  <span class="co">// 24 p地址中的内容被覆盖（正常可不是24）</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span></code></pre></div></li>
+<li><h2 id="链表例子">链表+例子</h2>
+<ul>
+<li><p>链表：数据+指针</p></li>
+<li><p>链表的创建</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>  <span class="kw">typedef</span> <span class="kw">struct</span> _node<span class="op">{</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> value<span class="op">;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">struct</span> _mode <span class="op">*</span>next<span class="op">;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span> Node<span class="op">;</span></span></code></pre></div></li>
+<li><p>链表函数</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode c"><code class="sourceCode c"></code></pre></div></li>
+<li><p>链表的搜索</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode c"><code class="sourceCode c"></code></pre></div></li>
+<li><p>链表的删除</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode c"><code class="sourceCode c"></code></pre></div></li>
+<li><p>链表的清除</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode c"><code class="sourceCode c"></code></pre></div></li>
+</ul></li>
 </ul>
 
     </div>
