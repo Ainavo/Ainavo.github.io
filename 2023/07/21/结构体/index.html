@@ -268,7 +268,7 @@ mjx-container[display="true"] + br {
             
             <span class="tag">
                 
-                <a href="/tags/C/" style="color: #00a596">
+                <a href="/tags/C/" style="color: #ff7d73">
                     C
                 </a>
             </span>
@@ -279,6 +279,150 @@ mjx-container[display="true"] + br {
     <div class="content" v-pre>
         <p>结构体的使用、和指针结合的结构体</p>
 <span id="more"></span>
+<h2 id="c-语言结构体知识点">C 语言结构体知识点</h2>
+<ul>
+<li><p>定义结构体</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>  <span class="kw">struct</span> Cat <span class="op">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">char</span> name<span class="op">[</span><span class="dv">20</span><span class="op">];</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> age<span class="op">;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">float</span> score<span class="op">;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">};</span>   <span class="co">// (声明?定义？)一个结构体 Cat</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">struct</span> <span class="op">{</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">char</span> name<span class="op">[</span><span class="dv">20</span><span class="op">];</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> age<span class="op">;</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="dt">float</span> score<span class="op">;</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span> cat1<span class="op">,</span> cat2<span class="op">;</span>  <span class="co">// 定义结构体变量的另一种形式</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="kw">struct</span> Cat <span class="op">{</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="dt">char</span> name<span class="op">[</span><span class="dv">20</span><span class="op">];</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> age<span class="op">;</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="dt">float</span> score<span class="op">;</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span> cat1<span class="op">,</span> cat2<span class="op">;</span>  <span class="co">// 既有声明也有定义</span></span></code></pre></div></li>
+<li><p>结构体变量的定义和初始化：</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>  <span class="kw">struct</span> Cat tabby<span class="op">;</span>  <span class="co">// 定义一个结构体变量</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">struct</span> Cat tabby_miao <span class="op">=</span> <span class="op">{</span>'Nyakku'<span class="op">,</span> <span class="dv">8</span><span class="op">,</span> <span class="dv">100</span><span class="op">};</span>  <span class="co">// 初始化结构体变量</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">struct</span> Cat tabby <span class="op">=</span> <span class="op">{.</span>name<span class="op">=</span><span class="st">"xxx"</span><span class="op">,</span> <span class="op">.</span>age<span class="op">=</span><span class="dv">10</span><span class="op">};</span>  <span class="co">// 另一种初始化方式</span></span></code></pre></div></li>
+<li><p>访问结构体成员</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>  <span class="kw">struct</span> Cat tabby<span class="op">;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  tabby<span class="op">.</span>name <span class="op">=</span> <span class="st">"Nyakku"</span><span class="op">;</span> <span class="co">// . 用来访问结构体内的变量</span></span></code></pre></div></li>
+<li><p>结构体指针</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>  <span class="kw">struct</span> Cat <span class="op">*</span>p<span class="op">;</span>  <span class="co">// 定义一个 Cat 类型的</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  p <span class="op">=</span> <span class="op">&amp;</span>tabby <span class="co">//p 指向 tabby</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  p<span class="op">-&gt;</span>name <span class="op">=</span> <span class="st">"Nyakku"</span>  <span class="co">// -&gt; 可以访问指针类型结构体的内部成员</span></span></code></pre></div></li>
+<li><p>补充：关于 C 语言中声明(Definition)和定义(Declaration)的区别</p>
+<ul>
+<li>定义：指在程序中为一个实体(变量、函数、结构体等)分配空间。在定义时，编译器会为其分配空间。</li>
+</ul>
+<div class="sourceCode" id="cb5"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> a<span class="op">;</span> <span class="co">// 定义一个整型变量 a</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> add<span class="op">(</span><span class="dt">int</span> x<span class="op">,</span> <span class="dt">int</span> y<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> x <span class="op">+</span> y<span class="op">;</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span>  <span class="co">// 定义一个函数</span></span></code></pre></div>
+<ul>
+<li>声明：是指在程序中声明一个实体的存在，但不为其分配内存空间或实现其功能。声明告诉编译器该实体的类型和名称，并使得其他地方可以引用该实体。声明可以出现在函数内部或外部，以及头文件中。</li>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>  <span class="kw">extern</span> <span class="dt">int</span> a<span class="op">;</span> <span class="co">// 声明外部变量 a</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> add<span class="op">(</span><span class="dt">int</span> x<span class="op">,</span> <span class="dt">int</span> y<span class="op">);</span> <span class="co">// 函数声明</span></span></code></pre></div></li>
+</ul>
+<h2 id="结构体与指针数组的结合使用">结构体与指针数组的结合使用</h2>
+<ul>
+<li>结构体和数组有点像：
+<ul>
+<li>要访问整个结构体，直接用结构变量的名字</li>
+<li>对于整个结构，可以做赋值、取地址、也可以传递参数</li>
+</ul>
+<div class="sourceCode" id="cb7"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>  p1 <span class="op">=</span> <span class="op">(</span><span class="kw">struct</span><span class="op">){</span><span class="dv">5</span><span class="op">,</span> <span class="dv">10</span><span class="op">};</span>  <span class="co">//相当于 p1.x = 5, p1.y = 10</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  p1 <span class="op">=</span> p2<span class="op">;</span> <span class="co">// 相当于 p1.x = p2.x; p1.y = p2.y</span></span></code></pre></div>
+<ul>
+<li>和数组不同的点是：结构变量的名字并不是结构变量的地址，所以必须用&amp;运算符号</li>
+</ul>
+<div class="sourceCode" id="cb8"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>  <span class="kw">struct</span> date <span class="op">*</span>pDate <span class="op">=</span> <span class="op">&amp;</span>tabby<span class="op">;</span></span></code></pre></div></li>
+<li>输入结构：</li>
+</ul>
+<div class="sourceCode" id="cb9"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>   <span class="dt">void</span> getStruct<span class="op">(</span><span class="kw">struct</span> point p<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    scanf<span class="op">(</span><span class="st">"%d"</span><span class="op">,</span> <span class="op">&amp;</span>p<span class="op">.</span>x<span class="op">);</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    scanf<span class="op">(</span><span class="st">"%d"</span><span class="op">,</span> <span class="op">&amp;</span>p<span class="op">.</span>y<span class="op">);</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    scanf<span class="op">(</span><span class="st">"%d %d"</span><span class="op">,</span> <span class="op">&amp;</span>p<span class="op">.</span>x<span class="op">,</span> <span class="op">&amp;</span>p<span class="op">.</span>y<span class="op">);</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>   <span class="op">}</span></span></code></pre></div>
+<ul>
+<li>指向结构体的指针</li>
+</ul>
+<div class="sourceCode" id="cb10"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>  <span class="kw">struct</span> date<span class="op">{</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> month<span class="op">;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> day<span class="op">;</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> year<span class="op">;</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span> today<span class="op">;</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">struct</span> date <span class="op">*</span>p <span class="op">=</span> <span class="op">&amp;</span>mydate<span class="op">;</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="op">(*</span>p<span class="op">).</span>month <span class="op">=</span> <span class="dv">12</span><span class="op">;</span>  <span class="co">// .优先级高于 *</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  p<span class="op">-&gt;</span>month <span class="op">=</span> <span class="dv">12</span><span class="op">;</span> <span class="co">// 用 -&gt; 表示指针所指的结构变量中的成员</span></span></code></pre></div>
+<ul>
+<li>结构体和指针</li>
+</ul>
+<div class="sourceCode" id="cb11"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>  <span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="pp">#include </span><span class="im">&lt;string.h&gt;</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">struct</span> point <span class="op">*</span>getStruct<span class="op">(</span><span class="kw">struct</span> point <span class="op">*);</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">void</span> output<span class="op">(</span><span class="kw">struct</span> point<span class="op">);</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">void</span> print<span class="op">(</span><span class="dt">const</span> <span class="kw">struct</span> point <span class="op">*</span>p<span class="op">);</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">struct</span> point<span class="op">{</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> x<span class="op">;</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> y<span class="op">;</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>  <span class="op">};</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> main<span class="op">(</span><span class="dt">int</span> argc<span class="op">,</span> <span class="dt">char</span> <span class="dt">const</span> <span class="op">*</span>argv<span class="op">[])</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>  <span class="op">{</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">struct</span> point y <span class="op">=</span> <span class="op">{</span><span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">};</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>    getStruct<span class="op">(&amp;</span>y<span class="op">);</span>  <span class="co">// 结构体传入地址必须用&amp;</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>    output<span class="op">(</span>y<span class="op">);</span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>    output<span class="op">(*</span>getStruct<span class="op">(&amp;</span>y<span class="op">));</span> <span class="co">// getStruct 返回指针</span></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>    print<span class="op">(</span>getStruct<span class="op">(&amp;</span>y<span class="op">));</span> <span class="co">// print 输入指针</span></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>    getStruct<span class="op">(&amp;</span>y<span class="op">)-&gt;</span>x <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> <span class="co">// getStruct 返回指针</span></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>    <span class="op">*</span>getStruct<span class="op">(&amp;</span>y<span class="op">).</span>x <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> <span class="co">// * 指针 指向所指的内容</span></span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>  <span class="kw">struct</span> point <span class="op">*</span>getStruct<span class="op">(</span><span class="kw">struct</span> point <span class="op">*);</span></span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>  <span class="op">{</span></span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>    scanf<span class="op">(</span><span class="st">"%d"</span><span class="op">,</span> <span class="op">&amp;</span>p<span class="op">-&gt;</span>x<span class="op">);</span></span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>    scanf<span class="op">(</span><span class="st">"%d"</span><span class="op">,</span> <span class="op">&amp;</span>p<span class="op">-&gt;</span>y<span class="op">);</span></span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>  <span class="dt">void</span> output<span class="op">(</span><span class="kw">struct</span> point p<span class="op">)</span></span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>  <span class="op">{</span></span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a>    printf<span class="op">(</span><span class="st">"%d, %d</span><span class="sc">\n</span><span class="st">"</span><span class="op">,</span> p<span class="op">.</span>x<span class="op">,</span> p<span class="op">.</span>y<span class="op">);</span></span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a>  <span class="dt">void</span> print<span class="op">(</span><span class="dt">const</span> <span class="kw">struct</span> point <span class="op">*</span>p<span class="op">)</span></span>
+<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a>  <span class="op">{</span></span>
+<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a>    print<span class="op">(</span><span class="st">"%d</span><span class="sc">\n</span><span class="st">"</span><span class="op">,</span> p<span class="op">-&gt;</span>x<span class="op">);</span></span>
+<span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span></code></pre></div>
+<ul>
+<li>结构数组</li>
+</ul>
+<div class="sourceCode" id="cb12"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>  <span class="kw">struct</span> date dates<span class="op">[</span><span class="dv">100</span><span class="op">];</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">struct</span> date dates<span class="op">[]</span> <span class="op">=</span> <span class="op">{</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span><span class="dv">4</span><span class="op">,</span> <span class="dv">5</span><span class="op">,</span> <span class="dv">2005</span><span class="op">},</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span><span class="dv">2</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="dv">2005</span><span class="op">}</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="op">};</span>  <span class="co">// 定义一个100大小的 struct date 的数组</span></span></code></pre></div>
+<ul>
+<li><p>类型定义：自定义数据类型(typedef)</p>
+<ul>
+<li>typedef
+用来声明一个已有的数据类型的新名字，例如：<code>typedef int miamia</code></li>
+<li>声明之后，<code>miamia</code> 可以替代 <code>int</code></li>
+<li>与结构体相关用法</li>
+</ul>
+<div class="sourceCode" id="cb13"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>  <span class="kw">typedef</span> <span class="dt">long</span> <span class="dt">int64_t</span><span class="op">;</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">typedef</span> <span class="kw">struct</span> AData<span class="op">{</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> month<span class="op">;</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> day<span class="op">;</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> year<span class="op">;</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span> Date<span class="op">;</span>  <span class="co">// 简化复杂的结构体，用Date代替结构体</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int64_t</span> i <span class="op">=</span> <span class="dv">1000000000000</span><span class="op">;</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  Date d <span class="op">=</span> <span class="op">{</span><span class="dv">8</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">2023</span><span class="op">};</span></span></code></pre></div></li>
+</ul>
 
     </div>
     

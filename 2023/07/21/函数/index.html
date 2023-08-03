@@ -268,7 +268,7 @@ mjx-container[display="true"] + br {
             
             <span class="tag">
                 
-                <a href="/tags/C/" style="color: #00bcd4">
+                <a href="/tags/C/" style="color: #00a596">
                     C
                 </a>
             </span>
@@ -284,7 +284,8 @@ mjx-container[display="true"] + br {
 <ul>
 <li><h2 id="函数声明函数原型">函数声明（函数原型）</h2>
 <ul>
-<li><p>在使用函数前，需要对函数进行声明。函数声明包括函数的返回类型、函数名和参数列表，用于告诉编译器函数的存在和接口。</p>
+<li>在使用函数前，需要对函数进行声明。函数声明包括函数的返回类型、函数名和参数列表，用于告诉编译器函数的存在和接口。</li>
+</ul>
 <div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">// 返回类型 函数名(参数列表);</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> sum<span class="op">();</span> <span class="co">// 无参数函数原型，返回类型 int</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">double</span> swap<span class="op">(</span><span class="dt">double</span> a<span class="op">,</span> <span class="dt">double</span> b<span class="op">);</span> <span class="co">// 声明函数 swap 的原型，返回类型为 double，参数列表为两个 double 类型参数</span></span>
@@ -292,8 +293,9 @@ mjx-container[display="true"] + br {
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">void</span> swap<span class="op">(</span><span class="dt">void</span><span class="op">);</span> <span class="co">// 无参数</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">void</span> swap<span class="op">(</span><span class="dt">int</span> <span class="op">*</span>a<span class="op">,</span> <span class="dt">int</span> <span class="op">*</span>b<span class="op">);</span> <span class="co">// 输入参数为两个指针，可以通过函数修改指针指向的值</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> applyFunction<span class="op">(</span><span class="dt">int</span> <span class="op">(*</span>func<span class="op">)</span><span class="dt">int</span><span class="op">,</span> <span class="dt">int</span> num<span class="op">);</span> <span class="co">// 函数原型使用函数只恨作为参数，函数指针指向一个接受整数参数并返回整数值的函数</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span><span class="op">*</span> createArray<span class="op">(</span><span class="dt">int</span> size<span class="op">);</span> <span class="co">// 指针函数原型，返回类型时指针的函数</span></span></code></pre></div></li>
-<li><p>以下四种函数原型是等价的：</p></li>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span><span class="op">*</span> createArray<span class="op">(</span><span class="dt">int</span> size<span class="op">);</span> <span class="co">// 指针函数原型，返回类型时指针的函数</span></span></code></pre></div>
+<ul>
+<li>以下四种函数原型是等价的：</li>
 </ul>
 <div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> arr<span class="op">[</span><span class="dv">10</span><span class="op">];</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> <span class="op">*</span>p<span class="op">;</span></span>
