@@ -279,6 +279,224 @@ mjx-container[display="true"] + br {
     <div class="content" v-pre>
         <p>包含文件操作、宏、声明等等</p>
 <span id="more"></span>
+<h2 id="宏和声明">宏和声明</h2>
+<ul>
+<li><p>预编译指令</p>
+<ul>
+<li><code>#</code> 开头是预编译指令</li>
+<li>不是 C 语言的成分，但 C 语言离不开他们</li>
+<li><code>#define</code>来定义一个宏：<code>#define PI 3.14</code>
+不能加分号，因为不是 C 语言的语句</li>
+<li>预定义宏：
+<ul>
+<li><code>__LINE__</code></li>
+<li><code>__FILE__</code></li>
+<li><code>__DATE__</code></li>
+<li><code>__TIME__</code></li>
+<li><code>__STDC__</code></li>
+</ul></li>
+<li>带参数的宏：所有用到参数的地方都要带括号提高优先级</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>  <span class="pp">#define RADTODEG(x) ((x)*3.14)</span></span></code></pre></div></li>
+<li><p>多个.c 文件的情况：</p>
+<ul>
+<li><code>main()</code> 里面的代码太长了，适合分成多个文件</li>
+<li>一个源码文件太长适合分成多个文件</li>
+<li>两个独立的源码文件不能编译成可执行文件</li>
+</ul></li>
+<li><p>头文件：</p>
+<ul>
+<li>把函数原型放到一个头文件（以.h
+结尾）中，在需要调用这个函数的原代码文件（.c 文件）中 #include
+这个头文件，就能让编译器在编译的时候知道函数原型。</li>
+<li>#include 有两种形式指出要插入的文件
+<ul>
+<li><code>" "</code>要求编译器首先在当前目录（.c
+所在目录）寻找这个文件，如果没有，到编译器指定的目录去找</li>
+<li><code>&lt;&gt;</code>
+让编译器只在指定的目录下找:编译器自己知道自己的标准库的头文件在哪</li>
+<li>环境变量和编译器命令行参数也可以指定寻找头文件的目录</li>
+</ul></li>
+</ul></li>
+<li><p><code>#include</code> 误区：</p>
+<ul>
+<li><code>#include</code> 不是用来引入库的</li>
+<li><code>stdion.h</code> 只有 <code>printf</code>
+原型，<code>printf</code>的代码再另外的地方--某个<code>lib(Windows)</code>或<code>a(Unix)</code>中。</li>
+<li>现在 C 的编译器默认会映入所有的标准库</li>
+<li><code>#include &lt;stdio.h&gt;</code>
+只是为了让编译器知道<code>printf</code>的函数原型，保证调用时给出的参数值是正确的类型</li>
+</ul></li>
+<li><p>声明 <code>extern int i;</code></p>
+<ul>
+<li>声明是不会产生代码的东西
+<ul>
+<li><code>函数原型</code></li>
+<li><code>变量声明</code></li>
+<li><code>结构声明</code></li>
+<li><code>宏声明</code></li>
+<li><code>枚举声明</code></li>
+<li><code>类型声明</code></li>
+<li><code>inline 函数</code></li>
+</ul></li>
+<li>定义是会产生代码的东西</li>
+<li>只有声明可以放在头文件中，否则会造成一个项目多个编译单元有重名的实体</li>
+</ul></li>
+<li><p>标准头文件结构(解决宏重复定义)</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>  <span class="pp">#ifndef _MAX_H</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="pp">#define _MAX_H</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">....</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="pp">#endif</span></span></code></pre></div></li>
+</ul>
+<h2 id="文件的输入和输出">文件的输入和输出</h2>
+<ul>
+<li><p>用 <code>&gt;</code> 和 <code>&lt;</code>
+做重定向：<code>&lt;</code> 指定一个文件作为输入，<code>&gt;</code>
+指定一个文件写入</p></li>
+<li><p><code>FILE* fopen(const char* restrict path, const char* restrict mode);</code></p></li>
+<li><p><code>int fclose(FILE *stream);</code></p></li>
+<li><p><code>fscanf(FILE*, ...)</code></p></li>
+<li><p><code>fprintf(FILE*, ...)</code></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>  <span class="dt">FILE</span><span class="op">*</span> fp <span class="op">=</span> fopen<span class="op">(</span><span class="st">"file"</span><span class="op">,</span> <span class="st">"r"</span><span class="op">);</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span><span class="op">(</span>fp<span class="op">){</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    fscanf<span class="op">(</span>fp<span class="op">,</span> <span class="op">...);</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    fclose<span class="op">(</span>fp<span class="op">);</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span><span class="cf">else</span><span class="op">{</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">...</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span></code></pre></div>
+<ul>
+<li><p>fopen</p>
+<table>
+<thead>
+<tr class="header">
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>r</td>
+<td>打开只读</td>
+</tr>
+<tr class="even">
+<td>r+</td>
+<td>打开读写，从文件头开始</td>
+</tr>
+<tr class="odd">
+<td>w</td>
+<td>打开只写。如果不存在则新建，如果存在则清空</td>
+</tr>
+<tr class="even">
+<td>w+</td>
+<td>打开读写。如果不存在则新建，如果存在则清空</td>
+</tr>
+<tr class="odd">
+<td>a</td>
+<td>打开追加。如果不存在则新建，如果存在则从文件尾开写</td>
+</tr>
+<tr class="even">
+<td>..x</td>
+<td>只新建，如果文件已存在，则不能打开</td>
+</tr>
+</tbody>
+</table></li>
+</ul></li>
+<li><p>二进制文件</p>
+<ul>
+<li>其实所有文件最终都是二进制</li>
+<li>文本文件无非是最简单的方式可以读写的文件
+<ul>
+<li>more、tail</li>
+<li>cat</li>
+<li>vi</li>
+</ul></li>
+<li>而二进制文件是需要专门的程序来读写的问间</li>
+<li>文本文件的输入输出时格式化，可能经过转码</li>
+<li>size_t fread(void <em>restrict ptr, size_t size, size_t nitems, FILE
+</em>restrict stream);</li>
+<li>size_t fwrite(const void <em>restrict ptr, size_t size, size_t
+nitems, FILE </em>restrict stream);</li>
+<li>返回成功读写的字节数</li>
+</ul></li>
+<li><p>按位运算</p>
+<ul>
+<li>&amp;：按位取与
+<ul>
+<li>两个数都是 1，则为 1</li>
+<li>应用：
+<ul>
+<li>让某一位或某些位置零：x &amp; 0xFE</li>
+<li>取一个数中的一段：x &amp; 0xFF</li>
+</ul></li>
+</ul></li>
+<li>|：按位取或
+<ul>
+<li>有 1 则 1</li>
+<li>应用：
+<ul>
+<li>使一位或几位为 1：x | 0x01</li>
+<li>把两个数拼起来：0x00FF | 0xFF00</li>
+</ul></li>
+</ul></li>
+<li>~：按位取反
+<ul>
+<li>把 1 变成 0, 0 变成 1</li>
+<li>应用：
+<ul>
+<li>想要得到全部位为 1 的数：~0</li>
+<li>7 的二进制是 0111，x | 7 使得低 3 位为 1，而 x &amp; ~7，就使得低 3
+位为 0；</li>
+</ul></li>
+</ul></li>
+<li>^：按位的异或
+<ul>
+<li>两位相同结果为 0，不同为 1</li>
+<li>应用：
+<ul>
+<li>如果 x 和 y 相等，那么 x^y 的结果是 0；</li>
+<li>对于一个变量做两次异或相当于什么都没做：
+<ul>
+<li>x ^ y ^ x ==&gt; y</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>&lt;&lt;：左移
+<ul>
+<li>i &lt;&lt; j：i 中所有位想左移动 j 个位置，而右边填入 0；</li>
+<li>所有小于 int 的类型，移位以 int 方式来做结果还是 int：
+<ul>
+<li>x &lt;&lt; 1 等价于 x *= 2;</li>
+<li>x &lt;&lt; n 等价于 x *= <span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: 0;" xmlns="http://www.w3.org/2000/svg" width="2.279ex" height="1.528ex" role="img" focusable="false" viewBox="0 -675.5 1007.3 675.5"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msup"><g data-mml-node="mn"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></g><g data-mml-node="mi" transform="translate(533,363) scale(0.707)"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></g></g></g></g></svg></mjx-container></span>;</li>
+</ul></li>
+</ul></li>
+<li>&gt;&gt;：右移
+<ul>
+<li>i 中所有的位向右移 j 位</li>
+<li>所有小于 int 的类型，移位以 int 的方式来做，结果是 int</li>
+<li>对于 unsigned 类型，左边填入 0；</li>
+<li>对于 signed 的类型，左边填入原来最高位(保持符号不变)
+<ul>
+<li>x &gt;&gt; 1 等价于 x /=2;</li>
+<li>x &gt;&gt; n 等价于 x /= <span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: 0;" xmlns="http://www.w3.org/2000/svg" width="2.279ex" height="1.528ex" role="img" focusable="false" viewBox="0 -675.5 1007.3 675.5"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msup"><g data-mml-node="mn"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></g><g data-mml-node="mi" transform="translate(533,363) scale(0.707)"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></g></g></g></g></svg></mjx-container></span></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li><p>位段：把一个 int 的若干位组合成一个结构</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>  <span class="kw">struct</span> <span class="op">{</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>      <span class="dt">unsigned</span> <span class="dt">int</span> leading <span class="op">:</span> <span class="dv">3</span><span class="op">;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>      <span class="dt">unsigned</span> <span class="dt">int</span> FLAG1 <span class="op">:</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>      <span class="dt">unsigned</span> <span class="dt">int</span> FLAG2 <span class="op">:</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>      <span class="dt">int</span> trailing <span class="op">:</span> <span class="dv">11</span><span class="op">;</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="op">};</span></span></code></pre></div>
+<ul>
+<li>可以直接用位段的成员名称来访问
+<ul>
+<li>比位、与、或方便</li>
+<li>编译器会安排其中的位的排列，不具有可移植性</li>
+<li>当所需的位超过一个 int 时会采用多个 int</li>
+</ul></li>
+</ul></li>
+</ul>
 
     </div>
     
