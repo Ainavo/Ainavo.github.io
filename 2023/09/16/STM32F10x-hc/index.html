@@ -1,0 +1,717 @@
+
+    <!DOCTYPE html>
+    <html lang="">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+        <title>
+            STM32F10x_hc | Ainavo
+        </title>
+        <meta name="author" content="">
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <link rel="icon" href="/head_img.jpg">
+        <script src="https://cdn.staticfile.org/instant.page/5.1.0/instantpage.min.js" type="module"></script>
+        <script src="https://cdn.staticfile.org/font-awesome/6.1.1/js/all.min.js"></script>
+        
+                <link rel="stylesheet" href="/css/fonts.min.css">
+                <link rel="stylesheet" href="/css/particlex.css">
+                
+                    <script src="https://cdn.staticfile.org/vue/3.2.33/vue.global.prod.min.js"></script>
+    <meta name="generator" content="Hexo 6.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+
+    <body>
+        <div id="loading"
+            style="height:100vh;width:100vw;position:fixed;display:flex;z-index:200;justify-content:space-between;background:#fff;transition:opacity 0.3s ease-out">
+            <div style="position:fixed;height:100vh;width:100vw;display:flex;justify-content:center;align-items:center">
+                <div id="loadcontent"
+                    style="width:50vmin;height:50vmin;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px #a3ddfb;text-align:center">
+                    <div>
+                        <h2>LOADING...</h2>
+                        <p style="word-break:keep-all">加载过慢请开启缓存(浏览器默认开启)</p>
+                        <div><img alt="loading" src="/loading.gif"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="layout">
+            <i data-fa-symbol="calendar-solid" class="fa-solid fa-calendar fa-fw"></i>
+            <i data-fa-symbol="bookmark-solid" class="fa-solid fa-bookmark fa-fw"></i>
+            <i data-fa-symbol="tags-solid" class="fa-solid fa-tags fa-fw"></i>
+            <transition name="into">
+                <div v-show="show_page" style="display: -not-none">
+                    <div id="menu_show">
+                         
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">Ainavo</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;about</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;archives</span>
+        </a>
+        
+        <a href="/categories/">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;categories</span>
+        </a>
+        
+        <a href="/tags/">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;tags</span>
+        </a>
+        
+    </div>
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div class="curtain" @click="menu_show = !menu_show" v-show="menu_show"></div>
+        <div :class="'title'" @click="menu_show = !menu_show">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;Ainavo</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="menu_show">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">home</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">about</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">archives</div>
+                </div>
+            </a>
+            
+            <a href="/categories/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">categories</div>
+                </div>
+            </a>
+            
+            <a href="/tags/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">tags</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+                    </div>
+                    <div id="main">
+                        
+<div class="article">
+    <div>
+        <h1>STM32F10x_hc </h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2023/9/16
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/ARM/" style="color: #ff7d73">
+                    ARM
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/STM32/" style="color: #ff7d73">
+                    STM32
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    <div class="content" v-pre>
+        <p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1N7411x7Yk">STM32F103
+入门</a></p>
+<span id="more"></span>
+<h2 id="库函数和寄存器操作">库函数和寄存器操作</h2>
+<ul>
+<li>库函数操作相当于 C++，面向对象</li>
+<li>寄存器操作相当于 C，面向过程</li>
+</ul>
+<h2 id="stm32f103-相关介绍">stm32f103 相关介绍</h2>
+<p>参考手册：怎么配置相关寄存器 数据手册：引脚分布、电气特性</p>
+<ul>
+<li><p>使用 GPIO 步骤：</p>
+<ul>
+<li>打开 PC13 对应时钟</li>
+<li>配置输出，确定输出模式</li>
+<li>输出低电平（点亮 LED）</li>
+</ul></li>
+<li><p>头文件中寄存器的预定义（总线--&gt;分线--&gt;端口--&gt;寄存器--&gt;位）</p></li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#ifndef __STM32F01X__H</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#define __STM32F10X__H</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="pp">#define PERIPH_BASE ((unsigned int)0x40000000)  </span><span class="co">//外设总线地址</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="pp">#define APB2PERIPH_BASE (PERIPH_BASE+0x10000)  </span><span class="co">// APB2 线上基地址，偏移量 0x10000</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="pp">#define AHBPERIPH_BASE (PERIPH_BASE+0x20000)  </span><span class="co">// AHB 线上基地址，0x2000偏移量是为了方便计算，手册基地址为 +0x8000</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="pp">#define GPIOC_BASE (APB2PERIPH_BASE+0x1000) </span><span class="co">//GPIOC 端口基地址</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="pp">#define GPIOC_CRH *(unsigned int*)(GPIOC_BASE+0x04) </span><span class="co">//高位寄存器地址</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="pp">#define GPIOC_IDR *(unsigned int*)(GPIOC_BASE+0x08) </span><span class="co">//低位寄存器地址</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="pp">#define GPIOC_ODR *(unsigned int*)(GPIOC_BASE+0x0C)</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="pp">#define RCC_BASE (AHBPERIPH_BASE+0x1000)  </span><span class="co">// 时钟基地址</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="pp">#define RCC_APB2ENR *(unsigned int*)(RCC_BASE+0x18)</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="pp">#endif</span></span></code></pre></div>
+<h2 id="gpioc-结构体">GPIOC 结构体</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">typedef</span> <span class="dt">unsigned</span> <span class="dt">int</span> <span class="dt">uint32_t</span><span class="op">;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">typedef</span> <span class="kw">struct</span><span class="op">{</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">uint32_t</span> CRL<span class="op">;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">uint32_t</span> CRH<span class="op">;</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">uint32_t</span> IDR<span class="op">;</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">uint32_t</span> ODR<span class="op">;</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">uint32_t</span> BSRR<span class="op">;</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">uint32_t</span> BRR<span class="op">;</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="dt">uint32_t</span> LCKR<span class="op">;</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> GPOI_TypeDef<span class="op">;</span>  <span class="co">// 结构体内部成员是依次排列的；两个之间相差4个字节 0x04</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="op">(</span>GPOI_TypeDef<span class="op">*)</span>GPIOC_BASE <span class="co">//将 GPIOC_BASE 转换为指针并赋予GPOI结构</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="pp">#define GPIOC (GPOI_TypeDef*)GPIOC_BASE</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>GPOIC <span class="op">-&gt;</span> CRL<span class="op">;</span> <span class="co">//直接访问CRL...嘿嘿</span></span></code></pre></div>
+<h2 id="模块化">模块化</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> GPIOC_SetBits<span class="op">(</span>GPIO_TypeDef <span class="op">*</span>GPIOx<span class="op">,</span> uint16 GPIO_Pin<span class="op">)</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  GPIOx<span class="op">-&gt;</span>BSRR <span class="op">|=</span> GPIO_Pin<span class="op">;</span>  <span class="co">//GPIO_Pin 表示引脚位置</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<h2 id="引脚配置">引脚配置</h2>
+<ul>
+<li>配置时钟</li>
+<li>确定引脚组</li>
+<li>配置模式：
+<ul>
+<li>输出模式，最大速度为 10MHz</li>
+<li>通用推挽模式</li>
+</ul></li>
+<li>确定引脚，以及确实输出低电平</li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>  RCC<span class="op">-&gt;</span>APB2ENR <span class="op">|=</span> <span class="dv">1</span><span class="op">&lt;&lt;</span><span class="dv">4</span><span class="op">;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  GPIOC<span class="op">-&gt;</span>CRH <span class="op">&amp;=~(</span><span class="bn">0x0F</span><span class="op">&lt;&lt;(</span><span class="dv">4</span><span class="op">*</span><span class="dv">5</span><span class="op">));</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  GPIOC<span class="op">-&gt;</span>CRH <span class="op">|=(</span><span class="dv">1</span><span class="op">&lt;&lt;(</span><span class="dv">4</span><span class="op">*</span><span class="dv">5</span><span class="op">));</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  GPIOC_ResetBites<span class="op">(</span>GPIOC<span class="op">,</span> GPIO_Pin_13<span class="op">);</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="co">// 等效</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="kw">typedef</span> <span class="kw">struct</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="op">{</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="dt">uint16_t</span> GPIO_Pin<span class="op">;</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="dt">uint16_t</span> GPIO_Speed<span class="op">;</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="dt">uint16_t</span> GPIO_Mode<span class="op">;</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span> GPIO_InitTypeDef<span class="op">;</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  RCC<span class="op">-&gt;</span>APB2ENR <span class="op">|=</span> <span class="dv">1</span><span class="op">&lt;&lt;</span><span class="dv">4</span><span class="op">;</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  GPIO_InitTypeDef GPIO_InitStructure<span class="op">;</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  GPIO_InitStructure<span class="op">.</span>GPIO_Pin <span class="op">=</span> GPIO_Pin_13<span class="op">;</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  GPIO_InitStructure<span class="op">.</span>GPIO_Mode <span class="op">=</span> GPIO_Mode_Out_PP<span class="op">;</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>  GPIO_InitStructure<span class="op">.</span>GPIO_Speed <span class="op">=</span> GPIO_Speed_50MHz<span class="op">;</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>  GPIO_Init<span class="op">(</span>GPIOC<span class="op">,</span> <span class="op">&amp;</span>GPIO_InitStructure<span class="op">);</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>  GPIOC_ResetBites<span class="op">(</span>GPIOC<span class="op">,</span> GPIO_Pin_13<span class="op">);</span></span></code></pre></div>
+<h2 id="枚举enum">枚举(enum)</h2>
+<div class="sourceCode" id="cb5"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">typedef</span> <span class="kw">enum</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  GPIO_Mode_AIN <span class="op">=</span> <span class="bn">0x0</span><span class="op">,</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  GPIO_Mode_IN_FLOATING <span class="op">=</span> <span class="bn">0x04</span><span class="op">,</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  GPIO_Mode_IPD <span class="op">=</span> <span class="bn">0x28</span><span class="op">,</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  GPIO_Mode_IPU <span class="op">=</span> <span class="bn">0x48</span><span class="op">,</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  GPIO_Mode_Out_OD <span class="op">=</span> <span class="bn">0x14</span><span class="op">,</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  GPIO_Mode_Out_PP <span class="op">=</span> <span class="bn">0x10</span><span class="op">,</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  GPIO_Mode_AF_OD <span class="op">=</span> <span class="bn">0x1C</span><span class="op">,</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  GPIO_Mode_AF_PP <span class="op">=</span> <span class="bn">0x18</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="op">}</span>GPIOMode_TypeDef<span class="op">;</span>  <span class="co">// 对应8种工作模式，GPIOMode_TypeDef所对应的变量取值只能取8个中的一个</span></span></code></pre></div>
+<h2 id="库函数操作和寄存器操作">库函数操作和寄存器操作</h2>
+<p>类比(C++和 C)</p>
+<ul>
+<li><p>面向对象(C++):类似调用接口函数</p></li>
+<li><p>面向过程(C)：具体一步步怎么做</p></li>
+<li><p>库函数开发方式：驱动层--(调用库接口)--&gt;库函数层--(以函数、宏封装配置寄存器的操作)--&gt;特殊寄存器层</p></li>
+<li><p>直接寄存器配置：驱动层--(直接配置寄存器)--&gt;特殊寄存器</p></li>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> GPIOC_Init<span class="op">()</span></span></code></pre></div>
+<h2 id="arm-公司规定的-cmsis-架构">ARM 公司规定的 CMSIS 架构</h2>
+<ul>
+<li>用户层：用户代码</li>
+<li>CMSIS 层：CMSIS
+处于中间层，向上提供给用户所需函数接口向下负责与内核和其他外设通信的函数。
+<ul>
+<li>内核访问层：包含了用来访问内核的寄存器设备的函数</li>
+<li>中间设备访问层：为软件提供访问外设的通用方法。</li>
+<li>芯片厂商提供外设访问层--提供所有外设的定义的函数</li>
+</ul></li>
+<li>MCU：
+<ul>
+<li>Contex 内核</li>
+<li>SysTick 实时系统内核时钟</li>
+<li>NVIC 中断控制器</li>
+<li>调用跟踪模块</li>
+<li>其他外设</li>
+</ul></li>
+</ul>
+<h2 id="库函数特点">库函数特点</h2>
+<ul>
+<li>stm32f10x_it.c -- 中断程序相关 it:<code>intrrrupt</code></li>
+<li>stm32f10x_conf.h -- 配置相关 conf:<code>config</code></li>
+<li>stm32f10x_ppp.c -- <code>PPP</code>表示外设名称
+<ul>
+<li>stm32f10x_i2c.c ...</li>
+</ul></li>
+</ul>
+<p><code>core_cm3.c</code> 和 <code>core_cm3.h</code>
+<code>core_cm3.c</code>：实现了内核的寄存器映射
+<code>core_cm3.h</code>：操作内核外设寄存器函数</p>
+<p><code>stm32f10x.h</code> 片上外设的所有寄存器的映射
+<code>stm32f10x.h</code>包含<code>stm32f10x_conf.h</code>头文件</p>
+<ul>
+<li><p><code>core_cm3.h</code>针对内核的外设，<code>stm32f10x.h</code>针对片上的外设</p></li>
+<li><p><code>misc.c</code> 和 <code>misc.h</code></p>
+<ul>
+<li><code>NVIC</code>:嵌套向量中断控制器</li>
+<li><code>SysTick</code>:系统滴答定时器</li>
+</ul></li>
+<li><p><code>startup_stm32f10x_md.s</code>:启动文件 | 启动文件 | 区别 |
+| ---- | ---- | | startup_stm32f10x_ld.s | ld:low-density 小容量， FLASH
+容量在 16~32K 之间 | | startup_stm32f10x_md.s | md:medium-density
+中容量， FLASH 容量在 64~128K 之间 | | startup_stm32f10x_hd.s |
+hd:high-density 大容量， FLASH 容量在 256~512K 之间 | |
+startup_stm32f10x_xd.s | xl：超大容量， FLASH 容量在 512~1024K 之间
+|</p></li>
+</ul>
+<h2 id="stm32f103-固件库">STM32F103 固件库</h2>
+<h2 id="讲点亮-led模块化---以-led-为例">12 讲点亮 LED（模块化）-- 以 LED
+为例</h2>
+<ul>
+<li>在 USER 文件夹新建文件夹 LED（led.c 和 led.h）</li>
+<li>打开工程，在 USER 下添加 led.c，并进行简单的程序编写</li>
+<li>添加 led.h 头文件路径</li>
+<li>编写响应的头文件和源文件</li>
+<li>最后完成主函数，注意：在主函数添加模块的头文件</li>
+</ul>
+<h2 id="讲时钟讲解">13 讲时钟讲解</h2>
+<ul>
+<li>HSE（高速外部时钟）</li>
+<li>HSI（高速内部时钟）</li>
+<li>LSE（低速外部时钟）</li>
+<li>LSI（低速内部时钟）</li>
+<li>PLL（锁相环时钟）</li>
+</ul>
+<h2 id="滴答定时器">滴答定时器</h2>
+<ul>
+<li>针对模板
+<ul>
+<li>子模块文件添加到相应的文件夹</li>
+<li>在 main.c 调价相应的头文件</li>
+<li>在主函数添加相应的初始化函数</li>
+<li>调用相应功能</li>
+</ul></li>
+</ul>
+<h2 id="中断概念">中断概念</h2>
+<ul>
+<li>内核中断</li>
+<li>外部中断</li>
+</ul>
+<p>NVIC 跟内核紧密耦合，是内核里面的一个外设（参考 STM32F10x 编程手册和
+Cortex-M3 权威指南(中文)） STM32 的 NVIC 是 COrtex-M3 的 NVIC
+的一个子集</p>
+<ul>
+<li><p>如何管理中断</p>
+<ul>
+<li>抢占优先级和响应优先级的联系和区别
+<ul>
+<li>高优先级的抢占可以打断低级别的抢占</li>
+<li>抢占相同，高响应不能打断低响应</li>
+<li>抢占相同，若响应同时发生，则响应优先级高的先执行</li>
+<li>若抢占和响应皆相同，则看中断发生的先后顺序来定</li>
+</ul></li>
+</ul></li>
+<li><p>中断控制寄存器</p></li>
+</ul>
+<div class="sourceCode" id="cb7"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>  <span class="kw">typedef</span> <span class="op">{</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    __IO <span class="dt">uint32_t</span> ISER<span class="op">[</span><span class="dv">8</span><span class="op">];</span> <span class="co">// 中断使能寄存器</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">uint32_t</span> RESERVED0<span class="op">[</span><span class="dv">24</span><span class="op">];</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    __IO <span class="dt">uint32_t</span> ICER<span class="op">[</span><span class="dv">8</span><span class="op">];</span>  <span class="co">// 中断清除寄存器</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">uint32_t</span> RESERVED1<span class="op">[</span><span class="dv">24</span><span class="op">];</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    __IO <span class="dt">uint32_t</span> ISPR<span class="op">[</span><span class="dv">8</span><span class="op">];</span>  <span class="co">// 中断使能悬起寄存器</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">uint32_t</span> RESERVED2<span class="op">[</span><span class="dv">24</span><span class="op">];</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    __IO <span class="dt">uint32_t</span> ICPR<span class="op">[</span><span class="dv">8</span><span class="op">];</span>  <span class="co">// 中断清除悬起寄存器</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="dt">uint32_t</span> RESERVED3<span class="op">[</span><span class="dv">24</span><span class="op">];</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    __IO <span class="dt">uint32_t</span> IABR<span class="op">[</span><span class="dv">8</span><span class="op">];</span>  <span class="co">// 中断有效位寄存器</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="dt">uint32_t</span> RESERVED4<span class="op">[</span><span class="dv">56</span><span class="op">];</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    __IO <span class="dt">uint8_t</span> IP<span class="op">[</span><span class="dv">240</span><span class="op">];</span>  <span class="co">// 中断有限级寄存器</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    <span class="dt">uint32_t</span> RESERVED4<span class="op">[</span><span class="dv">644</span><span class="op">];</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    __O <span class="dt">uint32_t</span> STIR<span class="op">;</span>  <span class="co">// 软件触发中断寄存器</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span> NVIC_Type<span class="op">;</span></span></code></pre></div>
+<p>中断过程</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>  NVIC_PriorityGroupConfig<span class="op">(</span>NVIC_PriorityGroup_2<span class="op">);</span> <span class="co">//选择中断组别</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  TIM_ITConfig<span class="op">(</span>TIM3<span class="op">,</span>TIM_IT_Update<span class="op">,</span>ENABLE<span class="op">);</span>  <span class="co">// 选择定时器</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  TIM3_Init<span class="op">(</span><span class="dv">9999</span><span class="op">,</span><span class="dv">7199</span><span class="op">);</span>  <span class="co">// 定时器初始化</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure<span class="op">;</span> <span class="co">// 定时器结构体声明</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  NVIC_InitStruct<span class="op">.</span>NVIC_IRQChannel <span class="op">=</span> TIM3_IRQn<span class="op">;</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    NVIC_InitStruct<span class="op">.</span>NVIC_IRQChannelPreemptionPriority<span class="op">=</span><span class="dv">2</span><span class="op">;</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    NVIC_InitStruct<span class="op">.</span>NVIC_IRQChannelSubPriority <span class="op">=</span> <span class="dv">2</span><span class="op">;</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    NVIC_InitStruct<span class="op">.</span>NVIC_IRQChannelCmd <span class="op">=</span> ENABLE<span class="op">;</span>  <span class="co">// 初始化定时器结构体</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  NVIC_Init<span class="op">(&amp;</span>NVIC_InitStruct<span class="op">);</span>  <span class="co">// 初始化结构体</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  TIM_Cmd<span class="op">(</span>TIM3<span class="op">,</span> ENABLE<span class="op">);</span>  <span class="co">//使能TIMx外设</span></span></code></pre></div>
+<h2 id="第-16-讲-systick-定时器">第 16 讲 SYSTICK 定时器</h2>
+<p>控制寄存器： | 位段 | 名称 | 类型 | 复位值 | 描述 | | ---- |
+--------- | ---- | ------ |
+----------------------------------------------------------------------------------
+| | 16 | COUNTFLAG | R | 0 | 如果上次读取寄存器后，SysTick 已经数到了
+0，则该位为 1。如果读取该位，该位自动清零 | | 0 | CLKSOURCE | R/W | 0 |
+0=外部时钟源(STCLK) AHB/8;1=内核时钟(FCLK) AHB | | 1 | TICKINT | R/W | 0
+| 1=SysTick 倒数到 0 时产生 SysTick 异常请求；0=数到 0 时无动作 | | 0 |
+ENABLE | R/W | 0 | SysTick 定时器的使能位 |</p>
+<p>SysTick 重装载寄存器 | 位段 | 名称 | 类型 | 复位值 | 描述 | | ---- |
+--------- | ---- | ------ |
+----------------------------------------------------------------------------------
+| | 23:0 | RELOAD | R?W | 0 | 当倒数至零时，将被重装载的值 |</p>
+<p>SysTick 当前数值寄存器 | 位段 | 名称 | 类型 | 复位值 | 描述 | | ----
+| --------- | ---- | ------ |
+----------------------------------------------------------------------------------
+| | 23:0 | CURRENT | R/Wc | 0 |
+读取时返回当前倒计数的值，写它则使之清零，同时还会清除在 SysTick
+控制及状态寄存器中 COUNTFLAG 标志 |</p>
+<p>设置思路：</p>
+<ul>
+<li>确定时钟</li>
+<li>重装数值</li>
+<li>清空计数器</li>
+<li>启动计数器</li>
+<li>查询</li>
+<li>关闭计数器</li>
+<li>清空计数器</li>
+</ul>
+<h2 id="讲-f103c8t6">19 讲 f103c8t6</h2>
+<p>定时器简介</p>
+<ul>
+<li>时钟源</li>
+<li>控制器</li>
+<li>实际单元</li>
+</ul>
+<p>在一定时钟频率下，从零递增到一定的值或者从一定的值递减到零，<em>标志位改变</em>或者<em>发生中断</em></p>
+<ul>
+<li>控制寄存器 1（TIMx_CR1）</li>
+<li>DMA/中断使能寄存器（TIMx_DIER）</li>
+<li>预分频器（TIMx_PSC）</li>
+<li>自动重装载寄存器（TIMx_ARR）</li>
+</ul>
+<p>定时器配置</p>
+<ul>
+<li>使能定时器时钟：<code>RCC_APB1PeriphClockCmd();</code></li>
+<li>初始化定时器：<code>TIM_TimeBaseInit();</code></li>
+<li>定时器中断配置：<code>void TIM_ITConfig();</code></li>
+<li>使能定时器：<code>TIM_Cmd();</code></li>
+<li>编写中断服务函数：<code>TIMx_IRQHandler();</code></li>
+<li>最后要配置 NVIC</li>
+</ul>
+<h2 id="第-17-讲-位带操作">第 17 讲 位带操作</h2>
+<p>位带转换：xx.cc -- &gt; xx*32 再转 16 进制，小数部分*32/8</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">// eg.0x4001080C.8(小数部分表示位号) --&gt; 0x422101A0</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  AliasAddr <span class="op">=</span> <span class="bn">0x42000000</span><span class="op">+(</span>A<span class="op">-</span><span class="bn">0x40000000</span><span class="op">)*</span><span class="dv">8</span><span class="op">*</span><span class="dv">4</span><span class="op">+</span>n<span class="op">*</span><span class="dv">32</span><span class="op">/</span><span class="dv">8</span>  <span class="co">// A表示未带区所在的字节的地址；n表示位号(0&lt;&lt;n&lt;&lt;7), STM32 是 32 位的，按 4 字节访问最快</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">// 程序中写法</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">((</span>A<span class="op">&amp;</span><span class="bn">0xF0000000</span><span class="op">)+</span><span class="bn">0x02000000</span><span class="op">+((</span>A<span class="op">&amp;</span><span class="bn">0x000FFFFF</span><span class="op">)&lt;&lt;</span><span class="dv">5</span><span class="op">)+(</span>n<span class="op">&lt;&lt;</span><span class="dv">2</span><span class="op">))</span></span></code></pre></div>
+<h2 id="第-18-讲-按键控制">第 18 讲 按键控制</h2>
+<ul>
+<li>按键检测到低电平</li>
+<li>延时 5s</li>
+<li>再次检测是否为低电平</li>
+<li>若为低电平则执行相应动作</li>
+</ul>
+<p>第 20 讲 串口通信 UART(通用异步收发器)
+USART(通用同步和异步收发器)</p>
+<p>同步：发送方发出数据后，等待收方发回响应后才发下一个数据，阻塞模式
+异步：发送方发送数据后，不等待收方发回响应，接着发送下一个数据包，非阻塞模式</p>
+<table>
+<thead>
+<tr class="header">
+<th>通信标准</th>
+<th>通信方式</th>
+<th>通信方向</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>UART</td>
+<td>异步通信</td>
+<td>全双工</td>
+</tr>
+<tr class="even">
+<td>SPI</td>
+<td>同步通信</td>
+<td>全双工</td>
+</tr>
+<tr class="odd">
+<td>I2C</td>
+<td>同步通信</td>
+<td>半双工</td>
+</tr>
+</tbody>
+</table>
+<p>串口编写流程</p>
+<ul>
+<li>串口时钟、GPIO 时钟使能<code>RCC_APB2PeriphClockCmd();</code></li>
+<li>GPIO 端口模式设置：<code>GPIO_Init();</code></li>
+<li>串口参数初始化：<code>USART_Init();</code></li>
+<li>开启中断并且初始化
+NVIC：<code>NVIC_Init();USART_ITConfig();</code></li>
+<li>使能串口：<code>USART_Cmd();</code></li>
+<li>编写中断处理函数：<code>USARTx_IRQHandler();</code></li>
+</ul>
+<p>状态寄存(USART_SR)</p>
+<ul>
+<li>TXE:发送数据寄存器空（Transmit data register empty）</li>
+<li>TC：发送完成（Transmission complete）</li>
+<li>RXNE：读数据寄存器非空（Read data register not empty）</li>
+</ul>
+<p>上位机通过串口助手发送数据给单片机，单片机再将数据通过串口助手在上位机上显示(3~7
+节通过标志位判断字符的发送和接收---&gt;轮询法(没有用到中断))</p>
+<p>轮询法和中断法：</p>
+<ul>
+<li>共同点：都是访问串口的 SR 状态寄存器</li>
+<li>不同点：</li>
+<li>USART_GetITStatus():该函数不仅会判断标志位是否置
+1，同时还会判断是否使能相应的中断。所以在串口中断函数中，通常会使用该函数。</li>
+<li>USART_GetFlagStatus()：该函数只判断标志位。在没有使能相应的中断时，通常使用该函数来判断标志位是否置
+1。</li>
+</ul>
+<p>eg.<code>ITStatus USART_GetITStatus(USART_TypeDef* USARTx, uint16_t USART_IT);</code></p>
+<h2 id="printf-调试加在串口的源文件">printf 调试(加在串口的源文件)</h2>
+<p>要想使用 printf 将内容打印到串口助手，需要将 fputc 和 fgetc
+函数重定向</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">// 重定向c库函数printf到串口，重定向后可使用printf函数</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> fputc<span class="op">(</span><span class="dt">int</span> ch<span class="op">,</span> <span class="dt">FILE</span> <span class="op">*</span>f<span class="op">)</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">{</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    USART_SendData<span class="op">(</span>USART1<span class="op">,</span> <span class="op">(</span><span class="dt">uint8_t</span><span class="op">)</span> ch<span class="op">);</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span><span class="op">(</span>USART_GetFlagStatus<span class="op">(</span>USART1<span class="op">,</span> USART_FLAG_RXNE<span class="op">)==</span>RESET<span class="op">);</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="op">(</span>ch<span class="op">);</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  <span class="co">// 重定向c库函数scanf到串口，重写后可使用scanf、getchar等函数</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> fgetc<span class="op">(</span><span class="dt">FILE</span> <span class="op">*</span>f<span class="op">)</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>  <span class="op">{</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span><span class="op">(</span>USART_GetFlagStatus<span class="op">(</span>USART1<span class="op">,</span> USART_FLAG_RXNE<span class="op">)==</span>RESET<span class="op">);</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="op">(</span><span class="dt">int</span><span class="op">)</span>USART_ReceiveData<span class="op">(</span>USART1<span class="op">);</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>  <span class="co">// FILE *f是文件指针</span></span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>  <span class="pp">#pragma import(__use_no_semihosting)</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">struct</span> __FILE</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">{</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> handle<span class="op">;</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="op">};</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">FILE</span> __stdout<span class="op">;</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  _sys_exit<span class="op">(</span><span class="dt">int</span> x<span class="op">)</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="op">{</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span>x<span class="op">;</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span></code></pre></div>
+
+    </div>
+    
+</div>
+                             
+<footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 2022 - 2023 Ainavo
+            <span class="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            @
+        </div>
+        <div></div>
+        <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
+                target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a></div>
+        
+    </div>
+</footer>
+                    </div>
+                </div>
+            </transition>
+            <div id="img_show">
+                <img id="img_content" alt="img_show">
+            </div>
+        </div>
+        <script src="https://cdn.staticfile.org/highlight.js/11.5.1/highlight.min.js"></script>
+        <script src="/js/particlex.js"></script>
+        <script src="/js/showimg.js"></script>
+        <canvas id="background"
+            style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:-1"></canvas>
+        <script src="/js/background.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"
+            integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <canvas id="fireworks"
+            style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:2147483647"></canvas>
+        <script src="/js/fireworks.js"></script>
+        
+
+    </body>
+
+    </html>
