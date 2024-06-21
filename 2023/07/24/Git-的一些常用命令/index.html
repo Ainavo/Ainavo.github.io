@@ -26,12 +26,13 @@
   
 <link rel="stylesheet" href="/css/loader.css">
 
-  <meta property="og:type" content="article">
+  <meta name="description" content="什么是 Git ？ Git 是一个分布式版本控制系统，用于跟踪文件的变化并协调多人之间的文件更改。它允许多个用户在不同的分支上独立工作，并能够合并不同分支上的更改。Git 可以存储文件的完整历史记录，方便回溯和恢复文件的不同版本。它广泛用于软件开发中，特别是用于团队合作开发和开源项目。通过使用 Git，开发人员可以更好地管理和追踪代码的变化，确保团队成员之间的协作无缝进行。(来自 ChatGP">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Git 的一些常用命令~">
 <meta property="og:url" content="https://ainavo.github.io/2023/07/24/Git-%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/index.html">
 <meta property="og:site_name" content="Ainavo&#39;s Blog">
+<meta property="og:description" content="什么是 Git ？ Git 是一个分布式版本控制系统，用于跟踪文件的变化并协调多人之间的文件更改。它允许多个用户在不同的分支上独立工作，并能够合并不同分支上的更改。Git 可以存储文件的完整历史记录，方便回溯和恢复文件的不同版本。它广泛用于软件开发中，特别是用于团队合作开发和开源项目。通过使用 Git，开发人员可以更好地管理和追踪代码的变化，确保团队成员之间的协作无缝进行。(来自 ChatGP">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://ainavo.github.io/imgs/Git%20%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C/Git%20%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%80%9F%E6%9F%A5%E8%A1%A8.png">
 <meta property="og:image" content="https://ainavo.github.io/imgs/Git%20%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C/repo%20%E9%93%BE%E6%8E%A5.png">
 <meta property="og:image" content="https://ainavo.github.io/imgs/Git%20%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C/%E6%8F%90%E4%BA%A4%E8%AE%B0%E5%BD%95.png">
 <meta property="og:image" content="https://ainavo.github.io/imgs/Git%20%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C/%E6%8C%87%E5%AE%9Acommit%20id.png">
@@ -39,12 +40,12 @@
 <meta property="og:image" content="https://ainavo.github.io/imgs/Git%20%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C/fork%E7%AC%AC%E4%BA%8C%E6%AD%A5.png">
 <meta property="og:image" content="https://ainavo.github.io/imgs/Git%20%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C/repo%20%E9%93%BE%E6%8E%A5.png">
 <meta property="article:published_time" content="2023-07-24T03:31:55.000Z">
-<meta property="article:modified_time" content="2024-06-21T14:40:22.254Z">
+<meta property="article:modified_time" content="2024-06-21T14:49:46.901Z">
 <meta property="article:author" content="Ainavo">
 <meta property="article:tag" content="git">
 <meta property="article:tag" content="github">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://ainavo.github.io/imgs/Git%20%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C/Git%20%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%80%9F%E6%9F%A5%E8%A1%A8.png">
+<meta name="twitter:image" content="https://ainavo.github.io/imgs/Git%20%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C/repo%20%E9%93%BE%E6%8E%A5.png">
   
     <link rel="alternate" href="/atom.xml" title="Ainavo's Blog" type="application/atom+xml">
   
@@ -171,7 +172,7 @@
 </div>
 <header id="header">
   
-    <img fetchpriority="high" src="https://img.win3000.com/m00/c7/be/f79e310d3ff732fb6fec1b7d7807e537.jpg" alt="Git 的一些常用命令~">
+    <img fetchpriority="high" src="/imgs/Git%20相关操作/Git%20常用命令速查表.png" alt="Git 的一些常用命令~">
   
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
@@ -214,8 +215,7 @@
 
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p><img src="/imgs/Git%20%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C/Git%20%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%80%9F%E6%9F%A5%E8%A1%A8.png" alt="" /></p>
-<span id="more"></span>
+        <span id="more"></span>
 <h2 id="什么是-git"><a class="markdownIt-Anchor" href="#什么是-git"></a> 什么是 Git ？</h2>
 <p>Git 是一个分布式版本控制系统，用于跟踪文件的变化并协调多人之间的文件更改。它允许多个用户在不同的分支上独立工作，并能够合并不同分支上的更改。Git 可以存储文件的完整历史记录，方便回溯和恢复文件的不同版本。它广泛用于软件开发中，特别是用于团队合作开发和开源项目。通过使用 Git，开发人员可以更好地管理和追踪代码的变化，确保团队成员之间的协作无缝进行。(来自 ChatGPT)</p>
 <h2 id="git-的安装"><a class="markdownIt-Anchor" href="#git-的安装"></a> Git 的安装</h2>
@@ -362,10 +362,7 @@
     
     <div class="article-nav-link-wrap article-nav-link-right">
       
-        
-        
-          <img data-src="https://www.win3000.com/pcbizhi/2657.html.jpg" data-sizes="auto" alt="数组与指针" class="lazyload">
-        
+        <img data-src="https://img.win3000.com/m00/c7/be/f79e310d3ff732fb6fec1b7d7807e537.jpg" data-sizes="auto" alt="数组与指针" class="lazyload">
       
       <a href="/2023/07/21/%E6%95%B0%E7%BB%84%E4%B8%8E%E6%8C%87%E9%92%88/"></a>
       <div class="article-nav-caption">后一篇</div>
