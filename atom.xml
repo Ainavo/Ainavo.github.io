@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Ainavo&#39;s Blog</title>
+  <icon>https://ovania.github.io/icon.png</icon>
+  
+  <link href="https://ovania.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://ovania.github.io/"/>
+  <updated>2024-06-20T19:00:53.318Z</updated>
+  <id>https://ovania.github.io/</id>
+  
+  <author>
+    <name>Ainavo</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>miaomiao</title>
+    <link href="https://ovania.github.io/2024/06/21/miaomiao/"/>
+    <id>https://ovania.github.io/2024/06/21/miaomiao/</id>
+    <published>2024-06-20T19:00:13.000Z</published>
+    <updated>2024-06-20T19:00:53.318Z</updated>
+    
+    
+    
+    
+    
+    <category term="wangwang" scheme="https://ovania.github.io/tags/wangwang/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Test.md</title>
+    <link href="https://ovania.github.io/2024/06/21/test/"/>
+    <id>https://ovania.github.io/2024/06/21/test/</id>
+    <published>2024-06-20T18:48:23.000Z</published>
+    <updated>2024-06-20T18:50:33.386Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;span id=&quot;more&quot;&gt;&lt;/span&gt;
+&lt;h1 id=&quot;51-单片机&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#51-单片机&quot;&gt;&lt;/a&gt; 51 单片机&lt;/h1&gt;
+&lt;h2 id=&quot;认识-51-单片机&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="miaomiao" scheme="https://ovania.github.io/tags/miaomiao/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://ovania.github.io/2024/06/19/hello-world/"/>
+    <id>https://ovania.github.io/2024/06/19/hello-world/</id>
+    <published>2024-06-19T08:31:18.923Z</published>
+    <updated>2024-06-19T08:31:18.924Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+</feed>
