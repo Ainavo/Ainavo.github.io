@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Ainavo&#39;s Blog</title>
-  <icon>https://ainavo.github.io/project/icon.png</icon>
+  <icon>https://ainavo.github.io/icon.png</icon>
   
-  <link href="https://ainavo.github.io/project/atom.xml" rel="self"/>
+  <link href="https://ainavo.github.io/atom.xml" rel="self"/>
   
-  <link href="https://ainavo.github.io/project/"/>
+  <link href="https://ainavo.github.io/"/>
   <updated>2024-06-20T19:00:53.318Z</updated>
-  <id>https://ainavo.github.io/project/</id>
+  <id>https://ainavo.github.io/</id>
   
   <author>
     <name>Ainavo</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>miaomiao</title>
-    <link href="https://ainavo.github.io/project/2024/06/21/miaomiao/"/>
-    <id>https://ainavo.github.io/project/2024/06/21/miaomiao/</id>
+    <link href="https://ainavo.github.io/2024/06/21/miaomiao/"/>
+    <id>https://ainavo.github.io/2024/06/21/miaomiao/</id>
     <published>2024-06-20T19:00:13.000Z</published>
     <updated>2024-06-20T19:00:53.318Z</updated>
     
@@ -27,14 +27,14 @@
     
     
     
-    <category term="wangwang" scheme="https://ainavo.github.io/project/tags/wangwang/"/>
+    <category term="wangwang" scheme="https://ainavo.github.io/tags/wangwang/"/>
     
   </entry>
   
   <entry>
     <title>Test.md</title>
-    <link href="https://ainavo.github.io/project/2024/06/21/test/"/>
-    <id>https://ainavo.github.io/project/2024/06/21/test/</id>
+    <link href="https://ainavo.github.io/2024/06/21/test/"/>
+    <id>https://ainavo.github.io/2024/06/21/test/</id>
     <published>2024-06-20T18:48:23.000Z</published>
     <updated>2024-06-20T18:50:33.386Z</updated>
     
@@ -52,14 +52,14 @@
     
     
     
-    <category term="miaomiao" scheme="https://ainavo.github.io/project/tags/miaomiao/"/>
+    <category term="miaomiao" scheme="https://ainavo.github.io/tags/miaomiao/"/>
     
   </entry>
   
   <entry>
     <title>Hello World</title>
-    <link href="https://ainavo.github.io/project/2024/06/19/hello-world/"/>
-    <id>https://ainavo.github.io/project/2024/06/19/hello-world/</id>
+    <link href="https://ainavo.github.io/2024/06/19/hello-world/"/>
+    <id>https://ainavo.github.io/2024/06/19/hello-world/</id>
     <published>2024-06-19T08:31:18.923Z</published>
     <updated>2024-06-19T08:31:18.924Z</updated>
     
