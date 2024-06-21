@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Ainavo&#39;s Blog</title>
+  <icon>https://ainavo.github.io/icon.png</icon>
+  
+  <link href="https://ainavo.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://ainavo.github.io/"/>
+  <updated>2024-06-21T13:56:52.320Z</updated>
+  <id>https://ainavo.github.io/</id>
+  
+  <author>
+    <name>Ainavo</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>结构体</title>
+    <link href="https://ainavo.github.io/2023/07/21/%E7%BB%93%E6%9E%84%E4%BD%93/"/>
+    <id>https://ainavo.github.io/2023/07/21/%E7%BB%93%E6%9E%84%E4%BD%93/</id>
+    <published>2023-07-21T12:28:18.000Z</published>
+    <updated>2024-06-21T13:56:52.320Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;结构体的使用、和指针结合的结构体&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="C" scheme="https://ainavo.github.io/tags/C/"/>
+    
+  </entry>
+  
+</feed>
