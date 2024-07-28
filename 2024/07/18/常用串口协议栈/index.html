@@ -50,7 +50,7 @@
 <meta property="og:image" content="https://ainavo.github.io/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/SPI%E6%97%B6%E5%BA%8F%E5%9B%BE.png">
 <meta property="og:image" content="https://ainavo.github.io/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/SPI%E9%87%87%E9%9B%86%E4%BF%A1%E5%8F%B7%E6%A8%A1%E5%BC%8F%E9%85%8D%E7%BD%AE.png">
 <meta property="article:published_time" content="2024-07-18T12:55:13.000Z">
-<meta property="article:modified_time" content="2024-07-28T10:57:08.670Z">
+<meta property="article:modified_time" content="2024-07-28T10:59:06.470Z">
 <meta property="article:author" content="Ainavo">
 <meta property="article:tag" content="嵌入式">
 <meta property="article:tag" content="串口协议">
@@ -348,7 +348,7 @@
 <h3 id="uart-的硬件链接"><a class="markdownIt-Anchor" href="#uart-的硬件链接"></a> UART 的硬件链接</h3>
 <p>UART 串口需要 3 根线通信，分别是 TXD（发送线）、RXD（接收线）和 GND（地线），如下图 1-1 所示。</p>
 <img src="/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/UART%E7%A1%AC%E4%BB%B6%E8%BF%9E%E6%8E%A5.png" class="" title="图1-1 UART硬件连接">
-<p>图 1-1 UART 硬件连接 </div></p>
+<center> 图1-1 UART硬件连接 </center>
 <h3 id="uart-的电气特性"><a class="markdownIt-Anchor" href="#uart-的电气特性"></a> UART 的电气特性</h3>
 <ul>
 <li>高电平：通常为 2.5V~5V</li>
@@ -359,7 +359,7 @@
 <h3 id="uart-的数据帧"><a class="markdownIt-Anchor" href="#uart-的数据帧"></a> UART 的数据帧</h3>
 <p>UART 协议数据帧由起始位、数据帧、奇偶校验位和停止位组成，如图 1-2 所示。</p>
 <img src="/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/UART%E6%95%B0%E6%8D%AE%E5%B8%A7.png" class="" title="图1-2 UART数据帧">
-<p>图 1-2 UART 数据帧</p>
+<center> 图1-2 UART数据帧 </center>
 <ul>
 <li>起始位：在不传输数据时，UART 保持在高电平状态。当 UART 信号从高电平拉低，并保持在低电平持续一个时钟周期时，这一状态被称为起始位。</li>
 <li>数据位：数据帧中包含实际传输的数据，数据帧长度可以是 5~9 比特（不使用奇偶校验位），也可以是 5~8 比特（使用奇偶检验位）。</li>
@@ -370,16 +370,17 @@
 <p>TTL（Transistor-Transistor Logic，晶体管-晶体管逻辑）是一种数字电路和逻辑电路的实现技术，主要使用晶体管作为基本的开关元件。TTL 电平用于串口通信时，有 3.3V 和 5V 两个系列。由于电压范围小，所以抗干扰能力较弱，传输的具体不远，在 9600 波特率传输距离为 2 米，一般不超过 15 米。降低波特率可以传输得更远，这个与电磁环境环境有关。可做全双工通信</p>
 <ul>
 <li>逻辑电平 TTL 的高电平通常在 2.4V~5V 之间，低电平通常在 0V~0.8V 之间，如图 1-3 所示<img src="/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/TTL%E7%94%B5%E5%B9%B3.png" class="" title="图1-3 TTL电平">
-图 1-3 TTL 电平 </div></li>
+<center> 图1-3 TTL电平 </center>
+</li>
 </ul>
 <h3 id="rs232"><a class="markdownIt-Anchor" href="#rs232"></a> RS232</h3>
 <p>RS232 是全双工通信，可以同时进行发送和接受数据，通信传输距离不超过 15 米，只使用 RXD、TXD、GND 三根线进行通信。RS232 采用负逻辑进行通信，逻辑&quot;1&quot;为-3V~-15V；逻辑&quot;0&quot;为 3~15V，如图 1-4 所示。相比于 TTL 电平抗干扰能力更强，可长距离传输，传输频率越低，传输距离越远，越稳定。</p>
 <img src="/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/RS232%E7%94%B5%E5%B9%B3.png" class="" title="图1-4 RS232电平">
-<p>图 1-4 RS232 电平 </div></p>
+<center> 图1-4 RS232电平 </center>
 <h3 id="rs485"><a class="markdownIt-Anchor" href="#rs485"></a> RS485</h3>
 <p>RS485 采用双线半双工传输，最大速率 10MB/s，电平逻辑由双线的电平差决定，如图 1-5 所示。逻辑&quot;1&quot;为：+2V<sub>+6V，逻辑&quot;0&quot;为：-2V</sub>-6V，提高了抗干扰能力，传输距离几十米~几千米。</p>
 <img src="/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/RS485.svg" class="" title="图1-5 RS485电平">
-<p>图 1-5 RS485 电平 </div></p>
+<center> 图1-5 RS485电平 </center>
 <h2 id="i2c-通信协议"><a class="markdownIt-Anchor" href="#i2c-通信协议"></a> I2C 通信协议</h2>
 <h3 id="i2c-的硬件特性"><a class="markdownIt-Anchor" href="#i2c-的硬件特性"></a> I2C 的硬件特性</h3>
 <ul>
@@ -395,7 +396,7 @@
 </li>
 </ul>
 <img src="/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/I2C%E7%A1%AC%E4%BB%B6%E8%BF%9E%E6%8E%A5.png" class="" title="图1-6 I2C协议硬件连接示意图">
-<p>图 1-6 I2C 协议硬件连接示意图 </div></p>
+<center> 图1-6 I2C协议硬件连接示意图 </center>
 <h3 id="i2c-时序图"><a class="markdownIt-Anchor" href="#i2c-时序图"></a> I2C 时序图</h3>
 <ul>
 <li>开始条件（如图 1-7 所示）
@@ -406,7 +407,7 @@
 </li>
 </ul>
 <img src="/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/I2C%E8%B5%B7%E5%A7%8B%E4%BF%A1%E5%8F%B7.png" class="" title="图1-7 I2C开始与停止信号">
-<p>图 1-7 I2C 开始与停止信号 </div></p>
+<center> 图1-7 I2C开始与停止信号 </center>
 <ul>
 <li>
 <p>地址位（小端模式）</p>
@@ -436,7 +437,7 @@
 </li>
 </ul>
 <img src="/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/I2C%E6%95%B0%E6%8D%AE%E5%B8%A7%E8%A7%84%E5%88%99.png" class="" title="图1-8 I2C数据帧">
-<p>图 1-8 I2C 数据帧 </div></p>
+<center> 图1-8 I2C数据帧 </center>
 <ul>
 <li>停止条件（如图 1-9 所示）
 <ul>
@@ -446,21 +447,25 @@
 </li>
 </ul>
 <img src="/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/I2C%E5%81%9C%E6%AD%A2%E4%BF%A1%E5%8F%B7.png" class="" title="图1-9 I2C开始与停止信号">
-<p>图 1-9 I2C 开始与停止信号 </div></p>
+<center> 图1-9 I2C开始与停止信号 </center>
 <h3 id="i2c-协议帧"><a class="markdownIt-Anchor" href="#i2c-协议帧"></a> I2C 协议帧</h3>
 <ul>
 <li>7 位地址模式下的写操作协议帧:<br />
 首先发送起始信号 S，接着发送需要通信的 7 位从机地址，随机发送写指令，随后从机发送 ACK 信号；然后主机发送要传输的数据，从机接收到数据，返回 ACK；此时若主机不继续操作，则主机发送结束信号 P。<img src="/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/7%E4%BD%8D%E5%9C%B0%E5%9D%80%E6%A8%A1%E5%BC%8F%E4%B8%8B%E7%9A%84%E5%86%99%E6%93%8D%E4%BD%9C%E5%8D%8F%E8%AE%AE%E5%B8%A7.png" class="" title="图1-10 7位地址模式下的写操作协议帧">
-图 1-10 7 位地址模式下的写操作协议帧 </div></li>
+<center> 图1-10 7位地址模式下的写操作协议帧 </center>
+</li>
 <li>10 位地址模式下的写操作协议帧:<br />
 首先发送起始信号 S，接着发送需要通信的前 7 位从机地址，随机发送写指令，随后从机发送 ACK 信号，紧接着发送从机地址的剩下位，从机接收到回应 ACK 信号；然后主机发送要传输的数据，从机接收到数据，返回 ACK；此时若主机不继续操作，则主机发送结束信号 P。<img src="/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/10%E4%BD%8D%E5%9C%B0%E5%9D%80%E6%A8%A1%E5%BC%8F%E4%B8%8B%E7%9A%84%E5%86%99%E6%93%8D%E4%BD%9C%E5%8D%8F%E8%AE%AE%E5%B8%A7.png" class="" title="图1-11 10位地址模式下的写操作协议帧">
-图 1-11 10 位地址模式下的写操作协议帧 </div></li>
+<center> 图1-11 10位地址模式下的写操作协议帧 </center>
+</li>
 <li>7 位地址模式下的读操作协议帧：<br />
 首先发送起始信号 S，接着发送需要通信的 7 位从机地址，随机发送读指令，随后从机发送 ACK 信号；然后从机发送要传输的数据，主机接收到数据，返回 ACK；此时若主机不继续操作，则主机发送结束信号 P。<img src="/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/7%E4%BD%8D%E5%9C%B0%E5%9D%80%E6%A8%A1%E5%BC%8F%E4%B8%8B%E7%9A%84%E8%AF%BB%E6%93%8D%E4%BD%9C%E5%8D%8F%E8%AE%AE%E5%B8%A7.png" class="" title="图1-12 7位地址模式下的读操作协议帧">
-图 1-12 7 位地址模式下的读操作协议帧 </div></li>
+<center> 图1-12 7位地址模式下的读操作协议帧 </center>
+</li>
 <li>10 位地址模式下的读操作协议帧：<br />
 首先发送起始信号 S，接着发送需要通信的前 7 位从机地址，随机发送读指令，随后从机发送 ACK 信号，紧接着发送从机地址的剩下位，从机接收到回应 ACK 信号；然后从机发送要传输的数据，主机接收到数据，返回 ACK；此时若主机不继续操作，则主机发送结束信号 P。<img src="/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/10%E4%BD%8D%E5%9C%B0%E5%9D%80%E6%A8%A1%E5%BC%8F%E4%B8%8B%E7%9A%84%E8%AF%BB%E6%93%8D%E4%BD%9C%E5%8D%8F%E8%AE%AE%E5%B8%A7.png" class="" title="图1-13 10位地址模式下的读操作协议帧">
-图 1-13 10 位地址模式下的读操作协议帧 </div></li>
+<center> 图1-13 10位地址模式下的读操作协议帧 </center>
+</li>
 </ul>
 <h3 id="i2c-的总线仲裁"><a class="markdownIt-Anchor" href="#i2c-的总线仲裁"></a> I2C 的总线仲裁</h3>
 <ul>
@@ -483,15 +488,16 @@
 <h3 id="spi-的硬件连接"><a class="markdownIt-Anchor" href="#spi-的硬件连接"></a> SPI 的硬件连接</h3>
 <p>如图 1-14 所示，SPI 硬件连接包含 SCK（时钟线）、MOSI（Master Output Slave Input，主输出从输入）、MISO（Master Input Slave Output，主输入从输出）、NSS（片选信号）。产生时钟的一侧称为主机，另一侧称为从机。总是只有一个主机（一般来说可以是微控制器/MCU），但是可以有多个从机。</p>
 <img src="/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/SPI%E7%89%A9%E7%90%86%E8%BF%9E%E6%8E%A5%E5%A4%9A%E8%AE%BE%E5%A4%87.svg" class="" title="图1-14 SPI物理连接">
-<p>图 1-14 SPI 物理连接</p>
-<h3 id="spi-的时序图"><a class="markdownIt-Anchor" href="#spi-的时序图"></a> SPI 的时序图</h3>
+<center> 图1-14 SPI物理连接 </center>
+### SPI 的时序图
 <p>整体的传输过程分为如下几个过程：</p>
 <ul>
 <li>主机先将 NSS 信号拉低以确保从机接受数据；</li>
 <li>当接收端检测到时钟的边沿信号时，它将立即读取数据线上的信号，这样就得到了一位数据（1bit）；</li>
 <li>主机发送到从机时：主机产生相应的时钟信号，然后数据一位一位地将从 MOSI 信号线上进行发送到从机；</li>
 <li>主机接收从机数据：如果从机需要将数据发送回主机，则主机将继续生成预定数量的时钟信号，并且从机会将数据通过 MISO 信号线发送。<img src="/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/SPI%E6%97%B6%E5%BA%8F%E5%9B%BE.png" class="" title="图1-15 SPI时序图">
-图 1-15 SPI 时序图</li>
+<center> 图1-15 SPI时序图 </center>
+</li>
 </ul>
 <h3 id="spi-数据帧"><a class="markdownIt-Anchor" href="#spi-数据帧"></a> SPI 数据帧</h3>
 <ul>
@@ -565,7 +571,7 @@
 </tbody>
 </table>
 <img src="/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/SPI%E9%87%87%E9%9B%86%E4%BF%A1%E5%8F%B7%E6%A8%A1%E5%BC%8F%E9%85%8D%E7%BD%AE.png" class="" title="图1-16 SPI采集信号模式配置">
-<p>图 1-16 SPI 采集信号模式配置</p>
+<center> 图1-16 SPI采集信号模式配置 </center>
 </li>
 </ul>
 <h2 id="can-通信协议"><a class="markdownIt-Anchor" href="#can-通信协议"></a> CAN 通信协议</h2>
@@ -649,7 +655,7 @@
   <h3 class="toc-title">文章目录</h3>
   <div class="sidebar-toc-wrapper toc-div-class" >
       
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.</span> <span class="toc-text"> 常见的通信协议</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#uart-%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.1.</span> <span class="toc-text"> UART 通信协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#uart-%E7%9A%84%E7%A1%AC%E4%BB%B6%E9%93%BE%E6%8E%A5"><span class="toc-number">1.1.1.</span> <span class="toc-text"> UART 的硬件链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#uart-%E7%9A%84%E7%94%B5%E6%B0%94%E7%89%B9%E6%80%A7"><span class="toc-number">1.1.2.</span> <span class="toc-text"> UART 的电气特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#uart-%E7%9A%84%E6%95%B0%E6%8D%AE%E5%B8%A7"><span class="toc-number">1.1.3.</span> <span class="toc-text"> UART 的数据帧</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ttl"><span class="toc-number">1.1.4.</span> <span class="toc-text"> TTL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rs232"><span class="toc-number">1.1.5.</span> <span class="toc-text"> RS232</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rs485"><span class="toc-number">1.1.6.</span> <span class="toc-text"> RS485</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#i2c-%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.2.</span> <span class="toc-text"> I2C 通信协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#i2c-%E7%9A%84%E7%A1%AC%E4%BB%B6%E7%89%B9%E6%80%A7"><span class="toc-number">1.2.1.</span> <span class="toc-text"> I2C 的硬件特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#i2c-%E6%97%B6%E5%BA%8F%E5%9B%BE"><span class="toc-number">1.2.2.</span> <span class="toc-text"> I2C 时序图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#i2c-%E5%8D%8F%E8%AE%AE%E5%B8%A7"><span class="toc-number">1.2.3.</span> <span class="toc-text"> I2C 协议帧</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#i2c-%E7%9A%84%E6%80%BB%E7%BA%BF%E4%BB%B2%E8%A3%81"><span class="toc-number">1.2.4.</span> <span class="toc-text"> I2C 的总线仲裁</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#spi-%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.3.</span> <span class="toc-text"> SPI 通信协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#spi-%E7%9A%84%E7%A1%AC%E4%BB%B6%E8%BF%9E%E6%8E%A5"><span class="toc-number">1.3.1.</span> <span class="toc-text"> SPI 的硬件连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#spi-%E7%9A%84%E6%97%B6%E5%BA%8F%E5%9B%BE"><span class="toc-number">1.3.2.</span> <span class="toc-text"> SPI 的时序图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#spi-%E6%95%B0%E6%8D%AE%E5%B8%A7"><span class="toc-number">1.3.3.</span> <span class="toc-text"> SPI 数据帧</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#can-%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.4.</span> <span class="toc-text"> CAN 通信协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#usb"><span class="toc-number">1.5.</span> <span class="toc-text"> USB</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mqtt"><span class="toc-number">1.6.</span> <span class="toc-text"> MQTT</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#wifi"><span class="toc-number">1.7.</span> <span class="toc-text"> WIFI</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#udp"><span class="toc-number">1.8.</span> <span class="toc-text"> UDP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tcpip"><span class="toc-number">1.9.</span> <span class="toc-text"> TCP&#x2F;IP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-number">1.10.</span> <span class="toc-text"> 参考文献</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.</span> <span class="toc-text"> 常见的通信协议</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#uart-%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.1.</span> <span class="toc-text"> UART 通信协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#uart-%E7%9A%84%E7%A1%AC%E4%BB%B6%E9%93%BE%E6%8E%A5"><span class="toc-number">1.1.1.</span> <span class="toc-text"> UART 的硬件链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#uart-%E7%9A%84%E7%94%B5%E6%B0%94%E7%89%B9%E6%80%A7"><span class="toc-number">1.1.2.</span> <span class="toc-text"> UART 的电气特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#uart-%E7%9A%84%E6%95%B0%E6%8D%AE%E5%B8%A7"><span class="toc-number">1.1.3.</span> <span class="toc-text"> UART 的数据帧</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ttl"><span class="toc-number">1.1.4.</span> <span class="toc-text"> TTL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rs232"><span class="toc-number">1.1.5.</span> <span class="toc-text"> RS232</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rs485"><span class="toc-number">1.1.6.</span> <span class="toc-text"> RS485</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#i2c-%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.2.</span> <span class="toc-text"> I2C 通信协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#i2c-%E7%9A%84%E7%A1%AC%E4%BB%B6%E7%89%B9%E6%80%A7"><span class="toc-number">1.2.1.</span> <span class="toc-text"> I2C 的硬件特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#i2c-%E6%97%B6%E5%BA%8F%E5%9B%BE"><span class="toc-number">1.2.2.</span> <span class="toc-text"> I2C 时序图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#i2c-%E5%8D%8F%E8%AE%AE%E5%B8%A7"><span class="toc-number">1.2.3.</span> <span class="toc-text"> I2C 协议帧</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#i2c-%E7%9A%84%E6%80%BB%E7%BA%BF%E4%BB%B2%E8%A3%81"><span class="toc-number">1.2.4.</span> <span class="toc-text"> I2C 的总线仲裁</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#spi-%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.3.</span> <span class="toc-text"> SPI 通信协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#spi-%E7%9A%84%E7%A1%AC%E4%BB%B6%E8%BF%9E%E6%8E%A5"><span class="toc-number">1.3.1.</span> <span class="toc-text"> SPI 的硬件连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#spi-%E6%95%B0%E6%8D%AE%E5%B8%A7"><span class="toc-number">1.3.2.</span> <span class="toc-text"> SPI 数据帧</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#can-%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.4.</span> <span class="toc-text"> CAN 通信协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#usb"><span class="toc-number">1.5.</span> <span class="toc-text"> USB</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mqtt"><span class="toc-number">1.6.</span> <span class="toc-text"> MQTT</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#wifi"><span class="toc-number">1.7.</span> <span class="toc-text"> WIFI</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#udp"><span class="toc-number">1.8.</span> <span class="toc-text"> UDP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tcpip"><span class="toc-number">1.9.</span> <span class="toc-text"> TCP&#x2F;IP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-number">1.10.</span> <span class="toc-text"> 参考文献</span></a></li></ol></li></ol>
       
   </div>
 </div>
@@ -776,7 +782,7 @@
   <h3 class="toc-title">文章目录</h3>
   <div class="sidebar-toc-wrapper toc-div-class" >
       
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.</span> <span class="toc-text"> 常见的通信协议</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#uart-%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.1.</span> <span class="toc-text"> UART 通信协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#uart-%E7%9A%84%E7%A1%AC%E4%BB%B6%E9%93%BE%E6%8E%A5"><span class="toc-number">1.1.1.</span> <span class="toc-text"> UART 的硬件链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#uart-%E7%9A%84%E7%94%B5%E6%B0%94%E7%89%B9%E6%80%A7"><span class="toc-number">1.1.2.</span> <span class="toc-text"> UART 的电气特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#uart-%E7%9A%84%E6%95%B0%E6%8D%AE%E5%B8%A7"><span class="toc-number">1.1.3.</span> <span class="toc-text"> UART 的数据帧</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ttl"><span class="toc-number">1.1.4.</span> <span class="toc-text"> TTL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rs232"><span class="toc-number">1.1.5.</span> <span class="toc-text"> RS232</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rs485"><span class="toc-number">1.1.6.</span> <span class="toc-text"> RS485</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#i2c-%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.2.</span> <span class="toc-text"> I2C 通信协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#i2c-%E7%9A%84%E7%A1%AC%E4%BB%B6%E7%89%B9%E6%80%A7"><span class="toc-number">1.2.1.</span> <span class="toc-text"> I2C 的硬件特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#i2c-%E6%97%B6%E5%BA%8F%E5%9B%BE"><span class="toc-number">1.2.2.</span> <span class="toc-text"> I2C 时序图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#i2c-%E5%8D%8F%E8%AE%AE%E5%B8%A7"><span class="toc-number">1.2.3.</span> <span class="toc-text"> I2C 协议帧</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#i2c-%E7%9A%84%E6%80%BB%E7%BA%BF%E4%BB%B2%E8%A3%81"><span class="toc-number">1.2.4.</span> <span class="toc-text"> I2C 的总线仲裁</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#spi-%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.3.</span> <span class="toc-text"> SPI 通信协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#spi-%E7%9A%84%E7%A1%AC%E4%BB%B6%E8%BF%9E%E6%8E%A5"><span class="toc-number">1.3.1.</span> <span class="toc-text"> SPI 的硬件连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#spi-%E7%9A%84%E6%97%B6%E5%BA%8F%E5%9B%BE"><span class="toc-number">1.3.2.</span> <span class="toc-text"> SPI 的时序图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#spi-%E6%95%B0%E6%8D%AE%E5%B8%A7"><span class="toc-number">1.3.3.</span> <span class="toc-text"> SPI 数据帧</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#can-%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.4.</span> <span class="toc-text"> CAN 通信协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#usb"><span class="toc-number">1.5.</span> <span class="toc-text"> USB</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mqtt"><span class="toc-number">1.6.</span> <span class="toc-text"> MQTT</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#wifi"><span class="toc-number">1.7.</span> <span class="toc-text"> WIFI</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#udp"><span class="toc-number">1.8.</span> <span class="toc-text"> UDP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tcpip"><span class="toc-number">1.9.</span> <span class="toc-text"> TCP&#x2F;IP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-number">1.10.</span> <span class="toc-text"> 参考文献</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.</span> <span class="toc-text"> 常见的通信协议</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#uart-%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.1.</span> <span class="toc-text"> UART 通信协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#uart-%E7%9A%84%E7%A1%AC%E4%BB%B6%E9%93%BE%E6%8E%A5"><span class="toc-number">1.1.1.</span> <span class="toc-text"> UART 的硬件链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#uart-%E7%9A%84%E7%94%B5%E6%B0%94%E7%89%B9%E6%80%A7"><span class="toc-number">1.1.2.</span> <span class="toc-text"> UART 的电气特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#uart-%E7%9A%84%E6%95%B0%E6%8D%AE%E5%B8%A7"><span class="toc-number">1.1.3.</span> <span class="toc-text"> UART 的数据帧</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ttl"><span class="toc-number">1.1.4.</span> <span class="toc-text"> TTL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rs232"><span class="toc-number">1.1.5.</span> <span class="toc-text"> RS232</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rs485"><span class="toc-number">1.1.6.</span> <span class="toc-text"> RS485</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#i2c-%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.2.</span> <span class="toc-text"> I2C 通信协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#i2c-%E7%9A%84%E7%A1%AC%E4%BB%B6%E7%89%B9%E6%80%A7"><span class="toc-number">1.2.1.</span> <span class="toc-text"> I2C 的硬件特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#i2c-%E6%97%B6%E5%BA%8F%E5%9B%BE"><span class="toc-number">1.2.2.</span> <span class="toc-text"> I2C 时序图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#i2c-%E5%8D%8F%E8%AE%AE%E5%B8%A7"><span class="toc-number">1.2.3.</span> <span class="toc-text"> I2C 协议帧</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#i2c-%E7%9A%84%E6%80%BB%E7%BA%BF%E4%BB%B2%E8%A3%81"><span class="toc-number">1.2.4.</span> <span class="toc-text"> I2C 的总线仲裁</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#spi-%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.3.</span> <span class="toc-text"> SPI 通信协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#spi-%E7%9A%84%E7%A1%AC%E4%BB%B6%E8%BF%9E%E6%8E%A5"><span class="toc-number">1.3.1.</span> <span class="toc-text"> SPI 的硬件连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#spi-%E6%95%B0%E6%8D%AE%E5%B8%A7"><span class="toc-number">1.3.2.</span> <span class="toc-text"> SPI 数据帧</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#can-%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.4.</span> <span class="toc-text"> CAN 通信协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#usb"><span class="toc-number">1.5.</span> <span class="toc-text"> USB</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mqtt"><span class="toc-number">1.6.</span> <span class="toc-text"> MQTT</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#wifi"><span class="toc-number">1.7.</span> <span class="toc-text"> WIFI</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#udp"><span class="toc-number">1.8.</span> <span class="toc-text"> UDP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tcpip"><span class="toc-number">1.9.</span> <span class="toc-text"> TCP&#x2F;IP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-number">1.10.</span> <span class="toc-text"> 参考文献</span></a></li></ol></li></ol>
       
   </div>
 </div>
