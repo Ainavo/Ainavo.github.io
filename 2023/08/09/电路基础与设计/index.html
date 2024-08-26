@@ -1,0 +1,706 @@
+
+  <!DOCTYPE html>
+  <html lang="zh-CN"  >
+  <head>
+  <meta charset="utf-8">
+  
+
+  
+
+  
+
+  
+  <script>window.icon_font = '4552607_tq6stt6tcg';window.clipboard_tips = {"success":"复制成功(*^▽^*)","fail":"复制失败 (ﾟ⊿ﾟ)ﾂ"};</script>
+  
+  
+  <title>
+    电路基础与设计 |
+    
+    Ainavo&#39;s Blog
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin><link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7CNoto%20Serif%20SC:400,400italic,700,700italic%7CUbuntu%20Mono:400,400italic,700,700italic&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7CNoto%20Serif%20SC:400,400italic,700,700italic%7CUbuntu%20Mono:400,400italic,700,700italic&display=swap" media="print" onload="this.media&#x3D;&#39;all&#39;">
+  
+    <link rel="preload" href="//at.alicdn.com/t/c/font_4552607_tq6stt6tcg.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  
+  
+<link rel="stylesheet" href="/css/loader.css">
+
+  <meta name="description" content="电路元件  电阻元件：  欧姆定律适用于线性电阻 电阻的倒数称为电导   独立源：  独立电压源：不管外部电路如何，其两端电压总能保持定值（直流源）或给定的时间函数（交流源）的电源被称为独立电压源，不随电流变化。 独立电流源：不管外部电路如何，其两端电流总能保持定值（直流源）或给定的时间函数（交流源）的电源被称为独立电流源，不随电压变化。   受控源：  受控电压源  电压控制电压源（VCVS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="电路基础与设计">
+<meta property="og:url" content="https://ainavo.github.io/2023/08/09/%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80%E4%B8%8E%E8%AE%BE%E8%AE%A1/index.html">
+<meta property="og:site_name" content="Ainavo&#39;s Blog">
+<meta property="og:description" content="电路元件  电阻元件：  欧姆定律适用于线性电阻 电阻的倒数称为电导   独立源：  独立电压源：不管外部电路如何，其两端电压总能保持定值（直流源）或给定的时间函数（交流源）的电源被称为独立电压源，不随电流变化。 独立电流源：不管外部电路如何，其两端电流总能保持定值（直流源）或给定的时间函数（交流源）的电源被称为独立电流源，不随电压变化。   受控源：  受控电压源  电压控制电压源（VCVS">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://ainavo.github.io/2023/08/09/%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80%E4%B8%8E%E8%AE%BE%E8%AE%A1/%E9%99%8D%E5%8E%8B%E7%94%B5%E8%B7%AF.png">
+<meta property="og:image" content="https://ainavo.github.io/2023/08/09/%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80%E4%B8%8E%E8%AE%BE%E8%AE%A1/%E9%AB%98%E9%80%9A%E6%BB%A4%E6%B3%A2%E7%94%B5%E8%B7%AF.png">
+<meta property="og:image" content="https://ainavo.github.io/2023/08/09/%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80%E4%B8%8E%E8%AE%BE%E8%AE%A1/%E5%BB%B6%E6%97%B6%E7%94%B5%E8%B7%AF.png">
+<meta property="og:image" content="https://ainavo.github.io/2023/08/09/%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80%E4%B8%8E%E8%AE%BE%E8%AE%A1/%E8%80%A6%E5%90%88%E7%94%B5%E8%B7%AF.png">
+<meta property="og:image" content="https://ainavo.github.io/2023/08/09/%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80%E4%B8%8E%E8%AE%BE%E8%AE%A1/%E6%97%81%E8%B7%AF%E7%94%B5%E8%B7%AF.png">
+<meta property="og:image" content="https://ainavo.github.io/2023/08/09/%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80%E4%B8%8E%E8%AE%BE%E8%AE%A1/%E7%94%B5%E6%84%9F%E5%82%A8%E5%AD%98%E8%83%BD%E9%87%8F%E7%94%B5%E8%B7%AF.png">
+<meta property="og:image" content="https://ainavo.github.io/2023/08/09/%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80%E4%B8%8E%E8%AE%BE%E8%AE%A1/%E7%94%B5%E6%84%9F%E9%80%89%E6%8B%A9%E4%BF%A1%E5%8F%B7%E7%94%B5%E8%B7%AF.png">
+<meta property="og:image" content="https://ainavo.github.io/2023/08/09/%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80%E4%B8%8E%E8%AE%BE%E8%AE%A1/PN%E7%BB%93%E5%8E%9F%E7%90%86.png">
+<meta property="og:image" content="https://ainavo.github.io/2023/08/09/%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80%E4%B8%8E%E8%AE%BE%E8%AE%A1/%E4%B8%89%E6%9E%81%E7%AE%A1%E5%BE%AE%E8%A7%82%E5%8E%9F%E7%90%86.png">
+<meta property="og:image" content="https://ainavo.github.io/2023/08/09/%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80%E4%B8%8E%E8%AE%BE%E8%AE%A1/%E4%B8%89%E6%9E%81%E7%AE%A1%E6%94%BE%E5%A4%A7%E7%94%B5%E8%B7%AF.png">
+<meta property="article:published_time" content="2023-08-09T11:44:46.000Z">
+<meta property="article:modified_time" content="2024-08-26T00:36:00.195Z">
+<meta property="article:author" content="Ainavo">
+<meta property="article:tag" content="电路分析基础">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ainavo.github.io/2023/08/09/%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80%E4%B8%8E%E8%AE%BE%E8%AE%A1/%E9%99%8D%E5%8E%8B%E7%94%B5%E8%B7%AF.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Ainavo's Blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/images/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css">
+
+  
+  
+  
+  
+<script src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js"></script>
+
+  
+    
+<link rel="stylesheet" href="https://npm.webcache.cn/wowjs@1.1.3/css/libs/animate.css">
+
+    
+<script src="https://npm.webcache.cn/wowjs@1.1.3/dist/wow.min.js"></script>
+
+    <script>
+      new WOW({
+        offset: 0,
+        mobile: true,
+        live: false
+      }).init();
+    </script>
+  
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+  <body>
+    
+  <div id='loader'>
+    <div class="loading-left-bg loading-bg"></div>
+    <div class="loading-right-bg loading-bg"></div>
+    <div class="spinner-box">
+      <div class="loading-taichi">
+        <svg width="150" height="150" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="https://www.w3.org/2000/svg" shape-rendering="geometricPrecision">
+          <path d="M303.5 432A80 80 0 0 1 291.5 592A80 80 0 0 1 303.5 432z" fill="#ff6e6b" />
+          <path d="M512 65A447 447 0 0 1 512 959L512 929A417 417 0 0 0 512 95A417 417 0 0 0 512 929L512 959A447 447 0 0 1 512 65z" fill="#fd0d00" />
+          <path d="M512 95A417 417 0 0 1 929 512A208.5 208.5 0 0 1 720.5 720.5L720.5 592A80 80 0 0 0 720.5 432A80 80 0 0 0 720.5 592L720.5 720.5A208.5 208.5 0 0 1 512 512A208.5 208.5 0 0 0 303.5 303.5A208.5 208.5 0 0 0 95 512A417 417 0 0 1 512 95" fill="#fd0d00" />
+        </svg>
+      </div>
+      <div class="loading-word">少女祈祷中...</div>
+    </div>
+  </div>
+  </div>
+  <script>
+    var time = null;
+    var startLoading = () => {
+      time = Date.now();
+      document.getElementById('loader').classList.remove("loading");
+    }
+    var endLoading = () => {
+      if (!time) {
+        document.body.style.overflow = 'auto';
+        document.getElementById('loader').classList.add("loading");
+      } else {
+        if (Date.now() - time > 500) {
+          time = null;
+          document.body.style.overflow = 'auto';
+          document.getElementById('loader').classList.add("loading");
+        } else {
+          setTimeout(endLoading, 500 - (Date.now() - time));
+          time = null;
+        }
+      }
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+    document.getElementById('loader').addEventListener('click', endLoading);
+  </script>
+
+<div id="copy-tooltip" style="pointer-events: none; opacity: 0; transition: all 0.2s ease; position: fixed;top: 50%;left: 50%;z-index: 999;transform: translate(-50%, -50%);color: white;background: rgba(0, 0, 0, 0.5);padding: 10px 15px;border-radius: 10px;">
+</div>
+
+    <div id="container">
+      <div id="wrap">
+        <div id="header-nav">
+  <nav id="main-nav">
+    
+      <span class="main-nav-link-wrap">
+        <span class="main-nav-icon"></span>
+        <a class="main-nav-link" href="/">首页</a>
+      </span>
+    
+      <span class="main-nav-link-wrap">
+        <span class="main-nav-icon"></span>
+        <a class="main-nav-link" href="/archives">归档</a>
+      </span>
+    
+      <span class="main-nav-link-wrap">
+        <span class="main-nav-icon"></span>
+        <a class="main-nav-link" href="/about">关于</a>
+      </span>
+    
+      <span class="main-nav-link-wrap">
+        <span class="main-nav-icon"></span>
+        <a class="main-nav-link" href="/friend">友链</a>
+      </span>
+    
+    <a id="main-nav-toggle" class="nav-icon"></a>
+  </nav>
+  <nav id="sub-nav">
+    
+      <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+    
+    
+    
+  </nav>
+</div>
+<header id="header">
+  
+    <img fetchpriority="high" src="https://haowallpaper.com/link/common/file/previewFileImg/9f131103452e03c0e18ce564ee0edfdf9f131103452e03c0e18ce564ee0edfdf.jpg" alt="电路基础与设计">
+  
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <div id="logo-wrap">
+        
+          
+          
+            <a href="/" id="logo">
+              <h1>电路基础与设计</h1>
+            </a>
+          
+        
+      </div>
+      
+        
+        <h2 id="subtitle-wrap">
+          
+        </h2>
+      
+    </div>
+  </div>
+</header>
+
+        <div id="content" class="outer">
+          
+          <section id="main"><article id="post-电路基础与设计" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner">
+    <div class="article-meta">
+      <div class="article-date wow slideInLeft">
+  <a href="/2023/08/09/%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80%E4%B8%8E%E8%AE%BE%E8%AE%A1/" class="article-date-link">
+    <time datetime="2023-08-09T11:44:46.000Z" itemprop="datePublished">2023-08-09</time>
+  </a>
+</div>
+
+      
+
+    </div>
+    <div class="hr-line"></div>
+    
+
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <span id="more"></span>
+<h2 id="电路元件"><a class="markdownIt-Anchor" href="#电路元件"></a> 电路元件</h2>
+<ul>
+<li>电阻元件：
+<ul>
+<li>欧姆定律适用于线性电阻</li>
+<li>电阻的倒数称为电导</li>
+</ul>
+</li>
+<li>独立源：
+<ul>
+<li>独立电压源：不管外部电路如何，其两端电压总能保持定值（直流源）或给定的时间函数（交流源）的电源被称为独立电压源，不随电流变化。</li>
+<li>独立电流源：不管外部电路如何，其两端电流总能保持定值（直流源）或给定的时间函数（交流源）的电源被称为独立电流源，不随电压变化。</li>
+</ul>
+</li>
+<li>受控源：
+<ul>
+<li>受控电压源
+<ul>
+<li>电压控制电压源（VCVS）</li>
+<li>电流控制电压源（CCVS）</li>
+</ul>
+</li>
+<li>受控电流源
+<ul>
+<li>电压控制电流源（VCCS）</li>
+<li>电流控制电流源（CCCS）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="电路基本定律"><a class="markdownIt-Anchor" href="#电路基本定律"></a> 电路基本定律</h2>
+<ul>
+<li>
+<p>KCL：任意节点电流和为 0</p>
+<ul>
+<li>本质上是电荷守恒原理，即到达任何节点的电荷不可能增生，也不可能小时，电流必须连续流动</li>
+<li>KCL 只与电路的结构相关，与构成电路的元件无关</li>
+<li>适用于节点，也适用于任何一个封闭曲面</li>
+<li>列写方程时：设出每一支路电流参考方向，流出和=流入和</li>
+<li>注意 KCL 方程中的正负号与电流本身的正负号的区别</li>
+</ul>
+</li>
+<li>
+<p>KVL：对于参数电路，在任何一时刻，沿任一回路巡行一周，各支路(元件)电压降的代数和为 0。</p>
+</li>
+</ul>
+<h2 id="电路分析方法"><a class="markdownIt-Anchor" href="#电路分析方法"></a> 电路分析方法</h2>
+<ul>
+<li>电路的数值极性表示法
+<ul>
+<li>参考点：0 电位</li>
+</ul>
+</li>
+<li>电路等效：对任何电路 A，如果用 C 代替 B 后，能做到 A 中的电流、电压、功率不变，则说 C 与 B 等效
+<ul>
+<li>△ 形与 Y 形电路等效：列 KCL 和 KVL 进行等效替换</li>
+<li>电压串联等效，电流源并联等效</li>
+<li>平衡电桥：等电位间连接任意阻值电阻，不影响外电路的支路量–&gt;电桥平衡的条件为相对臂上的电阻乘积相等</li>
+</ul>
+</li>
+<li>KCL 独立方程/KVL 独立方程：对于 n 个节点、b 条支路有且仅有(b-n+1)个独立的 KVL 方程
+<ul>
+<li>(b-n+1)个基本回路</li>
+<li>平面电路的(b-n+1)个网孔</li>
+</ul>
+</li>
+<li>2b 法和支路法
+<ul>
+<li>2b 法：以 b 个支路电压和 b 个支路为未知量列写并求解方程的方法称为 2b 法</li>
+<li>支路法：以支路电流或电压为未知量列出方程，求解支路电流(或电压)，称为支路电流(或电压法)，简称支路法</li>
+</ul>
+</li>
+<li>回路法：假设每个回路是独立的且完备的，用该回路上的电流来表示电路中待求解的未知变量，再通过 KCL 或 KVL 求解</li>
+<li>节点法：在电路中任意选择一个节点为参考节点，其余节点与参考节点之间的电压，称为节点电压，其余同上</li>
+</ul>
+<h2 id="电容的特性"><a class="markdownIt-Anchor" href="#电容的特性"></a> 电容的特性</h2>
+<ul>
+<li>微观原理：电路中电子流向与电流方向相反，当电路接通时，电池负极连接的电容接受电子，电子逐渐增多；电池正极处失去电子，正电荷增多；当电路处于一种“平衡”–电子不再移动，则电容起到分压作用。同时，当一段稳定的电容电路移除电容，原本聚集在电容板上的电子相反的方向移动，充当了“电池”的角色。</li>
+</ul>
+<h3 id="作用"><a class="markdownIt-Anchor" href="#作用"></a> 作用</h3>
+<ul>
+<li>降压：电容带有容抗且不做功，电容容抗通过 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>X</mi><mi>c</mi></msub><mo>=</mo><mfrac><mn>1</mn><mrow><mn>2</mn><mo>∗</mo><mi>π</mi><mo>∗</mo><mi>f</mi><mi>c</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">X_c= \frac{1}{2*π*fc}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">c</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.326216em;vertical-align:-0.481108em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span><span class="mbin mtight">∗</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">π</span><span class="mbin mtight">∗</span><span class="mord mathnormal mtight" style="margin-right:0.10764em;">f</span><span class="mord mathnormal mtight">c</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.481108em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span> f 是频率，c 是电容容量<img src="/2023/08/09/%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80%E4%B8%8E%E8%AE%BE%E8%AE%A1/%E9%99%8D%E5%8E%8B%E7%94%B5%E8%B7%AF.png" class="" title="降压电路">
+</li>
+<li>滤波：利用电容滤波 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>X</mi><mi>c</mi></msub><mo>=</mo><mfrac><mn>1</mn><mrow><mn>2</mn><mo>∗</mo><mi>π</mi><mo>∗</mo><mi>f</mi><mi>c</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">X_c= \frac{1}{2*π*fc}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">c</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.326216em;vertical-align:-0.481108em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span><span class="mbin mtight">∗</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">π</span><span class="mbin mtight">∗</span><span class="mord mathnormal mtight" style="margin-right:0.10764em;">f</span><span class="mord mathnormal mtight">c</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.481108em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>，当 f 很高（对应高频率），输出容抗为 0，高频能通过，低频不能通过，因此高通滤波器<img src="/2023/08/09/%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80%E4%B8%8E%E8%AE%BE%E8%AE%A1/%E9%AB%98%E9%80%9A%E6%BB%A4%E6%B3%A2%E7%94%B5%E8%B7%AF.png" class="" title="高通滤波电路">
+</li>
+<li>延时：电容充电从 10%到 90%需要的时间是 2.2RC，选取合适的 RC 值实现延时<img src="/2023/08/09/%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80%E4%B8%8E%E8%AE%BE%E8%AE%A1/%E5%BB%B6%E6%97%B6%E7%94%B5%E8%B7%AF.png" class="" title="延时电路">
+</li>
+<li>耦合：电容可以滤除直流成分，只通过交流<img src="/2023/08/09/%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80%E4%B8%8E%E8%AE%BE%E8%AE%A1/%E8%80%A6%E5%90%88%E7%94%B5%E8%B7%AF.png" class="" title="耦合电路">
+</li>
+<li>旁路：滤除高频信号<img src="/2023/08/09/%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80%E4%B8%8E%E8%AE%BE%E8%AE%A1/%E6%97%81%E8%B7%AF%E7%94%B5%E8%B7%AF.png" class="" title="旁路电路">
+<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1UU4y1r72W/?spm_id_from=333.337.search-card.all.click">参考视频</a></li>
+</ul>
+<h2 id="电感的特性"><a class="markdownIt-Anchor" href="#电感的特性"></a> 电感的特性</h2>
+<ul>
+<li>用于交流电场合</li>
+<li>电感上会发生电磁感应</li>
+<li>作用
+<ul>
+<li>储存能量：手机充电器<img src="/2023/08/09/%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80%E4%B8%8E%E8%AE%BE%E8%AE%A1/%E7%94%B5%E6%84%9F%E5%82%A8%E5%AD%98%E8%83%BD%E9%87%8F%E7%94%B5%E8%B7%AF.png" class="" title="电感储存能量电路电路">
+</li>
+<li>选择信号<img src="/2023/08/09/%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80%E4%B8%8E%E8%AE%BE%E8%AE%A1/%E7%94%B5%E6%84%9F%E9%80%89%E6%8B%A9%E4%BF%A1%E5%8F%B7%E7%94%B5%E8%B7%AF.png" class="" title="电感选择信号电路">
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="三极管的特性"><a class="markdownIt-Anchor" href="#三极管的特性"></a> 三极管的特性</h2>
+<ul>
+<li>N 型掺杂(N)：添加 5 价磷（多余电子）；P 型掺杂：添加 3 价硼（多余正电荷）<img src="/2023/08/09/%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80%E4%B8%8E%E8%AE%BE%E8%AE%A1/PN%E7%BB%93%E5%8E%9F%E7%90%86.png" class="" title="PN结原理">
+</li>
+<li>三极管微观原理：高浓度 N 型掺杂+P 型掺杂+N 型掺杂<img src="/2023/08/09/%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80%E4%B8%8E%E8%AE%BE%E8%AE%A1/%E4%B8%89%E6%9E%81%E7%AE%A1%E5%BE%AE%E8%A7%82%E5%8E%9F%E7%90%86.png" class="" title="三极管微观原理图">
+<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1fB4y147Gn/?spm_id_from=333.788&amp;vd_source=3a9f66a8e4f96fbd39b999e86b2e0cf4">参考视频</a></li>
+<li>三极管三大放大电路:<img src="/2023/08/09/%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80%E4%B8%8E%E8%AE%BE%E8%AE%A1/%E4%B8%89%E6%9E%81%E7%AE%A1%E6%94%BE%E5%A4%A7%E7%94%B5%E8%B7%AF.png" class="" title="三大放大电路">
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>V</mi><mrow><mi>B</mi><mi>E</mi></mrow></msub></mrow><annotation encoding="application/x-tex">V_{BE}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05017em;">B</span><span class="mord mathnormal mtight" style="margin-right:0.05764em;">E</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>&gt;0.7V --&gt; 三极管导通；<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>I</mi><mi>C</mi></msub><mo>=</mo><mi>β</mi><msub><mi>I</mi><mi>B</mi></msub></mrow><annotation encoding="application/x-tex">I_C = \beta I_B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.07153em;">C</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05017em;">B</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>; <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>I</mi><mi>C</mi></msub><mo>=</mo><mo stretchy="false">(</mo><mn>1</mn><mo>+</mo><mi>β</mi><msub><mi>I</mi><mi>C</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">I_C = (1+\beta I_C)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.07153em;">C</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.07153em;">C</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></li>
+</ul>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>l</mi><mrow><mi>i</mi><mo separator="true">,</mo><mi>j</mi></mrow></msub><mo>=</mo><mo>−</mo><mi>l</mi><mi>o</mi><mi>g</mi><mfrac><mrow><mi>exp</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>s</mi><mi>i</mi><mi>m</mi><mo stretchy="false">(</mo><msub><mi>z</mi><mi>i</mi></msub><mo separator="true">,</mo><msub><mi>z</mi><mi>j</mi></msub><mo stretchy="false">)</mo><mi mathvariant="normal">/</mi><mi>τ</mi><mo stretchy="false">)</mo></mrow><mrow><munderover><mo>∑</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mrow><mn>2</mn><mi>N</mi></mrow></munderover><msub><mi mathvariant="double-struck">L</mi><mrow><mo stretchy="false">[</mo><mi>k</mi><mo mathvariant="normal">≠</mo><mi>i</mi><mo stretchy="false">]</mo></mrow></msub><mrow><mi>exp</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>s</mi><mi>i</mi><mi>m</mi><mo stretchy="false">(</mo><msub><mi>z</mi><mi>i</mi></msub><mo separator="true">,</mo><msub><mi>z</mi><mi>k</mi></msub><mo stretchy="false">)</mo><mi mathvariant="normal">/</mi><mi>τ</mi><mo stretchy="false">)</mo></mrow></mrow></mfrac></mrow><annotation encoding="application/x-tex">l_{i,j}=-log\frac{\exp(sim(z_i,z_j)/\tau)}{\sum_{k=1}^{2N} \mathbb{L}_{[k\ne i]}{\exp(sim(z_i,z_k)/\tau)}}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.980548em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.01968em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.653431em;vertical-align:-1.2264309999999998em;"></span><span class="mord">−</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.427em;"><span style="top:-2.128769em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.981231em;"><span style="top:-2.40029em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.2029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span><span class="mord mathnormal mtight" style="margin-right:0.10903em;">N</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.29971000000000003em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord"><span class="mord mathbb">L</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.34480000000000005em;"><span style="top:-2.5198em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">[</span><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span><span class="mrel mtight"><span class="mrel mtight"><span class="mord vbox mtight"><span class="thinbox mtight"><span class="rlap mtight"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="inner"><span class="mrel mtight"></span></span><span class="fix"></span></span></span></span></span><span class="mrel mtight">=</span></span><span class="mord mathnormal mtight">i</span><span class="mclose mtight">]</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3551999999999999em;"><span></span></span></span></span></span></span><span class="mord"><span class="mop">exp</span><span class="mopen">(</span><span class="mord mathnormal">s</span><span class="mord mathnormal">i</span><span class="mord mathnormal">m</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.04398em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.04398em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mord">/</span><span class="mord mathnormal" style="margin-right:0.1132em;">τ</span><span class="mclose">)</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mop">exp</span><span class="mopen">(</span><span class="mord mathnormal">s</span><span class="mord mathnormal">i</span><span class="mord mathnormal">m</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.04398em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.04398em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mord">/</span><span class="mord mathnormal" style="margin-right:0.1132em;">τ</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.2264309999999998em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>exp</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>s</mi><mi>i</mi><mi>m</mi><mo stretchy="false">(</mo><msub><mi>z</mi><mi>i</mi></msub><mo separator="true">,</mo><msub><mi>z</mi><mi>j</mi></msub><mo stretchy="false">)</mo><mi mathvariant="normal">/</mi><mi>τ</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\exp(sim(z_i,z_j)/\tau)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.036108em;vertical-align:-0.286108em;"></span><span class="mop">exp</span><span class="mopen">(</span><span class="mord mathnormal">s</span><span class="mord mathnormal">i</span><span class="mord mathnormal">m</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.04398em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.04398em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mord">/</span><span class="mord mathnormal" style="margin-right:0.1132em;">τ</span><span class="mclose">)</span></span></span></span></span></p>
+<h2 id="参考文献"><a class="markdownIt-Anchor" href="#参考文献"></a> 参考文献</h2>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV15s411P7qz/?spm_id_from=333.337.search-card.all.click&amp;vd_source=3a9f66a8e4f96fbd39b999e86b2e0cf4">https://www.bilibili.com/video/BV15s411P7qz/?spm_id_from=333.337.search-card.all.click&amp;vd_source=3a9f66a8e4f96fbd39b999e86b2e0cf4</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+      
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80/" rel="tag">电路分析基础</a></li></ul>
+
+
+    </footer>
+  </div>
+  
+    
+  <nav id="article-nav" class="wow fadeInUp">
+    
+      <div class="article-nav-link-wrap article-nav-link-left">
+        
+          <img data-src="./_cover/【动漫女孩】2024-08-25 22_24_57.png" data-sizes="auto" alt="嵌入式软考" class="lazyload">
+        
+        <a href="/2024/03/27/%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E8%80%83/"></a>
+        <div class="article-nav-caption">前一篇</div>
+        <h3 class="article-nav-title">
+          
+            嵌入式软考
+          
+        </h3>
+      </div>
+    
+    
+    <div class="article-nav-link-wrap article-nav-link-right">
+      
+        <img data-src="https://haowallpaper.com/link/common/file/previewFileImg/7a075e1ec4a02be24406f3150920f5c87a075e1ec4a02be24406f3150920f5c8.png" data-sizes="auto" alt="Git 的一些常用命令~" class="lazyload">
+      
+      <a href="/2023/07/24/Git-%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"></a>
+      <div class="article-nav-caption">后一篇</div>
+      <h3 class="article-nav-title">
+        
+          Git 的一些常用命令~
+        
+      </h3>
+    </div>
+    
+  </nav>
+
+
+  
+</article>
+
+
+
+
+
+
+</section>
+          
+            <aside id="sidebar">
+  <div class="sidebar-wrap wow fadeInRight wrap-sticky">
+    
+      <div class="sidebar-toc-sidebar"><div class="sidebar-toc">
+  <h3 class="toc-title">文章目录</h3>
+  <div class="sidebar-toc-wrapper toc-div-class" >
+      
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%B5%E8%B7%AF%E5%85%83%E4%BB%B6"><span class="toc-number">1.</span> <span class="toc-text"> 电路元件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%B5%E8%B7%AF%E5%9F%BA%E6%9C%AC%E5%AE%9A%E5%BE%8B"><span class="toc-number">2.</span> <span class="toc-text"> 电路基本定律</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95"><span class="toc-number">3.</span> <span class="toc-text"> 电路分析方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%B5%E5%AE%B9%E7%9A%84%E7%89%B9%E6%80%A7"><span class="toc-number">4.</span> <span class="toc-text"> 电容的特性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8"><span class="toc-number">4.1.</span> <span class="toc-text"> 作用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%B5%E6%84%9F%E7%9A%84%E7%89%B9%E6%80%A7"><span class="toc-number">5.</span> <span class="toc-text"> 电感的特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E6%9E%81%E7%AE%A1%E7%9A%84%E7%89%B9%E6%80%A7"><span class="toc-number">6.</span> <span class="toc-text"> 三极管的特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-number">7.</span> <span class="toc-text"> 参考文献</span></a></li></ol>
+      
+  </div>
+</div>
+</div>
+      <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/avatar.webp" data-sizes="auto" alt="Ainavo" class="lazyload">
+  <div class="sidebar-author-name">Ainavo</div>
+  <div class="sidebar-description">一个菜猫</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div>
+    <div class="sidebar-state-number">9</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>分类</div>
+    <div class="sidebar-state-number">0</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>标签</div>
+    <div class="sidebar-state-number">10</div>
+  </div>
+</div>
+<div class="sidebar-social">
+  
+</div>
+<div class="sidebar-menu">
+  
+    <div class="sidebar-menu-link-wrap">
+      <a class="sidebar-menu-link-dummy" href="/" aria-label="首页"></a>
+      <span class="sidebar-menu-icon"></span>
+      <div class="sidebar-menu-link">首页</div>
+    </div>
+  
+    <div class="sidebar-menu-link-wrap">
+      <a class="sidebar-menu-link-dummy" href="/archives" aria-label="归档"></a>
+      <span class="sidebar-menu-icon"></span>
+      <div class="sidebar-menu-link">归档</div>
+    </div>
+  
+    <div class="sidebar-menu-link-wrap">
+      <a class="sidebar-menu-link-dummy" href="/about" aria-label="关于"></a>
+      <span class="sidebar-menu-icon"></span>
+      <div class="sidebar-menu-link">关于</div>
+    </div>
+  
+    <div class="sidebar-menu-link-wrap">
+      <a class="sidebar-menu-link-dummy" href="/friend" aria-label="友链"></a>
+      <span class="sidebar-menu-icon"></span>
+      <div class="sidebar-menu-link">友链</div>
+    </div>
+  
+</div>
+</div>
+    
+    
+      <div class="sidebar-btn-wrapper" style="position:static">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div>
+    
+  </div>
+
+  
+</aside>
+
+          
+        </div>
+        <footer id="footer" class="wow fadeInUp">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div class="outer">
+    <div id="footer-info">
+      
+      <div>
+        <span class="icon-copyright"></span>
+        2020-2024
+        <span class="footer-info-sep"></span>
+        Ainavo
+      </div>
+      
+        <div>
+          基于&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>&nbsp;
+          Theme.<a href="https://github.com/D-Sketon/hexo-theme-reimu" target="_blank">Reimu</a>
+        </div>
+      
+      
+        <div>
+          <span class="icon-brush"></span>
+          31.2k
+          &nbsp;|&nbsp;
+          <span class="icon-coffee"></span>
+          02:00
+        </div>
+      
+      
+        <div>
+          <span class="icon-eye"></span>
+          <span id="busuanzi_container_site_pv">总访问量&nbsp;<span id="busuanzi_value_site_pv"></span></span>
+          &nbsp;|&nbsp;
+          <span class="icon-user"></span>
+          <span id="busuanzi_container_site_uv">总访客量&nbsp;<span id="busuanzi_value_site_uv"></span></span>
+        </div>
+      
+    </div>
+  </div>
+</footer>
+
+        <div class="sidebar-top">
+          <img src="/images/taichi.png" height="50" width="50" alt="backtop" />
+          <div class="arrow-up"></div>
+        </div>
+        <div id="mask"></div>
+      </div>
+      <nav id="mobile-nav">
+  <div class="sidebar-wrap">
+    
+      <div class="sidebar-toc-sidebar"><div class="sidebar-toc">
+  <h3 class="toc-title">文章目录</h3>
+  <div class="sidebar-toc-wrapper toc-div-class" >
+      
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%B5%E8%B7%AF%E5%85%83%E4%BB%B6"><span class="toc-number">1.</span> <span class="toc-text"> 电路元件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%B5%E8%B7%AF%E5%9F%BA%E6%9C%AC%E5%AE%9A%E5%BE%8B"><span class="toc-number">2.</span> <span class="toc-text"> 电路基本定律</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95"><span class="toc-number">3.</span> <span class="toc-text"> 电路分析方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%B5%E5%AE%B9%E7%9A%84%E7%89%B9%E6%80%A7"><span class="toc-number">4.</span> <span class="toc-text"> 电容的特性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8"><span class="toc-number">4.1.</span> <span class="toc-text"> 作用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%B5%E6%84%9F%E7%9A%84%E7%89%B9%E6%80%A7"><span class="toc-number">5.</span> <span class="toc-text"> 电感的特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E6%9E%81%E7%AE%A1%E7%9A%84%E7%89%B9%E6%80%A7"><span class="toc-number">6.</span> <span class="toc-text"> 三极管的特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-number">7.</span> <span class="toc-text"> 参考文献</span></a></li></ol>
+      
+  </div>
+</div>
+</div>
+      <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/avatar.webp" data-sizes="auto" alt="Ainavo" class="lazyload">
+  <div class="sidebar-author-name">Ainavo</div>
+  <div class="sidebar-description">一个菜猫</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div>
+    <div class="sidebar-state-number">9</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>分类</div>
+    <div class="sidebar-state-number">0</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>标签</div>
+    <div class="sidebar-state-number">10</div>
+  </div>
+</div>
+<div class="sidebar-social">
+  
+</div>
+<div class="sidebar-menu">
+  
+    <div class="sidebar-menu-link-wrap">
+      <a class="sidebar-menu-link-dummy" href="/" aria-label="首页"></a>
+      <span class="sidebar-menu-icon"></span>
+      <div class="sidebar-menu-link">首页</div>
+    </div>
+  
+    <div class="sidebar-menu-link-wrap">
+      <a class="sidebar-menu-link-dummy" href="/archives" aria-label="归档"></a>
+      <span class="sidebar-menu-icon"></span>
+      <div class="sidebar-menu-link">归档</div>
+    </div>
+  
+    <div class="sidebar-menu-link-wrap">
+      <a class="sidebar-menu-link-dummy" href="/about" aria-label="关于"></a>
+      <span class="sidebar-menu-icon"></span>
+      <div class="sidebar-menu-link">关于</div>
+    </div>
+  
+    <div class="sidebar-menu-link-wrap">
+      <a class="sidebar-menu-link-dummy" href="/friend" aria-label="友链"></a>
+      <span class="sidebar-menu-icon"></span>
+      <div class="sidebar-menu-link">友链</div>
+    </div>
+  
+</div>
+</div>
+    
+  </div>
+  
+    <div class="sidebar-btn-wrapper">
+      <div class="sidebar-toc-btn current"></div>
+      <div class="sidebar-common-btn"></div>
+    </div>
+  
+</nav>
+
+    </div>
+    <div class="site-search">
+      <div class="reimu-popup popup">
+        <div class="reimu-search">
+          <span class="reimu-search-input-icon"></span>
+          <div class="reimu-search-input" id="reimu-search-input"></div>
+        </div>
+        <div class="reimu-results">
+          <div id="reimu-stats"></div>
+          <div id="reimu-hits"></div>
+          <div id="reimu-pagination" class="reimu-pagination"></div>
+        </div>
+        <span class="popup-btn-close"></span>
+      </div>
+    </div>
+    
+<script src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js"></script>
+
+
+<script src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js"></script>
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+<script src="/js/pjax_script.js" data-pjax></script>
+
+
+<script type="module" data-pjax>
+  import PhotoSwipeLightbox from "https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe-lightbox.esm.js";
+  
+  const pswp = () => {
+    if (_$$('.article-entry a.article-gallery-item').length > 0) {
+      new PhotoSwipeLightbox({
+        gallery: '.article-entry',
+        children: 'a.article-gallery-item',
+        pswpModule: () => import("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.esm.js")
+      }).init();
+    }
+    if(_$$('.article-gallery a.article-gallery-item').length > 0) {
+      new PhotoSwipeLightbox({
+        gallery: '.article-gallery',
+        children: 'a.article-gallery-item',
+        pswpModule: () => import("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.esm.js")
+      }).init();
+    }
+    window.lightboxStatus = 'done';
+    window.removeEventListener('lightbox:ready', pswp);
+  }
+  if(window.lightboxStatus === 'ready') {
+    pswp()
+  } else {
+    window.addEventListener('lightbox:ready', pswp);
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<script src="https://npm.webcache.cn/mouse-firework@0.0.4/dist/index.umd.js"></script>
+
+  <script>
+    firework(JSON.parse('{"excludeElements":["a","button"],"particles":[{"shape":"circle","move":["emit"],"easing":"easeOutExpo","colors":["#ff5252","#ff7c7c","#ffafaf","#ffd0d0"],"number":20,"duration":[1200,1800],"shapeOptions":{"radius":[16,32],"alpha":[0.3,0.5]}},{"shape":"circle","move":["diffuse"],"easing":"easeOutExpo","colors":["#ff0000"],"number":1,"duration":[1200,1800],"shapeOptions":{"radius":20,"alpha":[0.2,0.5],"lineWidth":6}}]}'))
+  </script>
+
+
+
+
+
+
+<div id="lazy-script">
+  <div>
+    
+  </div>
+</div>
+
+
+  <script>
+    console.log(String.raw`%c 
+ ______     ______     __     __    __     __  __    
+/\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+\ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+ \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+  \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                  
+`,'color: #ff5252;')
+    console.log('%c Theme.Reimu v' + '0.2.2' + ' %c https://github.com/D-Sketon/hexo-theme-reimu ', 'color: white; background: #ff5252; padding:5px 0;', 'padding:4px;border:1px solid #ff5252;')
+  </script>
+  
+
+
+  
+<script src="https://npm.webcache.cn/busuanzi@2.3.0/bsz.pure.mini.js" async></script>
+
+
+  <!-- hexo injector body_end start -->
+<script src="/js/insert_highlight.js" data-pjax></script>
+<!-- hexo injector body_end end --></body>
+  </html>
+
