@@ -10,7 +10,7 @@
   
 
   
-  <script>window.icon_font = '4552607_tq6stt6tcg';window.clipboard_tips = {"success":"复制成功(*^▽^*)","fail":"复制失败 (ﾟ⊿ﾟ)ﾂ"};</script>
+  <script>window.icon_font = '4552607_tq6stt6tcg';window.clipboard_tips = {"success":"复制成功(*^▽^*)","fail":"复制失败 (ﾟ⊿ﾟ)ﾂ","copyright":{"enable":false,"count":50,"content":"本文版权：本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！"}};</script>
   
   
   <title>
@@ -71,7 +71,6 @@
       }).init();
     </script>
   
-  
 <meta name="generator" content="Hexo 7.3.0"></head>
 
   <body>
@@ -119,6 +118,7 @@
 <div id="copy-tooltip" style="pointer-events: none; opacity: 0; transition: all 0.2s ease; position: fixed;top: 50%;left: 50%;z-index: 999;transform: translate(-50%, -50%);color: white;background: rgba(0, 0, 0, 0.5);padding: 10px 15px;border-radius: 10px;">
 </div>
 
+
     <div id="container">
       <div id="wrap">
         <div id="header-nav">
@@ -150,6 +150,8 @@
     
       <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
     
+    
+      <a id="nav-search-btn" class="nav-icon popup-trigger" title="搜索"></a>
     
     
   </nav>
@@ -188,6 +190,7 @@
       <div class="article-date wow slideInLeft">
   <a href="/2023/07/21/%E6%95%B0%E7%BB%84%E4%B8%8E%E6%8C%87%E9%92%88/" class="article-date-link">
     <time datetime="2023-07-21T12:28:25.000Z" itemprop="datePublished">2023-07-21</time>
+    <time style="display: none;" id="post-update-time">2024-08-26</time>
   </a>
 </div>
 
@@ -198,6 +201,7 @@
     
 
     <div class="e-content article-entry" itemprop="articleBody">
+      
       
         <p>函数和指针！！！</p>
 <span id="more"></span>
@@ -432,6 +436,11 @@
     <footer class="article-footer">
       
       
+        <a href="/2023/07/21/%E6%95%B0%E7%BB%84%E4%B8%8E%E6%8C%87%E9%92%88/#comments" class="article-comment-link">
+          <span class="post-comments-count valine-comment-count" data-xid="/2023/07/21/%E6%95%B0%E7%BB%84%E4%B8%8E%E6%8C%87%E9%92%88/" itemprop="commentCount"></span>
+          留言
+        </a>
+      
       
       
       
@@ -479,6 +488,8 @@
   
 </article>
 
+  <section id="comments" class="vcomment"></section>
+
 
 
 
@@ -506,7 +517,7 @@
 <div class="sidebar-state">
   <div class="sidebar-state-article">
     <div>文章</div>
-    <div class="sidebar-state-number">9</div>
+    <div class="sidebar-state-number">10</div>
   </div>
   <div class="sidebar-state-category">
     <div>分类</div>
@@ -514,7 +525,7 @@
   </div>
   <div class="sidebar-state-tag">
     <div>标签</div>
-    <div class="sidebar-state-number">10</div>
+    <div class="sidebar-state-number">12</div>
   </div>
 </div>
 <div class="sidebar-social">
@@ -584,10 +595,10 @@
       
         <div>
           <span class="icon-brush"></span>
-          31.2k
+          34.1k
           &nbsp;|&nbsp;
           <span class="icon-coffee"></span>
-          02:00
+          02:11
         </div>
       
       
@@ -629,7 +640,7 @@
 <div class="sidebar-state">
   <div class="sidebar-state-article">
     <div>文章</div>
-    <div class="sidebar-state-number">9</div>
+    <div class="sidebar-state-number">10</div>
   </div>
   <div class="sidebar-state-category">
     <div>分类</div>
@@ -637,7 +648,7 @@
   </div>
   <div class="sidebar-state-tag">
     <div>标签</div>
-    <div class="sidebar-state-number">10</div>
+    <div class="sidebar-state-number">12</div>
   </div>
 </div>
 <div class="sidebar-social">
@@ -685,15 +696,15 @@
     <div class="site-search">
       <div class="reimu-popup popup">
         <div class="reimu-search">
-          <span class="reimu-search-input-icon"></span>
+          <div class="reimu-search-input-icon"></div>
           <div class="reimu-search-input" id="reimu-search-input"></div>
+          <div class="popup-btn-close"></div>
         </div>
         <div class="reimu-results">
           <div id="reimu-stats"></div>
           <div id="reimu-hits"></div>
           <div id="reimu-pagination" class="reimu-pagination"></div>
         </div>
-        <span class="popup-btn-close"></span>
       </div>
     </div>
     
@@ -740,7 +751,33 @@
 </script>
 
 
+  
+<script src="https://npm.webcache.cn/valine@1.5.1/dist/Valine.min.js" data-pjax></script>
 
+  <script data-pjax>
+    var GUEST_INFO = ['nick', 'mail', 'link'];
+    var guest_info = 'nick,mail,link'.split(',').filter((item) => {
+      return GUEST_INFO.indexOf(item) > -1
+    });
+    var recordIP = JSON.parse('true');
+    var highlight = JSON.parse('true');
+    var visitor = JSON.parse('false');
+
+    new Valine({
+      el: '.vcomment',
+      appId: "c7oTAhUiKwgWVGPFTGuZVjGk-gzGzoHsz",
+      appKey: "wbZf6c0Kw530P4a4YnFRf3gv",
+      placeholder: "Just go go",
+      pageSize: '10',
+      avatar: 'mp',
+      lang: 'zh-cn',
+      recordIP: recordIP,
+      highlight: highlight,
+      visitor: visitor,
+      requiredFields: guest_info,
+      path: window.location.pathname
+    });
+  </script>
 
 
 
@@ -755,6 +792,36 @@
 
 
   
+<script src="https://npm.webcache.cn/algoliasearch@4.17.1/dist/algoliasearch-lite.umd.js"></script>
+
+  
+<script src="https://npm.webcache.cn/instantsearch.js@4.56.1/dist/instantsearch.production.min.js"></script>
+
+  
+<script src="/js/algolia_search.js"></script>
+
+  <script>
+    var CONFIG = {
+      root: '/',
+      algolia: {
+        applicationID: "ZRK8ROYLVO",
+        apiKey: "5a58edc6d97807533c4a5165f1085b81",
+        indexName: "Ainavo",
+        hits: {
+          "per_page": parseInt("10")
+        },
+        labels: {
+          "input_placeholder": "搜索.....",
+          "hits_empty": "未发现与 「${query}」相关内容",
+          "hits_stats": "找到${hits}条结果（用时 ${time} ms）"
+        }
+      }
+    };
+  </script>
+
+
+
+  
 <script src="https://npm.webcache.cn/mouse-firework@0.0.4/dist/index.umd.js"></script>
 
   <script>
@@ -764,6 +831,19 @@
 
 
 
+
+
+
+  
+<script src="https://npm.webcache.cn/quicklink@2.3.0/dist/quicklink.umd.js"></script>
+
+  <script data-pjax>
+    quicklink.listen({
+      timeout: 3000,
+      priority: true,
+      ignores: []
+    });
+  </script>
 
 
 <div id="lazy-script">
@@ -782,14 +862,27 @@
   \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
                                                   
 `,'color: #ff5252;')
-    console.log('%c Theme.Reimu v' + '0.2.2' + ' %c https://github.com/D-Sketon/hexo-theme-reimu ', 'color: white; background: #ff5252; padding:5px 0;', 'padding:4px;border:1px solid #ff5252;')
+    console.log('%c Theme.Reimu v' + '0.2.3' + ' %c https://github.com/D-Sketon/hexo-theme-reimu ', 'color: white; background: #ff5252; padding:5px 0;', 'padding:4px;border:1px solid #ff5252;')
   </script>
   
+
 
 
   
 <script src="https://npm.webcache.cn/busuanzi@2.3.0/bsz.pure.mini.js" async></script>
 
+
+
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.getRegistrations().then((registrations) => {
+      for (let registration of registrations) {
+        registration.unregister();
+      }
+    });
+  }
+</script>
 
   <!-- hexo injector body_end start -->
 <script src="/js/insert_highlight.js" data-pjax></script>

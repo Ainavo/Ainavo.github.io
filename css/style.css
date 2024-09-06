@@ -720,7 +720,7 @@ a {
   overflow: hidden;
   background: var(--color-header-background);
   box-shadow: 0 0 15px 5px rgba(0,0,0,0.1);
-  transition: 0.3s;
+  transition: background 0.3s, top 0.3s;
   z-index: 200;
 }
 #header-nav:hover {
@@ -1631,10 +1631,11 @@ a.article-title:hover {
 #page-nav a {
   color: var(--grey-9);
   text-decoration: none;
-  transition: background 0.2s;
+  transition: 0.2s;
 }
 #page-nav a:hover {
   background: var(--red-2);
+  box-shadow: 0 0 10px rgba(255,78,106,0.55);
   color: #fff;
 }
 #page-nav .prev {
@@ -1659,7 +1660,7 @@ a.article-title:hover {
   background: var(--red-1);
   color: #fff;
   font-weight: bold;
-  box-shadow: 0 2px 12px rgba(255,78,106,0.55);
+  box-shadow: 0 0 10px rgba(255,78,106,0.55);
 }
 @media screen and (max-width: 479px) {
   #page-nav .current {
@@ -2260,7 +2261,7 @@ pre .javascript .function {
   overflow: hidden;
 }
 .popup {
-  display: none;
+  visibility: hidden;
   position: fixed;
   top: 10%;
   left: 50%;
@@ -2272,6 +2273,14 @@ pre .javascript .function {
   color: var(--grey-9);
   z-index: 9999;
   border-radius: 5px;
+  opacity: 0;
+  transform: scale(0.5);
+  transition: 0.3s;
+}
+.popup.show {
+  visibility: visible;
+  opacity: 1;
+  transform: scale(1);
 }
 @media screen and (max-width: 767px) {
   .popup {
@@ -2299,17 +2308,14 @@ pre .javascript .function {
   padding: 0;
 }
 .popup-btn-close {
-  position: absolute;
-  right: 15px;
   color: var(--red-1);
   font: 20px bold;
-  text-transform: uppercase;
-  vertical-align: middle;
   cursor: var(--cursor-pointer);
   padding-left: 15px;
-  top: 8px;
 }
 .reimu-search {
+  display: flex;
+  align-items: center;
   padding: 8px 15px;
   max-height: 50px;
   border-bottom: 1px solid #ccc;
@@ -2324,8 +2330,7 @@ pre .javascript .function {
   margin-right: 5px;
 }
 .reimu-search-input {
-  display: inline-block;
-  width: calc(90% - 20px);
+  flex: 1;
 }
 .reimu-search-input input {
   padding: 5px 0;
@@ -2373,7 +2378,7 @@ pre .javascript .function {
 .reimu-hit-item-link:before {
   content: "";
   width: 6px;
-  height: 15px;
+  height: 12px;
   background: var(--color-h2-after);
   display: inline-block;
   vertical-align: middle;
@@ -2385,7 +2390,6 @@ pre .javascript .function {
   transition: 0.2s;
 }
 .reimu-hit-item-link:hover:before {
-  width: 6px;
   height: 6px;
   border-radius: 50%;
   opacity: 1;
@@ -2402,10 +2406,11 @@ pre .javascript .function {
   padding: 10px 15px;
   color: var(--grey-9);
   text-decoration: none;
-  transition: background 0.2s;
+  transition: 0.2s;
 }
 .reimu-pagination a:hover {
   background: var(--red-2);
+  box-shadow: 0 0 6px rgba(255,78,106,0.55);
   color: #fff;
 }
 .reimu-pagination .pagination-item {
@@ -2420,7 +2425,7 @@ pre .javascript .function {
   color: #fff;
   background: var(--red-1);
   font-weight: bold;
-  box-shadow: 0 2px 6px rgba(255,78,106,0.55);
+  box-shadow: 0 0 6px rgba(255,78,106,0.55);
 }
 .reimu-pagination .disabled-item {
   display: none;
@@ -2952,7 +2957,7 @@ pre .javascript .function {
   background: var(--red-3);
   color: #fff;
   font-weight: bold;
-  box-shadow: 0 2px 12px rgba(255,78,106,0.55);
+  box-shadow: 0 0 10px rgba(255,78,106,0.55);
   border-radius: 5px;
   margin: 20px;
   transition: 0.3s;

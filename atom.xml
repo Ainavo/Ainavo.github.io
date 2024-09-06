@@ -135,7 +135,7 @@
     <link href="https://ainavo.github.io/2023/07/24/Git-%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
     <id>https://ainavo.github.io/2023/07/24/Git-%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</id>
     <published>2023-07-24T03:31:55.000Z</published>
-    <updated>2024-08-26T01:35:50.542Z</updated>
+    <updated>2024-09-05T03:16:36.499Z</updated>
     
     
       
@@ -205,6 +205,37 @@
     
     
     <category term="C" scheme="https://ainavo.github.io/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>TCNOpen API学习笔记</title>
+    <link href="https://ainavo.github.io/0224/08/28/TCNOpen-API%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>https://ainavo.github.io/0224/08/28/TCNOpen-API%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</id>
+    <published>0224-08-27T16:58:21.000Z</published>
+    <updated>2024-09-05T05:57:27.652Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;span id=&quot;more&quot;&gt;&lt;/span&gt;
+
+&lt;!-- ## Data Structure Index &lt;==&gt; 数据结构索引
+### API:（, ）
+## File Index &lt;==&gt; 文件索引及说明
+### API:（, ）
+## Data Structure</summary>
+        
+      
+    
+    
+    
+    
+    <category term="TCNOpen API" scheme="https://ainavo.github.io/tags/TCNOpen-API/"/>
+    
+    <category term="列车通信协议" scheme="https://ainavo.github.io/tags/%E5%88%97%E8%BD%A6%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/"/>
     
   </entry>
   
