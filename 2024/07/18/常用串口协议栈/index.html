@@ -1,0 +1,1932 @@
+
+  <!DOCTYPE html>
+  <html lang="zh-CN"  >
+  <head>
+  <meta charset="utf-8">
+  
+
+  
+
+  
+
+  
+  <script>window.icon_font = '4552607_tq6stt6tcg';window.clipboard_tips = {"success":"复制成功(*^▽^*)","fail":"复制失败 (ﾟ⊿ﾟ)ﾂ","copyright":{"enable":false,"count":50,"content":"本文版权：本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！"}};</script>
+  
+  
+  <title>
+    常用串口协议栈 |
+    
+    Ainavo&#39;s Blog
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin><link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7CNoto%20Serif%20SC:400,400italic,700,700italic%7CUbuntu%20Mono:400,400italic,700,700italic&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7CNoto%20Serif%20SC:400,400italic,700,700italic%7CUbuntu%20Mono:400,400italic,700,700italic&display=swap" media="print" onload="this.media&#x3D;&#39;all&#39;">
+  
+    <link rel="preload" href="//at.alicdn.com/t/c/font_4552607_tq6stt6tcg.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  
+  
+<link rel="stylesheet" href="/css/loader.css">
+
+  <meta name="description" content="UARTUARTUART、I2CI{^2}CI2C、SPISPISPI、CANCANCAN、USBUSBUSB、MQTTMQTTMQTT、WIFIWIFIWIFI、UDPUDPUDP、TCP&#x2F;IPTCP&#x2F;IPTCP&#x2F;IP、............">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常用串口协议栈">
+<meta property="og:url" content="https://ainavo.github.io/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/index.html">
+<meta property="og:site_name" content="Ainavo&#39;s Blog">
+<meta property="og:description" content="UARTUARTUART、I2CI{^2}CI2C、SPISPISPI、CANCANCAN、USBUSBUSB、MQTTMQTTMQTT、WIFIWIFIWIFI、UDPUDPUDP、TCP&#x2F;IPTCP&#x2F;IPTCP&#x2F;IP、............">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://ainavo.github.io/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/UART%E7%A1%AC%E4%BB%B6%E8%BF%9E%E6%8E%A5.png">
+<meta property="og:image" content="https://ainavo.github.io/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/UART%E6%95%B0%E6%8D%AE%E5%B8%A7.png">
+<meta property="og:image" content="https://ainavo.github.io/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/TTL%E7%94%B5%E5%B9%B3.png">
+<meta property="og:image" content="https://ainavo.github.io/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/RS232%E7%94%B5%E5%B9%B3.png">
+<meta property="og:image" content="https://ainavo.github.io/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/RS485.svg">
+<meta property="og:image" content="https://ainavo.github.io/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/I2C%E7%A1%AC%E4%BB%B6%E8%BF%9E%E6%8E%A5.png">
+<meta property="og:image" content="https://ainavo.github.io/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/I2C%E8%B5%B7%E5%A7%8B%E4%BF%A1%E5%8F%B7.png">
+<meta property="og:image" content="https://ainavo.github.io/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/I2C%E6%95%B0%E6%8D%AE%E5%B8%A7%E8%A7%84%E5%88%99.png">
+<meta property="og:image" content="https://ainavo.github.io/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/I2C%E5%81%9C%E6%AD%A2%E4%BF%A1%E5%8F%B7.png">
+<meta property="og:image" content="https://ainavo.github.io/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/7%E4%BD%8D%E5%9C%B0%E5%9D%80%E6%A8%A1%E5%BC%8F%E4%B8%8B%E7%9A%84%E5%86%99%E6%93%8D%E4%BD%9C%E5%8D%8F%E8%AE%AE%E5%B8%A7.png">
+<meta property="og:image" content="https://ainavo.github.io/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/10%E4%BD%8D%E5%9C%B0%E5%9D%80%E6%A8%A1%E5%BC%8F%E4%B8%8B%E7%9A%84%E5%86%99%E6%93%8D%E4%BD%9C%E5%8D%8F%E8%AE%AE%E5%B8%A7.png">
+<meta property="og:image" content="https://ainavo.github.io/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/7%E4%BD%8D%E5%9C%B0%E5%9D%80%E6%A8%A1%E5%BC%8F%E4%B8%8B%E7%9A%84%E8%AF%BB%E6%93%8D%E4%BD%9C%E5%8D%8F%E8%AE%AE%E5%B8%A7.png">
+<meta property="og:image" content="https://ainavo.github.io/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/10%E4%BD%8D%E5%9C%B0%E5%9D%80%E6%A8%A1%E5%BC%8F%E4%B8%8B%E7%9A%84%E8%AF%BB%E6%93%8D%E4%BD%9C%E5%8D%8F%E8%AE%AE%E5%B8%A7.png">
+<meta property="og:image" content="https://ainavo.github.io/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/SPI%E7%89%A9%E7%90%86%E8%BF%9E%E6%8E%A5%E5%A4%9A%E8%AE%BE%E5%A4%87.svg">
+<meta property="og:image" content="https://ainavo.github.io/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/SPI%E6%97%B6%E5%BA%8F%E5%9B%BE.png">
+<meta property="og:image" content="https://ainavo.github.io/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/SPI%E9%87%87%E9%9B%86%E4%BF%A1%E5%8F%B7%E6%A8%A1%E5%BC%8F%E9%85%8D%E7%BD%AE.png">
+<meta property="og:image" content="https://ainavo.github.io/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/%E9%AB%98%E9%80%9FCAN%E6%80%BB%E7%BA%BF%EF%BC%88%E9%97%AD%E7%8E%AF%EF%BC%89.png">
+<meta property="og:image" content="https://ainavo.github.io/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/%E4%BD%8E%E9%80%9FCAN%E6%80%BB%E7%BA%BF%EF%BC%88%E5%BC%80%E7%8E%AF%EF%BC%89.png">
+<meta property="og:image" content="https://ainavo.github.io/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/CAN%E6%80%BB%E7%BA%BF%E6%A0%87%E5%87%86%E6%95%B0%E6%8D%AE%E5%B8%A7.svg">
+<meta property="og:image" content="https://ainavo.github.io/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/CAN%E6%80%BB%E7%BA%BF%E6%89%A9%E5%B1%95%E6%95%B0%E6%8D%AE%E5%B8%A7.svg">
+<meta property="og:image" content="https://ainavo.github.io/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/CAN%E6%80%BB%E7%BA%BF%E6%A0%87%E5%87%86%E8%BF%9C%E7%A8%8B%E5%B8%A7.svg">
+<meta property="og:image" content="https://ainavo.github.io/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/CAN%E6%80%BB%E7%BA%BF%E6%89%A9%E5%B1%95%E8%BF%9C%E7%A8%8B%E5%B8%A7.svg">
+<meta property="og:image" content="https://ainavo.github.io/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/CAN%E6%80%BB%E7%BA%BF%E9%94%99%E8%AF%AF%E5%B8%A7.svg">
+<meta property="og:image" content="https://ainavo.github.io/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/CAN%E6%80%BB%E7%BA%BF%E8%BF%87%E8%BD%BD%E5%B8%A7.svg">
+<meta property="og:image" content="https://ainavo.github.io/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/CAN%E6%80%BB%E7%BA%BF%E9%97%B4%E9%9A%94%E5%B8%A7.svg">
+<meta property="og:image" content="https://ainavo.github.io/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/1bit=10Tq.svg">
+<meta property="og:image" content="https://ainavo.github.io/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/%E7%A1%AC%E4%BB%B6%E5%90%8C%E6%AD%A5.svg">
+<meta property="og:image" content="https://ainavo.github.io/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/%E5%86%8D%E5%90%8C%E6%AD%A5.svg">
+<meta property="og:image" content="https://ainavo.github.io/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/%E4%BB%A5%E5%A4%AA%E7%BD%91%E6%95%B0%E6%8D%AE%E5%8C%85.png">
+<meta property="og:image" content="https://ainavo.github.io/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/%E4%BB%A5%E5%A4%AA%E7%BD%91%E5%B8%A7%E6%A0%BC%E5%BC%8F.png">
+<meta property="og:image" content="https://ainavo.github.io/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/IP%E6%8A%A5%E6%96%87%E6%A0%BC%E5%BC%8F.png">
+<meta property="og:image" content="https://ainavo.github.io/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/UDP%E5%8D%8F%E8%AE%AE%E6%95%B0%E6%8D%AE%E5%B8%A7%E6%A0%BC%E5%BC%8F.png">
+<meta property="og:image" content="https://ainavo.github.io/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/TCP%E5%8D%8F%E8%AE%AE%E5%B8%A7%E6%A0%BC%E5%BC%8F.png">
+<meta property="article:published_time" content="2024-07-18T12:55:13.000Z">
+<meta property="article:modified_time" content="2024-08-26T01:36:25.005Z">
+<meta property="article:author" content="Ainavo">
+<meta property="article:tag" content="嵌入式">
+<meta property="article:tag" content="串口协议">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ainavo.github.io/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/UART%E7%A1%AC%E4%BB%B6%E8%BF%9E%E6%8E%A5.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Ainavo's Blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/images/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css">
+
+  
+  
+  
+  
+<script src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js"></script>
+
+  
+    
+<link rel="stylesheet" href="https://npm.webcache.cn/wowjs@1.1.3/css/libs/animate.css">
+
+    
+<script src="https://npm.webcache.cn/wowjs@1.1.3/dist/wow.min.js"></script>
+
+    <script>
+      new WOW({
+        offset: 0,
+        mobile: true,
+        live: false
+      }).init();
+    </script>
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+  <body>
+    
+  <div id='loader'>
+    <div class="loading-left-bg loading-bg"></div>
+    <div class="loading-right-bg loading-bg"></div>
+    <div class="spinner-box">
+      <div class="loading-taichi">
+        <svg width="150" height="150" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="https://www.w3.org/2000/svg" shape-rendering="geometricPrecision">
+          <path d="M303.5 432A80 80 0 0 1 291.5 592A80 80 0 0 1 303.5 432z" fill="#ff6e6b" />
+          <path d="M512 65A447 447 0 0 1 512 959L512 929A417 417 0 0 0 512 95A417 417 0 0 0 512 929L512 959A447 447 0 0 1 512 65z" fill="#fd0d00" />
+          <path d="M512 95A417 417 0 0 1 929 512A208.5 208.5 0 0 1 720.5 720.5L720.5 592A80 80 0 0 0 720.5 432A80 80 0 0 0 720.5 592L720.5 720.5A208.5 208.5 0 0 1 512 512A208.5 208.5 0 0 0 303.5 303.5A208.5 208.5 0 0 0 95 512A417 417 0 0 1 512 95" fill="#fd0d00" />
+        </svg>
+      </div>
+      <div class="loading-word">少女祈祷中...</div>
+    </div>
+  </div>
+  </div>
+  <script>
+    var time = null;
+    var startLoading = () => {
+      time = Date.now();
+      document.getElementById('loader').classList.remove("loading");
+    }
+    var endLoading = () => {
+      if (!time) {
+        document.body.style.overflow = 'auto';
+        document.getElementById('loader').classList.add("loading");
+      } else {
+        if (Date.now() - time > 500) {
+          time = null;
+          document.body.style.overflow = 'auto';
+          document.getElementById('loader').classList.add("loading");
+        } else {
+          setTimeout(endLoading, 500 - (Date.now() - time));
+          time = null;
+        }
+      }
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+    document.getElementById('loader').addEventListener('click', endLoading);
+  </script>
+
+<div id="copy-tooltip" style="pointer-events: none; opacity: 0; transition: all 0.2s ease; position: fixed;top: 50%;left: 50%;z-index: 999;transform: translate(-50%, -50%);color: white;background: rgba(0, 0, 0, 0.5);padding: 10px 15px;border-radius: 10px;">
+</div>
+
+
+    <div id="container">
+      <div id="wrap">
+        <div id="header-nav">
+  <nav id="main-nav">
+    
+      <span class="main-nav-link-wrap">
+        <span class="main-nav-icon"></span>
+        <a class="main-nav-link" href="/">首页</a>
+      </span>
+    
+      <span class="main-nav-link-wrap">
+        <span class="main-nav-icon"></span>
+        <a class="main-nav-link" href="/archives">归档</a>
+      </span>
+    
+      <span class="main-nav-link-wrap">
+        <span class="main-nav-icon"></span>
+        <a class="main-nav-link" href="/about">关于</a>
+      </span>
+    
+      <span class="main-nav-link-wrap">
+        <span class="main-nav-icon"></span>
+        <a class="main-nav-link" href="/friend">友链</a>
+      </span>
+    
+    <a id="main-nav-toggle" class="nav-icon"></a>
+  </nav>
+  <nav id="sub-nav">
+    
+      <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+    
+    
+      <a id="nav-search-btn" class="nav-icon popup-trigger" title="搜索"></a>
+    
+    
+  </nav>
+</div>
+<header id="header">
+  
+    <img fetchpriority="high" src="https://haowallpaper.com/link/common/file/previewFileImg/b0a9073424a28afaa02350cd01916637" alt="常用串口协议栈">
+  
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <div id="logo-wrap">
+        
+          
+          
+            <a href="/" id="logo">
+              <h1>常用串口协议栈</h1>
+            </a>
+          
+        
+      </div>
+      
+        
+        <h2 id="subtitle-wrap">
+          
+        </h2>
+      
+    </div>
+  </div>
+</header>
+
+        <div id="content" class="outer">
+          
+          <section id="main"><article id="post-常用串口协议栈" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner">
+    <div class="article-meta">
+      <div class="article-date wow slideInLeft">
+  <a href="/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/" class="article-date-link">
+    <time datetime="2024-07-18T12:55:13.000Z" itemprop="datePublished">2024-07-18</time>
+    <time style="display: none;" id="post-update-time">2024-08-26</time>
+  </a>
+</div>
+
+      
+
+    </div>
+    <div class="hr-line"></div>
+    
+
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+      
+        <p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi><mi>A</mi><mi>R</mi><mi>T</mi></mrow><annotation encoding="application/x-tex">UART</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="mord mathnormal">A</span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span></span></span></span>、<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>I</mi><msup><mrow></mrow><mn>2</mn></msup><mi>C</mi></mrow><annotation encoding="application/x-tex">I{^2}C</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="mord"><span class="mord"><span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span></span></span></span>、<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mi>P</mi><mi>I</mi></mrow><annotation encoding="application/x-tex">SPI</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span></span></span></span>、<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mi>A</mi><mi>N</mi></mrow><annotation encoding="application/x-tex">CAN</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord mathnormal">A</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span>、<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi><mi>S</mi><mi>B</mi></mrow><annotation encoding="application/x-tex">USB</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span>、<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mi>Q</mi><mi>T</mi><mi>T</mi></mrow><annotation encoding="application/x-tex">MQTT</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal">Q</span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span></span></span></span>、<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>W</mi><mi>I</mi><mi>F</mi><mi>I</mi></mrow><annotation encoding="application/x-tex">WIFI</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span></span></span></span>、<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi><mi>D</mi><mi>P</mi></mrow><annotation encoding="application/x-tex">UDP</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span></span></span></span>、<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mi>C</mi><mi>P</mi><mi mathvariant="normal">/</mi><mi>I</mi><mi>P</mi></mrow><annotation encoding="application/x-tex">TCP/IP</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord">/</span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span></span></span></span>、<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi></mrow><annotation encoding="application/x-tex">....</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.10556em;vertical-align:0em;"></span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span></span></span></span></p>
+<span id="more"></span>
+<h1 id="常见的通信协议"><a class="markdownIt-Anchor" href="#常见的通信协议"></a> 常见的通信协议</h1>
+<table border="1" cellpadding="3" cellspacing="0" style="width: 100%;margin:auto">
+    <tr>
+        <td colspan="2" style="text-align: center;">通信协议</td>
+        <td style="text-align: center;">串行/并行</td>
+        <td style="text-align: center;">传输方向</td>
+        <td style="text-align: center;">同步/异步</td>
+        <td style="text-align: center;">电平逻辑</td>
+        <td style="text-align: center;">主从组成</td>
+    </tr>
+    <tr>
+        <td rowspan="3" style="text-align: center;">UART</td>
+        <td style="text-align: center;">TTL</td>
+        <td style="text-align: center;">串行</td>
+        <td style="text-align: center;">全双工</td>
+        <td style="text-align: center;">异步</td>
+        <td style="text-align: center;">逻辑电平</td>
+        <td style="text-align: center;">一主一从</td>
+    </tr>
+    <tr>
+        <td style="text-align: center;">RS232</td>
+        <td style="text-align: center;">串行</td>
+        <td style="text-align: center;">全双工</td>
+        <td style="text-align: center;">异步</td>
+        <td style="text-align: center;">逻辑电平</td>
+        <td style="text-align: center;">一主一从</td>
+    </tr>
+    <tr>
+        <td style="text-align: center;">RS485</td>
+        <td style="text-align: center;">串行</td>
+        <td style="text-align: center;">半双工</td>
+        <td style="text-align: center;">异步</td>
+        <td style="text-align: center;">差分信号</td>
+        <td style="text-align: center;">一主多从</td>
+    </tr>
+    <tr>
+        <td colspan="2" style="text-align: center;">USART</td>
+        <td style="text-align: center;">串行</td>
+        <td style="text-align: center;">全双工</td>
+        <td style="text-align: center;">同步</td>
+        <td style="text-align: center;">逻辑电平</td>
+        <td style="text-align: center;">一主一从</td>
+    </tr>
+    <tr>
+        <td colspan="2" style="text-align: center;">I2C</td>
+        <td style="text-align: center;">串行</td>
+        <td style="text-align: center;">半双工</td>
+        <td style="text-align: center;">同步</td>
+        <td style="text-align: center;">逻辑电平</td>
+        <td style="text-align: center;">一主多从</td>
+    </tr>
+    <tr>
+        <td colspan="2" style="text-align: center;">SPI</td>
+        <td style="text-align: center;">串行</td>
+        <td style="text-align: center;">全双工</td>
+        <td style="text-align: center;">同步</td>
+        <td style="text-align: center;">逻辑电平</td>
+        <td style="text-align: center;">一主多从</td>
+    </tr>
+    <tr>
+        <td colspan="2" style="text-align: center;">CAN</td>
+        <td style="text-align: center;">串行</td>
+        <td style="text-align: center;">半双工</td>
+        <td style="text-align: center;">异步</td>
+        <td style="text-align: center;">差分信号</td>
+        <td style="text-align: center;">多主多从</td>
+    </tr>
+    <tr>
+        <td colspan="2" style="text-align: center;">1-Wire</td>
+        <td style="text-align: center;">串行</td>
+        <td style="text-align: center;">半双工</td>
+        <td style="text-align: center;">异步</td>
+        <td style="text-align: center;">逻辑电平</td>
+        <td style="text-align: center;">一主多从</td>
+    </tr>
+    <tr>
+        <td colspan="2" style="text-align: center;">USB2.0</td>
+        <td style="text-align: center;">串行</td>
+        <td style="text-align: center;">半双工</td>
+        <td style="text-align: center;">异步</td>
+        <td style="text-align: center;">差分信号</td>
+        <td style="text-align: center;">一主多从</td>
+    </tr>
+    <tr>
+        <td colspan="2" style="text-align: center;">MQTT</td>
+        <td style="text-align: center;">串行</td>
+        <td style="text-align: center;"></td>
+        <td style="text-align: center;"></td>
+        <td style="text-align: center;"></td>
+        <td style="text-align: center;"></td>
+    </tr>
+    <tr>
+        <td colspan="2" style="text-align: center;">WIFI</td>
+        <td style="text-align: center;">串行</td>
+        <td style="text-align: center;"></td>
+        <td style="text-align: center;"></td>
+        <td style="text-align: center;"></td>
+        <td style="text-align: center;"></td>
+    </tr>
+    <tr>
+        <td colspan="2" style="text-align: center;">UDP</td>
+        <td style="text-align: center;">串行</td>
+        <td style="text-align: center;"></td>
+        <td style="text-align: center;"></td>
+        <td style="text-align: center;"></td>
+        <td style="text-align: center;"></td>
+    </tr>
+    <tr>
+        <td colspan="2" style="text-align: center;">TCP/IP</td>
+        <td style="text-align: center;">串行</td>
+        <td style="text-align: center;"></td>
+        <td style="text-align: center;"></td>
+        <td style="text-align: center;"></td>
+        <td style="text-align: center;"></td>
+    </tr>
+</table>
+<h2 id="uart-通信协议"><a class="markdownIt-Anchor" href="#uart-通信协议"></a> UART 通信协议</h2>
+<p>UART（Universal Asynchronous Receiver/Transmitter，通用异步收发器）是一种双向、串行、异步通信总线。</p>
+<h3 id="uart-的硬件链接"><a class="markdownIt-Anchor" href="#uart-的硬件链接"></a> UART 的硬件链接</h3>
+<p>UART 串口需要 3 根线通信，分别是 TXD（发送线）、RXD（接收线）和 GND（地线），如下图 1-1 所示。</p>
+<img src="/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/UART%E7%A1%AC%E4%BB%B6%E8%BF%9E%E6%8E%A5.png" class="" title="图1-1 UART硬件连接">
+<center> 图1-1 UART硬件连接 </center>
+<h3 id="uart-的电气特性"><a class="markdownIt-Anchor" href="#uart-的电气特性"></a> UART 的电气特性</h3>
+<ul>
+<li>高电平：通常为 2.5V~5V</li>
+<li>低电平：通常为 0~0.8V</li>
+<li>波特率：是指每秒传输的比特数，常用的波特率包括 9600、19200、38400、115200</li>
+<li>最大的传输距离在几十厘米到几米之间</li>
+</ul>
+<h3 id="uart-的数据帧"><a class="markdownIt-Anchor" href="#uart-的数据帧"></a> UART 的数据帧</h3>
+<p>UART 协议数据帧由起始位、数据帧、奇偶校验位和停止位组成，如图 1-2 所示。</p>
+<img src="/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/UART%E6%95%B0%E6%8D%AE%E5%B8%A7.png" class="" title="图1-2 UART数据帧">
+<center> 图1-2 UART数据帧 </center>
+<ul>
+<li>起始位：在不传输数据时，UART 保持在高电平状态。当 UART 信号从高电平拉低，并保持在低电平持续一个时钟周期时，这一状态被称为起始位。</li>
+<li>数据位：数据帧中包含实际传输的数据，数据帧长度可以是 5~9 比特（不使用奇偶校验位），也可以是 5~8 比特（使用奇偶检验位）。</li>
+<li>奇偶检验位：当接受端收到 UART 传输的数据帧后，如果奇偶校验位设置为 0（偶校验），则对应数据帧中高电平的个数应为偶数个；如果奇偶校验位设置为 1（奇校验），则对应数据帧中的高电平的个数应为奇数个。</li>
+<li>停止位：UART 将数据传输线从低电平拉至高电平并保持 1~2 位时间</li>
+</ul>
+<h3 id="ttl"><a class="markdownIt-Anchor" href="#ttl"></a> TTL</h3>
+<p>TTL（Transistor-Transistor Logic，晶体管-晶体管逻辑）是一种数字电路和逻辑电路的实现技术，主要使用晶体管作为基本的开关元件。TTL 电平用于串口通信时，有 3.3V 和 5V 两个系列。由于电压范围小，所以抗干扰能力较弱，传输的具体不远，在 9600 波特率传输距离为 2 米，一般不超过 15 米。降低波特率可以传输得更远，这个与电磁环境环境有关。可做全双工通信</p>
+<ul>
+<li>逻辑电平 TTL 的高电平通常在 2.4V~5V 之间，低电平通常在 0V~0.8V 之间，如图 1-3 所示<img src="/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/TTL%E7%94%B5%E5%B9%B3.png" class="" title="图1-3 TTL电平">
+<center> 图1-3 TTL电平 </center>
+</li>
+</ul>
+<h3 id="rs232"><a class="markdownIt-Anchor" href="#rs232"></a> RS232</h3>
+<p>RS232 是全双工通信，可以同时进行发送和接受数据，通信传输距离不超过 15 米，只使用 RXD、TXD、GND 三根线进行通信。RS232 采用负逻辑进行通信，逻辑&quot;1&quot;为-3V~-15V；逻辑&quot;0&quot;为 3~15V，如图 1-4 所示。相比于 TTL 电平抗干扰能力更强，可长距离传输，传输频率越低，传输距离越远，越稳定。</p>
+<img src="/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/RS232%E7%94%B5%E5%B9%B3.png" class="" title="图1-4 RS232电平">
+<center> 图1-4 RS232电平 </center>
+<h3 id="rs485"><a class="markdownIt-Anchor" href="#rs485"></a> RS485</h3>
+<p>RS485 采用双线半双工传输，最大速率 10MB/s，电平逻辑由双线的电平差决定，如图 1-5 所示。逻辑&quot;1&quot;为：+2V<sub>+6V，逻辑&quot;0&quot;为：-2V</sub>-6V，提高了抗干扰能力，传输距离几十米~几千米。</p>
+<img src="/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/RS485.svg" class="" title="图1-5 RS485电平">
+<center> 图1-5 RS485电平 </center>
+<h2 id="i2c-通信协议"><a class="markdownIt-Anchor" href="#i2c-通信协议"></a> I2C 通信协议</h2>
+<h3 id="i2c-的硬件特性"><a class="markdownIt-Anchor" href="#i2c-的硬件特性"></a> I2C 的硬件特性</h3>
+<ul>
+<li>包括 SCL、SDA 两条总线（如图 1-6 所示）</li>
+<li>总线上的每个设备均可通过唯一的地址进行寻址，从机地址 7 位（因此理论上最大从机数 127）</li>
+<li>传输速度：
+<ul>
+<li>标准模式（Standard Mode）：100Kbps</li>
+<li>快速模式（Fast Mode）：400Kbps</li>
+<li>高速模式（High Speed Mode）：3.4Mbps</li>
+<li>超快速模式（Ultra Fast Mode）：5Mbps</li>
+</ul>
+</li>
+</ul>
+<img src="/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/I2C%E7%A1%AC%E4%BB%B6%E8%BF%9E%E6%8E%A5.png" class="" title="图1-6 I2C协议硬件连接示意图">
+<center> 图1-6 I2C协议硬件连接示意图 </center>
+<h3 id="i2c-时序图"><a class="markdownIt-Anchor" href="#i2c-时序图"></a> I2C 时序图</h3>
+<ul>
+<li>开始条件（如图 1-7 所示）
+<ul>
+<li>先将 SDA 从高电平拉到低电平</li>
+<li>然后将 SCL 从高电平拉到低电平</li>
+</ul>
+</li>
+</ul>
+<img src="/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/I2C%E8%B5%B7%E5%A7%8B%E4%BF%A1%E5%8F%B7.png" class="" title="图1-7 I2C开始与停止信号">
+<center> 图1-7 I2C开始与停止信号 </center>
+<ul>
+<li>
+<p>地址位（小端模式）</p>
+<ul>
+<li>主设备与从设备间的通信地址</li>
+<li>7 位寻址模式，地址帧的高 7 位为从机地址</li>
+<li>10 位寻址模式，第一帧发送 7 位地址，然后在发送剩下的地址（有待验证）</li>
+</ul>
+</li>
+<li>
+<p>读写位:R/W–&gt;0：主机向从机写数据 1：主机从从机读数据（位于地址位的后一位–该字节的第八位）</p>
+</li>
+<li>
+<p>应答位（每一帧数据后都要跟一个应答位以表示收到/未收到）</p>
+<ul>
+<li>ACK(0)：当发送地址与从机匹配，则从设备通过将 SDA 总线拉低表示 ACK 位；数据帧后的第 9 个时钟是应答位，是接收方向发送方传送的握手信号；</li>
+<li>NACK(1)：当地址不匹配，则将 SDA 总线拉高表示 NACK；如果总线上从机接收数据，在第 9 个时钟周期不响应主机，从机必须发送 NACK。如果总线上主机接收数据，第 9 个周期发送 NACK，从机接收到 NACK，从机停止发送数据；</li>
+</ul>
+</li>
+<li>
+<p>数据位（小端模式）</p>
+<ul>
+<li>一帧数据一字节（8 位）</li>
+<li>在 SCL 为高电平时，SDA 要保持稳定，此时数据有效。</li>
+<li>SCL 为低电平时，可以改变 SDA</li>
+</ul>
+</li>
+</ul>
+<img src="/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/I2C%E6%95%B0%E6%8D%AE%E5%B8%A7%E8%A7%84%E5%88%99.png" class="" title="图1-8 I2C数据帧">
+<center> 图1-8 I2C数据帧 </center>
+<ul>
+<li>停止条件（如图 1-9 所示）
+<ul>
+<li>先将 SDA 线由低电平拉至高电平</li>
+<li>再将 SCL 线由高电平拉至低电平</li>
+</ul>
+</li>
+</ul>
+<img src="/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/I2C%E5%81%9C%E6%AD%A2%E4%BF%A1%E5%8F%B7.png" class="" title="图1-9 I2C开始与停止信号">
+<center> 图1-9 I2C开始与停止信号 </center>
+<h3 id="i2c-协议帧"><a class="markdownIt-Anchor" href="#i2c-协议帧"></a> I2C 协议帧</h3>
+<ul>
+<li>7 位地址模式下的写操作协议帧:<br />
+首先发送起始信号 S，接着发送需要通信的 7 位从机地址，随机发送写指令，随后从机发送 ACK 信号；然后主机发送要传输的数据，从机接收到数据，返回 ACK；此时若主机不继续操作，则主机发送结束信号 P。<img src="/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/7%E4%BD%8D%E5%9C%B0%E5%9D%80%E6%A8%A1%E5%BC%8F%E4%B8%8B%E7%9A%84%E5%86%99%E6%93%8D%E4%BD%9C%E5%8D%8F%E8%AE%AE%E5%B8%A7.png" class="" title="图1-10 7位地址模式下的写操作协议帧">
+<center> 图1-10 7位地址模式下的写操作协议帧 </center>
+</li>
+<li>10 位地址模式下的写操作协议帧:<br />
+首先发送起始信号 S，接着发送需要通信的前 7 位从机地址，随机发送写指令，随后从机发送 ACK 信号，紧接着发送从机地址的剩下位，从机接收到回应 ACK 信号；然后主机发送要传输的数据，从机接收到数据，返回 ACK；此时若主机不继续操作，则主机发送结束信号 P。<img src="/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/10%E4%BD%8D%E5%9C%B0%E5%9D%80%E6%A8%A1%E5%BC%8F%E4%B8%8B%E7%9A%84%E5%86%99%E6%93%8D%E4%BD%9C%E5%8D%8F%E8%AE%AE%E5%B8%A7.png" class="" title="图1-11 10位地址模式下的写操作协议帧">
+<center> 图1-11 10位地址模式下的写操作协议帧 </center>
+</li>
+<li>7 位地址模式下的读操作协议帧：<br />
+首先发送起始信号 S，接着发送需要通信的 7 位从机地址，随机发送读指令，随后从机发送 ACK 信号；然后从机发送要传输的数据，主机接收到数据，返回 ACK；此时若主机不继续操作，则主机发送结束信号 P。<img src="/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/7%E4%BD%8D%E5%9C%B0%E5%9D%80%E6%A8%A1%E5%BC%8F%E4%B8%8B%E7%9A%84%E8%AF%BB%E6%93%8D%E4%BD%9C%E5%8D%8F%E8%AE%AE%E5%B8%A7.png" class="" title="图1-12 7位地址模式下的读操作协议帧">
+<center> 图1-12 7位地址模式下的读操作协议帧 </center>
+</li>
+<li>10 位地址模式下的读操作协议帧：<br />
+首先发送起始信号 S，接着发送需要通信的前 7 位从机地址，随机发送读指令，随后从机发送 ACK 信号，紧接着发送从机地址的剩下位，从机接收到回应 ACK 信号；然后从机发送要传输的数据，主机接收到数据，返回 ACK；此时若主机不继续操作，则主机发送结束信号 P。<img src="/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/10%E4%BD%8D%E5%9C%B0%E5%9D%80%E6%A8%A1%E5%BC%8F%E4%B8%8B%E7%9A%84%E8%AF%BB%E6%93%8D%E4%BD%9C%E5%8D%8F%E8%AE%AE%E5%B8%A7.png" class="" title="图1-13 10位地址模式下的读操作协议帧">
+<center> 图1-13 10位地址模式下的读操作协议帧 </center>
+</li>
+</ul>
+<h3 id="i2c-的总线仲裁"><a class="markdownIt-Anchor" href="#i2c-的总线仲裁"></a> I2C 的总线仲裁</h3>
+<ul>
+<li>
+<p>SCL 线的时钟同步：</p>
+<ul>
+<li>I2C 总线上具有<strong>与</strong>的逻辑功能，SCL 线上只要一个节点发送低电平，总线就保持低电平。当所有节点发送高电平时，总线才保持高电平。所以，时钟低电平的时间由时钟电平期最长的器件决定，而时钟的高电平时间由时钟高电平期最短的器件决定。</li>
+<li>由于 I2C 这种特性，当多个主机同时发送时钟信号时，在总线上表示的是统一的时钟信号。如果从机希望主机降低传送速度可以通过将 SCL 主动拉低延长其低电平时间来通知主机，当主机在准备下一次传送时发现 SCL 的电平被拉低时进行等待，直到从机完成操作并释放 SCL 线的控制权。</li>
+</ul>
+</li>
+<li>
+<p>SDA 线上的仲裁</p>
+<ul>
+<li>SDA 线上的仲裁也是由于 I2C 总线具有线<strong>与</strong>的逻辑功能。主机在发送数据后，通过比较总线上的数据来决定是否退出竞争。丢失仲裁的主机立即切换到未被寻址的从机状态，以确保自身能被仲裁胜利的主机寻址到。仲裁失败的主机继续输出时钟脉冲（在 SCL 上），直到发送完当前的串行字节。通过这种原理可以保证 I2C 总线在多个主机企图控制总线时保证数据的不丢失。</li>
+<li>解析:当多个设备想发送数据，对比数据低电平优先</li>
+</ul>
+</li>
+</ul>
+<h2 id="spi-通信协议"><a class="markdownIt-Anchor" href="#spi-通信协议"></a> SPI 通信协议</h2>
+<h3 id="spi-的硬件连接"><a class="markdownIt-Anchor" href="#spi-的硬件连接"></a> SPI 的硬件连接</h3>
+<p>如图 1-14 所示，SPI 硬件连接包含 SCK（时钟线）、MOSI（Master Output Slave Input，主输出从输入）、MISO（Master Input Slave Output，主输入从输出）、NSS（片选信号）。产生时钟的一侧称为主机，另一侧称为从机。总是只有一个主机（一般来说可以是微控制器/MCU），但是可以有多个从机。</p>
+<img src="/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/SPI%E7%89%A9%E7%90%86%E8%BF%9E%E6%8E%A5%E5%A4%9A%E8%AE%BE%E5%A4%87.svg" class="" title="图1-14 SPI物理连接">
+<center> 图1-14 SPI物理连接 </center>
+### SPI 的时序图
+<p>整体的传输过程分为如下几个过程：</p>
+<ul>
+<li>主机先将 NSS 信号拉低以确保从机接受数据；</li>
+<li>当接收端检测到时钟的边沿信号时，它将立即读取数据线上的信号，这样就得到了一位数据（1bit）；</li>
+<li>主机发送到从机时：主机产生相应的时钟信号，然后数据一位一位地将从 MOSI 信号线上进行发送到从机；</li>
+<li>主机接收从机数据：如果从机需要将数据发送回主机，则主机将继续生成预定数量的时钟信号，并且从机会将数据通过 MISO 信号线发送。<img src="/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/SPI%E6%97%B6%E5%BA%8F%E5%9B%BE.png" class="" title="图1-15 SPI时序图">
+<center> 图1-15 SPI时序图 </center>
+</li>
+</ul>
+<h3 id="spi-数据帧"><a class="markdownIt-Anchor" href="#spi-数据帧"></a> SPI 数据帧</h3>
+<ul>
+<li>
+<p>时钟频率：</p>
+<ul>
+<li>
+<p>SPI 总线上的主机必须在通信开始时候配置并生成相应的时钟信号。在每个 SPI 时钟周期内，都会发生全双工数据传输。</p>
+</li>
+<li>
+<p>主机在 MOSI 线上发送一位数据，从机读取它，而从机在 MISO 线上发送一位数据，主机读取它。</p>
+</li>
+<li>
+<p>就算只进行单向的数据传输，也要保持这样的顺序。这就意味着无论接收任何数据，必须实际发送一些东西！在这种情况下，我们称其为虚拟数据；</p>
+</li>
+<li>
+<p>从理论上讲，只要实际可行，时钟速率就可以是您想要的任何速率，当然这个速率受限于每个系统能提供多大的系统时钟频率，以及最大的 SPI 传输速率。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>时钟极性（CKP/Clock Polarity）：时钟极性通常写为 CKP 或 CPOL。时钟极性和相位共同决定读取数据的方式，比如信号上升沿读取数据还是信号下降沿读取数据</p>
+<ul>
+<li>CKP = 0：时钟空闲 IDLE 为低电平 0；</li>
+<li>CKP = 1：时钟空闲 IDLE 为高电平 1；</li>
+</ul>
+</li>
+<li>
+<p>时钟相位（CKE /Clock Phase (Edge)）：时钟相位/边沿，也就是采集数据时是在时钟信号的具体相位或者边沿</p>
+<ul>
+<li>CKE = 0：在时钟信号 SCK 的第一个跳变沿采样；</li>
+<li>CKE = 1：在时钟信号 SCK 的第二个跳变沿采样；</li>
+</ul>
+</li>
+<li>
+<p>采集信号配置</p>
+<table>
+<thead>
+<tr>
+<th>SPI Mode</th>
+<th>CPOL</th>
+<th>CPHA</th>
+<th>模式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0 [00]</td>
+<td>0</td>
+<td>0</td>
+<td>沿第一个上升沿采集信号</td>
+</tr>
+<tr>
+<td>1 [01]</td>
+<td>0</td>
+<td>1</td>
+<td>沿第一个下降沿采集信号</td>
+</tr>
+<tr>
+<td>2 [10]</td>
+<td>1</td>
+<td>0</td>
+<td>沿第二个下降沿采集信号</td>
+</tr>
+<tr>
+<td>3 [11]</td>
+<td>1</td>
+<td>1</td>
+<td>沿第二个上升沿采集信号</td>
+</tr>
+</tbody>
+</table>
+<img src="/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/SPI%E9%87%87%E9%9B%86%E4%BF%A1%E5%8F%B7%E6%A8%A1%E5%BC%8F%E9%85%8D%E7%BD%AE.png" class="" title="图1-16 SPI采集信号模式配置">
+<center> 图1-16 SPI采集信号模式配置 </center>
+</li>
+</ul>
+<h2 id="can-通信协议"><a class="markdownIt-Anchor" href="#can-通信协议"></a> CAN 通信协议</h2>
+<h3 id="can-总线物理连接"><a class="markdownIt-Anchor" href="#can-总线物理连接"></a> CAN 总线物理连接</h3>
+<img src="/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/%E9%AB%98%E9%80%9FCAN%E6%80%BB%E7%BA%BF%EF%BC%88%E9%97%AD%E7%8E%AF%EF%BC%89.png" class="" title="高速CAN总线（闭环）">
+<img src="/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/%E4%BD%8E%E9%80%9FCAN%E6%80%BB%E7%BA%BF%EF%BC%88%E5%BC%80%E7%8E%AF%EF%BC%89.png" class="" title="高速CAN总线（开环）">
+<h3 id="can-总线特点"><a class="markdownIt-Anchor" href="#can-总线特点"></a> CAN 总线特点</h3>
+<table border="1" cellpadding="3" cellspacing="0" style="width: 100%;margin:auto">
+    <tr>
+        <td colspan="2" style="text-align: center;">物理层</td>
+        <td colspan="6" style="text-align: center;">ISO 11898(High Speed)</td>
+        <td colspan="6" style="text-align: center;">ISO 11519-2(Low Speed)</td>
+    </tr>
+    <tr>
+        <td colspan="2" style="text-align: center;">通信速度</td>
+        <td colspan="6"style="text-align: center;">40m/1Mbps</td>
+        <td colspan="6"style="text-align: center;">1km/40Kbps</td>
+    </tr>
+    <tr>
+        <td colspan="2" style="text-align: center;">总线最大长度</td>
+        <td colspan="6" style="text-align: center;">最大30</td>
+        <td colspan="6" style="text-align: center;">最大20</td>
+    </tr>
+    <tr>
+        <td colspan="2" style="text-align: center;">连接单元数</td>
+        <td colspan="3" style="text-align: center;">隐形</td>
+        <td colspan="3" style="text-align: center;">显形</td>
+        <td colspan="3" style="text-align: center;">隐形</td>
+        <td colspan="3" style="text-align: center;">显形</td>
+    </tr>
+    <tr>
+        <td rowspan="4" style="text-align: center;">总线拓扑</td>
+        <td style="text-align: center;"></td>
+        <td style="text-align: center;">Min</td>
+        <td style="text-align: center;">Nom</td>
+        <td style="text-align: center;">Max</td>
+        <td style="text-align: center;">Min</td>
+        <td style="text-align: center;">Nom</td>
+        <td style="text-align: center;">Max</td>
+        <td style="text-align: center;">Min</td>
+        <td style="text-align: center;">Nom</td>
+        <td style="text-align: center;">Max</td>
+        <td style="text-align: center;">Min</td>
+        <td style="text-align: center;">Nom</td>
+        <td style="text-align: center;">Max</td>
+    </tr>
+    <tr>
+        <td style="text-align: center;">CAN_High(V)</td>
+        <td style="text-align: center;">2.00</td>
+        <td style="text-align: center;">2.50</td>
+        <td style="text-align: center;">3.00</td>
+        <td style="text-align: center;">2.75</td>
+        <td style="text-align: center;">3.50</td>
+        <td style="text-align: center;">4.50</td>
+        <td style="text-align: center;">1.60</td>
+        <td style="text-align: center;">1.75</td>
+        <td style="text-align: center;">1.90</td>
+        <td style="text-align: center;">3.85</td>
+        <td style="text-align: center;">4.00</td>
+        <td style="text-align: center;">5.00</td>
+    </tr>
+    <tr>
+        <td style="text-align: center;">CAN_Low(V)</td>
+        <td style="text-align: center;">2.00</td>
+        <td style="text-align: center;">2.50</td>
+        <td style="text-align: center;">3.00</td>
+        <td style="text-align: center;">0.50</td>
+        <td style="text-align: center;">1.50</td>
+        <td style="text-align: center;">2.25</td>
+        <td style="text-align: center;">3.10</td>
+        <td style="text-align: center;">3.25</td>
+        <td style="text-align: center;">3.40</td>
+        <td style="text-align: center;">0.00</td>
+        <td style="text-align: center;">1.00</td>
+        <td style="text-align: center;">1.15</td>
+    </tr>
+    <tr>
+        <td style="text-align: center;">电位差 <br>(H-L) (V)</td>
+        <td style="text-align: center;">-0.5</td>
+        <td style="text-align: center;">0</td>
+        <td style="text-align: center;">0.05</td>
+        <td style="text-align: center;">1.5</td>
+        <td style="text-align: center;">2.0</td>
+        <td style="text-align: center;">3.0</td>
+        <td style="text-align: center;">-0.3</td>
+        <td style="text-align: center;">-1.5</td>
+        <td style="text-align: center;">-</td>
+        <td style="text-align: center;">0.3</td>
+        <td style="text-align: center;">3.0</td>
+        <td style="text-align: center;">-</td>
+    </tr>
+    <tr>
+        <td colspan="2" style="text-align: center;">特性</td>
+        <td colspan="6" style="text-align: center;">双绞线（屏蔽/非屏蔽）<br> 闭环总线 <br> 阻抗(Z)：120Ω(Min.85Ω Max.130Ω) <br>总线电阻率(r)：70mΩ/m <br>总线延迟时间：5ns/m 终端电阻：120Ω(Min.85Ω Max.130Ω)</td>
+        <td colspan="6" style="text-align: center;">双绞线（屏蔽/非屏蔽）<br> 开环总线 <br> 阻抗(Z)：120Ω(Min.85Ω Max.130Ω) <br>总线电阻率(r)：90mΩ/m <br>总线延迟时间：5ns/m 终端电阻：2.2KΩ(Min.2.09KΩ Max.2.31KΩ) <br>CAN_L与GND间静电容量 30pF/m <br>CAN_H与GND间静电容量 30pF/m</td>
+    </tr>
+</table>
+<ul>
+<li><strong>多主机系统</strong>：
+<ul>
+<li>在总线空闲时，所有的单元都可开始发送消息（多主控制）。</li>
+<li>最先访问总线的单元可获得发送权（CSMA/CA 方式*1）。</li>
+<li>多个单元同时开始发送时，发送高优先级 ID 消息的单元可获得发送权。</li>
+</ul>
+</li>
+<li><strong>消息的发送/仲裁机制</strong>： CAN 协议中，所有的消息都以固定的格式发送。总线空闲时，所有与总线相连的单元都可以开始发送新消息。两个以上的单元同时开始发送消息时，根据标识符（Identifier 以下称为 ID）决定优先级。ID 并不是表示发送的目的地址，而是表示访问总线的消息的优先级。两个以上的单元同时开始发送消息时，对各消息 ID 的每个位进行逐个仲裁比较。仲裁获胜（被判定为优先级最高）的单元可继续发送消息，仲裁失利的单元则立刻停止发送而进行接收工作。</li>
+<li><strong>系统的柔软性</strong>：与总线相连的单元没有类似于“地址”的信息。因此在总线上增加单元时，连接在总线上的其它单元的软硬件及应用层都不需要改变。</li>
+<li><strong>通信速度</strong>：根据整个网络的规模，可设定适合的通信速度。在同一网络中，所有单元必须设定成统一的通信速度。即使有一个单元的通信速度与其它的不一样，此单元也会输出错误信号，妨碍整个网络的通信。不同网络间则可以有不同的通信速度。</li>
+<li>灵活性：CAN 协议灵活适应不同的应用场景，支持不同的波特率和通信速率。这使得 CAN 总线可以被广泛用于各种嵌入式系统，从低速的传感器网络到高速的汽车控制系统。</li>
+<li><strong>远程数据请求</strong>：可通过发送“遥控帧” 请求其他单元发送数据。</li>
+<li><strong>多种帧类型</strong>：CAN 总线上的节点没有地址的概念。CAN 总线上的数据是以帧为单位传输的，帧又分为数据帧、遥控帧等多种帧类型，帧包含需要传输的数据或控制信息。</li>
+<li><strong>线与逻辑</strong>：CAN 总线具有“线与”的特性，也就是当由两个节点同时向总线发送信号时，一个是发送显性电平（逻辑 0），另一个发送隐性电平（逻辑 1），则总线呈现为显性电平。这个特性被用于总线总裁，也就是哪个节点优先占用总线进行发送操作。</li>
+<li><strong>特定标识符</strong>：每一个帧有一个标识符（Identifier，一下简称 ID）。ID 不是地址，它表示传输数据的类型，也可以用于总线仲裁时确定优先级。例如，在汽车的 CAN 总线上，假设用于碰撞检测的节点输出数据帧 ID 为 01，车内温度检测节点发送数据帧的 ID 为 05 等。</li>
+<li><strong>滤波特性</strong>：每个 CAN 节点都接收数据，但是可以对接收的帧根据 ID 进行过滤。只有节点需要的数据才会被接收并进一步处理，不需要的数据会被自动舍弃。例如，假设安全气囊控制器只接受碰撞检测节点发出的 ID 为 01 的帧，这种 ID 的过滤时有硬件完成的，以便安全气囊控制器在发送碰撞时能及时响应。</li>
+<li><strong>错误检测功能·错误通知功能·错误恢复功能</strong>：
+<ul>
+<li>所有的单元都可以检测错误（错误检测功能）。</li>
+<li>检测出错误的单元会立即同时通知其他所有单元（错误通知功能）。</li>
+<li>正在发送消息的单元一旦检测出错误，会强制结束当前的发送。强制结束发送的单元会不断反复地重新发送<br />
+此消息直到成功发送为止（错误恢复功能）。</li>
+</ul>
+</li>
+<li><strong>故障封闭</strong>：CAN 可以判断出错误的类型是总线上暂时的数据错误（如外部噪声等）还是持续的数据错误（如单元内部故障、驱动器故障、断线等）。由此功能，当总线上发生持续数据错误时，可将引起此故障的单元从总线上隔离出去。</li>
+<li><strong>连接</strong>：CAN 总线是可同时连接多个单元的总线。可连接的单元总数理论上是没有限制的。但实际上可连接的单元数受总线上的时间延迟及电气负载的限制。降低通信速度，可连接的单元数增加；提高通信速度，则可连接<br />
+的单元数减少<br />
+注：CSMA/CA: Carrier Sense Multiple Access / Collision Avoidance</li>
+</ul>
+<h3 id="错误状态的种类"><a class="markdownIt-Anchor" href="#错误状态的种类"></a> 错误状态的种类</h3>
+<h4 id="主动错误状态"><a class="markdownIt-Anchor" href="#主动错误状态"></a> 主动错误状态</h4>
+<ul>
+<li>主动错误状态是可以正常参加总线通信的状态。</li>
+<li>处于主动错误状态的单元检测出错误时，输出主动错误标志。</li>
+</ul>
+<h4 id="被动错误状态"><a class="markdownIt-Anchor" href="#被动错误状态"></a> 被动错误状态</h4>
+<ul>
+<li>被动错误状态是易引起错误的状态。</li>
+<li>处于被动错误状态的单元虽能参加总线通信，但为不妨碍其它单元通信，接收时不能积极地发送错误通知。</li>
+<li>处于被动错误状态的单元即使检测出错误，而其它处于主动错误状态的单元如果没发现错误，整个总线也被认为是没有错误的。</li>
+<li>处于被动错误状态的单元检测出错误时，输出被动错误标志。</li>
+<li>另外，处于被动错误状态的单元在发送结束后不能马上再次开始发送。在开始下次发送前，在间隔帧期间内必须插入“延迟传送”(8 个位的隐性位)。</li>
+</ul>
+<h4 id="总线关闭状态"><a class="markdownIt-Anchor" href="#总线关闭状态"></a> 总线关闭状态</h4>
+<ul>
+<li>总线关闭态是不能参加总线上通信的状态。</li>
+<li>信息的接收和发送均被禁止。</li>
+<li>这些状态依靠发送错误计数和接收错误计数来管理，根据计数值决定进入何种状态。错误状态和计数值的关系如表 1 及图 4 所示。</li>
+</ul>
+<table border="1" cellpadding="3" cellspacing="0" style="width: 100%;margin:auto">
+  <tr>
+      <td style="text-align: center;">单元错误状态</td>
+      <td style="text-align: center;">发送错误计数值（TEC）</td>
+      <td style="text-align: center;">接收错误计数值（REC）</td>
+  </tr>
+  <tr>
+      <td style="text-align: center;">主动错误状态</td>
+      <td rowspan="2" style="text-align: center;">0~127 且 0~127</td>
+  </tr>
+  <tr>
+      <td style="text-align: center;">被动错误状态</td>
+      <td rowspan="2" style="text-align: center;">128~255 或 128~255</td>
+  </tr>
+  <tr>
+      <td style="text-align: center;">总线关闭状态</td>
+      <td rowspan="2" style="text-align: center;">256~  —— </td>
+  </tr>
+</table>
+<h4 id="错误计数值"><a class="markdownIt-Anchor" href="#错误计数值"></a> 错误计数值</h4>
+<ul>
+<li>发送错误计数值和接收错误计数值根据一定的条件发生变化。错误计数值的变动条件如表 2 所示。</li>
+<li>一次数据的接收和发送可能同时满足多个条件。</li>
+<li>错误计数器在错误标志的第一个位出现的时间点上开始计数。</li>
+</ul>
+<table border="1" cellpadding="3" cellspacing="0" style="width: 100%;margin:auto">
+  <tr>
+      <td style="text-align: center;"> </td>
+      <td style="text-align: center;">接受和发送错误计数值的变动条件</td>
+      <td style="text-align: center;">发送错误计数值(TEC)</td>
+      <td style="text-align: center;">接收错误计数值(REC)</td>
+  </tr>
+  <tr>
+      <td style="text-align: center;">1</td>
+      <td style="text-align: center;">接收单元检测出错误时。<br>例外：接收单元在发送错误标志或过载标志中检测出“位错误”时，接收错误计数值不增加。</td>
+      <td style="text-align: center;"> —— </td>
+      <td style="text-align: center;"> +1 </td>
+  </tr>
+  <tr>
+      <td style="text-align: center;">2</td>
+      <td style="text-align: center;">接收单元在发送完错误标志后检测到的第一个位为显性电平时。</td>
+      <td style="text-align: center;"> —— </td>
+      <td style="text-align: center;"> +8 </td>
+  </tr>
+  <tr>
+      <td style="text-align: center;">3</td>
+      <td style="text-align: center;">发送单元在输出错误标志时。</td>
+      <td style="text-align: center;"> +8 </td>
+      <td style="text-align: center;"> —— </td>
+  </tr>
+  <tr>
+      <td style="text-align: center;">4</td>
+      <td style="text-align: center;">发送单元在发送主动错误标志或过载标志时，检测出位错误。</td>
+      <td style="text-align: center;"> +8 </td>
+      <td style="text-align: center;"> —— </td>
+  </tr>
+  <tr>
+      <td style="text-align: center;">5</td>
+      <td style="text-align: center;">接收单元在发送主动错误标志或过载标志时，检测出位错误。</td>
+      <td style="text-align: center;"> —— </td>
+      <td style="text-align: center;"> +8 </td>
+  </tr>
+  <tr>
+      <td style="text-align: center;">6</td>
+      <td style="text-align: center;">各单元从主动错误标志、过载标志的最开始检测出连续 14个位的显性位时。之后，每检测出连续的 8 个位的显性位时。</td>
+      <td style="text-align: center;"> 发送时+8 </td>
+      <td style="text-align: center;"> 接收时+8 </td>
+  </tr>
+  <tr>
+      <td style="text-align: center;">7</td>
+      <td style="text-align: center;">检测出在被动错误标志后追加的连续 8 个位的显性位时。</td>
+      <td style="text-align: center;"> 发送时+8 </td>
+      <td style="text-align: center;"> 接收时+8 </td>
+  </tr>
+  <tr>
+      <td style="text-align: center;">8</td>
+      <td style="text-align: center;">发送单元正常发送数据结束时（返回 ACK 且到帧结束也未检测出错误时）。</td>
+      <td style="text-align: center;"> −1 <br>TEC=0 时±0 </td>
+      <td style="text-align: center;"> —— </td>
+  </tr>
+  <tr>
+      <td style="text-align: center;">9</td>
+      <td style="text-align: center;">接收单元正常接收数据结束时（到 CRC 未检测出错误且正常返回 ACK 时）。</td>
+      <td style="text-align: center;"> —— </td>
+      <td style="text-align: center;"> 1≤REC≤127 时-1 <br> REC=0 时±0 <br> REC>127 时 设 REC=127 </td>
+  </tr>
+    <tr>
+      <td style="text-align: center;">10</td>
+      <td style="text-align: center;">处于总线关闭态的单元，检测到 128 次连续 11 个位的隐性位。</td>
+      <td style="text-align: center;"> TEC=0 </td>
+      <td style="text-align: center;"> REC=0 </td>
+  </tr>
+</table>
+<h3 id="can-总线协议帧"><a class="markdownIt-Anchor" href="#can-总线协议帧"></a> CAN 总线协议帧</h3>
+<h4 id="can-网络通信包括五种帧"><a class="markdownIt-Anchor" href="#can-网络通信包括五种帧"></a> CAN 网络通信包括五种帧：</h4>
+<table>
+<thead>
+<tr>
+<th>帧类型</th>
+<th>帧用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数据帧（Data frame）</td>
+<td>节点发送的包含 ID 和数据的帧，用于发送单元向接收单元传送数据的帧</td>
+</tr>
+<tr>
+<td>遥控帧（Remote frame）</td>
+<td>节点向网络上的其他节点发出的某个 ID 的数据请求，发送节点收到遥控帧后就可以发送相应 ID 的数据帧</td>
+</tr>
+<tr>
+<td>错误帧（Error frame）</td>
+<td>节点检测出错误时，向其他节点发送的通知错误的帧</td>
+</tr>
+<tr>
+<td>过载帧（Overload frame）</td>
+<td>接收单元未做好接收数据的准备时发送的帧，发送节点收到过载帧后暂缓发送数据帧</td>
+</tr>
+<tr>
+<td>帧间空间（Inter-frame space）</td>
+<td>用于将数据帧、遥控帧与前后帧分隔开的帧</td>
+</tr>
+</tbody>
+</table>
+<h4 id="can-协议数据帧"><a class="markdownIt-Anchor" href="#can-协议数据帧"></a> CAN 协议数据帧</h4>
+<img src="/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/CAN%E6%80%BB%E7%BA%BF%E6%A0%87%E5%87%86%E6%95%B0%E6%8D%AE%E5%B8%A7.svg" class="" title="CAN总线标准数据帧">
+<p>图 CAN 总线标准数据帧</p>
+<img src="/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/CAN%E6%80%BB%E7%BA%BF%E6%89%A9%E5%B1%95%E6%95%B0%E6%8D%AE%E5%B8%A7.svg" class="" title="CAN总线扩展数据帧">
+<ul>
+<li>
+<p>数据帧由七个段构成（如上图）</p>
+<ul>
+<li>
+<p>帧起始（SOF） ：表示数据开始的段，占一位，显形电平有效。</p>
+</li>
+<li>
+<p>仲裁段：表示该帧优先的段</p>
+<ul>
+<li>标准帧：由 11 位的 ID 和 RTR 构成</li>
+<li>扩展帧：在 11 位 ID 的基础上，扩展 18 位，和 SRR 和 IDE 构成</li>
+<li>注：标准帧的 ID 从 ID28 到 ID18 依次发送，禁止高七位为隐形，即 ID=1111 111X XXX<br />
+扩展帧 29 位，同样禁止高七位为隐形即 ID=1111 111X XXX</li>
+</ul>
+</li>
+<li>
+<p>控制段：表示数据的字节数和保留位的段，由 6 个位构成</p>
+<ul>
+<li>
+<p>标准帧：IDE+r0+DLC</p>
+</li>
+<li>
+<p>扩展帧：r1+r0+DLC</p>
+</li>
+<li>
+<p>（注）保留位（r0、r1）：必须全部以显形电平发送，但接受法可以接受显形、隐形以及任何组合的电平</p>
+</li>
+<li>
+<p>（注）数据长度码（DLC）：数据长度码与数据的字节数如下表所示，其中数据的字节数必须为 0~8 字节。但接收方对 DLC=9~15 并不视为错误</p>
+<table border="1" cellpadding="3" cellspacing="0" style="width: 100%;margin:auto">
+<tr>
+    <td rowspan="2" style="text-align: center;">数据字节数</td>
+    <td colspan="4" style="text-align: center;">数据长度码</td>
+</tr>
+<tr>
+    <td style="text-align: center;">DLC3</td>
+    <td style="text-align: center;">DLC2</td>
+    <td style="text-align: center;">DLC1</td>
+    <td style="text-align: center;">DLC0</td>
+</tr>
+<tr>
+    <td style="text-align: center;">0</td>
+    <td style="text-align: center;">D</td>
+    <td style="text-align: center;">D</td>
+    <td style="text-align: center;">D</td>
+    <td style="text-align: center;">D</td>
+</tr>
+<tr>
+    <td style="text-align: center;">1</td>
+    <td style="text-align: center;">D</td>
+    <td style="text-align: center;">D</td>
+    <td style="text-align: center;">D</td>
+    <td style="text-align: center;">R</td>
+</tr>
+<tr>
+    <td style="text-align: center;">2</td>
+    <td style="text-align: center;">D</td>
+    <td style="text-align: center;">D</td>
+    <td style="text-align: center;">R</td>
+    <td style="text-align: center;">D</td>
+</tr>
+<tr>
+    <td style="text-align: center;">3</td>
+    <td style="text-align: center;">D</td>
+    <td style="text-align: center;">D</td>
+    <td style="text-align: center;">R</td>
+    <td style="text-align: center;">R</td>
+</tr>
+<tr>
+    <td style="text-align: center;">4</td>
+    <td style="text-align: center;">D</td>
+    <td style="text-align: center;">R</td>
+    <td style="text-align: center;">D</td>
+    <td style="text-align: center;">D</td>
+</tr>
+<tr>
+    <td style="text-align: center;">5</td>
+    <td style="text-align: center;">D</td>
+    <td style="text-align: center;">R</td>
+    <td style="text-align: center;">D</td>
+    <td style="text-align: center;">R</td>
+</tr>
+<tr>
+    <td style="text-align: center;">6</td>
+    <td style="text-align: center;">D</td>
+    <td style="text-align: center;">R</td>
+    <td style="text-align: center;">R</td>
+    <td style="text-align: center;">D</td>
+</tr>
+<tr>
+    <td style="text-align: center;">7</td>
+    <td style="text-align: center;">D</td>
+    <td style="text-align: center;">R</td>
+    <td style="text-align: center;">R</td>
+    <td style="text-align: center;">R</td>
+</tr>
+<tr>
+    <td style="text-align: center;">8</td>
+    <td style="text-align: center;">R</td>
+    <td style="text-align: center;">D</td>
+    <td style="text-align: center;">D</td>
+    <td style="text-align: center;">D</td>
+</tr>
+</li>
+</ul>
+</table>
+注：D为显形电平；R为隐形电平
+  - 数据段：数据的内容，可以发送0~8字节的数据，从MSB开始传输
+  - CRC：纠错段，由15个位的CRC顺序和1个位的CRC界定符（用于分隔的位）构成
+    - 注：CRC根据多项式生成的CRC值，CRC的计算范围包括帧起始、仲裁段、控制段、数据段。接收方以相同的算法计算CRC值并进行比较，不一致时会报错
+  - ACK段：表示确认正常接收的段，由ACK槽（ACK Slot）和ACK界定符构成
+    - 发送单元的ACK段：发送2个隐性位
+    - 接收单元的ACK段：接收到正确消息的单元子啊ACK槽（ACK Slot）发送显性位，通知发送单元正常接收结束
+    - 发送ACK：发送 ACK 的是在既不处于总线关闭态也不处于休眠态的所有接收单元中，接收到正常消息的单元（发送单元不发送 ACK）。所谓正常消息是指不含填充错误、格式错误、CRC 错误的消息。
+  - 帧结束：表示数据帧结束的段，由7个隐性位构成
+</li>
+</ul>
+</li>
+<li>
+<p>备注：</p>
+<ul>
+<li>总线上有显形电平“0”和隐形电平“1”；</li>
+<li>总线上执行逻辑“与”，因此显形电平具有“优先”权；</li>
+</ul>
+</li>
+</ul>
+<h4 id="can-总线遥控帧"><a class="markdownIt-Anchor" href="#can-总线遥控帧"></a> CAN 总线遥控帧：</h4>
+<p>接收单元向发送单元请求发送数据所用的帧。遥控帧由 6 个段组成。遥控帧没有数据帧的数据段。</p>
+<img src="/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/CAN%E6%80%BB%E7%BA%BF%E6%A0%87%E5%87%86%E8%BF%9C%E7%A8%8B%E5%B8%A7.svg" class="" title="CAN总线标准遥控帧">
+<img src="/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/CAN%E6%80%BB%E7%BA%BF%E6%89%A9%E5%B1%95%E8%BF%9C%E7%A8%8B%E5%B8%A7.svg" class="" title="CAN总线扩展遥控帧">
+<ul>
+<li>帧起始（SOF）：表示帧开始的段</li>
+<li>仲裁段：表示该帧优先级的段。可请求具有相同 ID 的数据帧</li>
+<li>控制段：表示数据的字节数及保留位的段</li>
+<li>CRC 段：检查帧的传输错误的段</li>
+<li>ACK 段：表示确认正常接收的段</li>
+<li>帧结束：表示遥控帧结束的段</li>
+<li>注：
+<ul>
+<li>遥控帧相比于数据帧，没有数据段且 RTR 位为隐性</li>
+<li>遥控帧没有数据段，数据长度码该如何表示：遥控帧的数据长度码以所请求数据帧的数据长度码表示</li>
+<li>没有数据段的数据帧有何用途：可用于各单元的定期连接确认/应答、或仲裁段本身带有实质性信息的情况下</li>
+</ul>
+</li>
+</ul>
+<h4 id="can-总线错误帧"><a class="markdownIt-Anchor" href="#can-总线错误帧"></a> CAN 总线错误帧：</h4>
+<img src="/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/CAN%E6%80%BB%E7%BA%BF%E9%94%99%E8%AF%AF%E5%B8%A7.svg" class="" title="CAN总线错误帧">
+<p>用于在接收和发送消息时检测出错误通知错误的帧。错误帧由错误标志和错误界定符构成。</p>
+<ul>
+<li>错误标志
+<ul>
+<li>主动错误标志：处于主动错误状态的单元检测出错误时，输出的错误标志，由 6 个位的显性位构成</li>
+<li>被动错误标志：处于被动错误状态的单元检测出错误时输出的错误标志，由 6 个位的隐性位构成</li>
+</ul>
+</li>
+<li>错误界定符：由 8 个位的隐性位构成</li>
+</ul>
+<h4 id="can-总线过载帧"><a class="markdownIt-Anchor" href="#can-总线过载帧"></a> CAN 总线过载帧：</h4>
+<img src="/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/CAN%E6%80%BB%E7%BA%BF%E8%BF%87%E8%BD%BD%E5%B8%A7.svg" class="" title="CAN总线过载帧">
+<p>过载帧是用于接收单元通知其尚未完成接收准备的帧。过载帧由过载标志和过载界定符构成。</p>
+<ul>
+<li>过载标志：与主动错误标志构成相同，6 个位的显性位</li>
+<li>过载界定符：过载界定符的构成与错误界定符的构成相同，8 个位的隐性位构成</li>
+</ul>
+<h4 id="can-总线间隔帧"><a class="markdownIt-Anchor" href="#can-总线间隔帧"></a> CAN 总线间隔帧</h4>
+<img src="/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/CAN%E6%80%BB%E7%BA%BF%E9%97%B4%E9%9A%94%E5%B8%A7.svg" class="" title="CAN总线间隔帧">
+<p>帧间隔是用于分隔数据帧和遥控帧的帧。数据帧和遥控帧可通过插入帧间隔将本帧与前面的任何帧（数据帧、遥控帧、错误帧、过载帧）分开</p>
+<ul>
+<li>间隔：3 个隐性位</li>
+<li>总线空闲：隐性电平，长度不限，此状态下，可视为总线空闲，要发送的单元开始访问总线</li>
+<li>延迟传送（发送暂时停止）：8 个位的隐性位，只在处于被动错误状态的单元刚发送一个消息后的帧间隔中包含的段</li>
+</ul>
+<h3 id="can-总线同步及总线仲裁"><a class="markdownIt-Anchor" href="#can-总线同步及总线仲裁"></a> CAN 总线同步及总线仲裁</h3>
+<ul>
+<li>数据帧和遥控帧的优先级：具有显性 ID 的帧具有优先权，若具有相同 ID 的数据帧和遥控帧在总线上竞争时，仲裁段的最后一位（RTR）为显性位的数据帧具有优先权</li>
+<li>标准格式和扩展格式的优先级：标准格式 ID 与具有相同 ID 的遥控帧或扩展格式的数据帧在总线竞争时，标准格式的 RTR 位为显形具有优先权。</li>
+</ul>
+<h4 id="位填充位填充是为了防止突发错误而设定的功能-当同样的电平持续-5-位时则添加一个位的反型数据"><a class="markdownIt-Anchor" href="#位填充位填充是为了防止突发错误而设定的功能-当同样的电平持续-5-位时则添加一个位的反型数据"></a> 位填充：位填充是为了防止突发错误而设定的功能。当同样的电平持续 5 位时则添加一个位的反型数据</h4>
+<pre><code>- 发送单元的工作：在发送数据帧和遥控帧时，SOF~CRC段间的数据，相同电平如果持续5位，在下一个位（第6位）要插入1位与前5位相反的电平
+- 接收单元的工作：在接受数据帧和遥控帧时，SOF~CRC段间的数据，相同电平如果持续5位，需要删除下一个位（第6位）再接收。如果这个第6个位的电平与前5位相同，将被视为错误并发送错误帧。
+</code></pre>
+<h5 id="错误的种类5-种位错误-填充错误-crc-错误-格式错误-ack-错误"><a class="markdownIt-Anchor" href="#错误的种类5-种位错误-填充错误-crc-错误-格式错误-ack-错误"></a> 错误的种类（5 种）：位错误、填充错误、CRC 错误、格式错误、ACK 错误</h5>
+<table border="1" cellpadding="3" cellspacing="0" style="width: 100%;margin:auto">
+  <tr>
+      <td style="text-align: center;">错误的种类</td>
+      <td style="text-align: center;">错误的内容</td>
+      <td style="text-align: center;">错误的检测帧（段）</td>
+      <td style="text-align: center;">检测单元</td>
+  </tr>
+  <tr>
+      <td style="text-align: center;">位错误</td>
+      <td style="text-align: center;">比较输出电平和总线电平（不含填充位），当两电平不一样时所检测到的错误</td>
+      <td style="text-align: center;">数据帧（SOF~EOF）<br>遥控帧（SOF~EOF）<br>错误帧<br>过载帧</td>
+      <td style="text-align: center;">发送单元<br>接收单元</td>
+  </tr>
+  <tr>
+      <td style="text-align: center;">填充错误</td>
+      <td style="text-align: center;">在需要位填充的段内，连续检测到6位相同的电平时所检测到的错误</td>
+      <td style="text-align: center;">数据帧（SOF~CRC顺序）<br>遥控帧（SOF~CRC顺序）</td>
+      <td style="text-align: center;">发送单元<br>接收单元</td>
+  </tr>
+  <tr>
+      <td style="text-align: center;">格式错误</td>
+      <td style="text-align: center;">检测出与固定格式的位段相反的格式时所检测到的错误</td>
+      <td style="text-align: center;">数据帧（CRC界定符、ACK界定符、EOF）<br>遥控帧（CRC界定符、ACK界定符、EOF）<br>错误界定符<br>过载界定符</td>
+      <td style="text-align: center;">接收单元</td>
+  </tr>
+  <tr>
+      <td style="text-align: center;">ACK错误</td>
+      <td style="text-align: center;">发送单元在ACK槽（ACK Slot）中检测出隐性电平时所检测到的错误（ACK没有被传送过来时所检测到的错误）</td>
+      <td style="text-align: center;">数据帧（ACK槽）<br>遥控帧（ACK槽）<br>错误界定符<br>过载界定符</td>
+      <td style="text-align: center;">发送单元</td>
+  </tr>
+</table>
+<ul>
+<li>位错误
+<ul>
+<li>位错误由向总线上输出数据帧、遥控帧、错误帧、过载帧的单元和输出ACK的单元、输出错误的单元来检测；</li>
+<li>在仲裁段输出隐性电平，但检测出显形电平时，将被视为仲裁失利，而不是位错误；</li>
+<li>在仲裁段作为填充位输出隐性电平时，但检测出显性电平时，将不视为位错误，而是填充错误；</li>
+<li>发送单元在ACK段输出隐性电平，但检测出显性电平时，将判断为其它单元的ACK应答，而非位错误；</li>
+<li>输出被动错误标志（6个隐性位）但检测出为显性电平时，将遵从错误标志的结束条件，等待检测出连续相同6个位的值（显性或隐性），但不视为位错误；</li>
+</ul>
+</li>
+<li>格式错误
+<ul>
+<li>即使接收到单元检测出EOF（7个位的隐性位）的最后一位（第8位）为显性电平，也不视为格式错误；</li>
+<li>即使接收单元检测出数据长度码（DLC）中的9~15的值时，也不视为格式错误；</li>
+</ul>
+</li>
+</ul>
+<h4 id="错误帧的输出"><a class="markdownIt-Anchor" href="#错误帧的输出"></a> 错误帧的输出</h4>
+<ul>
+<li>检测出满足错误条件的单元输出错误标志通报错误</li>
+<li>处于主动错误状态的单元输出的错误标志为主动错误标志；处于被动错误状态的单元输出的错误标志为被动错误标志</li>
+<li>发送单元发送完错误帧后，将再次发生那个数据帧或遥控帧<br />
+错误标志输出时序表如下：</li>
+</ul>
+<table border="1" cellpadding="3" cellspacing="0" style="width: 100%;margin:auto">
+  <tr>
+      <td style="text-align: center;">错误的种类</td>
+      <td style="text-align: center;">输出时序</td>
+  </tr>
+  <tr>
+      <td style="text-align: center;">位错误</td>
+      <td rowspan="4" style="text-align: center;">从检测出错误后的下一位开始传输出错误标志</td>
+  </tr>
+  <tr>
+      <td style="text-align: center;">填充错误</td>
+  </tr>
+  <tr>
+      <td style="text-align: center;">格式错误</td>
+  </tr>
+  <tr>
+      <td style="text-align: center;">ACK错误</td>
+  </tr>
+  <tr>
+      <td style="text-align: center;">CRC错误</td>
+      <td style="text-align: center;">ACK界定符后的下一位开始输出错误标志</td>
+  </tr>
+</table>
+<h4 id="位时序"><a class="markdownIt-Anchor" href="#位时序"></a> 位时序</h4>
+<p>由发送单元在非同步的情况下发送每秒钟的位数称为位速率。一个位可以分成 4 段：同步段（SS）、传播时间段（PTS）、相位缓冲段 1（PBS1）、相位缓冲段 2（PBS2）<br />
+这些段由称为 TimeQuantum（简称 Tq）的最小单位构成：1 位分为 4 段，每个段又由若干个 Tq 构成，称为位时序。1 位由多少段 Tq 构成，每个段由多少个 Tq 构成，可以任意设定时序，通过设定位时序，多个单元可<br />
+同时采样，也可任意设定采样点。各段的作用和 Tq 数据表如下表所示：</p>
+<table border="1" cellpadding="3" cellspacing="0" style="width: 100%;margin:auto">
+  <tr>
+      <td style="text-align: center;">段名称</td>
+      <td style="text-align: center;">段作用</td>
+      <td colspan="2"style="text-align: center;">Tq数</td>
+  </tr>
+  <tr>
+      <td style="text-align: center;">同步段（SS：Synchronization Segment）</td>
+      <td style="text-align: center;">多个连接在总线上的单元通过此段实现时序调整，同步进行接收和发送的工作。由隐性电平到显性电平的边沿或由显性电平到隐性电平边沿最好出现在此段中。</td>
+      <td style="text-align: center;">1Tq</td>
+      <td rowspan="4" style="text-align: center;">8~25Tq</td>
+  </tr>
+  <tr>
+      <td style="text-align: center;">传播时间段（PTS：Propagation Time Segment）</td>
+      <td style="text-align: center;">用于吸收网络上的物理延迟的段。所谓的网络的物理延迟指发送单元的输出延迟、总线上信号的传播延迟、接收单元的输入延迟。这个段的时间为以上各延迟时间的和的两倍。</td>
+      <td style="text-align: center;">1~8Tq</td>
+  </tr>
+  <tr>
+      <td style="text-align: center;">相位缓冲段1</td>
+      <td rowspan="2" style="text-align: center;">当信号边沿不能被包含于 SS 段中时，可在此段进行补偿。<br>由于各单元以各自独立的时钟工作，细微的时钟误差会累积起来，PBS 段可用于吸收此误差。<br>通过对相位缓冲段加减 SJW 吸收误差。（请参照图 34）。SJW 加大后允许误差加大，但通信速度下降。</td>
+      <td style="text-align: center;">1~8Tq</td>
+  </tr>
+  <tr>
+      <td style="text-align: center;">相位缓冲段2</td>
+      <td style="text-align: center;">2~8Tq</td>
+  </tr>
+    <tr>
+      <td style="text-align: center;">再用步补偿宽度</td>
+      <td style="text-align: center;">因时钟频率偏差、传送延迟等，各单元有同步误差。SJW 为补偿此误差的最大值。</td>
+      <td colspan="2" sstyle="text-align: center;">1~4Tq</td>
+  </tr>
+</table>
+<img src="/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/1bit=10Tq.svg" class="" title="1bit&#x3D;10Tq">
+<p>注：所谓采样点是读取总线电平，并将读到的电平作为位值的点。位置在 PBS1 结束处</p>
+<h4 id="取得同步的方法"><a class="markdownIt-Anchor" href="#取得同步的方法"></a> 取得同步的方法</h4>
+<p>CAN 总线协议的通信方法位 NRZ（Non-Return to Zero）的方式。各个位的开头或结尾都没有附加同步信号。发送单元与位时序同步的方式开始发送数据。另外，接收单元根据总线上电平变化进行同步并进行接收工作。但是，发送单元和接收单元存在的时钟频率误差以及传输路径上的（电缆、驱动器等）相位延迟会引起同步偏差。因此接收单元通过硬件或者再同步的方法调整时序进行接收。</p>
+<ul>
+<li>硬件再同步：接收单元在总线空闲状态检测出帧起始时进行的同步调整，在检测出边沿的地方不考虑 SJW 的值而认为是 SS 段，如下图所示。<img src="/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/%E7%A1%AC%E4%BB%B6%E5%90%8C%E6%AD%A5.svg" class="" title="硬件同步">
+</li>
+<li>再同步：在接收过程中检测出总线电平上的电平变化时进行的同步调整，每当检测出边沿时，根据 SJW 的值通过加长 PBS1 段、或缩短 PBS2 段，以调整同步。但如果发生了超出 SJW 值的误差时，最大调整量不能超过 SJW 值。<img src="/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/%E5%86%8D%E5%90%8C%E6%AD%A5.svg" class="" title="再同步">
+</li>
+<li>调整同步（硬件同步和再同步）的规则：
+<ul>
+<li>1 个位中只进行一次同步调整</li>
+<li>只有当上次采样点的总线值和边沿后的值不同时，该边沿才能用于调整同步。</li>
+<li>在总线空闲且存在隐性电平到显性电平的边沿时，则一定要进行硬件同步</li>
+<li>在总线非空闲时检测到的隐性电平到显性电平的边沿如果满足条件（1）和（2），将进行再同步。但还要满足下满条件：
+<ul>
+<li>发送单元观测到自身输出的显性电平有延时不进行再同步</li>
+<li>发送单元在帧起始到仲裁段有多个单元同时发送的情况下，对延迟边沿不进行再同步</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="以太网通信"><a class="markdownIt-Anchor" href="#以太网通信"></a> 以太网通信</h2>
+<p>以太网分类</p>
+<ul>
+<li>标准以太网：10Mbit/s</li>
+<li>快速以太网：100Mbit/s</li>
+<li>千兆以太网：1000Mbit/s</li>
+<li>万兆以太网：10Gbit/s</li>
+</ul>
+<h4 id="百兆网口和千兆网口线序"><a class="markdownIt-Anchor" href="#百兆网口和千兆网口线序"></a> 百兆网口和千兆网口线序</h4>
+<p>RJ45 接口定义：</p>
+<ul>
+<li>百兆网口线序</li>
+</ul>
+<table border="1" cellpadding="3" cellspacing="0" style="width: 100%;margin:auto">
+  <tr>
+      <td style="text-align: center;">引脚编号</td>
+      <td style="text-align: center;">名字</td>
+      <td style="text-align: center;">功能说明</td>
+  </tr>
+  <tr>
+      <td style="text-align: center;">1</td>
+      <td style="text-align: center;">TX+</td>
+      <td style="text-align: center;">Tranceive Data+（发信号+）</td>
+  </tr>
+  <tr>
+      <td style="text-align: center;">2</td>
+      <td style="text-align: center;">TX-</td>
+      <td style="text-align: center;">Tranceive Data-（发信号-）</td>
+  </tr>
+  <tr>
+      <td style="text-align: center;">3</td>
+      <td style="text-align: center;">RX+</td>
+      <td style="text-align: center;">Receive Data+（收信号+）</td>
+  </tr>
+  <tr>
+      <td style="text-align: center;">4</td>
+      <td style="text-align: center;">NC</td>
+      <td style="text-align: center;">Not connected (空脚)</td>
+  </tr>
+  <tr>
+      <td style="text-align: center;">5</td>
+      <td style="text-align: center;">NC</td>
+      <td style="text-align: center;">Not connected (空脚)</td>
+  </tr>
+  <tr>
+      <td style="text-align: center;">6</td>
+      <td style="text-align: center;">RX-</td>
+      <td style="text-align: center;">Receive Data-(收信号-)</td>
+  </tr>
+  <tr>
+      <td style="text-align: center;">7</td>
+      <td style="text-align: center;">NC</td>
+      <td style="text-align: center;">Not connected (空脚)</td>
+  </tr>
+  <tr>
+      <td style="text-align: center;">8</td>
+      <td style="text-align: center;">NC</td>
+      <td style="text-align: center;">Not connected (空脚)</td>
+  </tr>
+</table>
+<ul>
+<li>千兆网口线序</li>
+</ul>
+<table border="1" cellpadding="3" cellspacing="0" style="width: 100%;margin:auto">
+  <tr>
+      <td style="text-align: center;">引脚编号</td>
+      <td style="text-align: center;">名字</td>
+      <td style="text-align: center;">功能说明</td>
+  </tr>
+  <tr>
+      <td style="text-align: center;">1</td>
+      <td style="text-align: center;">TX_D1+</td>
+      <td style="text-align: center;">Tranceive Data1+（发信号+）</td>
+  </tr>
+  <tr>
+      <td style="text-align: center;">2</td>
+      <td style="text-align: center;">TX_D1-</td>
+      <td style="text-align: center;">Tranceive Data1-（发信号-）</td>
+  </tr>
+  <tr>
+      <td style="text-align: center;">3</td>
+      <td style="text-align: center;">RX_D2+</td>
+      <td style="text-align: center;">Receive Data2+（收信号+）</td>
+  </tr>
+  <tr>
+      <td style="text-align: center;">4</td>
+      <td style="text-align: center;">BI_D3+</td>
+      <td style="text-align: center;">Bi-directional Data3+ (双向信号传输)</td>
+  </tr>
+  <tr>
+      <td style="text-align: center;">5</td>
+      <td style="text-align: center;">BI_D3-</td>
+      <td style="text-align: center;">Bi-directional Data3- (双向信号传输)</td>
+  </tr>
+  <tr>
+      <td style="text-align: center;">6</td>
+      <td style="text-align: center;">RX_D2-</td>
+      <td style="text-align: center;">Receive Data2-(收信号-)</td>
+  </tr>
+  <tr>
+      <td style="text-align: center;">7</td>
+      <td style="text-align: center;">BI_D4+</td>
+      <td style="text-align: center;">Bi-directional Data4+ (双向信号传输)</td>
+  </tr>
+  <tr>
+      <td style="text-align: center;">8</td>
+      <td style="text-align: center;">BI_D4-</td>
+      <td style="text-align: center;">Bi-directional Data4- (双向信号传输)</td>
+  </tr>
+</table>
+<h4 id="osi-模型与-tcpip-模型"><a class="markdownIt-Anchor" href="#osi-模型与-tcpip-模型"></a> OSI 模型与 TCP/IP 模型</h4>
+<table border="1" cellpadding="3" cellspacing="0" style="width: 100%;margin:auto">
+  <tr>
+      <td style="text-align: center;">OSI参考模型</td>
+      <td style="text-align: center;">含义</td>
+      <td style="text-align: center;">协议栈</td>
+      <td style="text-align: center;">物理设备</td>
+      <td style="text-align: center;">TCP/IP五层模型</td>
+  </tr>
+  <tr>
+      <td style="text-align: center;">应用层</td>
+      <td style="text-align: center;">为应用程序提供服务</td>
+      <td rowspan="3" style="text-align: center;">HTTP  Telnet  FTP  TFTP  DNS  SMTP </td>
+      <td rowspan="3" style="text-align: center;">——</td>
+      <td rowspan="3" style="text-align: center;">应用层</td>
+  </tr>
+  <tr>
+      <td style="text-align: center;">表示层</td>
+      <td style="text-align: center;">数据格式化转化、数据加密</td>
+  </tr>
+  <tr>
+      <td style="text-align: center;">会话层</td>
+      <td style="text-align: center;">建立、管理和维护会话</td>
+  </tr>
+  <tr>
+      <td style="text-align: center;">传输层</td>
+      <td style="text-align: center;">建立、管理和维护端到端的连接</td>
+      <td style="text-align: center;">TCP  UDP</td>
+      <td style="text-align: center;">四层交换机、四层路由器</td>
+      <td style="text-align: center;">传输层</td>
+  </tr>
+  <tr>
+      <td style="text-align: center;">网络层</td>
+      <td style="text-align: center;">IP选址及路由选择</td>
+      <td style="text-align: center;">IP  ICMP  RIP  IGMP</td>
+      <td style="text-align: center;">路由器、三层交换机</td>
+      <td style="text-align: center;">网络层</td>
+  </tr>
+  <tr>
+      <td style="text-align: center;">数据链路层</td>
+      <td style="text-align: center;">提供介质访问和链路管理</td>
+      <td style="text-align: center;">ARP  RARP  IEEE802.3  PPP  CSMA/CD</td>
+      <td style="text-align: center;">网桥、以太网交换机、网卡</td>
+      <td style="text-align: center;">数据链路层</td>
+  </tr>
+  <tr>
+      <td style="text-align: center;">物理层</td>
+      <td style="text-align: center;">物理层</td>
+      <td style="text-align: center;">FE自协商  Manchester  MLT-3  4A  PAM5</td>
+      <td style="text-align: center;">中继器、集线器、双绞线</td>
+      <td style="text-align: center;">物理层</td>
+  </tr>
+</table>
+<h3 id="以太网数据构成"><a class="markdownIt-Anchor" href="#以太网数据构成"></a> 以太网数据构成</h3>
+<p>以太网数据帧构成如下图所示：</p>
+<img src="/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/%E4%BB%A5%E5%A4%AA%E7%BD%91%E6%95%B0%E6%8D%AE%E5%8C%85.png" class="" title="以太网数据包">
+<img src="/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/%E4%BB%A5%E5%A4%AA%E7%BD%91%E5%B8%A7%E6%A0%BC%E5%BC%8F.png" class="" title="以太网帧格式">
+<ul>
+<li>前导码（Preamble）：为实现地政数据的正确阐述，物理层使用 7 个字节同步码（0/1 交替&lt;==&gt;55-55-55-55-55-55-55）实现数据同步；</li>
+<li>帧起始界定符（Start Frame Delimiter, SFD）：使用一个字节的 SFD（固定值为 0xd5）来表示一帧的开始，即后面紧跟着传输的就是以太网的帧头；</li>
+<li>目的 MAC 地址：即接受的物理 MAC 地址，占用 6 字节。MAC 地址从应用上可分为单播地址、组播地址和广播地址。
+<ul>
+<li>单播地址：第一个字节最低位为 0，比如 00-00-00-11-11-11，一般用于标志唯一的设备</li>
+<li>组播地址：第一个字节最低位为 1，比如 01-00-00-11-11-11，一般用于标志同属一组的多个设备</li>
+<li>广播地址：所有位皆为 1，即 FF-FF-FF-FF-FF-FF，用于标志同一网段中的所有设备</li>
+</ul>
+</li>
+<li>源 MAC 地址：即发送端的 MAC 的物理地址，占 6 字节；</li>
+<li>长度/类型：长度/类型占 2 字节，当两字节的值小于 1536（十六进制为 0x0600）时，表示该以太网中的数据段长度；如果这两字节大于 1536，则表示该以太网中的数据属于哪个上层协议，如 0x800 标识 IP 协议（网关协议）、0x0806 表示 ARP 协议（地址解析协议）等；</li>
+<li>数据：以太网中的数据段长度最小 46 个字节，最大 1500 个字节。最大值 1500 称为以太网的最大传输单元（MTU，Maximum Transmission Unit），之所以限制最大传输单元是因为在多个计算机的数据帧排队等待传输时，如果某个数据帧太大的话，那么其它数据帧等待的时间就会加长，导致体验变差，这就像一个十字路口的红绿灯，你可以让绿灯持续亮一小时，但是等红灯的人一定不愿意的。另外还要考虑网络 I/O 控制器缓存区资源以及网络最大的承载能力等因素，因此最大传输单元是由各种综合因素决定的。为了避免增加额外的配置，通常以太网的有效数据字段小于 1500 个字节。</li>
+<li>帧检验序列（Frame Check Sequence, FCS）:为了确保数据的正确传输，在数据尾部加入了 4 字节的循环冗余校验码（CRC 校验）来检测数据是否传输错误。CRC 数据校验从以太网帧头开始即不含前导码和帧起始界定符。通用 CRC 标准有 CRC-8、CRC-16、CRC-32、CRC-CCIT，其中在网络通信系统中应用最广泛的是 CRC-32 标准；</li>
+</ul>
+<h3 id="ip-协议构成"><a class="markdownIt-Anchor" href="#ip-协议构成"></a> IP 协议构成</h3>
+<p>IP 协议是 TCP/IP 协议栈中的核心，IP 协议规定了数据传输的基本单元和格式。IP 协议位于以太网 MAC 帧格式的数据段，IP 协议内容是由 IP 首部和数据字段组成。TCP、UDP 以及 ICMP 数据都以 IP 数据保温传输</p>
+<img src="/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/IP%E6%8A%A5%E6%96%87%E6%A0%BC%E5%BC%8F.png" class="" title="IP报文格式">
+<p>注：前 20 个字节是固定字节，后面是可选字段</p>
+<ul>
+<li>版本：4 位 IP 版本号（Version），这个值设置为 b0100 表示 IPv4，设置为 b0110 时表示 IPv6；</li>
+<li>首部长度：4 位首部长度（Internet Header Length, IHL），表示 IP 首部一共有多少个 32 位（4 个字节）。在没有可选字段，IP 首部长度为 20 个字节，因此首部长度为 5；</li>
+<li>服务类型：8 位服务类型（Type of service, TOP），该字段被划分成两个子字段：3 位优先级字段（现在已经基本忽略掉了）和 4 位 TOS 字段，最后一位固定为 0。服务类型为 0 时表示一般服务。</li>
+<li>总长度：16 位 IP 数据报总长度（Total Length），包括 IP 首部和 IP 数据部分，以字节为单位。我们利用 IP 首部长度和 IP 数据报总长度，就可以知道 IP 数据报中数据内容的起始位置和长度。由于该字段长 16bit，所以 IP 数据报最长可达 65535 字节。尽管理论上可以传输长达 65535 字节的 IP 数据报，但实际上还要考虑网络的最大承载能力等因素；</li>
+<li>标识字段：16 位标识（Identification）字段，用来标识主机发送的每一份数据报。通常每发送一份报文它的值就会加 1；</li>
+<li>3 位标志（Flags）字段，第 1 位为保留位；第 2 位表示禁止分片（1 表示不分片 0：允许分片）；第 3 位标识更多分片（除了数据报的最后一个分片外，其它分片都为 1）；</li>
+<li>片偏移：13 位片偏移（Fragment Offset），在接收方进行数据报重组时用来标识分片的顺序；</li>
+<li>生存时间：8 位生存时间字段，TTL（Time To Live）域防止丢失的数据包在无休止的传播，一般被设置为 64 或者 128；</li>
+<li>协议：8 位协议（Protocol）类型，表示此数据报所携带上层数据使用的协议类型，ICMP 为 1，TCP 为 6，UDP 为 17；</li>
+<li>首部校验和：16 位首部校验和（Header Checksum），该字段只校验数据报的首部，不包含数据部分；校验 IP 数据报头部是否被破坏、篡改和丢失等；</li>
+<li>源 IP 地址：32 位源 IP 地址（Source Address），即发送端的 IP 地址，如 192.168.1.123；</li>
+<li>目的 IP 地址：32 位目的 IP 地址（Destination Address），即接收端的 IP 地址，如<br />
+192.168.1.102</li>
+<li>可选字段：是数据报中的一个可变长度的可选信息，选项字段以 32bit 为界，不足时插入值为 0 的填充字节，保证 IP 首部始终是 32bit 的整数倍</li>
+</ul>
+<h3 id="tcp-udp-协议区别"><a class="markdownIt-Anchor" href="#tcp-udp-协议区别"></a> TCP || UDP 协议区别</h3>
+<table>
+<thead>
+<tr>
+<th>TCP</th>
+<th>UDP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>面向连接</td>
+<td>面向非连接</td>
+</tr>
+<tr>
+<td>传输可靠</td>
+<td>传输不可靠</td>
+</tr>
+<tr>
+<td>传输效率低</td>
+<td>传输效率高</td>
+</tr>
+<tr>
+<td>占用资源多</td>
+<td>占用资源少</td>
+</tr>
+<tr>
+<td>浏览器、QQ 传输文件</td>
+<td>QQ 语音、视频</td>
+</tr>
+</tbody>
+</table>
+<img src="/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/UDP%E5%8D%8F%E8%AE%AE%E6%95%B0%E6%8D%AE%E5%B8%A7%E6%A0%BC%E5%BC%8F.png" class="" title="UDP协议数据帧格式">
+<ul>
+<li>源端口号：16 位发送端端口号，用于区分不同服务的端口，端口号范围 0~65535；</li>
+<li>目的端口号：16 位接收端端口号；</li>
+<li>UDP 长度：16 位 UDP 长度，包含 UDP 首部长度+数据长度，单位是字节（Byte）；</li>
+<li>UDP 校验和：16 位 UDP 校验和。UDP 计算校验和的方法和计算 IP 数据报首部校验和的方法相似，但不同的是 IP 数据报的校验和只检验 IP 数据报的首部，而 UDP 校验和包含三个部分：UDP 伪首部，UDP 首部和 UDP 的数据部分。伪首部的数据是从 IP 数据报头和 UDP 数据报头获取的，包括源 IP 地址，目的 IP 地址，协议类型和 UDP 长度，其目的是让 UDP 两次检查数据是否已经正确到达目的地，只是单纯为了做校验用的。在大多数使用场景中接收端并不检测 UDP 校验和，因此这里不做过多介绍。</li>
+</ul>
+<img src="/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/TCP%E5%8D%8F%E8%AE%AE%E5%B8%A7%E6%A0%BC%E5%BC%8F.png" class="" title="TCP协议帧格式">
+<ul>
+<li>源端口：16 位发送端端口号，用于区分不同服务的端口，由基于 TCP 应用程序的用户进程随机选择</li>
+<li>目的端口：2 个字节，指明接收者所用的端口号，一般由应用程序来指定</li>
+<li>顺序号：4 个字节，用来标识从 TCP 源端向 TCP 目的端发送的数据字节流，它表示在这个报文段中的第一个数据字节的顺序号。如果将字节流看作在两个应用程序间的单向流动，则 TCP 用顺序号对每个字节进行计数，序号是 32 bit 的无符号数，序号达到 2^32-1 后又从 0 开始。比如我们收到一个数据报中 sq(顺序号) =0，数据报内容为 20 字节，那么下一个数据报的 sq 就应该是 21。当建立一个新的连接时，SYN 标志变为 1，顺序号字段包含由这个主机选择的该连接的初始顺序号 ISN</li>
+<li>确认顺序：4 个字节，包含发送确认的一端所期待收到的下一个顺序号。因此，确认序号应该是上次已经成功收到数据字节顺序号加 1 。比如我们收到的一个数据报的 sq = 0 ，数据报内容为 20 字节，那么我们的 ack(确认序号) 应该是 21 ，用来表明 sq=0 ，内容为 20 字节的数据报已经收到，接下来期望收到的是 sq=21 的数据报。只有 ACK 标志为 1 时确认序号字段才有效</li>
+<li>首部长度：4 位，给出报头中 32 bit 字的数目，需要这个值是因为任选字段的长度是可变的，这个字段占 4 bit，即 TCP 最多有 60 (15*4) 字节的首部</li>
+<li>保留区：6 位，保留给将来使用，目前必须置为 0</li>
+<li>控制位：
+<ul>
+<li>URG：1 表示紧急指针有效，0 表示忽略紧急指针</li>
+<li>ACK：1 表示确认号有效，0 表示报文中不包含确认信息，忽略确认号字段</li>
+<li>PSH：1 表示带有 PUSH 标志的数据，表示发送端缓存中已经没有待发送的数据，指示接收方应该尽快将这个报文段交给应用层而不用等待缓冲区装满</li>
+<li>RST：用于复位由于主机崩溃或其他原因出现的错误连接。还可以用于拒绝非法的报文段和拒绝连接请求。一般情况下，如果收到一个 RST 为 1 的报文，那么一定出现某些问题。</li>
+<li>SYN：同步序号，1 表示连接请求；用于建立和使顺序号同步</li>
+<li>FIN：用于释放连接，1 表示发送发应景没有数据发送了，即关闭本方数据流</li>
+</ul>
+</li>
+<li>窗口大小：16 位，表示从确认号开始，本报文的源方可以接受的字节数，即源方接受窗口大小。窗口大小是 16bit 字段，因而窗口大小最大为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mn>2</mn><mn>16</mn></msub><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">2_{16}-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.79444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mord mtight">6</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>；</li>
+<li>检验和：16 位，对整个 TCP 报文段（包括 TCP 头部和 TCP 数据以及伪报文头）进行校验和计算。这是一个强制性字段，要求由发送方计算和存储，并由接收端进行验证（接收端与发送端数值结果完全一样，才能证明数据是有效的）；</li>
+<li>紧急指针：16 位，是一个正的偏移量，和顺序号字段中的值相加表示紧急数据最后一个字节的序号。TCP 的紧急方式是发送端向另一端发送紧急数据的一种方式，只有当 URG 标志置 1 时紧急指针才有效；</li>
+<li>选项：n*4 字节，常见的可选字段是最长报文大小 MSS(Maximum Segment Size)。每个连接方通常都在通信的第一个报文段 (为建立连接而设置 SYN 标志的那个段) 中指明这个选项，它指明本端所能接收的最大长度的报文段。选项长度不一定是 32 位字的整数倍，所以需要添加填充位，使得报文长度为 32 位字的整数倍</li>
+</ul>
+<h2 id="usb"><a class="markdownIt-Anchor" href="#usb"></a> USB</h2>
+<p><em>（有待补充…）</em></p>
+<h2 id="mqtt"><a class="markdownIt-Anchor" href="#mqtt"></a> MQTT</h2>
+<p><em>（有待补充…）</em></p>
+<h2 id="wifi"><a class="markdownIt-Anchor" href="#wifi"></a> WIFI</h2>
+<p><em>（有待补充…）</em></p>
+<h2 id="udp"><a class="markdownIt-Anchor" href="#udp"></a> UDP</h2>
+<p><em>（有待补充…）</em></p>
+<h2 id="参考文献"><a class="markdownIt-Anchor" href="#参考文献"></a> 参考文献</h2>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://renesas-docs.100ask.net/zh/DShanMCU_RA6M5/object_oriented_module_programming_method_in_ARM_embedded_system/chapter6.html">百问网：串行通信接口</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_38106923/article/details/126024970?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522172152401816800222838066%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=172152401816800222838066&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-126024970-null-null.142%5Ev100%5Epc_search_result_base7&amp;utm_term=UART&amp;spm=1018.2226.3001.4187">一文搞懂 UART 通信协议</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/MQ0522/article/details/128559845?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522172153825116800172564359%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=172153825116800172564359&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-128559845-null-null.142%5Ev100%5Epc_search_result_base7&amp;utm_term=RS485&amp;spm=1018.2226.3001.4187">RS485 通信----基本原理+电路图</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_38106923/article/details/123673285">一文搞懂 I2C 通信总线</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/lzxiaotu/article/details/119354515?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522172154100716800188578505%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=172154100716800188578505&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-4-119354515-null-null.142%5Ev100%5Epc_search_result_base7&amp;utm_term=TTL&amp;spm=1018.2226.3001.4187">TTL、RS232、RS485</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/dpwkj/article/details/139060852?spm=1001.2101.3001.6650.4&amp;utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EYuanLiJiHua%7EPosition-4-139060852-blog-119354515.235%5Ev43%5Epc_blog_bottom_relevance_base5&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EYuanLiJiHua%7EPosition-4-139060852-blog-119354515.235%5Ev43%5Epc_blog_bottom_relevance_base5&amp;utm_relevant_index=7">总结 UART、I2C、SPI、TTL、RS232、RS422、RS485、CAN、USB、SD 卡、1-WIRE、Ethernet</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_38106923/article/details/124364676">一文搞懂 SPI 通信协议</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_38106923/article/details/105285231">一文看懂 Modbus 协议</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_38106923/article/details/108292454">一文搞懂 TCP 的三次握手和四次挥手</a></li>
+<li><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/_07AMQLo9gp7Ae0tP9LaoQ">一文搞懂 I2C 总线通信</a></li>
+<li><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/51sVyx8AcZOuCLVcWLz-6w">对不起！我还是坚持把 I2C 肝完了</a></li>
+<li><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/p4boYe7pua2vsWny4m1nmA">原来 SPI 并没有我想的那么简单</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_35057766/article/details/135573375">CAN 总线通信详解 (超详细配 34 张高清图)</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/2401_86353562/article/details/140725426">网络原理：史上最全 tcp/ip 协议详解</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/gemengxia/article/details/115548105?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522172343776616800185859635%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=172343776616800185859635&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-115548105-null-null.142%5Ev100%5Epc_search_result_base7&amp;utm_term=%E4%BB%A5%E5%A4%AA%E7%BD%91%E9%80%9A%E4%BF%A1&amp;spm=1018.2226.3001.4187">以太网通信及设计</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+        <a href="/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/#comments" class="article-comment-link">
+          <span class="post-comments-count valine-comment-count" data-xid="/2024/07/18/%E5%B8%B8%E7%94%A8%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/" itemprop="commentCount"></span>
+          留言
+        </a>
+      
+      
+      
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE/" rel="tag">串口协议</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/" rel="tag">嵌入式</a></li></ul>
+
+
+    </footer>
+  </div>
+  
+    
+  <nav id="article-nav" class="wow fadeInUp">
+    
+      <div class="article-nav-link-wrap article-nav-link-left">
+        
+          <img data-src="https://haowallpaper.com/link/common/file/previewFileImg/9c2a8ca608b20f06b08089b12ac3dd529c2a8ca608b20f06b08089b12ac3dd52" data-sizes="auto" alt="VMWare虚拟机常见问题备注" class="lazyload">
+        
+        <a href="/2024/08/05/VMWare%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E5%A4%87%E6%B3%A8/"></a>
+        <div class="article-nav-caption">前一篇</div>
+        <h3 class="article-nav-title">
+          
+            VMWare虚拟机常见问题备注
+          
+        </h3>
+      </div>
+    
+    
+    <div class="article-nav-link-wrap article-nav-link-right">
+      
+        <img data-src="https://haowallpaper.com/link/common/file/previewFileImg/b8efe4a6e00706e7e0f72c421a3f86f9b8efe4a6e00706e7e0f72c421a3f86f9" data-sizes="auto" alt="Linux驱动入门（北京迅为）" class="lazyload">
+      
+      <a href="/2024/06/24/Linux%E9%A9%B1%E5%8A%A8%E5%85%A5%E9%97%A8%EF%BC%88%E5%8C%97%E4%BA%AC%E8%BF%85%E4%B8%BA%EF%BC%89/"></a>
+      <div class="article-nav-caption">后一篇</div>
+      <h3 class="article-nav-title">
+        
+          Linux驱动入门（北京迅为）
+        
+      </h3>
+    </div>
+    
+  </nav>
+
+
+  
+</article>
+
+  <section id="comments" class="vcomment"></section>
+
+
+
+
+
+
+</section>
+          
+            <aside id="sidebar">
+  <div class="sidebar-wrap wow fadeInRight wrap-sticky">
+    
+      <div class="sidebar-toc-sidebar"><div class="sidebar-toc">
+  <h3 class="toc-title">文章目录</h3>
+  <div class="sidebar-toc-wrapper toc-div-class" >
+      
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.</span> <span class="toc-text"> 常见的通信协议</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#uart-%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.1.</span> <span class="toc-text"> UART 通信协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#uart-%E7%9A%84%E7%A1%AC%E4%BB%B6%E9%93%BE%E6%8E%A5"><span class="toc-number">1.1.1.</span> <span class="toc-text"> UART 的硬件链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#uart-%E7%9A%84%E7%94%B5%E6%B0%94%E7%89%B9%E6%80%A7"><span class="toc-number">1.1.2.</span> <span class="toc-text"> UART 的电气特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#uart-%E7%9A%84%E6%95%B0%E6%8D%AE%E5%B8%A7"><span class="toc-number">1.1.3.</span> <span class="toc-text"> UART 的数据帧</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ttl"><span class="toc-number">1.1.4.</span> <span class="toc-text"> TTL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rs232"><span class="toc-number">1.1.5.</span> <span class="toc-text"> RS232</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rs485"><span class="toc-number">1.1.6.</span> <span class="toc-text"> RS485</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#i2c-%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.2.</span> <span class="toc-text"> I2C 通信协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#i2c-%E7%9A%84%E7%A1%AC%E4%BB%B6%E7%89%B9%E6%80%A7"><span class="toc-number">1.2.1.</span> <span class="toc-text"> I2C 的硬件特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#i2c-%E6%97%B6%E5%BA%8F%E5%9B%BE"><span class="toc-number">1.2.2.</span> <span class="toc-text"> I2C 时序图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#i2c-%E5%8D%8F%E8%AE%AE%E5%B8%A7"><span class="toc-number">1.2.3.</span> <span class="toc-text"> I2C 协议帧</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#i2c-%E7%9A%84%E6%80%BB%E7%BA%BF%E4%BB%B2%E8%A3%81"><span class="toc-number">1.2.4.</span> <span class="toc-text"> I2C 的总线仲裁</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#spi-%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.3.</span> <span class="toc-text"> SPI 通信协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#spi-%E7%9A%84%E7%A1%AC%E4%BB%B6%E8%BF%9E%E6%8E%A5"><span class="toc-number">1.3.1.</span> <span class="toc-text"> SPI 的硬件连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#spi-%E6%95%B0%E6%8D%AE%E5%B8%A7"><span class="toc-number">1.3.2.</span> <span class="toc-text"> SPI 数据帧</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#can-%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.4.</span> <span class="toc-text"> CAN 通信协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#can-%E6%80%BB%E7%BA%BF%E7%89%A9%E7%90%86%E8%BF%9E%E6%8E%A5"><span class="toc-number">1.4.1.</span> <span class="toc-text"> CAN 总线物理连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#can-%E6%80%BB%E7%BA%BF%E7%89%B9%E7%82%B9"><span class="toc-number">1.4.2.</span> <span class="toc-text"> CAN 总线特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%94%99%E8%AF%AF%E7%8A%B6%E6%80%81%E7%9A%84%E7%A7%8D%E7%B1%BB"><span class="toc-number">1.4.3.</span> <span class="toc-text"> 错误状态的种类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E5%8A%A8%E9%94%99%E8%AF%AF%E7%8A%B6%E6%80%81"><span class="toc-number">1.4.3.1.</span> <span class="toc-text"> 主动错误状态</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A2%AB%E5%8A%A8%E9%94%99%E8%AF%AF%E7%8A%B6%E6%80%81"><span class="toc-number">1.4.3.2.</span> <span class="toc-text"> 被动错误状态</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E7%BA%BF%E5%85%B3%E9%97%AD%E7%8A%B6%E6%80%81"><span class="toc-number">1.4.3.3.</span> <span class="toc-text"> 总线关闭状态</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%94%99%E8%AF%AF%E8%AE%A1%E6%95%B0%E5%80%BC"><span class="toc-number">1.4.3.4.</span> <span class="toc-text"> 错误计数值</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#can-%E6%80%BB%E7%BA%BF%E5%8D%8F%E8%AE%AE%E5%B8%A7"><span class="toc-number">1.4.4.</span> <span class="toc-text"> CAN 总线协议帧</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#can-%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1%E5%8C%85%E6%8B%AC%E4%BA%94%E7%A7%8D%E5%B8%A7"><span class="toc-number">1.4.4.1.</span> <span class="toc-text"> CAN 网络通信包括五种帧：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#can-%E5%8D%8F%E8%AE%AE%E6%95%B0%E6%8D%AE%E5%B8%A7"><span class="toc-number">1.4.4.2.</span> <span class="toc-text"> CAN 协议数据帧</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#can-%E6%80%BB%E7%BA%BF%E9%81%A5%E6%8E%A7%E5%B8%A7"><span class="toc-number">1.4.4.3.</span> <span class="toc-text"> CAN 总线遥控帧：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#can-%E6%80%BB%E7%BA%BF%E9%94%99%E8%AF%AF%E5%B8%A7"><span class="toc-number">1.4.4.4.</span> <span class="toc-text"> CAN 总线错误帧：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#can-%E6%80%BB%E7%BA%BF%E8%BF%87%E8%BD%BD%E5%B8%A7"><span class="toc-number">1.4.4.5.</span> <span class="toc-text"> CAN 总线过载帧：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#can-%E6%80%BB%E7%BA%BF%E9%97%B4%E9%9A%94%E5%B8%A7"><span class="toc-number">1.4.4.6.</span> <span class="toc-text"> CAN 总线间隔帧</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#can-%E6%80%BB%E7%BA%BF%E5%90%8C%E6%AD%A5%E5%8F%8A%E6%80%BB%E7%BA%BF%E4%BB%B2%E8%A3%81"><span class="toc-number">1.4.5.</span> <span class="toc-text"> CAN 总线同步及总线仲裁</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%8D%E5%A1%AB%E5%85%85%E4%BD%8D%E5%A1%AB%E5%85%85%E6%98%AF%E4%B8%BA%E4%BA%86%E9%98%B2%E6%AD%A2%E7%AA%81%E5%8F%91%E9%94%99%E8%AF%AF%E8%80%8C%E8%AE%BE%E5%AE%9A%E7%9A%84%E5%8A%9F%E8%83%BD-%E5%BD%93%E5%90%8C%E6%A0%B7%E7%9A%84%E7%94%B5%E5%B9%B3%E6%8C%81%E7%BB%AD-5-%E4%BD%8D%E6%97%B6%E5%88%99%E6%B7%BB%E5%8A%A0%E4%B8%80%E4%B8%AA%E4%BD%8D%E7%9A%84%E5%8F%8D%E5%9E%8B%E6%95%B0%E6%8D%AE"><span class="toc-number">1.4.5.1.</span> <span class="toc-text"> 位填充：位填充是为了防止突发错误而设定的功能。当同样的电平持续 5 位时则添加一个位的反型数据</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%94%99%E8%AF%AF%E7%9A%84%E7%A7%8D%E7%B1%BB5-%E7%A7%8D%E4%BD%8D%E9%94%99%E8%AF%AF-%E5%A1%AB%E5%85%85%E9%94%99%E8%AF%AF-crc-%E9%94%99%E8%AF%AF-%E6%A0%BC%E5%BC%8F%E9%94%99%E8%AF%AF-ack-%E9%94%99%E8%AF%AF"><span class="toc-number">1.4.5.1.1.</span> <span class="toc-text"> 错误的种类（5 种）：位错误、填充错误、CRC 错误、格式错误、ACK 错误</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%94%99%E8%AF%AF%E5%B8%A7%E7%9A%84%E8%BE%93%E5%87%BA"><span class="toc-number">1.4.5.2.</span> <span class="toc-text"> 错误帧的输出</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%8D%E6%97%B6%E5%BA%8F"><span class="toc-number">1.4.5.3.</span> <span class="toc-text"> 位时序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%96%E5%BE%97%E5%90%8C%E6%AD%A5%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">1.4.5.4.</span> <span class="toc-text"> 取得同步的方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A5%E5%A4%AA%E7%BD%91%E9%80%9A%E4%BF%A1"><span class="toc-number">1.5.</span> <span class="toc-text"> 以太网通信</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%99%BE%E5%85%86%E7%BD%91%E5%8F%A3%E5%92%8C%E5%8D%83%E5%85%86%E7%BD%91%E5%8F%A3%E7%BA%BF%E5%BA%8F"><span class="toc-number">1.5.0.1.</span> <span class="toc-text"> 百兆网口和千兆网口线序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#osi-%E6%A8%A1%E5%9E%8B%E4%B8%8E-tcpip-%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.5.0.2.</span> <span class="toc-text"> OSI 模型与 TCP&#x2F;IP 模型</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A5%E5%A4%AA%E7%BD%91%E6%95%B0%E6%8D%AE%E6%9E%84%E6%88%90"><span class="toc-number">1.5.1.</span> <span class="toc-text"> 以太网数据构成</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ip-%E5%8D%8F%E8%AE%AE%E6%9E%84%E6%88%90"><span class="toc-number">1.5.2.</span> <span class="toc-text"> IP 协议构成</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tcp-udp-%E5%8D%8F%E8%AE%AE%E5%8C%BA%E5%88%AB"><span class="toc-number">1.5.3.</span> <span class="toc-text"> TCP || UDP 协议区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#usb"><span class="toc-number">1.6.</span> <span class="toc-text"> USB</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mqtt"><span class="toc-number">1.7.</span> <span class="toc-text"> MQTT</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#wifi"><span class="toc-number">1.8.</span> <span class="toc-text"> WIFI</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#udp"><span class="toc-number">1.9.</span> <span class="toc-text"> UDP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-number">1.10.</span> <span class="toc-text"> 参考文献</span></a></li></ol></li></ol>
+      
+  </div>
+</div>
+</div>
+      <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/avatar.webp" data-sizes="auto" alt="Ainavo" class="lazyload">
+  <div class="sidebar-author-name">Ainavo</div>
+  <div class="sidebar-description">一个菜猫</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div>
+    <div class="sidebar-state-number">10</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>分类</div>
+    <div class="sidebar-state-number">0</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>标签</div>
+    <div class="sidebar-state-number">12</div>
+  </div>
+</div>
+<div class="sidebar-social">
+  
+</div>
+<div class="sidebar-menu">
+  
+    <div class="sidebar-menu-link-wrap">
+      <a class="sidebar-menu-link-dummy" href="/" aria-label="首页"></a>
+      <span class="sidebar-menu-icon"></span>
+      <div class="sidebar-menu-link">首页</div>
+    </div>
+  
+    <div class="sidebar-menu-link-wrap">
+      <a class="sidebar-menu-link-dummy" href="/archives" aria-label="归档"></a>
+      <span class="sidebar-menu-icon"></span>
+      <div class="sidebar-menu-link">归档</div>
+    </div>
+  
+    <div class="sidebar-menu-link-wrap">
+      <a class="sidebar-menu-link-dummy" href="/about" aria-label="关于"></a>
+      <span class="sidebar-menu-icon"></span>
+      <div class="sidebar-menu-link">关于</div>
+    </div>
+  
+    <div class="sidebar-menu-link-wrap">
+      <a class="sidebar-menu-link-dummy" href="/friend" aria-label="友链"></a>
+      <span class="sidebar-menu-icon"></span>
+      <div class="sidebar-menu-link">友链</div>
+    </div>
+  
+</div>
+</div>
+    
+    
+      <div class="sidebar-btn-wrapper" style="position:static">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div>
+    
+  </div>
+
+  
+</aside>
+
+          
+        </div>
+        <footer id="footer" class="wow fadeInUp">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div class="outer">
+    <div id="footer-info">
+      
+      <div>
+        <span class="icon-copyright"></span>
+        2020-2024
+        <span class="footer-info-sep"></span>
+        Ainavo
+      </div>
+      
+        <div>
+          基于&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>&nbsp;
+          Theme.<a href="https://github.com/D-Sketon/hexo-theme-reimu" target="_blank">Reimu</a>
+        </div>
+      
+      
+        <div>
+          <span class="icon-brush"></span>
+          34.1k
+          &nbsp;|&nbsp;
+          <span class="icon-coffee"></span>
+          02:11
+        </div>
+      
+      
+        <div>
+          <span class="icon-eye"></span>
+          <span id="busuanzi_container_site_pv">总访问量&nbsp;<span id="busuanzi_value_site_pv"></span></span>
+          &nbsp;|&nbsp;
+          <span class="icon-user"></span>
+          <span id="busuanzi_container_site_uv">总访客量&nbsp;<span id="busuanzi_value_site_uv"></span></span>
+        </div>
+      
+    </div>
+  </div>
+</footer>
+
+        <div class="sidebar-top">
+          <img src="/images/taichi.png" height="50" width="50" alt="backtop" />
+          <div class="arrow-up"></div>
+        </div>
+        <div id="mask"></div>
+      </div>
+      <nav id="mobile-nav">
+  <div class="sidebar-wrap">
+    
+      <div class="sidebar-toc-sidebar"><div class="sidebar-toc">
+  <h3 class="toc-title">文章目录</h3>
+  <div class="sidebar-toc-wrapper toc-div-class" >
+      
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.</span> <span class="toc-text"> 常见的通信协议</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#uart-%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.1.</span> <span class="toc-text"> UART 通信协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#uart-%E7%9A%84%E7%A1%AC%E4%BB%B6%E9%93%BE%E6%8E%A5"><span class="toc-number">1.1.1.</span> <span class="toc-text"> UART 的硬件链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#uart-%E7%9A%84%E7%94%B5%E6%B0%94%E7%89%B9%E6%80%A7"><span class="toc-number">1.1.2.</span> <span class="toc-text"> UART 的电气特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#uart-%E7%9A%84%E6%95%B0%E6%8D%AE%E5%B8%A7"><span class="toc-number">1.1.3.</span> <span class="toc-text"> UART 的数据帧</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ttl"><span class="toc-number">1.1.4.</span> <span class="toc-text"> TTL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rs232"><span class="toc-number">1.1.5.</span> <span class="toc-text"> RS232</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rs485"><span class="toc-number">1.1.6.</span> <span class="toc-text"> RS485</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#i2c-%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.2.</span> <span class="toc-text"> I2C 通信协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#i2c-%E7%9A%84%E7%A1%AC%E4%BB%B6%E7%89%B9%E6%80%A7"><span class="toc-number">1.2.1.</span> <span class="toc-text"> I2C 的硬件特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#i2c-%E6%97%B6%E5%BA%8F%E5%9B%BE"><span class="toc-number">1.2.2.</span> <span class="toc-text"> I2C 时序图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#i2c-%E5%8D%8F%E8%AE%AE%E5%B8%A7"><span class="toc-number">1.2.3.</span> <span class="toc-text"> I2C 协议帧</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#i2c-%E7%9A%84%E6%80%BB%E7%BA%BF%E4%BB%B2%E8%A3%81"><span class="toc-number">1.2.4.</span> <span class="toc-text"> I2C 的总线仲裁</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#spi-%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.3.</span> <span class="toc-text"> SPI 通信协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#spi-%E7%9A%84%E7%A1%AC%E4%BB%B6%E8%BF%9E%E6%8E%A5"><span class="toc-number">1.3.1.</span> <span class="toc-text"> SPI 的硬件连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#spi-%E6%95%B0%E6%8D%AE%E5%B8%A7"><span class="toc-number">1.3.2.</span> <span class="toc-text"> SPI 数据帧</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#can-%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.4.</span> <span class="toc-text"> CAN 通信协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#can-%E6%80%BB%E7%BA%BF%E7%89%A9%E7%90%86%E8%BF%9E%E6%8E%A5"><span class="toc-number">1.4.1.</span> <span class="toc-text"> CAN 总线物理连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#can-%E6%80%BB%E7%BA%BF%E7%89%B9%E7%82%B9"><span class="toc-number">1.4.2.</span> <span class="toc-text"> CAN 总线特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%94%99%E8%AF%AF%E7%8A%B6%E6%80%81%E7%9A%84%E7%A7%8D%E7%B1%BB"><span class="toc-number">1.4.3.</span> <span class="toc-text"> 错误状态的种类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E5%8A%A8%E9%94%99%E8%AF%AF%E7%8A%B6%E6%80%81"><span class="toc-number">1.4.3.1.</span> <span class="toc-text"> 主动错误状态</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A2%AB%E5%8A%A8%E9%94%99%E8%AF%AF%E7%8A%B6%E6%80%81"><span class="toc-number">1.4.3.2.</span> <span class="toc-text"> 被动错误状态</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E7%BA%BF%E5%85%B3%E9%97%AD%E7%8A%B6%E6%80%81"><span class="toc-number">1.4.3.3.</span> <span class="toc-text"> 总线关闭状态</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%94%99%E8%AF%AF%E8%AE%A1%E6%95%B0%E5%80%BC"><span class="toc-number">1.4.3.4.</span> <span class="toc-text"> 错误计数值</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#can-%E6%80%BB%E7%BA%BF%E5%8D%8F%E8%AE%AE%E5%B8%A7"><span class="toc-number">1.4.4.</span> <span class="toc-text"> CAN 总线协议帧</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#can-%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1%E5%8C%85%E6%8B%AC%E4%BA%94%E7%A7%8D%E5%B8%A7"><span class="toc-number">1.4.4.1.</span> <span class="toc-text"> CAN 网络通信包括五种帧：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#can-%E5%8D%8F%E8%AE%AE%E6%95%B0%E6%8D%AE%E5%B8%A7"><span class="toc-number">1.4.4.2.</span> <span class="toc-text"> CAN 协议数据帧</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#can-%E6%80%BB%E7%BA%BF%E9%81%A5%E6%8E%A7%E5%B8%A7"><span class="toc-number">1.4.4.3.</span> <span class="toc-text"> CAN 总线遥控帧：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#can-%E6%80%BB%E7%BA%BF%E9%94%99%E8%AF%AF%E5%B8%A7"><span class="toc-number">1.4.4.4.</span> <span class="toc-text"> CAN 总线错误帧：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#can-%E6%80%BB%E7%BA%BF%E8%BF%87%E8%BD%BD%E5%B8%A7"><span class="toc-number">1.4.4.5.</span> <span class="toc-text"> CAN 总线过载帧：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#can-%E6%80%BB%E7%BA%BF%E9%97%B4%E9%9A%94%E5%B8%A7"><span class="toc-number">1.4.4.6.</span> <span class="toc-text"> CAN 总线间隔帧</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#can-%E6%80%BB%E7%BA%BF%E5%90%8C%E6%AD%A5%E5%8F%8A%E6%80%BB%E7%BA%BF%E4%BB%B2%E8%A3%81"><span class="toc-number">1.4.5.</span> <span class="toc-text"> CAN 总线同步及总线仲裁</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%8D%E5%A1%AB%E5%85%85%E4%BD%8D%E5%A1%AB%E5%85%85%E6%98%AF%E4%B8%BA%E4%BA%86%E9%98%B2%E6%AD%A2%E7%AA%81%E5%8F%91%E9%94%99%E8%AF%AF%E8%80%8C%E8%AE%BE%E5%AE%9A%E7%9A%84%E5%8A%9F%E8%83%BD-%E5%BD%93%E5%90%8C%E6%A0%B7%E7%9A%84%E7%94%B5%E5%B9%B3%E6%8C%81%E7%BB%AD-5-%E4%BD%8D%E6%97%B6%E5%88%99%E6%B7%BB%E5%8A%A0%E4%B8%80%E4%B8%AA%E4%BD%8D%E7%9A%84%E5%8F%8D%E5%9E%8B%E6%95%B0%E6%8D%AE"><span class="toc-number">1.4.5.1.</span> <span class="toc-text"> 位填充：位填充是为了防止突发错误而设定的功能。当同样的电平持续 5 位时则添加一个位的反型数据</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%94%99%E8%AF%AF%E7%9A%84%E7%A7%8D%E7%B1%BB5-%E7%A7%8D%E4%BD%8D%E9%94%99%E8%AF%AF-%E5%A1%AB%E5%85%85%E9%94%99%E8%AF%AF-crc-%E9%94%99%E8%AF%AF-%E6%A0%BC%E5%BC%8F%E9%94%99%E8%AF%AF-ack-%E9%94%99%E8%AF%AF"><span class="toc-number">1.4.5.1.1.</span> <span class="toc-text"> 错误的种类（5 种）：位错误、填充错误、CRC 错误、格式错误、ACK 错误</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%94%99%E8%AF%AF%E5%B8%A7%E7%9A%84%E8%BE%93%E5%87%BA"><span class="toc-number">1.4.5.2.</span> <span class="toc-text"> 错误帧的输出</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%8D%E6%97%B6%E5%BA%8F"><span class="toc-number">1.4.5.3.</span> <span class="toc-text"> 位时序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%96%E5%BE%97%E5%90%8C%E6%AD%A5%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">1.4.5.4.</span> <span class="toc-text"> 取得同步的方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A5%E5%A4%AA%E7%BD%91%E9%80%9A%E4%BF%A1"><span class="toc-number">1.5.</span> <span class="toc-text"> 以太网通信</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%99%BE%E5%85%86%E7%BD%91%E5%8F%A3%E5%92%8C%E5%8D%83%E5%85%86%E7%BD%91%E5%8F%A3%E7%BA%BF%E5%BA%8F"><span class="toc-number">1.5.0.1.</span> <span class="toc-text"> 百兆网口和千兆网口线序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#osi-%E6%A8%A1%E5%9E%8B%E4%B8%8E-tcpip-%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.5.0.2.</span> <span class="toc-text"> OSI 模型与 TCP&#x2F;IP 模型</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A5%E5%A4%AA%E7%BD%91%E6%95%B0%E6%8D%AE%E6%9E%84%E6%88%90"><span class="toc-number">1.5.1.</span> <span class="toc-text"> 以太网数据构成</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ip-%E5%8D%8F%E8%AE%AE%E6%9E%84%E6%88%90"><span class="toc-number">1.5.2.</span> <span class="toc-text"> IP 协议构成</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tcp-udp-%E5%8D%8F%E8%AE%AE%E5%8C%BA%E5%88%AB"><span class="toc-number">1.5.3.</span> <span class="toc-text"> TCP || UDP 协议区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#usb"><span class="toc-number">1.6.</span> <span class="toc-text"> USB</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mqtt"><span class="toc-number">1.7.</span> <span class="toc-text"> MQTT</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#wifi"><span class="toc-number">1.8.</span> <span class="toc-text"> WIFI</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#udp"><span class="toc-number">1.9.</span> <span class="toc-text"> UDP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-number">1.10.</span> <span class="toc-text"> 参考文献</span></a></li></ol></li></ol>
+      
+  </div>
+</div>
+</div>
+      <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/avatar.webp" data-sizes="auto" alt="Ainavo" class="lazyload">
+  <div class="sidebar-author-name">Ainavo</div>
+  <div class="sidebar-description">一个菜猫</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div>
+    <div class="sidebar-state-number">10</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>分类</div>
+    <div class="sidebar-state-number">0</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>标签</div>
+    <div class="sidebar-state-number">12</div>
+  </div>
+</div>
+<div class="sidebar-social">
+  
+</div>
+<div class="sidebar-menu">
+  
+    <div class="sidebar-menu-link-wrap">
+      <a class="sidebar-menu-link-dummy" href="/" aria-label="首页"></a>
+      <span class="sidebar-menu-icon"></span>
+      <div class="sidebar-menu-link">首页</div>
+    </div>
+  
+    <div class="sidebar-menu-link-wrap">
+      <a class="sidebar-menu-link-dummy" href="/archives" aria-label="归档"></a>
+      <span class="sidebar-menu-icon"></span>
+      <div class="sidebar-menu-link">归档</div>
+    </div>
+  
+    <div class="sidebar-menu-link-wrap">
+      <a class="sidebar-menu-link-dummy" href="/about" aria-label="关于"></a>
+      <span class="sidebar-menu-icon"></span>
+      <div class="sidebar-menu-link">关于</div>
+    </div>
+  
+    <div class="sidebar-menu-link-wrap">
+      <a class="sidebar-menu-link-dummy" href="/friend" aria-label="友链"></a>
+      <span class="sidebar-menu-icon"></span>
+      <div class="sidebar-menu-link">友链</div>
+    </div>
+  
+</div>
+</div>
+    
+  </div>
+  
+    <div class="sidebar-btn-wrapper">
+      <div class="sidebar-toc-btn current"></div>
+      <div class="sidebar-common-btn"></div>
+    </div>
+  
+</nav>
+
+    </div>
+    <div class="site-search">
+      <div class="reimu-popup popup">
+        <div class="reimu-search">
+          <div class="reimu-search-input-icon"></div>
+          <div class="reimu-search-input" id="reimu-search-input"></div>
+          <div class="popup-btn-close"></div>
+        </div>
+        <div class="reimu-results">
+          <div id="reimu-stats"></div>
+          <div id="reimu-hits"></div>
+          <div id="reimu-pagination" class="reimu-pagination"></div>
+        </div>
+      </div>
+    </div>
+    
+<script src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js"></script>
+
+
+<script src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js"></script>
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+<script src="/js/pjax_script.js" data-pjax></script>
+
+
+<script type="module" data-pjax>
+  import PhotoSwipeLightbox from "https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe-lightbox.esm.js";
+  
+  const pswp = () => {
+    if (_$$('.article-entry a.article-gallery-item').length > 0) {
+      new PhotoSwipeLightbox({
+        gallery: '.article-entry',
+        children: 'a.article-gallery-item',
+        pswpModule: () => import("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.esm.js")
+      }).init();
+    }
+    if(_$$('.article-gallery a.article-gallery-item').length > 0) {
+      new PhotoSwipeLightbox({
+        gallery: '.article-gallery',
+        children: 'a.article-gallery-item',
+        pswpModule: () => import("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.esm.js")
+      }).init();
+    }
+    window.lightboxStatus = 'done';
+    window.removeEventListener('lightbox:ready', pswp);
+  }
+  if(window.lightboxStatus === 'ready') {
+    pswp()
+  } else {
+    window.addEventListener('lightbox:ready', pswp);
+  }
+</script>
+
+
+  
+<script src="https://npm.webcache.cn/valine@1.5.1/dist/Valine.min.js" data-pjax></script>
+
+  <script data-pjax>
+    var GUEST_INFO = ['nick', 'mail', 'link'];
+    var guest_info = 'nick,mail,link'.split(',').filter((item) => {
+      return GUEST_INFO.indexOf(item) > -1
+    });
+    var recordIP = JSON.parse('true');
+    var highlight = JSON.parse('true');
+    var visitor = JSON.parse('false');
+
+    new Valine({
+      el: '.vcomment',
+      appId: "c7oTAhUiKwgWVGPFTGuZVjGk-gzGzoHsz",
+      appKey: "wbZf6c0Kw530P4a4YnFRf3gv",
+      placeholder: "Just go go",
+      pageSize: '10',
+      avatar: 'mp',
+      lang: 'zh-cn',
+      recordIP: recordIP,
+      highlight: highlight,
+      visitor: visitor,
+      requiredFields: guest_info,
+      path: window.location.pathname
+    });
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<script src="https://npm.webcache.cn/algoliasearch@4.17.1/dist/algoliasearch-lite.umd.js"></script>
+
+  
+<script src="https://npm.webcache.cn/instantsearch.js@4.56.1/dist/instantsearch.production.min.js"></script>
+
+  
+<script src="/js/algolia_search.js"></script>
+
+  <script>
+    var CONFIG = {
+      root: '/',
+      algolia: {
+        applicationID: "ZRK8ROYLVO",
+        apiKey: "5a58edc6d97807533c4a5165f1085b81",
+        indexName: "Ainavo",
+        hits: {
+          "per_page": parseInt("10")
+        },
+        labels: {
+          "input_placeholder": "搜索.....",
+          "hits_empty": "未发现与 「${query}」相关内容",
+          "hits_stats": "找到${hits}条结果（用时 ${time} ms）"
+        }
+      }
+    };
+  </script>
+
+
+
+  
+<script src="https://npm.webcache.cn/mouse-firework@0.0.4/dist/index.umd.js"></script>
+
+  <script>
+    firework(JSON.parse('{"excludeElements":["a","button"],"particles":[{"shape":"circle","move":["emit"],"easing":"easeOutExpo","colors":["#ff5252","#ff7c7c","#ffafaf","#ffd0d0"],"number":20,"duration":[1200,1800],"shapeOptions":{"radius":[16,32],"alpha":[0.3,0.5]}},{"shape":"circle","move":["diffuse"],"easing":"easeOutExpo","colors":["#ff0000"],"number":1,"duration":[1200,1800],"shapeOptions":{"radius":20,"alpha":[0.2,0.5],"lineWidth":6}}]}'))
+  </script>
+
+
+
+
+
+
+
+  
+<script src="https://npm.webcache.cn/quicklink@2.3.0/dist/quicklink.umd.js"></script>
+
+  <script data-pjax>
+    quicklink.listen({
+      timeout: 3000,
+      priority: true,
+      ignores: []
+    });
+  </script>
+
+
+<div id="lazy-script">
+  <div>
+    
+  </div>
+</div>
+
+
+  <script>
+    console.log(String.raw`%c 
+ ______     ______     __     __    __     __  __    
+/\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+\ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+ \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+  \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                  
+`,'color: #ff5252;')
+    console.log('%c Theme.Reimu v' + '0.2.3' + ' %c https://github.com/D-Sketon/hexo-theme-reimu ', 'color: white; background: #ff5252; padding:5px 0;', 'padding:4px;border:1px solid #ff5252;')
+  </script>
+  
+
+
+
+  
+<script src="https://npm.webcache.cn/busuanzi@2.3.0/bsz.pure.mini.js" async></script>
+
+
+
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.getRegistrations().then((registrations) => {
+      for (let registration of registrations) {
+        registration.unregister();
+      }
+    });
+  }
+</script>
+
+  <!-- hexo injector body_end start -->
+<script src="/js/insert_highlight.js" data-pjax></script>
+<!-- hexo injector body_end end --></body>
+  </html>
+

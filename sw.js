@@ -1,12 +1,12 @@
 const preCache = [
   "/images/taichi.png",
-  "/",
+  "/images/banner.webp",
   "/images/taichi-fill.png",
   "/css/loader.css",
   "/css/style.css",
   "/js/script.js",
 ];
-const VERSION = "1725599901072";
+const VERSION = "1725600132133";
 const cacheDomain = [
   "fonts.googleapis.com",
   "npm.webcache.cn",

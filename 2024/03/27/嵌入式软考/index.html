@@ -1,0 +1,1283 @@
+
+  <!DOCTYPE html>
+  <html lang="zh-CN"  >
+  <head>
+  <meta charset="utf-8">
+  
+
+  
+
+  
+
+  
+  <script>window.icon_font = '4552607_tq6stt6tcg';window.clipboard_tips = {"success":"复制成功(*^▽^*)","fail":"复制失败 (ﾟ⊿ﾟ)ﾂ","copyright":{"enable":false,"count":50,"content":"本文版权：本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！"}};</script>
+  
+  
+  <title>
+    嵌入式软考 |
+    
+    Ainavo&#39;s Blog
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin><link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7CNoto%20Serif%20SC:400,400italic,700,700italic%7CUbuntu%20Mono:400,400italic,700,700italic&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7CNoto%20Serif%20SC:400,400italic,700,700italic%7CUbuntu%20Mono:400,400italic,700,700italic&display=swap" media="print" onload="this.media&#x3D;&#39;all&#39;">
+  
+    <link rel="preload" href="//at.alicdn.com/t/c/font_4552607_tq6stt6tcg.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  
+  
+<link rel="stylesheet" href="/css/loader.css">
+
+  <meta name="description" content="嵌入式系统设计师考试大纲  Notes: （I）、（II）和（III）表示掌握或熟悉的程度：  （I）是指对所列知识要理解其内容及含义（理解）。 （II）指在有关问题中能直接使用（一般应用）。 （III）是指对所列知识要理解其确切含义及与其他知识的联系，能够进行叙述和解释，并能在实际问题的分析、综合、推理和判断等过程中运用（综合应用）。   考试科目 1：嵌入式系统基础知识  计算机系统的基础知识">
+<meta property="og:type" content="article">
+<meta property="og:title" content="嵌入式软考">
+<meta property="og:url" content="https://ainavo.github.io/2024/03/27/%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E8%80%83/index.html">
+<meta property="og:site_name" content="Ainavo&#39;s Blog">
+<meta property="og:description" content="嵌入式系统设计师考试大纲  Notes: （I）、（II）和（III）表示掌握或熟悉的程度：  （I）是指对所列知识要理解其内容及含义（理解）。 （II）指在有关问题中能直接使用（一般应用）。 （III）是指对所列知识要理解其确切含义及与其他知识的联系，能够进行叙述和解释，并能在实际问题的分析、综合、推理和判断等过程中运用（综合应用）。   考试科目 1：嵌入式系统基础知识  计算机系统的基础知识">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://ainavo.github.io/2024/03/27/%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E8%80%83/image-1.png">
+<meta property="og:image" content="https://ainavo.github.io/2024/03/27/%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E8%80%83/%E9%80%BB%E8%BE%91%E4%BB%A3%E6%95%B0%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%BF%90%E7%AE%97%E6%B3%95%E5%88%99.png">
+<meta property="article:published_time" content="2024-03-27T08:05:55.000Z">
+<meta property="article:modified_time" content="2024-08-26T01:36:01.673Z">
+<meta property="article:author" content="Ainavo">
+<meta property="article:tag" content="嵌入式">
+<meta property="article:tag" content="考试">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ainavo.github.io/2024/03/27/%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E8%80%83/image-1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Ainavo's Blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/images/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css">
+
+  
+  
+  
+  
+<script src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js"></script>
+
+  
+    
+<link rel="stylesheet" href="https://npm.webcache.cn/wowjs@1.1.3/css/libs/animate.css">
+
+    
+<script src="https://npm.webcache.cn/wowjs@1.1.3/dist/wow.min.js"></script>
+
+    <script>
+      new WOW({
+        offset: 0,
+        mobile: true,
+        live: false
+      }).init();
+    </script>
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+  <body>
+    
+  <div id='loader'>
+    <div class="loading-left-bg loading-bg"></div>
+    <div class="loading-right-bg loading-bg"></div>
+    <div class="spinner-box">
+      <div class="loading-taichi">
+        <svg width="150" height="150" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="https://www.w3.org/2000/svg" shape-rendering="geometricPrecision">
+          <path d="M303.5 432A80 80 0 0 1 291.5 592A80 80 0 0 1 303.5 432z" fill="#ff6e6b" />
+          <path d="M512 65A447 447 0 0 1 512 959L512 929A417 417 0 0 0 512 95A417 417 0 0 0 512 929L512 959A447 447 0 0 1 512 65z" fill="#fd0d00" />
+          <path d="M512 95A417 417 0 0 1 929 512A208.5 208.5 0 0 1 720.5 720.5L720.5 592A80 80 0 0 0 720.5 432A80 80 0 0 0 720.5 592L720.5 720.5A208.5 208.5 0 0 1 512 512A208.5 208.5 0 0 0 303.5 303.5A208.5 208.5 0 0 0 95 512A417 417 0 0 1 512 95" fill="#fd0d00" />
+        </svg>
+      </div>
+      <div class="loading-word">少女祈祷中...</div>
+    </div>
+  </div>
+  </div>
+  <script>
+    var time = null;
+    var startLoading = () => {
+      time = Date.now();
+      document.getElementById('loader').classList.remove("loading");
+    }
+    var endLoading = () => {
+      if (!time) {
+        document.body.style.overflow = 'auto';
+        document.getElementById('loader').classList.add("loading");
+      } else {
+        if (Date.now() - time > 500) {
+          time = null;
+          document.body.style.overflow = 'auto';
+          document.getElementById('loader').classList.add("loading");
+        } else {
+          setTimeout(endLoading, 500 - (Date.now() - time));
+          time = null;
+        }
+      }
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+    document.getElementById('loader').addEventListener('click', endLoading);
+  </script>
+
+<div id="copy-tooltip" style="pointer-events: none; opacity: 0; transition: all 0.2s ease; position: fixed;top: 50%;left: 50%;z-index: 999;transform: translate(-50%, -50%);color: white;background: rgba(0, 0, 0, 0.5);padding: 10px 15px;border-radius: 10px;">
+</div>
+
+
+    <div id="container">
+      <div id="wrap">
+        <div id="header-nav">
+  <nav id="main-nav">
+    
+      <span class="main-nav-link-wrap">
+        <span class="main-nav-icon"></span>
+        <a class="main-nav-link" href="/">首页</a>
+      </span>
+    
+      <span class="main-nav-link-wrap">
+        <span class="main-nav-icon"></span>
+        <a class="main-nav-link" href="/archives">归档</a>
+      </span>
+    
+      <span class="main-nav-link-wrap">
+        <span class="main-nav-icon"></span>
+        <a class="main-nav-link" href="/about">关于</a>
+      </span>
+    
+      <span class="main-nav-link-wrap">
+        <span class="main-nav-icon"></span>
+        <a class="main-nav-link" href="/friend">友链</a>
+      </span>
+    
+    <a id="main-nav-toggle" class="nav-icon"></a>
+  </nav>
+  <nav id="sub-nav">
+    
+      <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+    
+    
+      <a id="nav-search-btn" class="nav-icon popup-trigger" title="搜索"></a>
+    
+    
+  </nav>
+</div>
+<header id="header">
+  
+    <img fetchpriority="high" src="https://haowallpaper.com/link/common/file/previewFileImg/ad9515e2d377ca7e91079be5ce0471b1ad9515e2d377ca7e91079be5ce0471b1" alt="嵌入式软考">
+  
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <div id="logo-wrap">
+        
+          
+          
+            <a href="/" id="logo">
+              <h1>嵌入式软考</h1>
+            </a>
+          
+        
+      </div>
+      
+        
+        <h2 id="subtitle-wrap">
+          
+        </h2>
+      
+    </div>
+  </div>
+</header>
+
+        <div id="content" class="outer">
+          
+          <section id="main"><article id="post-嵌入式软考" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner">
+    <div class="article-meta">
+      <div class="article-date wow slideInLeft">
+  <a href="/2024/03/27/%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E8%80%83/" class="article-date-link">
+    <time datetime="2024-03-27T08:05:55.000Z" itemprop="datePublished">2024-03-27</time>
+    <time style="display: none;" id="post-update-time">2024-08-26</time>
+  </a>
+</div>
+
+      
+
+    </div>
+    <div class="hr-line"></div>
+    
+
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+      
+        <p>嵌入式系统设计师考试大纲</p>
+<link rel="stylesheet" type="text/css" href="auto-number-title.css" />
+<p><em>Notes</em>:<br />
+（I）、（II）和（III）表示掌握或熟悉的程度：</p>
+<ul>
+<li>（I）是指对所列知识要理解其内容及含义（理解）。</li>
+<li>（II）指在有关问题中能直接使用（一般应用）。</li>
+<li>（III）是指对所列知识要理解其确切含义及与其他知识的联系，能够进行叙述和解释，并能在实际问题的分析、综合、推理和判断等过程中运用（综合应用）。</li>
+</ul>
+<h1 id="考试科目-1嵌入式系统基础知识"><a class="markdownIt-Anchor" href="#考试科目-1嵌入式系统基础知识"></a> 考试科目 1：嵌入式系统基础知识</h1>
+<h2 id="计算机系统的基础知识"><a class="markdownIt-Anchor" href="#计算机系统的基础知识"></a> 计算机系统的基础知识</h2>
+<h3 id="数制及其转换"><a class="markdownIt-Anchor" href="#数制及其转换"></a> 数制及其转换</h3>
+<h4 id="二进制-八进制-十进制和十六进制等常用数制及其相互转换ii"><a class="markdownIt-Anchor" href="#二进制-八进制-十进制和十六进制等常用数制及其相互转换ii"></a> 二进制、八进制、十进制和十六进制等常用数制及其相互转换（II）</h4>
+<p>答：<br />
+2&lt;–&gt;8：3 位二进制对应 1 位八进制数，不足时补 0<br />
+2&lt;–&gt;16：4 位二进制对应 1 位十六进制数<br />
+2&lt;–&gt;10：n 位二进制数转十进制对应<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">2^{n-1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span></span>累加，十进制转二进制使用短除法<br />
+8、16&lt;–&gt;10：先转二进制再转八、十六进制</p>
+<h3 id="数据的表示"><a class="markdownIt-Anchor" href="#数据的表示"></a> 数据的表示</h3>
+<h4 id="数值的原码-反码-补码-移码表示定点数和浮点数精度和溢出ii"><a class="markdownIt-Anchor" href="#数值的原码-反码-补码-移码表示定点数和浮点数精度和溢出ii"></a> 数值的原码、反码、补码、移码表示，定点数和浮点数，精度和溢出（II）</h4>
+<p>答：<br />
+原码：第一位为符号位，8 位二进制取值范围为：[1111 1111, 0111 1111]。表示范围[-127, +127]<br />
+反码：正数的反码是其本身；负数的反码在源码的基础上，符号位不变，其余位取反。表示范围[-127, +127]<br />
+补码：正数的补码是其本身；负数的补码在反码的基础上+1。表示范围[-128， +127]<br />
+移码：将符号位取反的补码</p>
+<p>浮点数：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>=</mo><msup><mi>R</mi><mi>e</mi></msup><mo>∗</mo><mi>M</mi></mrow><annotation encoding="application/x-tex">N = R^e*M</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">e</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span></span></span></span>（M 为尾数，e 为指数/阶码，R 为基数）；阶码决定数值的范围，尾数决定数值的精度<br />
+定点数：固定小数点的位置（小数点越靠左，整个数值范围越小；小数点越靠右，数值精度越低）</p>
+<h4 id="字符-汉字-声音-图像的编码方式i"><a class="markdownIt-Anchor" href="#字符-汉字-声音-图像的编码方式i"></a> 字符、汉字、声音、图像的编码方式（I）</h4>
+<p>答：<br />
+字符编码方式：</p>
+<ul>
+<li>ASCII：使用 7 位二进制数表示 128 个字符（英文字母、数字和一些常见符号）</li>
+<li>UTF-8：可变长度编码，几乎可以表示所有字符</li>
+</ul>
+<p>汉字编码方式：</p>
+<ul>
+<li>GB2312：中国国家标准，使用两个字节表示常用汉字字符</li>
+<li>GBK 是 GB2312 的扩展编码，表示公衡多汉字</li>
+<li>Unicode：国际常用汉字编码，使用两字节表示汉字</li>
+</ul>
+<p>声音编码方式：</p>
+<ul>
+<li>PCM：将模拟声音信号转换为数字信号的编码方式，常用于音乐和传输声音数据</li>
+<li>MP3：是一种有压缩的音频编码方式，可以将声音压缩为较小的文件大小，常用于音乐和语音的存储和传输。</li>
+</ul>
+<p>图片编码方式：</p>
+<ul>
+<li>JPEG：是一种有损压缩的图像编码方式，常用于存储和传输照片和图像。</li>
+<li>PNG：是一种无损压缩的图像编码方式，常用于存储和传输图标和界面元素。</li>
+<li>GIF：是一种支持动画的图像编码方式，常用于表情包和简单动画的存储和传输。</li>
+</ul>
+<h4 id="校验方法和校验码奇偶校验码-海明校验码-循环冗余校验码ii"><a class="markdownIt-Anchor" href="#校验方法和校验码奇偶校验码-海明校验码-循环冗余校验码ii"></a> 校验方法和校验码（奇偶校验码、海明校验码、循环冗余校验码）（II）</h4>
+<p>答：</p>
+<ul>
+<li>奇/偶校验码：整个校验码（有效信息位+校验位）中 1 的个数为奇/偶数</li>
+<li>海明检验码：k 位校验码，n 位信息码，满足<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>k</mi></msup><mo lspace="0em" rspace="0em">≥</mo><mi>n</mi><mo>+</mo><mi>k</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">2^k {\geq} n+k+1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.985078em;vertical-align:-0.13597em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.849108em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span></span></span></span></span><span class="mord"><span class="mrel">≥</span></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>；海明码规定，校验码<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">P_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>要放在海明位号为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">2^{i-1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.824664em;vertical-align:0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.824664em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span></span>位置上；海明码具有 1 个比特位的纠错能力，和 2 个比特位的检错能力。</li>
+<li>循环冗余校验码：收发双方约定好一个 生成多项式 G(x) ，发送方基于待发送的数据和生成多项式计算出 R 位校验码 ，将其添加到 K 位信息码 （待传输数据）的后面一起传输。对接收收到的信息与生成多项式系数所构成的比特串相除，看余数是否为 0<br />
+<img src="image-1.png" alt="alt text" /><br />
+<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_46331050/article/details/122115456">参考文献</a></li>
+</ul>
+<h3 id="算术运算和逻辑运算"><a class="markdownIt-Anchor" href="#算术运算和逻辑运算"></a> 算术运算和逻辑运算</h3>
+<h4 id="二进制数运算方法ii"><a class="markdownIt-Anchor" href="#二进制数运算方法ii"></a> 二进制数运算方法（II）</h4>
+<p>答：<br />
+二进制数加法：逢二进一<br />
+二进制数减法：借一有二<br />
+二进制数乘/除法：按十进制来就行<br />
+逻辑“或”运算：有一出一<br />
+逻辑“与”运算：同一出一<br />
+逻辑“异或”运算：相同出 0，不同出 1</p>
+<h4 id="逻辑代数的基本运算和逻辑表达式的化简i"><a class="markdownIt-Anchor" href="#逻辑代数的基本运算和逻辑表达式的化简i"></a> 逻辑代数的基本运算和逻辑表达式的化简（I）</h4>
+<p>答：<img src="/2024/03/27/%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E8%80%83/%E9%80%BB%E8%BE%91%E4%BB%A3%E6%95%B0%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%BF%90%E7%AE%97%E6%B3%95%E5%88%99.png" class="" title="逻辑代数的基本运算法则"></p>
+<h3 id="计算机组成和主要部件的基本工作原理"><a class="markdownIt-Anchor" href="#计算机组成和主要部件的基本工作原理"></a> 计算机组成和主要部件的基本工作原理</h3>
+<h4 id="cpu-和存储器的组成-基本工作原理"><a class="markdownIt-Anchor" href="#cpu-和存储器的组成-基本工作原理"></a> CPU 和存储器的组成、基本工作原理</h4>
+<ul>
+<li>CPU 的基本组成与工作原理（II）<br />
+答：</li>
+<li>存储器的组成及特点（II）</li>
+<li>信息存储的字节顺序（大端存储、小端存储）（II）</li>
+</ul>
+<h4 id="常用-io-设备-通信设备的性能以及基本工作原理i"><a class="markdownIt-Anchor" href="#常用-io-设备-通信设备的性能以及基本工作原理i"></a> 常用 I/O 设备、通信设备的性能以及基本工作原理（I）</h4>
+<h4 id="io-接口的功能-类型和特点"><a class="markdownIt-Anchor" href="#io-接口的功能-类型和特点"></a> I/O 接口的功能、类型和特点</h4>
+<ul>
+<li>I/O 接口的基本组成与主要功能（II）</li>
+<li>I/O 接口的分类（I）</li>
+<li>I/O 接口的控制方式及特点：程序查询方式、中断处理方式、DMA（直接存储器存取）传送方式等（II）</li>
+</ul>
+<h3 id="计算机体系结构"><a class="markdownIt-Anchor" href="#计算机体系结构"></a> 计算机体系结构</h3>
+<h4 id="cisc-risc-流水线技术-超标量等i"><a class="markdownIt-Anchor" href="#cisc-risc-流水线技术-超标量等i"></a> CISC、RISC、流水线技术、超标量等（I）</h4>
+<h4 id="多处理机并行处理分布处理i"><a class="markdownIt-Anchor" href="#多处理机并行处理分布处理i"></a> 多处理机，并行处理，分布处理（I）</h4>
+<h4 id="冯诺伊曼结构与哈佛结构i"><a class="markdownIt-Anchor" href="#冯诺伊曼结构与哈佛结构i"></a> 冯·诺伊曼结构与哈佛结构（I）</h4>
+<h3 id="可靠性与系统性能评测基础知识"><a class="markdownIt-Anchor" href="#可靠性与系统性能评测基础知识"></a> 可靠性与系统性能评测基础知识</h3>
+<h4 id="诊断与容错"><a class="markdownIt-Anchor" href="#诊断与容错"></a> 诊断与容错</h4>
+<ul>
+<li>故障诊断（I）</li>
+<li>容错技术与容错控制（I）</li>
+</ul>
+<h4 id="系统可靠性分析评价"><a class="markdownIt-Anchor" href="#系统可靠性分析评价"></a> 系统可靠性分析评价</h4>
+<ul>
+<li>系统的可靠性定义（I）</li>
+<li>串联系统特点及可靠性度量（I）</li>
+<li>并联系统特点及可靠性度量（I）</li>
+<li>N 模冗余系统等可靠性模型的特点（I）</li>
+</ul>
+<h4 id="计算机系统性能评测方法"><a class="markdownIt-Anchor" href="#计算机系统性能评测方法"></a> 计算机系统性能评测方法</h4>
+<ul>
+<li>平均无故障时间的定义及计算（I）</li>
+<li>平均修复时间的定义及计算（I）</li>
+<li>可用性的定义及计算（I）</li>
+</ul>
+<h2 id="嵌入式系统硬件基础知识"><a class="markdownIt-Anchor" href="#嵌入式系统硬件基础知识"></a> 嵌入式系统硬件基础知识</h2>
+<h3 id="数字电路基础"><a class="markdownIt-Anchor" href="#数字电路基础"></a> 数字电路基础</h3>
+<h4 id="信号特性与信号转换i"><a class="markdownIt-Anchor" href="#信号特性与信号转换i"></a> 信号特性与信号转换（I）</h4>
+<h4 id="组合逻辑电路和时序逻辑电路i"><a class="markdownIt-Anchor" href="#组合逻辑电路和时序逻辑电路i"></a> 组合逻辑电路和时序逻辑电路（I）</h4>
+<h4 id="可编程逻辑器件"><a class="markdownIt-Anchor" href="#可编程逻辑器件"></a> 可编程逻辑器件</h4>
+<ul>
+<li>CPLD 和 FPGA 的特点（I）</li>
+<li>FPGA 的构成（I）</li>
+</ul>
+<h3 id="嵌入式微处理器基础"><a class="markdownIt-Anchor" href="#嵌入式微处理器基础"></a> 嵌入式微处理器基础</h3>
+<h4 id="嵌入式微处理器的结构和类型"><a class="markdownIt-Anchor" href="#嵌入式微处理器的结构和类型"></a> 嵌入式微处理器的结构和类型</h4>
+<ul>
+<li>常用 8 位处理器的体系结构特点（II）</li>
+<li>常用 16 位处理器的体系结构特点（II）</li>
+<li>常用 32 位处理器的体系结构特点
+<ul>
+<li>X86、ARM、PowerPC 系列（II）</li>
+</ul>
+</li>
+<li>常用 DSP 处理器的体系结构特点
+<ul>
+<li>典型的包括 TI 系列，ADI 系列，Freescale 系列（II）</li>
+</ul>
+</li>
+<li>多核处理器的体系结构特点
+<ul>
+<li>同构异构（II）</li>
+<li>程序执行模型（II）</li>
+<li>核间通信方法（II）</li>
+</ul>
+</li>
+</ul>
+<h4 id="嵌入式微处理器的异常与中断"><a class="markdownIt-Anchor" href="#嵌入式微处理器的异常与中断"></a> 嵌入式微处理器的异常与中断</h4>
+<ul>
+<li>异常
+<ul>
+<li>陷阱（I）</li>
+<li>故障（I）</li>
+<li>终止（I）</li>
+</ul>
+</li>
+<li>中断
+<ul>
+<li>硬中断、软中断（II）</li>
+<li>可屏蔽中断、不可屏蔽中断（II）</li>
+<li>中断优先级（II）</li>
+<li>中断嵌套（II）</li>
+</ul>
+</li>
+</ul>
+<h3 id="嵌入式系统的存储体系"><a class="markdownIt-Anchor" href="#嵌入式系统的存储体系"></a> 嵌入式系统的存储体系</h3>
+<h4 id="存储系统的层次结构i"><a class="markdownIt-Anchor" href="#存储系统的层次结构i"></a> 存储系统的层次结构（I）</h4>
+<h4 id="内存管理单元mmu"><a class="markdownIt-Anchor" href="#内存管理单元mmu"></a> 内存管理单元（MMU）</h4>
+<ul>
+<li>MMU 的功能和作用（I）</li>
+</ul>
+<h4 id="ram-和-rom-的种类与选型"><a class="markdownIt-Anchor" href="#ram-和-rom-的种类与选型"></a> RAM 和 ROM 的种类与选型</h4>
+<ul>
+<li>常见 RAM 类型
+<ul>
+<li>SRAM、DRAM、DDRAM、NVRAM 各自的典型特性和不同点（I）</li>
+</ul>
+</li>
+<li>常见 ROM 种类
+<ul>
+<li>PROM、EPROM、EEPROM 和 ROM 各自的典型特征和不同点（I）</li>
+</ul>
+</li>
+</ul>
+<h4 id="高速缓存cache"><a class="markdownIt-Anchor" href="#高速缓存cache"></a> 高速缓存(Cache)</h4>
+<ul>
+<li>Cache 的分类（II）</li>
+<li>Cache 的组成结构（II）</li>
+<li>Cache 的工作原理（II）</li>
+</ul>
+<h4 id="其他存储设备"><a class="markdownIt-Anchor" href="#其他存储设备"></a> 其他存储设备</h4>
+<ul>
+<li>磁盘、光盘等存储介质（I）</li>
+<li>闪存类存储介质（I）</li>
+</ul>
+<h3 id="嵌入式系统-io"><a class="markdownIt-Anchor" href="#嵌入式系统-io"></a> 嵌入式系统 I/O</h3>
+<h4 id="gpio-pwm-接口基本原理和结构i"><a class="markdownIt-Anchor" href="#gpio-pwm-接口基本原理和结构i"></a> GPIO、PWM 接口基本原理和结构（I）</h4>
+<h4 id="ad-da-接口基本原理与结构ii"><a class="markdownIt-Anchor" href="#ad-da-接口基本原理与结构ii"></a> A/D、D/A 接口基本原理与结构（II）</h4>
+<h4 id="键盘-显示-触摸屏-声控屏等接口基本原理与结构ii"><a class="markdownIt-Anchor" href="#键盘-显示-触摸屏-声控屏等接口基本原理与结构ii"></a> 键盘、显示、触摸屏、声控屏等接口基本原理与结构（II）</h4>
+<h4 id="嵌入式系统音频-视频接口i"><a class="markdownIt-Anchor" href="#嵌入式系统音频-视频接口i"></a> 嵌入式系统音频、视频接口（I）</h4>
+<h4 id="输入输出控制ii"><a class="markdownIt-Anchor" href="#输入输出控制ii"></a> 输入输出控制（II）</h4>
+<h3 id="定时器和计数器"><a class="markdownIt-Anchor" href="#定时器和计数器"></a> 定时器和计数器</h3>
+<h4 id="定时器和计数器的工作原理i"><a class="markdownIt-Anchor" href="#定时器和计数器的工作原理i"></a> 定时器和计数器的工作原理（I）</h4>
+<h4 id="定时器的设计ii"><a class="markdownIt-Anchor" href="#定时器的设计ii"></a> 定时器的设计（II）</h4>
+<h4 id="计数器的设计ii"><a class="markdownIt-Anchor" href="#计数器的设计ii"></a> 计数器的设计（II）</h4>
+<h3 id="嵌入式系统总线及通信接口"><a class="markdownIt-Anchor" href="#嵌入式系统总线及通信接口"></a> 嵌入式系统总线及通信接口</h3>
+<ul>
+<li>总线分类（II）</li>
+<li>总线控制（II）</li>
+<li>PCI、PCI-E、EISA、VME、CPCI、PCMCIA 等的基本原理和特点（II）</li>
+<li>USB、串口、红外、并口、SPI、IIC、1394、CAN 等的基本原理和特点（II）</li>
+<li>以太网、WLAN、蓝牙、Zigbee、WIFI、GPRS、3G、AFDX、FC 等基本原理和特点（II）</li>
+<li>Select IO、Rapid IO 等告诉串行通信接口的基本原理和特点（II）</li>
+</ul>
+<h3 id="嵌入式系统电源分类及电源管理i"><a class="markdownIt-Anchor" href="#嵌入式系统电源分类及电源管理i"></a> 嵌入式系统电源分类及电源管理（I）</h3>
+<h3 id="电子电路设计"><a class="markdownIt-Anchor" href="#电子电路设计"></a> 电子电路设计</h3>
+<h4 id="电子电路设计基础知识"><a class="markdownIt-Anchor" href="#电子电路设计基础知识"></a> 电子电路设计基础知识</h4>
+<ul>
+<li>电子电路设计原理（I）</li>
+<li>电子电路设计方法及步骤（I）</li>
+<li>电子电路可靠性设计（I）</li>
+</ul>
+<h4 id="pcb-设计基础知识"><a class="markdownIt-Anchor" href="#pcb-设计基础知识"></a> PCB 设计基础知识</h4>
+<ul>
+<li>PCB 设计原理（I）</li>
+<li>PCB 设计方法及步骤（I）</li>
+<li>多层 PCB 设计的注意事项及布线原理（I）</li>
+<li>PCB 的可靠性设计（电磁兼容）（I）</li>
+</ul>
+<h4 id="电子电路测试基础知识"><a class="markdownIt-Anchor" href="#电子电路测试基础知识"></a> 电子电路测试基础知识</h4>
+<ul>
+<li>电子电路测试方法（I）</li>
+<li>硬件可靠性测试（I）</li>
+</ul>
+<h2 id="嵌入式系统软件基础知识"><a class="markdownIt-Anchor" href="#嵌入式系统软件基础知识"></a> 嵌入式系统软件基础知识</h2>
+<h3 id="嵌入式软件基础知识"><a class="markdownIt-Anchor" href="#嵌入式软件基础知识"></a> 嵌入式软件基础知识</h3>
+<h4 id="嵌入式软件分类"><a class="markdownIt-Anchor" href="#嵌入式软件分类"></a> 嵌入式软件分类</h4>
+<ul>
+<li>系统软件（I）</li>
+<li>支撑软件
+<ul>
+<li>中间件（I）</li>
+<li>可配置组件（I）</li>
+</ul>
+</li>
+<li>应用软件（I）</li>
+</ul>
+<h4 id="嵌入式系统初始化"><a class="markdownIt-Anchor" href="#嵌入式系统初始化"></a> 嵌入式系统初始化</h4>
+<ul>
+<li>系统引导（Bootloader）（II）</li>
+<li>班级支持包（BSP）（II）</li>
+</ul>
+<h4 id="无操作系统支持的嵌入式软件体系结构i"><a class="markdownIt-Anchor" href="#无操作系统支持的嵌入式软件体系结构i"></a> 无操作系统支持的嵌入式软件体系结构（I）</h4>
+<h4 id="有操作系统支持的嵌入式软件体系结构ii"><a class="markdownIt-Anchor" href="#有操作系统支持的嵌入式软件体系结构ii"></a> 有操作系统支持的嵌入式软件体系结构（II）</h4>
+<h4 id="嵌入式支撑软件嵌入式文件系统-嵌入式数据库-分布式对象系统-gui-等ii"><a class="markdownIt-Anchor" href="#嵌入式支撑软件嵌入式文件系统-嵌入式数据库-分布式对象系统-gui-等ii"></a> 嵌入式支撑软件（嵌入式文件系统、嵌入式数据库、分布式对象系统、GUI 等）（II）</h4>
+<h3 id="嵌入式系统基础知识"><a class="markdownIt-Anchor" href="#嵌入式系统基础知识"></a> 嵌入式系统基础知识</h3>
+<h4 id="嵌入式操作系统基本概念"><a class="markdownIt-Anchor" href="#嵌入式操作系统基本概念"></a> 嵌入式操作系统基本概念</h4>
+<ul>
+<li>分类：模块化结构、分层结构、微内核结构、多重独立安全等级（MILS）结构等（II）</li>
+<li>嵌入式实时操作系统特点：实时性、可移植性、可剪裁可配置性、可靠性、应用编程接口（API）等（I）</li>
+<li>高可靠嵌入式实时操作系统：相关标准、分区概念、隔离保护、健康监控（I）</li>
+</ul>
+<h4 id="处理器管理"><a class="markdownIt-Anchor" href="#处理器管理"></a> 处理器管理</h4>
+<ul>
+<li>多道程序（I）</li>
+<li>分区、进程、线程、任务的概念（II）</li>
+<li>任务管理
+<ul>
+<li>任务划分（II）</li>
+<li>任务控制块（II）</li>
+<li>任务的状态及状态转换（II）</li>
+<li>任务队列（II）</li>
+<li>任务管理机制（II）</li>
+</ul>
+</li>
+<li>任务调度（调度算法的性能指标、可抢占调度、不可抢占调度、先来先服务算法、短作业优先算法、时间片轮转算法、优先级算法，使用率平衡算法、单调速率调度（RMS）算法、最早截止期限优先动态调度（EDF）算法，多处理器调度）（II）</li>
+<li>优先级反转（优先级反转、优先级继承、优先级天花板等）（II）</li>
+<li>任务间通信（共享内存、消息、邮箱、管道、信号等）（II）</li>
+<li>同步与互斥（竞争条件、临界区、互斥、信号量、死锁等）（III）</li>
+<li>高可靠性操作系统的分区调度、分区通信等（II）</li>
+</ul>
+<h4 id="存储管理"><a class="markdownIt-Anchor" href="#存储管理"></a> 存储管理</h4>
+<ul>
+<li>Flat 存储管理方式（I）</li>
+<li>分区存储管理（固定分区、可变分区、内存保护等）（II）</li>
+<li>地址重定位（逻辑地址、物理地址、地址映射等）（II）</li>
+<li>页式存储管理（II）</li>
+<li>虚拟存储技术（程序局部性原理、虚拟页式存储管理、页面置换算法等）（II）</li>
+</ul>
+<h4 id="设备管理"><a class="markdownIt-Anchor" href="#设备管理"></a> 设备管理</h4>
+<ul>
+<li>物理设备、逻辑设备、虚拟设备等（II）</li>
+<li>设备分类（字符设备、块设备、网络设备）（II）</li>
+<li>设备管理方式（设备文件、设备控制、设备无关性、中断处理、缓冲技术、假脱机技术等）（II）</li>
+<li>设备驱动程序（II）</li>
+</ul>
+<h4 id="文件系统"><a class="markdownIt-Anchor" href="#文件系统"></a> 文件系统</h4>
+<ul>
+<li>文件和目录（II）</li>
+<li>文件的结构和组织（II）</li>
+<li>存取方法、存取控制（II）</li>
+<li>常见嵌入式文件系统（FAT、JFFS、YAFFS 等）（I）</li>
+<li>网络文件系统（I）</li>
+</ul>
+<h4 id="操作系统移植"><a class="markdownIt-Anchor" href="#操作系统移植"></a> 操作系统移植</h4>
+<ul>
+<li>硬件配置、板级支持包移植、驱动移植、系统配置、交叉编译、部署与测试等（I）</li>
+</ul>
+<h3 id="嵌入式系统程序设计"><a class="markdownIt-Anchor" href="#嵌入式系统程序设计"></a> 嵌入式系统程序设计</h3>
+<h4 id="嵌入式软件开发基础知识"><a class="markdownIt-Anchor" href="#嵌入式软件开发基础知识"></a> 嵌入式软件开发基础知识</h4>
+<ul>
+<li>嵌入式软件开发模式，开发环境、开发工具等的选择（I）</li>
+</ul>
+<h4 id="嵌入式程序设计语言"><a class="markdownIt-Anchor" href="#嵌入式程序设计语言"></a> 嵌入式程序设计语言</h4>
+<ul>
+<li>编译器和解释器的基础知识（II）</li>
+<li>汇编语言（指令系统、寻址方式、伪指令、宏指令等）（I）</li>
+<li>混合编程（I）</li>
+<li>过程式语言（过程/函数、参数传递、变量、递归、动态内存分配、数据类型等）（II）</li>
+<li>面向对象语言（对象/类、数据抽象、继承、多态、重载等）（II）</li>
+<li>嵌入式 C/C++程序设计要求（II）</li>
+</ul>
+<h4 id="嵌入式软件开发环境"><a class="markdownIt-Anchor" href="#嵌入式软件开发环境"></a> 嵌入式软件开发环境</h4>
+<ul>
+<li>宿主机、目标机（I）</li>
+<li>编辑器、交叉工具链（编译器、链接器、调试器）、模拟器（II）</li>
+<li>集成开发及仿真环境（II）</li>
+<li>开发辅助工具（I）</li>
+</ul>
+<h4 id="嵌入式软件开发过程"><a class="markdownIt-Anchor" href="#嵌入式软件开发过程"></a> 嵌入式软件开发过程</h4>
+<ul>
+<li>嵌入式软件设计（II）</li>
+<li>编码（编程规范、代码审查）（I）</li>
+<li>软件集成（I）</li>
+<li>测试（测试环境、测试用例、测试方法、测试工具）（II）</li>
+<li>下载和运行（II）</li>
+<li>第三方测试与验证（I）</li>
+</ul>
+<h4 id="嵌入式应用软件移植"><a class="markdownIt-Anchor" href="#嵌入式应用软件移植"></a> 嵌入式应用软件移植</h4>
+<ul>
+<li>无操作系统的软件移植（II）</li>
+<li>有操作系统的软件移植（II）</li>
+</ul>
+<h2 id="嵌入式系统的项目开发与维护知识"><a class="markdownIt-Anchor" href="#嵌入式系统的项目开发与维护知识"></a> 嵌入式系统的项目开发与维护知识</h2>
+<h3 id="系统开发过程及其项目管理"><a class="markdownIt-Anchor" href="#系统开发过程及其项目管理"></a> 系统开发过程及其项目管理</h3>
+<h4 id="系统开发生命周期各阶段的目标和任务"><a class="markdownIt-Anchor" href="#系统开发生命周期各阶段的目标和任务"></a> 系统开发生命周期各阶段的目标和任务</h4>
+<ul>
+<li>项目描述、可行性分析、需求分析、总体设计、概要设计、详细设计、编码和单元测试、集成测试、运行维护（I）</li>
+</ul>
+<h4 id="系统开发项目管理基础知识及其常用管理工具"><a class="markdownIt-Anchor" href="#系统开发项目管理基础知识及其常用管理工具"></a> 系统开发项目管理基础知识及其常用管理工具</h4>
+<ul>
+<li>开发过程管理知识及工具（I）</li>
+<li>成本管理知识及工具（I）</li>
+<li>风险管理知识及工具（I）</li>
+<li>质量管理知识及工具（I）</li>
+</ul>
+<h4 id="系统开发方法i"><a class="markdownIt-Anchor" href="#系统开发方法i"></a> 系统开发方法（I）</h4>
+<h4 id="系统开发工具与环境i"><a class="markdownIt-Anchor" href="#系统开发工具与环境i"></a> 系统开发工具与环境（I）</h4>
+<h3 id="系统分析知识"><a class="markdownIt-Anchor" href="#系统分析知识"></a> 系统分析知识</h3>
+<h4 id="需求分析"><a class="markdownIt-Anchor" href="#需求分析"></a> 需求分析</h4>
+<ul>
+<li>功能性需求（I）</li>
+<li>非功能性需求（I）</li>
+</ul>
+<h4 id="系统分析的目的和任务i"><a class="markdownIt-Anchor" href="#系统分析的目的和任务i"></a> 系统分析的目的和任务（I）</h4>
+<h4 id="系统分析方法i"><a class="markdownIt-Anchor" href="#系统分析方法i"></a> 系统分析方法（I）</h4>
+<h3 id="系统设计知识"><a class="markdownIt-Anchor" href="#系统设计知识"></a> 系统设计知识</h3>
+<h4 id="系统设计方法i"><a class="markdownIt-Anchor" href="#系统设计方法i"></a> 系统设计方法（I）</h4>
+<h4 id="系统架构及概要设计ii"><a class="markdownIt-Anchor" href="#系统架构及概要设计ii"></a> 系统架构及概要设计（II）</h4>
+<h4 id="系统详细设计程序结构设计-模块接口设计-数据结构设计-用户界面设计等"><a class="markdownIt-Anchor" href="#系统详细设计程序结构设计-模块接口设计-数据结构设计-用户界面设计等"></a> 系统详细设计（程序结构设计、模块接口设计、数据结构设计、用户界面设计等）</h4>
+<ul>
+<li>程序结构设计（II）</li>
+<li>模块接口设计（II）</li>
+<li>数据结构设计（II）</li>
+<li>处理过程设计（II）</li>
+<li>用户界面设计（II）</li>
+</ul>
+<h4 id="软硬件协同设计方法"><a class="markdownIt-Anchor" href="#软硬件协同设计方法"></a> 软硬件协同设计方法</h4>
+<ul>
+<li>软硬件的功能划分（I）</li>
+<li>单任务流图的软硬件协同设计方法（I）</li>
+<li>多分支系统任务流图的软硬件协同设计方法（I）</li>
+<li>并行系统任务流图的软硬件协同设计方法（I）</li>
+</ul>
+<h3 id="系统实施知识"><a class="markdownIt-Anchor" href="#系统实施知识"></a> 系统实施知识</h3>
+<h4 id="软硬件平台搭建ii"><a class="markdownIt-Anchor" href="#软硬件平台搭建ii"></a> 软硬件平台搭建（II）</h4>
+<h4 id="系统调试与测试ii"><a class="markdownIt-Anchor" href="#系统调试与测试ii"></a> 系统调试与测试（II）</h4>
+<h3 id="系统运行和维护知识"><a class="markdownIt-Anchor" href="#系统运行和维护知识"></a> 系统运行和维护知识</h3>
+<h4 id="系统运行管理i"><a class="markdownIt-Anchor" href="#系统运行管理i"></a> 系统运行管理（I）</h4>
+<h4 id="系统维护"><a class="markdownIt-Anchor" href="#系统维护"></a> 系统维护</h4>
+<ul>
+<li>系统维护的目的与任务（I）</li>
+<li>系统维护的内容：硬件设备维护、程序维护、数据维护等（I）</li>
+<li>系统维护的类型：完善性维护、适应性维护、改正性维护、预防性维护等（II）</li>
+</ul>
+<h4 id="系统评价i"><a class="markdownIt-Anchor" href="#系统评价i"></a> 系统评价（I）</h4>
+<h2 id="嵌入式系统的安全性知识"><a class="markdownIt-Anchor" href="#嵌入式系统的安全性知识"></a> 嵌入式系统的安全性知识</h2>
+<h3 id="安全性基本概念"><a class="markdownIt-Anchor" href="#安全性基本概念"></a> 安全性基本概念</h3>
+<ul>
+<li>网络安全、信息安全等基础知识（I）</li>
+<li>防治计算机病毒、防范计算机犯罪、防闯入、防灾等（I）</li>
+<li>保障完整性与可用性的措施（I）</li>
+<li>风险管理与控制（风险分析、风险类型、风险控制手段）（I）</li>
+</ul>
+<h3 id="嵌入式系统的安全性设计"><a class="markdownIt-Anchor" href="#嵌入式系统的安全性设计"></a> 嵌入式系统的安全性设计</h3>
+<ul>
+<li>硬件安全性设计（I）</li>
+<li>软件安全性设计（I）</li>
+</ul>
+<h3 id="嵌入式系统的信息安全加密与解密-访问控制等"><a class="markdownIt-Anchor" href="#嵌入式系统的信息安全加密与解密-访问控制等"></a> 嵌入式系统的信息安全（加密与解密、访问控制等）</h3>
+<ul>
+<li>加密与解密机制基础知识（II）</li>
+<li>访问控制（I）</li>
+</ul>
+<h2 id="标准化知识"><a class="markdownIt-Anchor" href="#标准化知识"></a> 标准化知识</h2>
+<h3 id="标准化的概念和标准化机构i"><a class="markdownIt-Anchor" href="#标准化的概念和标准化机构i"></a> 标准化的概念和标准化机构（I）</h3>
+<h3 id="国际标准-国家标准-行业标准-企业标准基本知识i"><a class="markdownIt-Anchor" href="#国际标准-国家标准-行业标准-企业标准基本知识i"></a> 国际标准、国家标准、行业标准、企业标准基本知识（I）</h3>
+<h3 id="代码标准-文件格式标准-安全标准-软件开发规范和文档标准知识i"><a class="markdownIt-Anchor" href="#代码标准-文件格式标准-安全标准-软件开发规范和文档标准知识i"></a> 代码标准、文件格式标准、安全标准、软件开发规范和文档标准知识（I）</h3>
+<h3 id="嵌入式系统相关标准i"><a class="markdownIt-Anchor" href="#嵌入式系统相关标准i"></a> 嵌入式系统相关标准（I）</h3>
+<h2 id="信息化和知识产权基础知识"><a class="markdownIt-Anchor" href="#信息化和知识产权基础知识"></a> 信息化和知识产权基础知识</h2>
+<h3 id="信息化基础知识"><a class="markdownIt-Anchor" href="#信息化基础知识"></a> 信息化基础知识</h3>
+<ul>
+<li>全球信息化趋势、国家信息化战略、企业信息化战略和策略（I）</li>
+<li>信息化意识，有关的法律、法规（I）</li>
+<li>远程教育、电子商务、电子政务等基础知识（I）</li>
+<li>企业信息资源管理基础知识（I）</li>
+</ul>
+<h3 id="知识产权基础知识"><a class="markdownIt-Anchor" href="#知识产权基础知识"></a> 知识产权基础知识</h3>
+<ul>
+<li>专利法、商标法、商业秘密权对软件的保护（I）</li>
+<li>软件有关的法律、法规方面的基础知识（I）</li>
+<li>著作权法、软件保护条例及软件著作登记的基础知识（I）</li>
+<li>软件著作权主体与客体、权利内容、权利归属、侵权责任，分析侵权行为（II）</li>
+</ul>
+<h2 id="嵌入式技术发展趋势"><a class="markdownIt-Anchor" href="#嵌入式技术发展趋势"></a> 嵌入式技术发展趋势</h2>
+<h3 id="嵌入式系统硬件发展趋势i"><a class="markdownIt-Anchor" href="#嵌入式系统硬件发展趋势i"></a> 嵌入式系统硬件发展趋势（I）</h3>
+<h3 id="嵌入式系统软件发展趋势i"><a class="markdownIt-Anchor" href="#嵌入式系统软件发展趋势i"></a> 嵌入式系统软件发展趋势（I）</h3>
+<h2 id="计算机专业英语"><a class="markdownIt-Anchor" href="#计算机专业英语"></a> 计算机专业英语</h2>
+<ul>
+<li>正确阅读理解嵌入式系统相关领域的英文资料（I）</li>
+</ul>
+<h1 id="考试科目-2嵌入式系统设计"><a class="markdownIt-Anchor" href="#考试科目-2嵌入式系统设计"></a> 考试科目 2：嵌入式系统设计</h1>
+<h2 id="嵌入式系统开发过程"><a class="markdownIt-Anchor" href="#嵌入式系统开发过程"></a> 嵌入式系统开发过程</h2>
+<h3 id="系统开发过程管理"><a class="markdownIt-Anchor" href="#系统开发过程管理"></a> 系统开发过程管理</h3>
+<h4 id="生命周期-成本及工作量估计iii"><a class="markdownIt-Anchor" href="#生命周期-成本及工作量估计iii"></a> 生命周期、成本及工作量估计（III）</h4>
+<h4 id="风险管理ii"><a class="markdownIt-Anchor" href="#风险管理ii"></a> 风险管理（II）</h4>
+<h4 id="开发模型"><a class="markdownIt-Anchor" href="#开发模型"></a> 开发模型</h4>
+<ul>
+<li>瀑布模型、快速原型、增量模型、螺旋模型等（II）</li>
+</ul>
+<h4 id="质量管理ii"><a class="markdownIt-Anchor" href="#质量管理ii"></a> 质量管理（II）</h4>
+<h4 id="配置管理ii"><a class="markdownIt-Anchor" href="#配置管理ii"></a> 配置管理（II）</h4>
+<h4 id="软件成熟度模型ii"><a class="markdownIt-Anchor" href="#软件成熟度模型ii"></a> 软件成熟度模型（II）</h4>
+<h3 id="需求分析-2"><a class="markdownIt-Anchor" href="#需求分析-2"></a> 需求分析</h3>
+<h4 id="用户需求ii"><a class="markdownIt-Anchor" href="#用户需求ii"></a> 用户需求（II）</h4>
+<h4 id="系统定义ii"><a class="markdownIt-Anchor" href="#系统定义ii"></a> 系统定义（II）</h4>
+<h4 id="需求规格说明书ii"><a class="markdownIt-Anchor" href="#需求规格说明书ii"></a> 需求规格说明书（II）</h4>
+<h4 id="需求评审ii"><a class="markdownIt-Anchor" href="#需求评审ii"></a> 需求评审（II）</h4>
+<h3 id="系统设计"><a class="markdownIt-Anchor" href="#系统设计"></a> 系统设计</h3>
+<h4 id="系统方案设计iii"><a class="markdownIt-Anchor" href="#系统方案设计iii"></a> 系统方案设计（III）</h4>
+<h4 id="系统功能划分iii"><a class="markdownIt-Anchor" href="#系统功能划分iii"></a> 系统功能划分（III）</h4>
+<h4 id="软硬件协同设计iii"><a class="markdownIt-Anchor" href="#软硬件协同设计iii"></a> 软硬件协同设计（III）</h4>
+<h4 id="硬件设计"><a class="markdownIt-Anchor" href="#硬件设计"></a> 硬件设计</h4>
+<ul>
+<li>原理图设计（II）</li>
+<li>原理图分析与评审（II）</li>
+<li>PCB 设计与评审（I）</li>
+</ul>
+<h4 id="软件设计"><a class="markdownIt-Anchor" href="#软件设计"></a> 软件设计</h4>
+<ul>
+<li>概要设计（III）</li>
+<li>详细设计（III）</li>
+<li>设计评审（II）</li>
+</ul>
+<h3 id="系统开发环境"><a class="markdownIt-Anchor" href="#系统开发环境"></a> 系统开发环境</h3>
+<h4 id="开发平台"><a class="markdownIt-Anchor" href="#开发平台"></a> 开发平台</h4>
+<ul>
+<li>操作系统（I）</li>
+<li>VxWorks、Windows CE、嵌入式 Linux、μCOSⅡ、……</li>
+<li>分布式开发环境（I）</li>
+</ul>
+<h4 id="开发工具"><a class="markdownIt-Anchor" href="#开发工具"></a> 开发工具</h4>
+<ul>
+<li>文本编辑器（II）</li>
+<li>集成开发环境（II）</li>
+<li>配置管理工具（II）</li>
+<li>逆向工程工具（I）</li>
+</ul>
+<h3 id="系统测试"><a class="markdownIt-Anchor" href="#系统测试"></a> 系统测试</h3>
+<h4 id="测试环境ii"><a class="markdownIt-Anchor" href="#测试环境ii"></a> 测试环境（II）</h4>
+<h4 id="测试计划内容-方法-标准-过程-检验iii"><a class="markdownIt-Anchor" href="#测试计划内容-方法-标准-过程-检验iii"></a> 测试计划（内容、方法、标准、过程、检验）（III）</h4>
+<h4 id="硬件测试ii"><a class="markdownIt-Anchor" href="#硬件测试ii"></a> 硬件测试（II）</h4>
+<h4 id="软件测试单元测试-集成测试-系统测试等iii"><a class="markdownIt-Anchor" href="#软件测试单元测试-集成测试-系统测试等iii"></a> 软件测试（单元测试、集成测试、系统测试等）（III）</h4>
+<h4 id="软硬件联合测试ii"><a class="markdownIt-Anchor" href="#软硬件联合测试ii"></a> 软硬件联合测试（II）</h4>
+<h3 id="系统评价i-2"><a class="markdownIt-Anchor" href="#系统评价i-2"></a> 系统评价（I）</h3>
+<h3 id="系统维护-2"><a class="markdownIt-Anchor" href="#系统维护-2"></a> 系统维护</h3>
+<h4 id="系统可维护性概念i"><a class="markdownIt-Anchor" href="#系统可维护性概念i"></a> 系统可维护性概念（I）</h4>
+<h4 id="系统维护的内容及类型i"><a class="markdownIt-Anchor" href="#系统维护的内容及类型i"></a> 系统维护的内容及类型（I）</h4>
+<h4 id="系统维护管理i"><a class="markdownIt-Anchor" href="#系统维护管理i"></a> 系统维护管理（I）</h4>
+<h3 id="开发文档i"><a class="markdownIt-Anchor" href="#开发文档i"></a> 开发文档（I）</h3>
+<h2 id="嵌入式系统硬件设计"><a class="markdownIt-Anchor" href="#嵌入式系统硬件设计"></a> 嵌入式系统硬件设计</h2>
+<h3 id="嵌入式系统硬件基本结构"><a class="markdownIt-Anchor" href="#嵌入式系统硬件基本结构"></a> 嵌入式系统硬件基本结构</h3>
+<h4 id="嵌入式微处理器结构iii"><a class="markdownIt-Anchor" href="#嵌入式微处理器结构iii"></a> 嵌入式微处理器结构（III）</h4>
+<h4 id="数字信号处理器dsp结构iii"><a class="markdownIt-Anchor" href="#数字信号处理器dsp结构iii"></a> 数字信号处理器(DSP)结构（III）</h4>
+<h4 id="异常及中断处理iii"><a class="markdownIt-Anchor" href="#异常及中断处理iii"></a> 异常及中断处理（III）</h4>
+<h4 id="dma-技术ii"><a class="markdownIt-Anchor" href="#dma-技术ii"></a> DMA 技术（II）</h4>
+<h4 id="多处理器系统"><a class="markdownIt-Anchor" href="#多处理器系统"></a> 多处理器系统</h4>
+<ul>
+<li>多处理器系统特点（I）</li>
+<li>多处理器系统构建技术（多处理器、单处理器多核）（II）</li>
+</ul>
+<h4 id="总线i"><a class="markdownIt-Anchor" href="#总线i"></a> 总线（I）</h4>
+<h4 id="数字电路"><a class="markdownIt-Anchor" href="#数字电路"></a> 数字电路</h4>
+<ul>
+<li>组合逻辑电路与时序逻辑电路设计（I）</li>
+<li>可编程逻辑器件（FPGA/CPLD）的系统设计（III）</li>
+</ul>
+<h3 id="硬件描述语言vhdlverilog-hdl-等ii"><a class="markdownIt-Anchor" href="#硬件描述语言vhdlverilog-hdl-等ii"></a> 硬件描述语言（VHDL，Verilog HDL 等）（II）</h3>
+<h3 id="大规模集成电路系统设计"><a class="markdownIt-Anchor" href="#大规模集成电路系统设计"></a> 大规模集成电路系统设计</h3>
+<ul>
+<li>ASIC 设计（I）</li>
+<li>FPGA 设计（I）</li>
+<li>SOC 设计（I）</li>
+</ul>
+<h3 id="输入输出接口"><a class="markdownIt-Anchor" href="#输入输出接口"></a> 输入/输出接口</h3>
+<h4 id="接口的特性机械-电气-功能-规程i"><a class="markdownIt-Anchor" href="#接口的特性机械-电气-功能-规程i"></a> 接口的特性（机械、电气、功能、规程）（I）</h4>
+<h4 id="接口设计"><a class="markdownIt-Anchor" href="#接口设计"></a> 接口设计</h4>
+<ul>
+<li>接口信号电平转换（I）</li>
+<li>接口驱动电路设计（I）</li>
+</ul>
+<h4 id="接口应用"><a class="markdownIt-Anchor" href="#接口应用"></a> 接口应用</h4>
+<ul>
+<li>GPIO 接口（I）</li>
+<li>USB 接口（I）</li>
+<li>串行接口（I）</li>
+<li>并行接口（II）</li>
+<li>A/D、D/A 转换接口（III）</li>
+<li>高速串行接口（Rapid IO，Select IO）（III）</li>
+<li>音视频接口（II）</li>
+<li>显示接口（III）</li>
+<li>射频接口（II）</li>
+<li>通信标准和协议（II）</li>
+</ul>
+<h3 id="电源设计i"><a class="markdownIt-Anchor" href="#电源设计i"></a> 电源设计（I）</h3>
+<h3 id="低功耗设计i"><a class="markdownIt-Anchor" href="#低功耗设计i"></a> 低功耗设计（I）</h3>
+<h3 id="可靠性与安全性设计"><a class="markdownIt-Anchor" href="#可靠性与安全性设计"></a> 可靠性与安全性设计</h3>
+<h4 id="冗余设计ii"><a class="markdownIt-Anchor" href="#冗余设计ii"></a> 冗余设计（II）</h4>
+<h4 id="可维护性设计i"><a class="markdownIt-Anchor" href="#可维护性设计i"></a> 可维护性设计（I）</h4>
+<h4 id="系统容错与恢复设计ii"><a class="markdownIt-Anchor" href="#系统容错与恢复设计ii"></a> 系统容错与恢复设计（II）</h4>
+<h3 id="系统仿真"><a class="markdownIt-Anchor" href="#系统仿真"></a> 系统仿真</h3>
+<ul>
+<li>仿真方法（I）</li>
+<li>仿真工具（I）</li>
+</ul>
+<h2 id="嵌入式系统软件设计"><a class="markdownIt-Anchor" href="#嵌入式系统软件设计"></a> 嵌入式系统软件设计</h2>
+<h3 id="嵌入式程序设计"><a class="markdownIt-Anchor" href="#嵌入式程序设计"></a> 嵌入式程序设计</h3>
+<h4 id="汇编语言程序设计ii"><a class="markdownIt-Anchor" href="#汇编语言程序设计ii"></a> 汇编语言程序设计（II）</h4>
+<h4 id="嵌入式-c-语言程序设计"><a class="markdownIt-Anchor" href="#嵌入式-c-语言程序设计"></a> 嵌入式 C 语言程序设计</h4>
+<ul>
+<li>数据结构设计（III）</li>
+<li>运算符、表达式、语句、函数定义与函数调用、预处理指令等 （III）</li>
+<li>C 程序设计及优化（III）</li>
+</ul>
+<h4 id="面向对象程序设计"><a class="markdownIt-Anchor" href="#面向对象程序设计"></a> 面向对象程序设计</h4>
+<ul>
+<li>使用 C++、C#或 Java 语言进行嵌入式程序设计（III）</li>
+</ul>
+<h3 id="系统软件设计"><a class="markdownIt-Anchor" href="#系统软件设计"></a> 系统软件设计</h3>
+<h4 id="系统初始化设计i"><a class="markdownIt-Anchor" href="#系统初始化设计i"></a> 系统初始化设计（I）</h4>
+<h4 id="硬件抽象层hal-板级支持包bsp设计iii"><a class="markdownIt-Anchor" href="#硬件抽象层hal-板级支持包bsp设计iii"></a> 硬件抽象层（HAL）、板级支持包（BSP）设计（III）</h4>
+<h4 id="设备驱动程序设计iii"><a class="markdownIt-Anchor" href="#设备驱动程序设计iii"></a> 设备驱动程序设计（III）</h4>
+<h4 id="嵌入式系统软件的移植i"><a class="markdownIt-Anchor" href="#嵌入式系统软件的移植i"></a> 嵌入式系统软件的移植（I）</h4>
+<h4 id="嵌入式系统软件的移植"><a class="markdownIt-Anchor" href="#嵌入式系统软件的移植"></a> 嵌入式系统软件的移植</h4>
+<h3 id="嵌入式操作系统"><a class="markdownIt-Anchor" href="#嵌入式操作系统"></a> 嵌入式操作系统</h3>
+<h4 id="处理器管理-2"><a class="markdownIt-Anchor" href="#处理器管理-2"></a> 处理器管理</h4>
+<ul>
+<li>任务（进程、线程等）定义与调度（III）</li>
+<li>任务的同步与通信（III）</li>
+</ul>
+<h4 id="存储管理-2"><a class="markdownIt-Anchor" href="#存储管理-2"></a> 存储管理</h4>
+<ul>
+<li>内存管理单元 MMU（II）</li>
+<li>高速缓存（II）</li>
+</ul>
+<h4 id="异常处理"><a class="markdownIt-Anchor" href="#异常处理"></a> 异常处理</h4>
+<ul>
+<li>异常处理方法（II）</li>
+<li>中断优先级处理方法（III）</li>
+<li>系统调用（II）</li>
+</ul>
+<h4 id="常见嵌入式操作系统"><a class="markdownIt-Anchor" href="#常见嵌入式操作系统"></a> 常见嵌入式操作系统</h4>
+<ul>
+<li>Linux、WinCE、VxWorks、Android、uCOSⅡ 等（I）</li>
+</ul>
+<h3 id="嵌入式支撑系统"><a class="markdownIt-Anchor" href="#嵌入式支撑系统"></a> 嵌入式支撑系统</h3>
+<h4 id="嵌入式系统中间件ii"><a class="markdownIt-Anchor" href="#嵌入式系统中间件ii"></a> 嵌入式系统中间件（II）</h4>
+<h4 id="嵌入式文件系统"><a class="markdownIt-Anchor" href="#嵌入式文件系统"></a> 嵌入式文件系统</h4>
+<ul>
+<li>Ext2，Ext3 文件系统 （II）</li>
+<li>Yaffs，jffs，Jffs2 文件系统（II）</li>
+<li>Romfs，ramfs，cramfs 文件系统（II）</li>
+</ul>
+<h4 id="嵌入式系统数据库sqlite-数据库等ii"><a class="markdownIt-Anchor" href="#嵌入式系统数据库sqlite-数据库等ii"></a> 嵌入式系统数据库（SQLite 数据库等）（II）</h4>
+<h4 id="嵌入式系统图形用户接口guiii"><a class="markdownIt-Anchor" href="#嵌入式系统图形用户接口guiii"></a> 嵌入式系统图形用户接口（GUI）（II）</h4>
+<h4 id="嵌入式网络程序设计"><a class="markdownIt-Anchor" href="#嵌入式网络程序设计"></a> 嵌入式网络程序设计</h4>
+<ul>
+<li>Socket 程序设计（II）</li>
+<li>WEB 程序设计（II）</li>
+</ul>
+<h2 id="嵌入式实时系统与分布式系统设计"><a class="markdownIt-Anchor" href="#嵌入式实时系统与分布式系统设计"></a> 嵌入式实时系统与分布式系统设计</h2>
+<h3 id="实时系统的分析与设计i"><a class="markdownIt-Anchor" href="#实时系统的分析与设计i"></a> 实时系统的分析与设计（I）</h3>
+<h3 id="分布式系统设计"><a class="markdownIt-Anchor" href="#分布式系统设计"></a> 分布式系统设计</h3>
+<h4 id="分布式系统设计原理i"><a class="markdownIt-Anchor" href="#分布式系统设计原理i"></a> 分布式系统设计原理（I）</h4>
+<h4 id="分布式系统设计方法i"><a class="markdownIt-Anchor" href="#分布式系统设计方法i"></a> 分布式系统设计方法（I）</h4>
+<h4 id="分布式系统的通信技术i"><a class="markdownIt-Anchor" href="#分布式系统的通信技术i"></a> 分布式系统的通信技术（I）</h4>
+<h4 id="分布式系统应用ii"><a class="markdownIt-Anchor" href="#分布式系统应用ii"></a> 分布式系统应用（II）</h4>
+<h2 id="嵌入式系统应用"><a class="markdownIt-Anchor" href="#嵌入式系统应用"></a> 嵌入式系统应用</h2>
+<ul>
+<li>嵌入式系统在通信、交通、工业控制、航空航天等领域的应用（III）</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+        <a href="/2024/03/27/%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E8%80%83/#comments" class="article-comment-link">
+          <span class="post-comments-count valine-comment-count" data-xid="/2024/03/27/%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E8%80%83/" itemprop="commentCount"></span>
+          留言
+        </a>
+      
+      
+      
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/" rel="tag">嵌入式</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%80%83%E8%AF%95/" rel="tag">考试</a></li></ul>
+
+
+    </footer>
+  </div>
+  
+    
+  <nav id="article-nav" class="wow fadeInUp">
+    
+      <div class="article-nav-link-wrap article-nav-link-left">
+        
+          <img data-src="https://haowallpaper.com/link/common/file/previewFileImg/b8efe4a6e00706e7e0f72c421a3f86f9b8efe4a6e00706e7e0f72c421a3f86f9" data-sizes="auto" alt="Linux驱动入门（北京迅为）" class="lazyload">
+        
+        <a href="/2024/06/24/Linux%E9%A9%B1%E5%8A%A8%E5%85%A5%E9%97%A8%EF%BC%88%E5%8C%97%E4%BA%AC%E8%BF%85%E4%B8%BA%EF%BC%89/"></a>
+        <div class="article-nav-caption">前一篇</div>
+        <h3 class="article-nav-title">
+          
+            Linux驱动入门（北京迅为）
+          
+        </h3>
+      </div>
+    
+    
+    <div class="article-nav-link-wrap article-nav-link-right">
+      
+        <img data-src="https://haowallpaper.com/link/common/file/previewFileImg/9f131103452e03c0e18ce564ee0edfdf9f131103452e03c0e18ce564ee0edfdf" data-sizes="auto" alt="电路基础与设计" class="lazyload">
+      
+      <a href="/2023/08/09/%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80%E4%B8%8E%E8%AE%BE%E8%AE%A1/"></a>
+      <div class="article-nav-caption">后一篇</div>
+      <h3 class="article-nav-title">
+        
+          电路基础与设计
+        
+      </h3>
+    </div>
+    
+  </nav>
+
+
+  
+</article>
+
+  <section id="comments" class="vcomment"></section>
+
+
+
+
+
+
+</section>
+          
+            <aside id="sidebar">
+  <div class="sidebar-wrap wow fadeInRight wrap-sticky">
+    
+      <div class="sidebar-toc-sidebar"><div class="sidebar-toc">
+  <h3 class="toc-title">文章目录</h3>
+  <div class="sidebar-toc-wrapper toc-div-class" >
+      
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%80%83%E8%AF%95%E7%A7%91%E7%9B%AE-1%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">1.</span> <span class="toc-text"> 考试科目 1：嵌入式系统基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">1.1.</span> <span class="toc-text"> 计算机系统的基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E5%88%B6%E5%8F%8A%E5%85%B6%E8%BD%AC%E6%8D%A2"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 数制及其转换</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E8%BF%9B%E5%88%B6-%E5%85%AB%E8%BF%9B%E5%88%B6-%E5%8D%81%E8%BF%9B%E5%88%B6%E5%92%8C%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6%E7%AD%89%E5%B8%B8%E7%94%A8%E6%95%B0%E5%88%B6%E5%8F%8A%E5%85%B6%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2ii"><span class="toc-number">1.1.1.1.</span> <span class="toc-text"> 二进制、八进制、十进制和十六进制等常用数制及其相互转换（II）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA"><span class="toc-number">1.1.2.</span> <span class="toc-text"> 数据的表示</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E5%80%BC%E7%9A%84%E5%8E%9F%E7%A0%81-%E5%8F%8D%E7%A0%81-%E8%A1%A5%E7%A0%81-%E7%A7%BB%E7%A0%81%E8%A1%A8%E7%A4%BA%E5%AE%9A%E7%82%B9%E6%95%B0%E5%92%8C%E6%B5%AE%E7%82%B9%E6%95%B0%E7%B2%BE%E5%BA%A6%E5%92%8C%E6%BA%A2%E5%87%BAii"><span class="toc-number">1.1.2.1.</span> <span class="toc-text"> 数值的原码、反码、补码、移码表示，定点数和浮点数，精度和溢出（II）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6-%E6%B1%89%E5%AD%97-%E5%A3%B0%E9%9F%B3-%E5%9B%BE%E5%83%8F%E7%9A%84%E7%BC%96%E7%A0%81%E6%96%B9%E5%BC%8Fi"><span class="toc-number">1.1.2.2.</span> <span class="toc-text"> 字符、汉字、声音、图像的编码方式（I）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%A1%E9%AA%8C%E6%96%B9%E6%B3%95%E5%92%8C%E6%A0%A1%E9%AA%8C%E7%A0%81%E5%A5%87%E5%81%B6%E6%A0%A1%E9%AA%8C%E7%A0%81-%E6%B5%B7%E6%98%8E%E6%A0%A1%E9%AA%8C%E7%A0%81-%E5%BE%AA%E7%8E%AF%E5%86%97%E4%BD%99%E6%A0%A1%E9%AA%8C%E7%A0%81ii"><span class="toc-number">1.1.2.3.</span> <span class="toc-text"> 校验方法和校验码（奇偶校验码、海明校验码、循环冗余校验码）（II）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E5%92%8C%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97"><span class="toc-number">1.1.3.</span> <span class="toc-text"> 算术运算和逻辑运算</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95ii"><span class="toc-number">1.1.3.1.</span> <span class="toc-text"> 二进制数运算方法（II）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E4%BB%A3%E6%95%B0%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%BF%90%E7%AE%97%E5%92%8C%E9%80%BB%E8%BE%91%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E5%8C%96%E7%AE%80i"><span class="toc-number">1.1.3.2.</span> <span class="toc-text"> 逻辑代数的基本运算和逻辑表达式的化简（I）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%92%8C%E4%B8%BB%E8%A6%81%E9%83%A8%E4%BB%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-number">1.1.4.</span> <span class="toc-text"> 计算机组成和主要部件的基本工作原理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#cpu-%E5%92%8C%E5%AD%98%E5%82%A8%E5%99%A8%E7%9A%84%E7%BB%84%E6%88%90-%E5%9F%BA%E6%9C%AC%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-number">1.1.4.1.</span> <span class="toc-text"> CPU 和存储器的组成、基本工作原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8-io-%E8%AE%BE%E5%A4%87-%E9%80%9A%E4%BF%A1%E8%AE%BE%E5%A4%87%E7%9A%84%E6%80%A7%E8%83%BD%E4%BB%A5%E5%8F%8A%E5%9F%BA%E6%9C%AC%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86i"><span class="toc-number">1.1.4.2.</span> <span class="toc-text"> 常用 I&#x2F;O 设备、通信设备的性能以及基本工作原理（I）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#io-%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%8A%9F%E8%83%BD-%E7%B1%BB%E5%9E%8B%E5%92%8C%E7%89%B9%E7%82%B9"><span class="toc-number">1.1.4.3.</span> <span class="toc-text"> I&#x2F;O 接口的功能、类型和特点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="toc-number">1.1.5.</span> <span class="toc-text"> 计算机体系结构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#cisc-risc-%E6%B5%81%E6%B0%B4%E7%BA%BF%E6%8A%80%E6%9C%AF-%E8%B6%85%E6%A0%87%E9%87%8F%E7%AD%89i"><span class="toc-number">1.1.5.1.</span> <span class="toc-text"> CISC、RISC、流水线技术、超标量等（I）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%9A%E5%A4%84%E7%90%86%E6%9C%BA%E5%B9%B6%E8%A1%8C%E5%A4%84%E7%90%86%E5%88%86%E5%B8%83%E5%A4%84%E7%90%86i"><span class="toc-number">1.1.5.2.</span> <span class="toc-text"> 多处理机，并行处理，分布处理（I）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%AF%E8%AF%BA%E4%BC%8A%E6%9B%BC%E7%BB%93%E6%9E%84%E4%B8%8E%E5%93%88%E4%BD%9B%E7%BB%93%E6%9E%84i"><span class="toc-number">1.1.5.3.</span> <span class="toc-text"> 冯·诺伊曼结构与哈佛结构（I）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E9%9D%A0%E6%80%A7%E4%B8%8E%E7%B3%BB%E7%BB%9F%E6%80%A7%E8%83%BD%E8%AF%84%E6%B5%8B%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">1.1.6.</span> <span class="toc-text"> 可靠性与系统性能评测基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%8A%E6%96%AD%E4%B8%8E%E5%AE%B9%E9%94%99"><span class="toc-number">1.1.6.1.</span> <span class="toc-text"> 诊断与容错</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%8F%AF%E9%9D%A0%E6%80%A7%E5%88%86%E6%9E%90%E8%AF%84%E4%BB%B7"><span class="toc-number">1.1.6.2.</span> <span class="toc-text"> 系统可靠性分析评价</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%80%A7%E8%83%BD%E8%AF%84%E6%B5%8B%E6%96%B9%E6%B3%95"><span class="toc-number">1.1.6.3.</span> <span class="toc-text"> 计算机系统性能评测方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">1.2.</span> <span class="toc-text"> 嵌入式系统硬件基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 数字电路基础</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BF%A1%E5%8F%B7%E7%89%B9%E6%80%A7%E4%B8%8E%E4%BF%A1%E5%8F%B7%E8%BD%AC%E6%8D%A2i"><span class="toc-number">1.2.1.1.</span> <span class="toc-text"> 信号特性与信号转换（I）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%84%E5%90%88%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF%E5%92%8C%E6%97%B6%E5%BA%8F%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AFi"><span class="toc-number">1.2.1.2.</span> <span class="toc-text"> 组合逻辑电路和时序逻辑电路（I）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%AF%E7%BC%96%E7%A8%8B%E9%80%BB%E8%BE%91%E5%99%A8%E4%BB%B6"><span class="toc-number">1.2.1.3.</span> <span class="toc-text"> 可编程逻辑器件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BE%AE%E5%A4%84%E7%90%86%E5%99%A8%E5%9F%BA%E7%A1%80"><span class="toc-number">1.2.2.</span> <span class="toc-text"> 嵌入式微处理器基础</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BE%AE%E5%A4%84%E7%90%86%E5%99%A8%E7%9A%84%E7%BB%93%E6%9E%84%E5%92%8C%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.2.2.1.</span> <span class="toc-text"> 嵌入式微处理器的结构和类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BE%AE%E5%A4%84%E7%90%86%E5%99%A8%E7%9A%84%E5%BC%82%E5%B8%B8%E4%B8%8E%E4%B8%AD%E6%96%AD"><span class="toc-number">1.2.2.2.</span> <span class="toc-text"> 嵌入式微处理器的异常与中断</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AD%98%E5%82%A8%E4%BD%93%E7%B3%BB"><span class="toc-number">1.2.3.</span> <span class="toc-text"> 嵌入式系统的存储体系</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84i"><span class="toc-number">1.2.3.1.</span> <span class="toc-text"> 存储系统的层次结构（I）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E5%8D%95%E5%85%83mmu"><span class="toc-number">1.2.3.2.</span> <span class="toc-text"> 内存管理单元（MMU）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ram-%E5%92%8C-rom-%E7%9A%84%E7%A7%8D%E7%B1%BB%E4%B8%8E%E9%80%89%E5%9E%8B"><span class="toc-number">1.2.3.3.</span> <span class="toc-text"> RAM 和 ROM 的种类与选型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98cache"><span class="toc-number">1.2.3.4.</span> <span class="toc-text"> 高速缓存(Cache)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E5%AD%98%E5%82%A8%E8%AE%BE%E5%A4%87"><span class="toc-number">1.2.3.5.</span> <span class="toc-text"> 其他存储设备</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F-io"><span class="toc-number">1.2.4.</span> <span class="toc-text"> 嵌入式系统 I&#x2F;O</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#gpio-pwm-%E6%8E%A5%E5%8F%A3%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86%E5%92%8C%E7%BB%93%E6%9E%84i"><span class="toc-number">1.2.4.1.</span> <span class="toc-text"> GPIO、PWM 接口基本原理和结构（I）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ad-da-%E6%8E%A5%E5%8F%A3%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%93%E6%9E%84ii"><span class="toc-number">1.2.4.2.</span> <span class="toc-text"> A&#x2F;D、D&#x2F;A 接口基本原理与结构（II）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%94%AE%E7%9B%98-%E6%98%BE%E7%A4%BA-%E8%A7%A6%E6%91%B8%E5%B1%8F-%E5%A3%B0%E6%8E%A7%E5%B1%8F%E7%AD%89%E6%8E%A5%E5%8F%A3%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%93%E6%9E%84ii"><span class="toc-number">1.2.4.3.</span> <span class="toc-text"> 键盘、显示、触摸屏、声控屏等接口基本原理与结构（II）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E9%9F%B3%E9%A2%91-%E8%A7%86%E9%A2%91%E6%8E%A5%E5%8F%A3i"><span class="toc-number">1.2.4.4.</span> <span class="toc-text"> 嵌入式系统音频、视频接口（I）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%8E%A7%E5%88%B6ii"><span class="toc-number">1.2.4.5.</span> <span class="toc-text"> 输入输出控制（II）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E6%97%B6%E5%99%A8%E5%92%8C%E8%AE%A1%E6%95%B0%E5%99%A8"><span class="toc-number">1.2.5.</span> <span class="toc-text"> 定时器和计数器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E6%97%B6%E5%99%A8%E5%92%8C%E8%AE%A1%E6%95%B0%E5%99%A8%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86i"><span class="toc-number">1.2.5.1.</span> <span class="toc-text"> 定时器和计数器的工作原理（I）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E6%97%B6%E5%99%A8%E7%9A%84%E8%AE%BE%E8%AE%A1ii"><span class="toc-number">1.2.5.2.</span> <span class="toc-text"> 定时器的设计（II）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%A1%E6%95%B0%E5%99%A8%E7%9A%84%E8%AE%BE%E8%AE%A1ii"><span class="toc-number">1.2.5.3.</span> <span class="toc-text"> 计数器的设计（II）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E6%80%BB%E7%BA%BF%E5%8F%8A%E9%80%9A%E4%BF%A1%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.2.6.</span> <span class="toc-text"> 嵌入式系统总线及通信接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%94%B5%E6%BA%90%E5%88%86%E7%B1%BB%E5%8F%8A%E7%94%B5%E6%BA%90%E7%AE%A1%E7%90%86i"><span class="toc-number">1.2.7.</span> <span class="toc-text"> 嵌入式系统电源分类及电源管理（I）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%B5%E5%AD%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.2.8.</span> <span class="toc-text"> 电子电路设计</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%B5%E5%AD%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">1.2.8.1.</span> <span class="toc-text"> 电子电路设计基础知识</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#pcb-%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">1.2.8.2.</span> <span class="toc-text"> PCB 设计基础知识</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%B5%E5%AD%90%E7%94%B5%E8%B7%AF%E6%B5%8B%E8%AF%95%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">1.2.8.3.</span> <span class="toc-text"> 电子电路测试基础知识</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">1.3.</span> <span class="toc-text"> 嵌入式系统软件基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E4%BB%B6%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">1.3.1.</span> <span class="toc-text"> 嵌入式软件基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E4%BB%B6%E5%88%86%E7%B1%BB"><span class="toc-number">1.3.1.1.</span> <span class="toc-text"> 嵌入式软件分类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">1.3.1.2.</span> <span class="toc-text"> 嵌入式系统初始化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%A0%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%94%AF%E6%8C%81%E7%9A%84%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84i"><span class="toc-number">1.3.1.3.</span> <span class="toc-text"> 无操作系统支持的嵌入式软件体系结构（I）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%89%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%94%AF%E6%8C%81%E7%9A%84%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84ii"><span class="toc-number">1.3.1.4.</span> <span class="toc-text"> 有操作系统支持的嵌入式软件体系结构（II）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E6%94%AF%E6%92%91%E8%BD%AF%E4%BB%B6%E5%B5%8C%E5%85%A5%E5%BC%8F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F-%E5%B5%8C%E5%85%A5%E5%BC%8F%E6%95%B0%E6%8D%AE%E5%BA%93-%E5%88%86%E5%B8%83%E5%BC%8F%E5%AF%B9%E8%B1%A1%E7%B3%BB%E7%BB%9F-gui-%E7%AD%89ii"><span class="toc-number">1.3.1.5.</span> <span class="toc-text"> 嵌入式支撑软件（嵌入式文件系统、嵌入式数据库、分布式对象系统、GUI 等）（II）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">1.3.2.</span> <span class="toc-text"> 嵌入式系统基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.3.2.1.</span> <span class="toc-text"> 嵌入式操作系统基本概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%84%E7%90%86%E5%99%A8%E7%AE%A1%E7%90%86"><span class="toc-number">1.3.2.2.</span> <span class="toc-text"> 处理器管理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86"><span class="toc-number">1.3.2.3.</span> <span class="toc-text"> 存储管理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86"><span class="toc-number">1.3.2.4.</span> <span class="toc-text"> 设备管理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.3.2.5.</span> <span class="toc-text"> 文件系统</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%A7%BB%E6%A4%8D"><span class="toc-number">1.3.2.6.</span> <span class="toc-text"> 操作系统移植</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.3.3.</span> <span class="toc-text"> 嵌入式系统程序设计</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">1.3.3.1.</span> <span class="toc-text"> 嵌入式软件开发基础知识</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80"><span class="toc-number">1.3.3.2.</span> <span class="toc-text"> 嵌入式程序设计语言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83"><span class="toc-number">1.3.3.3.</span> <span class="toc-text"> 嵌入式软件开发环境</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E8%BF%87%E7%A8%8B"><span class="toc-number">1.3.3.4.</span> <span class="toc-text"> 嵌入式软件开发过程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BA%94%E7%94%A8%E8%BD%AF%E4%BB%B6%E7%A7%BB%E6%A4%8D"><span class="toc-number">1.3.3.5.</span> <span class="toc-text"> 嵌入式应用软件移植</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%9A%84%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E4%B8%8E%E7%BB%B4%E6%8A%A4%E7%9F%A5%E8%AF%86"><span class="toc-number">1.4.</span> <span class="toc-text"> 嵌入式系统的项目开发与维护知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E8%BF%87%E7%A8%8B%E5%8F%8A%E5%85%B6%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86"><span class="toc-number">1.4.1.</span> <span class="toc-text"> 系统开发过程及其项目管理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%90%84%E9%98%B6%E6%AE%B5%E7%9A%84%E7%9B%AE%E6%A0%87%E5%92%8C%E4%BB%BB%E5%8A%A1"><span class="toc-number">1.4.1.1.</span> <span class="toc-text"> 系统开发生命周期各阶段的目标和任务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%8F%8A%E5%85%B6%E5%B8%B8%E7%94%A8%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7"><span class="toc-number">1.4.1.2.</span> <span class="toc-text"> 系统开发项目管理基础知识及其常用管理工具</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95i"><span class="toc-number">1.4.1.3.</span> <span class="toc-text"> 系统开发方法（I）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E4%B8%8E%E7%8E%AF%E5%A2%83i"><span class="toc-number">1.4.1.4.</span> <span class="toc-text"> 系统开发工具与环境（I）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90%E7%9F%A5%E8%AF%86"><span class="toc-number">1.4.2.</span> <span class="toc-text"> 系统分析知识</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="toc-number">1.4.2.1.</span> <span class="toc-text"> 需求分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90%E7%9A%84%E7%9B%AE%E7%9A%84%E5%92%8C%E4%BB%BB%E5%8A%A1i"><span class="toc-number">1.4.2.2.</span> <span class="toc-text"> 系统分析的目的和任务（I）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95i"><span class="toc-number">1.4.2.3.</span> <span class="toc-text"> 系统分析方法（I）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E7%9F%A5%E8%AF%86"><span class="toc-number">1.4.3.</span> <span class="toc-text"> 系统设计知识</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%B3%95i"><span class="toc-number">1.4.3.1.</span> <span class="toc-text"> 系统设计方法（I）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E5%8F%8A%E6%A6%82%E8%A6%81%E8%AE%BE%E8%AE%A1ii"><span class="toc-number">1.4.3.2.</span> <span class="toc-text"> 系统架构及概要设计（II）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1-%E6%A8%A1%E5%9D%97%E6%8E%A5%E5%8F%A3%E8%AE%BE%E8%AE%A1-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1-%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2%E8%AE%BE%E8%AE%A1%E7%AD%89"><span class="toc-number">1.4.3.3.</span> <span class="toc-text"> 系统详细设计（程序结构设计、模块接口设计、数据结构设计、用户界面设计等）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BD%AF%E7%A1%AC%E4%BB%B6%E5%8D%8F%E5%90%8C%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%B3%95"><span class="toc-number">1.4.3.4.</span> <span class="toc-text"> 软硬件协同设计方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%AE%9E%E6%96%BD%E7%9F%A5%E8%AF%86"><span class="toc-number">1.4.4.</span> <span class="toc-text"> 系统实施知识</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BD%AF%E7%A1%AC%E4%BB%B6%E5%B9%B3%E5%8F%B0%E6%90%AD%E5%BB%BAii"><span class="toc-number">1.4.4.1.</span> <span class="toc-text"> 软硬件平台搭建（II）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E8%B0%83%E8%AF%95%E4%B8%8E%E6%B5%8B%E8%AF%95ii"><span class="toc-number">1.4.4.2.</span> <span class="toc-text"> 系统调试与测试（II）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E8%BF%90%E8%A1%8C%E5%92%8C%E7%BB%B4%E6%8A%A4%E7%9F%A5%E8%AF%86"><span class="toc-number">1.4.5.</span> <span class="toc-text"> 系统运行和维护知识</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E8%BF%90%E8%A1%8C%E7%AE%A1%E7%90%86i"><span class="toc-number">1.4.5.1.</span> <span class="toc-text"> 系统运行管理（I）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E7%BB%B4%E6%8A%A4"><span class="toc-number">1.4.5.2.</span> <span class="toc-text"> 系统维护</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E8%AF%84%E4%BB%B7i"><span class="toc-number">1.4.5.3.</span> <span class="toc-text"> 系统评价（I）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%89%E5%85%A8%E6%80%A7%E7%9F%A5%E8%AF%86"><span class="toc-number">1.5.</span> <span class="toc-text"> 嵌入式系统的安全性知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E6%80%A7%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.5.1.</span> <span class="toc-text"> 安全性基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%89%E5%85%A8%E6%80%A7%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.5.2.</span> <span class="toc-text"> 嵌入式系统的安全性设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E5%8A%A0%E5%AF%86%E4%B8%8E%E8%A7%A3%E5%AF%86-%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E7%AD%89"><span class="toc-number">1.5.3.</span> <span class="toc-text"> 嵌入式系统的信息安全（加密与解密、访问控制等）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%87%E5%87%86%E5%8C%96%E7%9F%A5%E8%AF%86"><span class="toc-number">1.6.</span> <span class="toc-text"> 标准化知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%87%E5%87%86%E5%8C%96%E7%9A%84%E6%A6%82%E5%BF%B5%E5%92%8C%E6%A0%87%E5%87%86%E5%8C%96%E6%9C%BA%E6%9E%84i"><span class="toc-number">1.6.1.</span> <span class="toc-text"> 标准化的概念和标准化机构（I）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BD%E9%99%85%E6%A0%87%E5%87%86-%E5%9B%BD%E5%AE%B6%E6%A0%87%E5%87%86-%E8%A1%8C%E4%B8%9A%E6%A0%87%E5%87%86-%E4%BC%81%E4%B8%9A%E6%A0%87%E5%87%86%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86i"><span class="toc-number">1.6.2.</span> <span class="toc-text"> 国际标准、国家标准、行业标准、企业标准基本知识（I）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E6%A0%87%E5%87%86-%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%E6%A0%87%E5%87%86-%E5%AE%89%E5%85%A8%E6%A0%87%E5%87%86-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83%E5%92%8C%E6%96%87%E6%A1%A3%E6%A0%87%E5%87%86%E7%9F%A5%E8%AF%86i"><span class="toc-number">1.6.3.</span> <span class="toc-text"> 代码标准、文件格式标准、安全标准、软件开发规范和文档标准知识（I）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%9B%B8%E5%85%B3%E6%A0%87%E5%87%86i"><span class="toc-number">1.6.4.</span> <span class="toc-text"> 嵌入式系统相关标准（I）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E5%8C%96%E5%92%8C%E7%9F%A5%E8%AF%86%E4%BA%A7%E6%9D%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">1.7.</span> <span class="toc-text"> 信息化和知识产权基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">1.7.1.</span> <span class="toc-text"> 信息化基础知识</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86%E4%BA%A7%E6%9D%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">1.7.2.</span> <span class="toc-text"> 知识产权基础知识</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E6%8A%80%E6%9C%AF%E5%8F%91%E5%B1%95%E8%B6%8B%E5%8A%BF"><span class="toc-number">1.8.</span> <span class="toc-text"> 嵌入式技术发展趋势</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%A1%AC%E4%BB%B6%E5%8F%91%E5%B1%95%E8%B6%8B%E5%8A%BFi"><span class="toc-number">1.8.1.</span> <span class="toc-text"> 嵌入式系统硬件发展趋势（I）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6%E5%8F%91%E5%B1%95%E8%B6%8B%E5%8A%BFi"><span class="toc-number">1.8.2.</span> <span class="toc-text"> 嵌入式系统软件发展趋势（I）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%AD"><span class="toc-number">1.9.</span> <span class="toc-text"> 计算机专业英语</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%80%83%E8%AF%95%E7%A7%91%E7%9B%AE-2%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.</span> <span class="toc-text"> 考试科目 2：嵌入式系统设计</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E8%BF%87%E7%A8%8B"><span class="toc-number">2.1.</span> <span class="toc-text"> 嵌入式系统开发过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E8%BF%87%E7%A8%8B%E7%AE%A1%E7%90%86"><span class="toc-number">2.1.1.</span> <span class="toc-text"> 系统开发过程管理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F-%E6%88%90%E6%9C%AC%E5%8F%8A%E5%B7%A5%E4%BD%9C%E9%87%8F%E4%BC%B0%E8%AE%A1iii"><span class="toc-number">2.1.1.1.</span> <span class="toc-text"> 生命周期、成本及工作量估计（III）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A3%8E%E9%99%A9%E7%AE%A1%E7%90%86ii"><span class="toc-number">2.1.1.2.</span> <span class="toc-text"> 风险管理（II）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.1.1.3.</span> <span class="toc-text"> 开发模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B4%A8%E9%87%8F%E7%AE%A1%E7%90%86ii"><span class="toc-number">2.1.1.4.</span> <span class="toc-text"> 质量管理（II）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86ii"><span class="toc-number">2.1.1.5.</span> <span class="toc-text"> 配置管理（II）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E6%88%90%E7%86%9F%E5%BA%A6%E6%A8%A1%E5%9E%8Bii"><span class="toc-number">2.1.1.6.</span> <span class="toc-text"> 软件成熟度模型（II）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90-2"><span class="toc-number">2.1.2.</span> <span class="toc-text"> 需求分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E9%9C%80%E6%B1%82ii"><span class="toc-number">2.1.2.1.</span> <span class="toc-text"> 用户需求（II）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%AE%9A%E4%B9%89ii"><span class="toc-number">2.1.2.2.</span> <span class="toc-text"> 系统定义（II）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9C%80%E6%B1%82%E8%A7%84%E6%A0%BC%E8%AF%B4%E6%98%8E%E4%B9%A6ii"><span class="toc-number">2.1.2.3.</span> <span class="toc-text"> 需求规格说明书（II）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9C%80%E6%B1%82%E8%AF%84%E5%AE%A1ii"><span class="toc-number">2.1.2.4.</span> <span class="toc-text"> 需求评审（II）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.1.3.</span> <span class="toc-text"> 系统设计</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E6%96%B9%E6%A1%88%E8%AE%BE%E8%AE%A1iii"><span class="toc-number">2.1.3.1.</span> <span class="toc-text"> 系统方案设计（III）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%8A%9F%E8%83%BD%E5%88%92%E5%88%86iii"><span class="toc-number">2.1.3.2.</span> <span class="toc-text"> 系统功能划分（III）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BD%AF%E7%A1%AC%E4%BB%B6%E5%8D%8F%E5%90%8C%E8%AE%BE%E8%AE%A1iii"><span class="toc-number">2.1.3.3.</span> <span class="toc-text"> 软硬件协同设计（III）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A1%AC%E4%BB%B6%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.1.3.4.</span> <span class="toc-text"> 硬件设计</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.1.3.5.</span> <span class="toc-text"> 软件设计</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83"><span class="toc-number">2.1.4.</span> <span class="toc-text"> 系统开发环境</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E5%B9%B3%E5%8F%B0"><span class="toc-number">2.1.4.1.</span> <span class="toc-text"> 开发平台</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7"><span class="toc-number">2.1.4.2.</span> <span class="toc-text"> 开发工具</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E6%B5%8B%E8%AF%95"><span class="toc-number">2.1.5.</span> <span class="toc-text"> 系统测试</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83ii"><span class="toc-number">2.1.5.1.</span> <span class="toc-text"> 测试环境（II）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E8%AE%A1%E5%88%92%E5%86%85%E5%AE%B9-%E6%96%B9%E6%B3%95-%E6%A0%87%E5%87%86-%E8%BF%87%E7%A8%8B-%E6%A3%80%E9%AA%8Ciii"><span class="toc-number">2.1.5.2.</span> <span class="toc-text"> 测试计划（内容、方法、标准、过程、检验）（III）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A1%AC%E4%BB%B6%E6%B5%8B%E8%AF%95ii"><span class="toc-number">2.1.5.3.</span> <span class="toc-text"> 硬件测试（II）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95-%E9%9B%86%E6%88%90%E6%B5%8B%E8%AF%95-%E7%B3%BB%E7%BB%9F%E6%B5%8B%E8%AF%95%E7%AD%89iii"><span class="toc-number">2.1.5.4.</span> <span class="toc-text"> 软件测试（单元测试、集成测试、系统测试等）（III）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BD%AF%E7%A1%AC%E4%BB%B6%E8%81%94%E5%90%88%E6%B5%8B%E8%AF%95ii"><span class="toc-number">2.1.5.5.</span> <span class="toc-text"> 软硬件联合测试（II）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E8%AF%84%E4%BB%B7i-2"><span class="toc-number">2.1.6.</span> <span class="toc-text"> 系统评价（I）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E7%BB%B4%E6%8A%A4-2"><span class="toc-number">2.1.7.</span> <span class="toc-text"> 系统维护</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%8F%AF%E7%BB%B4%E6%8A%A4%E6%80%A7%E6%A6%82%E5%BF%B5i"><span class="toc-number">2.1.7.1.</span> <span class="toc-text"> 系统可维护性概念（I）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E7%BB%B4%E6%8A%A4%E7%9A%84%E5%86%85%E5%AE%B9%E5%8F%8A%E7%B1%BB%E5%9E%8Bi"><span class="toc-number">2.1.7.2.</span> <span class="toc-text"> 系统维护的内容及类型（I）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E7%BB%B4%E6%8A%A4%E7%AE%A1%E7%90%86i"><span class="toc-number">2.1.7.3.</span> <span class="toc-text"> 系统维护管理（I）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3i"><span class="toc-number">2.1.8.</span> <span class="toc-text"> 开发文档（I）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%A1%AC%E4%BB%B6%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.2.</span> <span class="toc-text"> 嵌入式系统硬件设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%A1%AC%E4%BB%B6%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84"><span class="toc-number">2.2.1.</span> <span class="toc-text"> 嵌入式系统硬件基本结构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BE%AE%E5%A4%84%E7%90%86%E5%99%A8%E7%BB%93%E6%9E%84iii"><span class="toc-number">2.2.1.1.</span> <span class="toc-text"> 嵌入式微处理器结构（III）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E5%99%A8dsp%E7%BB%93%E6%9E%84iii"><span class="toc-number">2.2.1.2.</span> <span class="toc-text"> 数字信号处理器(DSP)结构（III）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E5%8F%8A%E4%B8%AD%E6%96%AD%E5%A4%84%E7%90%86iii"><span class="toc-number">2.2.1.3.</span> <span class="toc-text"> 异常及中断处理（III）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#dma-%E6%8A%80%E6%9C%AFii"><span class="toc-number">2.2.1.4.</span> <span class="toc-text"> DMA 技术（II）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%9A%E5%A4%84%E7%90%86%E5%99%A8%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.2.1.5.</span> <span class="toc-text"> 多处理器系统</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E7%BA%BFi"><span class="toc-number">2.2.1.6.</span> <span class="toc-text"> 总线（I）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF"><span class="toc-number">2.2.1.7.</span> <span class="toc-text"> 数字电路</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A1%AC%E4%BB%B6%E6%8F%8F%E8%BF%B0%E8%AF%AD%E8%A8%80vhdlverilog-hdl-%E7%AD%89ii"><span class="toc-number">2.2.2.</span> <span class="toc-text"> 硬件描述语言（VHDL，Verilog HDL 等）（II）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%A7%E8%A7%84%E6%A8%A1%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.2.3.</span> <span class="toc-text"> 大规模集成电路系统设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%8E%A5%E5%8F%A3"><span class="toc-number">2.2.4.</span> <span class="toc-text"> 输入&#x2F;输出接口</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E7%9A%84%E7%89%B9%E6%80%A7%E6%9C%BA%E6%A2%B0-%E7%94%B5%E6%B0%94-%E5%8A%9F%E8%83%BD-%E8%A7%84%E7%A8%8Bi"><span class="toc-number">2.2.4.1.</span> <span class="toc-text"> 接口的特性（机械、电气、功能、规程）（I）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.2.4.2.</span> <span class="toc-text"> 接口设计</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E5%BA%94%E7%94%A8"><span class="toc-number">2.2.4.3.</span> <span class="toc-text"> 接口应用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1i"><span class="toc-number">2.2.5.</span> <span class="toc-text"> 电源设计（I）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%8E%E5%8A%9F%E8%80%97%E8%AE%BE%E8%AE%A1i"><span class="toc-number">2.2.6.</span> <span class="toc-text"> 低功耗设计（I）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E9%9D%A0%E6%80%A7%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.2.7.</span> <span class="toc-text"> 可靠性与安全性设计</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%97%E4%BD%99%E8%AE%BE%E8%AE%A1ii"><span class="toc-number">2.2.7.1.</span> <span class="toc-text"> 冗余设计（II）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%AF%E7%BB%B4%E6%8A%A4%E6%80%A7%E8%AE%BE%E8%AE%A1i"><span class="toc-number">2.2.7.2.</span> <span class="toc-text"> 可维护性设计（I）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%AE%B9%E9%94%99%E4%B8%8E%E6%81%A2%E5%A4%8D%E8%AE%BE%E8%AE%A1ii"><span class="toc-number">2.2.7.3.</span> <span class="toc-text"> 系统容错与恢复设计（II）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E4%BB%BF%E7%9C%9F"><span class="toc-number">2.2.8.</span> <span class="toc-text"> 系统仿真</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.3.</span> <span class="toc-text"> 嵌入式系统软件设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.3.1.</span> <span class="toc-text"> 嵌入式程序设计</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1ii"><span class="toc-number">2.3.1.1.</span> <span class="toc-text"> 汇编语言程序设计（II）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F-c-%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.3.1.2.</span> <span class="toc-text"> 嵌入式 C 语言程序设计</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.3.1.3.</span> <span class="toc-text"> 面向对象程序设计</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.3.2.</span> <span class="toc-text"> 系统软件设计</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E5%8C%96%E8%AE%BE%E8%AE%A1i"><span class="toc-number">2.3.2.1.</span> <span class="toc-text"> 系统初始化设计（I）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A1%AC%E4%BB%B6%E6%8A%BD%E8%B1%A1%E5%B1%82hal-%E6%9D%BF%E7%BA%A7%E6%94%AF%E6%8C%81%E5%8C%85bsp%E8%AE%BE%E8%AE%A1iii"><span class="toc-number">2.3.2.2.</span> <span class="toc-text"> 硬件抽象层（HAL）、板级支持包（BSP）设计（III）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E5%A4%87%E9%A9%B1%E5%8A%A8%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1iii"><span class="toc-number">2.3.2.3.</span> <span class="toc-text"> 设备驱动程序设计（III）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6%E7%9A%84%E7%A7%BB%E6%A4%8Di"><span class="toc-number">2.3.2.4.</span> <span class="toc-text"> 嵌入式系统软件的移植（I）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6%E7%9A%84%E7%A7%BB%E6%A4%8D"><span class="toc-number">2.3.2.5.</span> <span class="toc-text"> 嵌入式系统软件的移植</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.3.3.</span> <span class="toc-text"> 嵌入式操作系统</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%84%E7%90%86%E5%99%A8%E7%AE%A1%E7%90%86-2"><span class="toc-number">2.3.3.1.</span> <span class="toc-text"> 处理器管理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86-2"><span class="toc-number">2.3.3.2.</span> <span class="toc-text"> 存储管理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86"><span class="toc-number">2.3.3.3.</span> <span class="toc-text"> 异常处理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E5%B5%8C%E5%85%A5%E5%BC%8F%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.3.3.4.</span> <span class="toc-text"> 常见嵌入式操作系统</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E6%94%AF%E6%92%91%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.3.4.</span> <span class="toc-text"> 嵌入式支撑系统</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E4%B8%AD%E9%97%B4%E4%BB%B6ii"><span class="toc-number">2.3.4.1.</span> <span class="toc-text"> 嵌入式系统中间件（II）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.3.4.2.</span> <span class="toc-text"> 嵌入式文件系统</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E6%95%B0%E6%8D%AE%E5%BA%93sqlite-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AD%89ii"><span class="toc-number">2.3.4.3.</span> <span class="toc-text"> 嵌入式系统数据库（SQLite 数据库等）（II）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E5%9B%BE%E5%BD%A2%E7%94%A8%E6%88%B7%E6%8E%A5%E5%8F%A3guiii"><span class="toc-number">2.3.4.4.</span> <span class="toc-text"> 嵌入式系统图形用户接口（GUI）（II）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%BD%91%E7%BB%9C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.3.4.5.</span> <span class="toc-text"> 嵌入式网络程序设计</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%AE%9E%E6%97%B6%E7%B3%BB%E7%BB%9F%E4%B8%8E%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.4.</span> <span class="toc-text"> 嵌入式实时系统与分布式系统设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E6%97%B6%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1i"><span class="toc-number">2.4.1.</span> <span class="toc-text"> 实时系统的分析与设计（I）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.4.2.</span> <span class="toc-text"> 分布式系统设计</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E5%8E%9F%E7%90%86i"><span class="toc-number">2.4.2.1.</span> <span class="toc-text"> 分布式系统设计原理（I）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%B3%95i"><span class="toc-number">2.4.2.2.</span> <span class="toc-text"> 分布式系统设计方法（I）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%9A%84%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AFi"><span class="toc-number">2.4.2.3.</span> <span class="toc-text"> 分布式系统的通信技术（I）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E5%BA%94%E7%94%A8ii"><span class="toc-number">2.4.2.4.</span> <span class="toc-text"> 分布式系统应用（II）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E5%BA%94%E7%94%A8"><span class="toc-number">2.5.</span> <span class="toc-text"> 嵌入式系统应用</span></a></li></ol></li></ol>
+      
+  </div>
+</div>
+</div>
+      <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/avatar.webp" data-sizes="auto" alt="Ainavo" class="lazyload">
+  <div class="sidebar-author-name">Ainavo</div>
+  <div class="sidebar-description">一个菜猫</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div>
+    <div class="sidebar-state-number">10</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>分类</div>
+    <div class="sidebar-state-number">0</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>标签</div>
+    <div class="sidebar-state-number">12</div>
+  </div>
+</div>
+<div class="sidebar-social">
+  
+</div>
+<div class="sidebar-menu">
+  
+    <div class="sidebar-menu-link-wrap">
+      <a class="sidebar-menu-link-dummy" href="/" aria-label="首页"></a>
+      <span class="sidebar-menu-icon"></span>
+      <div class="sidebar-menu-link">首页</div>
+    </div>
+  
+    <div class="sidebar-menu-link-wrap">
+      <a class="sidebar-menu-link-dummy" href="/archives" aria-label="归档"></a>
+      <span class="sidebar-menu-icon"></span>
+      <div class="sidebar-menu-link">归档</div>
+    </div>
+  
+    <div class="sidebar-menu-link-wrap">
+      <a class="sidebar-menu-link-dummy" href="/about" aria-label="关于"></a>
+      <span class="sidebar-menu-icon"></span>
+      <div class="sidebar-menu-link">关于</div>
+    </div>
+  
+    <div class="sidebar-menu-link-wrap">
+      <a class="sidebar-menu-link-dummy" href="/friend" aria-label="友链"></a>
+      <span class="sidebar-menu-icon"></span>
+      <div class="sidebar-menu-link">友链</div>
+    </div>
+  
+</div>
+</div>
+    
+    
+      <div class="sidebar-btn-wrapper" style="position:static">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div>
+    
+  </div>
+
+  
+</aside>
+
+          
+        </div>
+        <footer id="footer" class="wow fadeInUp">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div class="outer">
+    <div id="footer-info">
+      
+      <div>
+        <span class="icon-copyright"></span>
+        2020-2024
+        <span class="footer-info-sep"></span>
+        Ainavo
+      </div>
+      
+        <div>
+          基于&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>&nbsp;
+          Theme.<a href="https://github.com/D-Sketon/hexo-theme-reimu" target="_blank">Reimu</a>
+        </div>
+      
+      
+        <div>
+          <span class="icon-brush"></span>
+          34.1k
+          &nbsp;|&nbsp;
+          <span class="icon-coffee"></span>
+          02:11
+        </div>
+      
+      
+        <div>
+          <span class="icon-eye"></span>
+          <span id="busuanzi_container_site_pv">总访问量&nbsp;<span id="busuanzi_value_site_pv"></span></span>
+          &nbsp;|&nbsp;
+          <span class="icon-user"></span>
+          <span id="busuanzi_container_site_uv">总访客量&nbsp;<span id="busuanzi_value_site_uv"></span></span>
+        </div>
+      
+    </div>
+  </div>
+</footer>
+
+        <div class="sidebar-top">
+          <img src="/images/taichi.png" height="50" width="50" alt="backtop" />
+          <div class="arrow-up"></div>
+        </div>
+        <div id="mask"></div>
+      </div>
+      <nav id="mobile-nav">
+  <div class="sidebar-wrap">
+    
+      <div class="sidebar-toc-sidebar"><div class="sidebar-toc">
+  <h3 class="toc-title">文章目录</h3>
+  <div class="sidebar-toc-wrapper toc-div-class" >
+      
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%80%83%E8%AF%95%E7%A7%91%E7%9B%AE-1%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">1.</span> <span class="toc-text"> 考试科目 1：嵌入式系统基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">1.1.</span> <span class="toc-text"> 计算机系统的基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E5%88%B6%E5%8F%8A%E5%85%B6%E8%BD%AC%E6%8D%A2"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 数制及其转换</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E8%BF%9B%E5%88%B6-%E5%85%AB%E8%BF%9B%E5%88%B6-%E5%8D%81%E8%BF%9B%E5%88%B6%E5%92%8C%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6%E7%AD%89%E5%B8%B8%E7%94%A8%E6%95%B0%E5%88%B6%E5%8F%8A%E5%85%B6%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2ii"><span class="toc-number">1.1.1.1.</span> <span class="toc-text"> 二进制、八进制、十进制和十六进制等常用数制及其相互转换（II）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA"><span class="toc-number">1.1.2.</span> <span class="toc-text"> 数据的表示</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E5%80%BC%E7%9A%84%E5%8E%9F%E7%A0%81-%E5%8F%8D%E7%A0%81-%E8%A1%A5%E7%A0%81-%E7%A7%BB%E7%A0%81%E8%A1%A8%E7%A4%BA%E5%AE%9A%E7%82%B9%E6%95%B0%E5%92%8C%E6%B5%AE%E7%82%B9%E6%95%B0%E7%B2%BE%E5%BA%A6%E5%92%8C%E6%BA%A2%E5%87%BAii"><span class="toc-number">1.1.2.1.</span> <span class="toc-text"> 数值的原码、反码、补码、移码表示，定点数和浮点数，精度和溢出（II）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6-%E6%B1%89%E5%AD%97-%E5%A3%B0%E9%9F%B3-%E5%9B%BE%E5%83%8F%E7%9A%84%E7%BC%96%E7%A0%81%E6%96%B9%E5%BC%8Fi"><span class="toc-number">1.1.2.2.</span> <span class="toc-text"> 字符、汉字、声音、图像的编码方式（I）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%A1%E9%AA%8C%E6%96%B9%E6%B3%95%E5%92%8C%E6%A0%A1%E9%AA%8C%E7%A0%81%E5%A5%87%E5%81%B6%E6%A0%A1%E9%AA%8C%E7%A0%81-%E6%B5%B7%E6%98%8E%E6%A0%A1%E9%AA%8C%E7%A0%81-%E5%BE%AA%E7%8E%AF%E5%86%97%E4%BD%99%E6%A0%A1%E9%AA%8C%E7%A0%81ii"><span class="toc-number">1.1.2.3.</span> <span class="toc-text"> 校验方法和校验码（奇偶校验码、海明校验码、循环冗余校验码）（II）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E5%92%8C%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97"><span class="toc-number">1.1.3.</span> <span class="toc-text"> 算术运算和逻辑运算</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95ii"><span class="toc-number">1.1.3.1.</span> <span class="toc-text"> 二进制数运算方法（II）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E4%BB%A3%E6%95%B0%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%BF%90%E7%AE%97%E5%92%8C%E9%80%BB%E8%BE%91%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E5%8C%96%E7%AE%80i"><span class="toc-number">1.1.3.2.</span> <span class="toc-text"> 逻辑代数的基本运算和逻辑表达式的化简（I）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%92%8C%E4%B8%BB%E8%A6%81%E9%83%A8%E4%BB%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-number">1.1.4.</span> <span class="toc-text"> 计算机组成和主要部件的基本工作原理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#cpu-%E5%92%8C%E5%AD%98%E5%82%A8%E5%99%A8%E7%9A%84%E7%BB%84%E6%88%90-%E5%9F%BA%E6%9C%AC%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-number">1.1.4.1.</span> <span class="toc-text"> CPU 和存储器的组成、基本工作原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8-io-%E8%AE%BE%E5%A4%87-%E9%80%9A%E4%BF%A1%E8%AE%BE%E5%A4%87%E7%9A%84%E6%80%A7%E8%83%BD%E4%BB%A5%E5%8F%8A%E5%9F%BA%E6%9C%AC%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86i"><span class="toc-number">1.1.4.2.</span> <span class="toc-text"> 常用 I&#x2F;O 设备、通信设备的性能以及基本工作原理（I）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#io-%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%8A%9F%E8%83%BD-%E7%B1%BB%E5%9E%8B%E5%92%8C%E7%89%B9%E7%82%B9"><span class="toc-number">1.1.4.3.</span> <span class="toc-text"> I&#x2F;O 接口的功能、类型和特点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="toc-number">1.1.5.</span> <span class="toc-text"> 计算机体系结构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#cisc-risc-%E6%B5%81%E6%B0%B4%E7%BA%BF%E6%8A%80%E6%9C%AF-%E8%B6%85%E6%A0%87%E9%87%8F%E7%AD%89i"><span class="toc-number">1.1.5.1.</span> <span class="toc-text"> CISC、RISC、流水线技术、超标量等（I）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%9A%E5%A4%84%E7%90%86%E6%9C%BA%E5%B9%B6%E8%A1%8C%E5%A4%84%E7%90%86%E5%88%86%E5%B8%83%E5%A4%84%E7%90%86i"><span class="toc-number">1.1.5.2.</span> <span class="toc-text"> 多处理机，并行处理，分布处理（I）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%AF%E8%AF%BA%E4%BC%8A%E6%9B%BC%E7%BB%93%E6%9E%84%E4%B8%8E%E5%93%88%E4%BD%9B%E7%BB%93%E6%9E%84i"><span class="toc-number">1.1.5.3.</span> <span class="toc-text"> 冯·诺伊曼结构与哈佛结构（I）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E9%9D%A0%E6%80%A7%E4%B8%8E%E7%B3%BB%E7%BB%9F%E6%80%A7%E8%83%BD%E8%AF%84%E6%B5%8B%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">1.1.6.</span> <span class="toc-text"> 可靠性与系统性能评测基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%8A%E6%96%AD%E4%B8%8E%E5%AE%B9%E9%94%99"><span class="toc-number">1.1.6.1.</span> <span class="toc-text"> 诊断与容错</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%8F%AF%E9%9D%A0%E6%80%A7%E5%88%86%E6%9E%90%E8%AF%84%E4%BB%B7"><span class="toc-number">1.1.6.2.</span> <span class="toc-text"> 系统可靠性分析评价</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%80%A7%E8%83%BD%E8%AF%84%E6%B5%8B%E6%96%B9%E6%B3%95"><span class="toc-number">1.1.6.3.</span> <span class="toc-text"> 计算机系统性能评测方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">1.2.</span> <span class="toc-text"> 嵌入式系统硬件基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 数字电路基础</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BF%A1%E5%8F%B7%E7%89%B9%E6%80%A7%E4%B8%8E%E4%BF%A1%E5%8F%B7%E8%BD%AC%E6%8D%A2i"><span class="toc-number">1.2.1.1.</span> <span class="toc-text"> 信号特性与信号转换（I）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%84%E5%90%88%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF%E5%92%8C%E6%97%B6%E5%BA%8F%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AFi"><span class="toc-number">1.2.1.2.</span> <span class="toc-text"> 组合逻辑电路和时序逻辑电路（I）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%AF%E7%BC%96%E7%A8%8B%E9%80%BB%E8%BE%91%E5%99%A8%E4%BB%B6"><span class="toc-number">1.2.1.3.</span> <span class="toc-text"> 可编程逻辑器件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BE%AE%E5%A4%84%E7%90%86%E5%99%A8%E5%9F%BA%E7%A1%80"><span class="toc-number">1.2.2.</span> <span class="toc-text"> 嵌入式微处理器基础</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BE%AE%E5%A4%84%E7%90%86%E5%99%A8%E7%9A%84%E7%BB%93%E6%9E%84%E5%92%8C%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.2.2.1.</span> <span class="toc-text"> 嵌入式微处理器的结构和类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BE%AE%E5%A4%84%E7%90%86%E5%99%A8%E7%9A%84%E5%BC%82%E5%B8%B8%E4%B8%8E%E4%B8%AD%E6%96%AD"><span class="toc-number">1.2.2.2.</span> <span class="toc-text"> 嵌入式微处理器的异常与中断</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AD%98%E5%82%A8%E4%BD%93%E7%B3%BB"><span class="toc-number">1.2.3.</span> <span class="toc-text"> 嵌入式系统的存储体系</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84i"><span class="toc-number">1.2.3.1.</span> <span class="toc-text"> 存储系统的层次结构（I）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E5%8D%95%E5%85%83mmu"><span class="toc-number">1.2.3.2.</span> <span class="toc-text"> 内存管理单元（MMU）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ram-%E5%92%8C-rom-%E7%9A%84%E7%A7%8D%E7%B1%BB%E4%B8%8E%E9%80%89%E5%9E%8B"><span class="toc-number">1.2.3.3.</span> <span class="toc-text"> RAM 和 ROM 的种类与选型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98cache"><span class="toc-number">1.2.3.4.</span> <span class="toc-text"> 高速缓存(Cache)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E5%AD%98%E5%82%A8%E8%AE%BE%E5%A4%87"><span class="toc-number">1.2.3.5.</span> <span class="toc-text"> 其他存储设备</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F-io"><span class="toc-number">1.2.4.</span> <span class="toc-text"> 嵌入式系统 I&#x2F;O</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#gpio-pwm-%E6%8E%A5%E5%8F%A3%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86%E5%92%8C%E7%BB%93%E6%9E%84i"><span class="toc-number">1.2.4.1.</span> <span class="toc-text"> GPIO、PWM 接口基本原理和结构（I）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ad-da-%E6%8E%A5%E5%8F%A3%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%93%E6%9E%84ii"><span class="toc-number">1.2.4.2.</span> <span class="toc-text"> A&#x2F;D、D&#x2F;A 接口基本原理与结构（II）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%94%AE%E7%9B%98-%E6%98%BE%E7%A4%BA-%E8%A7%A6%E6%91%B8%E5%B1%8F-%E5%A3%B0%E6%8E%A7%E5%B1%8F%E7%AD%89%E6%8E%A5%E5%8F%A3%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%93%E6%9E%84ii"><span class="toc-number">1.2.4.3.</span> <span class="toc-text"> 键盘、显示、触摸屏、声控屏等接口基本原理与结构（II）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E9%9F%B3%E9%A2%91-%E8%A7%86%E9%A2%91%E6%8E%A5%E5%8F%A3i"><span class="toc-number">1.2.4.4.</span> <span class="toc-text"> 嵌入式系统音频、视频接口（I）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%8E%A7%E5%88%B6ii"><span class="toc-number">1.2.4.5.</span> <span class="toc-text"> 输入输出控制（II）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E6%97%B6%E5%99%A8%E5%92%8C%E8%AE%A1%E6%95%B0%E5%99%A8"><span class="toc-number">1.2.5.</span> <span class="toc-text"> 定时器和计数器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E6%97%B6%E5%99%A8%E5%92%8C%E8%AE%A1%E6%95%B0%E5%99%A8%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86i"><span class="toc-number">1.2.5.1.</span> <span class="toc-text"> 定时器和计数器的工作原理（I）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E6%97%B6%E5%99%A8%E7%9A%84%E8%AE%BE%E8%AE%A1ii"><span class="toc-number">1.2.5.2.</span> <span class="toc-text"> 定时器的设计（II）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%A1%E6%95%B0%E5%99%A8%E7%9A%84%E8%AE%BE%E8%AE%A1ii"><span class="toc-number">1.2.5.3.</span> <span class="toc-text"> 计数器的设计（II）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E6%80%BB%E7%BA%BF%E5%8F%8A%E9%80%9A%E4%BF%A1%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.2.6.</span> <span class="toc-text"> 嵌入式系统总线及通信接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%94%B5%E6%BA%90%E5%88%86%E7%B1%BB%E5%8F%8A%E7%94%B5%E6%BA%90%E7%AE%A1%E7%90%86i"><span class="toc-number">1.2.7.</span> <span class="toc-text"> 嵌入式系统电源分类及电源管理（I）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%B5%E5%AD%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.2.8.</span> <span class="toc-text"> 电子电路设计</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%B5%E5%AD%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">1.2.8.1.</span> <span class="toc-text"> 电子电路设计基础知识</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#pcb-%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">1.2.8.2.</span> <span class="toc-text"> PCB 设计基础知识</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%B5%E5%AD%90%E7%94%B5%E8%B7%AF%E6%B5%8B%E8%AF%95%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">1.2.8.3.</span> <span class="toc-text"> 电子电路测试基础知识</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">1.3.</span> <span class="toc-text"> 嵌入式系统软件基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E4%BB%B6%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">1.3.1.</span> <span class="toc-text"> 嵌入式软件基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E4%BB%B6%E5%88%86%E7%B1%BB"><span class="toc-number">1.3.1.1.</span> <span class="toc-text"> 嵌入式软件分类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">1.3.1.2.</span> <span class="toc-text"> 嵌入式系统初始化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%A0%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%94%AF%E6%8C%81%E7%9A%84%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84i"><span class="toc-number">1.3.1.3.</span> <span class="toc-text"> 无操作系统支持的嵌入式软件体系结构（I）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%89%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%94%AF%E6%8C%81%E7%9A%84%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84ii"><span class="toc-number">1.3.1.4.</span> <span class="toc-text"> 有操作系统支持的嵌入式软件体系结构（II）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E6%94%AF%E6%92%91%E8%BD%AF%E4%BB%B6%E5%B5%8C%E5%85%A5%E5%BC%8F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F-%E5%B5%8C%E5%85%A5%E5%BC%8F%E6%95%B0%E6%8D%AE%E5%BA%93-%E5%88%86%E5%B8%83%E5%BC%8F%E5%AF%B9%E8%B1%A1%E7%B3%BB%E7%BB%9F-gui-%E7%AD%89ii"><span class="toc-number">1.3.1.5.</span> <span class="toc-text"> 嵌入式支撑软件（嵌入式文件系统、嵌入式数据库、分布式对象系统、GUI 等）（II）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">1.3.2.</span> <span class="toc-text"> 嵌入式系统基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.3.2.1.</span> <span class="toc-text"> 嵌入式操作系统基本概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%84%E7%90%86%E5%99%A8%E7%AE%A1%E7%90%86"><span class="toc-number">1.3.2.2.</span> <span class="toc-text"> 处理器管理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86"><span class="toc-number">1.3.2.3.</span> <span class="toc-text"> 存储管理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86"><span class="toc-number">1.3.2.4.</span> <span class="toc-text"> 设备管理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.3.2.5.</span> <span class="toc-text"> 文件系统</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%A7%BB%E6%A4%8D"><span class="toc-number">1.3.2.6.</span> <span class="toc-text"> 操作系统移植</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.3.3.</span> <span class="toc-text"> 嵌入式系统程序设计</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">1.3.3.1.</span> <span class="toc-text"> 嵌入式软件开发基础知识</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80"><span class="toc-number">1.3.3.2.</span> <span class="toc-text"> 嵌入式程序设计语言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83"><span class="toc-number">1.3.3.3.</span> <span class="toc-text"> 嵌入式软件开发环境</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E8%BF%87%E7%A8%8B"><span class="toc-number">1.3.3.4.</span> <span class="toc-text"> 嵌入式软件开发过程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BA%94%E7%94%A8%E8%BD%AF%E4%BB%B6%E7%A7%BB%E6%A4%8D"><span class="toc-number">1.3.3.5.</span> <span class="toc-text"> 嵌入式应用软件移植</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%9A%84%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E4%B8%8E%E7%BB%B4%E6%8A%A4%E7%9F%A5%E8%AF%86"><span class="toc-number">1.4.</span> <span class="toc-text"> 嵌入式系统的项目开发与维护知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E8%BF%87%E7%A8%8B%E5%8F%8A%E5%85%B6%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86"><span class="toc-number">1.4.1.</span> <span class="toc-text"> 系统开发过程及其项目管理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%90%84%E9%98%B6%E6%AE%B5%E7%9A%84%E7%9B%AE%E6%A0%87%E5%92%8C%E4%BB%BB%E5%8A%A1"><span class="toc-number">1.4.1.1.</span> <span class="toc-text"> 系统开发生命周期各阶段的目标和任务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%8F%8A%E5%85%B6%E5%B8%B8%E7%94%A8%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7"><span class="toc-number">1.4.1.2.</span> <span class="toc-text"> 系统开发项目管理基础知识及其常用管理工具</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95i"><span class="toc-number">1.4.1.3.</span> <span class="toc-text"> 系统开发方法（I）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E4%B8%8E%E7%8E%AF%E5%A2%83i"><span class="toc-number">1.4.1.4.</span> <span class="toc-text"> 系统开发工具与环境（I）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90%E7%9F%A5%E8%AF%86"><span class="toc-number">1.4.2.</span> <span class="toc-text"> 系统分析知识</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="toc-number">1.4.2.1.</span> <span class="toc-text"> 需求分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90%E7%9A%84%E7%9B%AE%E7%9A%84%E5%92%8C%E4%BB%BB%E5%8A%A1i"><span class="toc-number">1.4.2.2.</span> <span class="toc-text"> 系统分析的目的和任务（I）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95i"><span class="toc-number">1.4.2.3.</span> <span class="toc-text"> 系统分析方法（I）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E7%9F%A5%E8%AF%86"><span class="toc-number">1.4.3.</span> <span class="toc-text"> 系统设计知识</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%B3%95i"><span class="toc-number">1.4.3.1.</span> <span class="toc-text"> 系统设计方法（I）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E5%8F%8A%E6%A6%82%E8%A6%81%E8%AE%BE%E8%AE%A1ii"><span class="toc-number">1.4.3.2.</span> <span class="toc-text"> 系统架构及概要设计（II）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1-%E6%A8%A1%E5%9D%97%E6%8E%A5%E5%8F%A3%E8%AE%BE%E8%AE%A1-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1-%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2%E8%AE%BE%E8%AE%A1%E7%AD%89"><span class="toc-number">1.4.3.3.</span> <span class="toc-text"> 系统详细设计（程序结构设计、模块接口设计、数据结构设计、用户界面设计等）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BD%AF%E7%A1%AC%E4%BB%B6%E5%8D%8F%E5%90%8C%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%B3%95"><span class="toc-number">1.4.3.4.</span> <span class="toc-text"> 软硬件协同设计方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%AE%9E%E6%96%BD%E7%9F%A5%E8%AF%86"><span class="toc-number">1.4.4.</span> <span class="toc-text"> 系统实施知识</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BD%AF%E7%A1%AC%E4%BB%B6%E5%B9%B3%E5%8F%B0%E6%90%AD%E5%BB%BAii"><span class="toc-number">1.4.4.1.</span> <span class="toc-text"> 软硬件平台搭建（II）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E8%B0%83%E8%AF%95%E4%B8%8E%E6%B5%8B%E8%AF%95ii"><span class="toc-number">1.4.4.2.</span> <span class="toc-text"> 系统调试与测试（II）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E8%BF%90%E8%A1%8C%E5%92%8C%E7%BB%B4%E6%8A%A4%E7%9F%A5%E8%AF%86"><span class="toc-number">1.4.5.</span> <span class="toc-text"> 系统运行和维护知识</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E8%BF%90%E8%A1%8C%E7%AE%A1%E7%90%86i"><span class="toc-number">1.4.5.1.</span> <span class="toc-text"> 系统运行管理（I）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E7%BB%B4%E6%8A%A4"><span class="toc-number">1.4.5.2.</span> <span class="toc-text"> 系统维护</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E8%AF%84%E4%BB%B7i"><span class="toc-number">1.4.5.3.</span> <span class="toc-text"> 系统评价（I）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%89%E5%85%A8%E6%80%A7%E7%9F%A5%E8%AF%86"><span class="toc-number">1.5.</span> <span class="toc-text"> 嵌入式系统的安全性知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E6%80%A7%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.5.1.</span> <span class="toc-text"> 安全性基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%89%E5%85%A8%E6%80%A7%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.5.2.</span> <span class="toc-text"> 嵌入式系统的安全性设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E5%8A%A0%E5%AF%86%E4%B8%8E%E8%A7%A3%E5%AF%86-%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E7%AD%89"><span class="toc-number">1.5.3.</span> <span class="toc-text"> 嵌入式系统的信息安全（加密与解密、访问控制等）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%87%E5%87%86%E5%8C%96%E7%9F%A5%E8%AF%86"><span class="toc-number">1.6.</span> <span class="toc-text"> 标准化知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%87%E5%87%86%E5%8C%96%E7%9A%84%E6%A6%82%E5%BF%B5%E5%92%8C%E6%A0%87%E5%87%86%E5%8C%96%E6%9C%BA%E6%9E%84i"><span class="toc-number">1.6.1.</span> <span class="toc-text"> 标准化的概念和标准化机构（I）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BD%E9%99%85%E6%A0%87%E5%87%86-%E5%9B%BD%E5%AE%B6%E6%A0%87%E5%87%86-%E8%A1%8C%E4%B8%9A%E6%A0%87%E5%87%86-%E4%BC%81%E4%B8%9A%E6%A0%87%E5%87%86%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86i"><span class="toc-number">1.6.2.</span> <span class="toc-text"> 国际标准、国家标准、行业标准、企业标准基本知识（I）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E6%A0%87%E5%87%86-%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%E6%A0%87%E5%87%86-%E5%AE%89%E5%85%A8%E6%A0%87%E5%87%86-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83%E5%92%8C%E6%96%87%E6%A1%A3%E6%A0%87%E5%87%86%E7%9F%A5%E8%AF%86i"><span class="toc-number">1.6.3.</span> <span class="toc-text"> 代码标准、文件格式标准、安全标准、软件开发规范和文档标准知识（I）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%9B%B8%E5%85%B3%E6%A0%87%E5%87%86i"><span class="toc-number">1.6.4.</span> <span class="toc-text"> 嵌入式系统相关标准（I）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E5%8C%96%E5%92%8C%E7%9F%A5%E8%AF%86%E4%BA%A7%E6%9D%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">1.7.</span> <span class="toc-text"> 信息化和知识产权基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">1.7.1.</span> <span class="toc-text"> 信息化基础知识</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86%E4%BA%A7%E6%9D%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">1.7.2.</span> <span class="toc-text"> 知识产权基础知识</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E6%8A%80%E6%9C%AF%E5%8F%91%E5%B1%95%E8%B6%8B%E5%8A%BF"><span class="toc-number">1.8.</span> <span class="toc-text"> 嵌入式技术发展趋势</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%A1%AC%E4%BB%B6%E5%8F%91%E5%B1%95%E8%B6%8B%E5%8A%BFi"><span class="toc-number">1.8.1.</span> <span class="toc-text"> 嵌入式系统硬件发展趋势（I）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6%E5%8F%91%E5%B1%95%E8%B6%8B%E5%8A%BFi"><span class="toc-number">1.8.2.</span> <span class="toc-text"> 嵌入式系统软件发展趋势（I）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%AD"><span class="toc-number">1.9.</span> <span class="toc-text"> 计算机专业英语</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%80%83%E8%AF%95%E7%A7%91%E7%9B%AE-2%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.</span> <span class="toc-text"> 考试科目 2：嵌入式系统设计</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E8%BF%87%E7%A8%8B"><span class="toc-number">2.1.</span> <span class="toc-text"> 嵌入式系统开发过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E8%BF%87%E7%A8%8B%E7%AE%A1%E7%90%86"><span class="toc-number">2.1.1.</span> <span class="toc-text"> 系统开发过程管理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F-%E6%88%90%E6%9C%AC%E5%8F%8A%E5%B7%A5%E4%BD%9C%E9%87%8F%E4%BC%B0%E8%AE%A1iii"><span class="toc-number">2.1.1.1.</span> <span class="toc-text"> 生命周期、成本及工作量估计（III）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A3%8E%E9%99%A9%E7%AE%A1%E7%90%86ii"><span class="toc-number">2.1.1.2.</span> <span class="toc-text"> 风险管理（II）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.1.1.3.</span> <span class="toc-text"> 开发模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B4%A8%E9%87%8F%E7%AE%A1%E7%90%86ii"><span class="toc-number">2.1.1.4.</span> <span class="toc-text"> 质量管理（II）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86ii"><span class="toc-number">2.1.1.5.</span> <span class="toc-text"> 配置管理（II）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E6%88%90%E7%86%9F%E5%BA%A6%E6%A8%A1%E5%9E%8Bii"><span class="toc-number">2.1.1.6.</span> <span class="toc-text"> 软件成熟度模型（II）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90-2"><span class="toc-number">2.1.2.</span> <span class="toc-text"> 需求分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E9%9C%80%E6%B1%82ii"><span class="toc-number">2.1.2.1.</span> <span class="toc-text"> 用户需求（II）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%AE%9A%E4%B9%89ii"><span class="toc-number">2.1.2.2.</span> <span class="toc-text"> 系统定义（II）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9C%80%E6%B1%82%E8%A7%84%E6%A0%BC%E8%AF%B4%E6%98%8E%E4%B9%A6ii"><span class="toc-number">2.1.2.3.</span> <span class="toc-text"> 需求规格说明书（II）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9C%80%E6%B1%82%E8%AF%84%E5%AE%A1ii"><span class="toc-number">2.1.2.4.</span> <span class="toc-text"> 需求评审（II）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.1.3.</span> <span class="toc-text"> 系统设计</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E6%96%B9%E6%A1%88%E8%AE%BE%E8%AE%A1iii"><span class="toc-number">2.1.3.1.</span> <span class="toc-text"> 系统方案设计（III）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%8A%9F%E8%83%BD%E5%88%92%E5%88%86iii"><span class="toc-number">2.1.3.2.</span> <span class="toc-text"> 系统功能划分（III）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BD%AF%E7%A1%AC%E4%BB%B6%E5%8D%8F%E5%90%8C%E8%AE%BE%E8%AE%A1iii"><span class="toc-number">2.1.3.3.</span> <span class="toc-text"> 软硬件协同设计（III）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A1%AC%E4%BB%B6%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.1.3.4.</span> <span class="toc-text"> 硬件设计</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.1.3.5.</span> <span class="toc-text"> 软件设计</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83"><span class="toc-number">2.1.4.</span> <span class="toc-text"> 系统开发环境</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E5%B9%B3%E5%8F%B0"><span class="toc-number">2.1.4.1.</span> <span class="toc-text"> 开发平台</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7"><span class="toc-number">2.1.4.2.</span> <span class="toc-text"> 开发工具</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E6%B5%8B%E8%AF%95"><span class="toc-number">2.1.5.</span> <span class="toc-text"> 系统测试</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83ii"><span class="toc-number">2.1.5.1.</span> <span class="toc-text"> 测试环境（II）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E8%AE%A1%E5%88%92%E5%86%85%E5%AE%B9-%E6%96%B9%E6%B3%95-%E6%A0%87%E5%87%86-%E8%BF%87%E7%A8%8B-%E6%A3%80%E9%AA%8Ciii"><span class="toc-number">2.1.5.2.</span> <span class="toc-text"> 测试计划（内容、方法、标准、过程、检验）（III）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A1%AC%E4%BB%B6%E6%B5%8B%E8%AF%95ii"><span class="toc-number">2.1.5.3.</span> <span class="toc-text"> 硬件测试（II）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95-%E9%9B%86%E6%88%90%E6%B5%8B%E8%AF%95-%E7%B3%BB%E7%BB%9F%E6%B5%8B%E8%AF%95%E7%AD%89iii"><span class="toc-number">2.1.5.4.</span> <span class="toc-text"> 软件测试（单元测试、集成测试、系统测试等）（III）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BD%AF%E7%A1%AC%E4%BB%B6%E8%81%94%E5%90%88%E6%B5%8B%E8%AF%95ii"><span class="toc-number">2.1.5.5.</span> <span class="toc-text"> 软硬件联合测试（II）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E8%AF%84%E4%BB%B7i-2"><span class="toc-number">2.1.6.</span> <span class="toc-text"> 系统评价（I）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E7%BB%B4%E6%8A%A4-2"><span class="toc-number">2.1.7.</span> <span class="toc-text"> 系统维护</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%8F%AF%E7%BB%B4%E6%8A%A4%E6%80%A7%E6%A6%82%E5%BF%B5i"><span class="toc-number">2.1.7.1.</span> <span class="toc-text"> 系统可维护性概念（I）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E7%BB%B4%E6%8A%A4%E7%9A%84%E5%86%85%E5%AE%B9%E5%8F%8A%E7%B1%BB%E5%9E%8Bi"><span class="toc-number">2.1.7.2.</span> <span class="toc-text"> 系统维护的内容及类型（I）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E7%BB%B4%E6%8A%A4%E7%AE%A1%E7%90%86i"><span class="toc-number">2.1.7.3.</span> <span class="toc-text"> 系统维护管理（I）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3i"><span class="toc-number">2.1.8.</span> <span class="toc-text"> 开发文档（I）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%A1%AC%E4%BB%B6%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.2.</span> <span class="toc-text"> 嵌入式系统硬件设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%A1%AC%E4%BB%B6%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84"><span class="toc-number">2.2.1.</span> <span class="toc-text"> 嵌入式系统硬件基本结构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BE%AE%E5%A4%84%E7%90%86%E5%99%A8%E7%BB%93%E6%9E%84iii"><span class="toc-number">2.2.1.1.</span> <span class="toc-text"> 嵌入式微处理器结构（III）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E5%99%A8dsp%E7%BB%93%E6%9E%84iii"><span class="toc-number">2.2.1.2.</span> <span class="toc-text"> 数字信号处理器(DSP)结构（III）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E5%8F%8A%E4%B8%AD%E6%96%AD%E5%A4%84%E7%90%86iii"><span class="toc-number">2.2.1.3.</span> <span class="toc-text"> 异常及中断处理（III）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#dma-%E6%8A%80%E6%9C%AFii"><span class="toc-number">2.2.1.4.</span> <span class="toc-text"> DMA 技术（II）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%9A%E5%A4%84%E7%90%86%E5%99%A8%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.2.1.5.</span> <span class="toc-text"> 多处理器系统</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E7%BA%BFi"><span class="toc-number">2.2.1.6.</span> <span class="toc-text"> 总线（I）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF"><span class="toc-number">2.2.1.7.</span> <span class="toc-text"> 数字电路</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A1%AC%E4%BB%B6%E6%8F%8F%E8%BF%B0%E8%AF%AD%E8%A8%80vhdlverilog-hdl-%E7%AD%89ii"><span class="toc-number">2.2.2.</span> <span class="toc-text"> 硬件描述语言（VHDL，Verilog HDL 等）（II）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%A7%E8%A7%84%E6%A8%A1%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.2.3.</span> <span class="toc-text"> 大规模集成电路系统设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%8E%A5%E5%8F%A3"><span class="toc-number">2.2.4.</span> <span class="toc-text"> 输入&#x2F;输出接口</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E7%9A%84%E7%89%B9%E6%80%A7%E6%9C%BA%E6%A2%B0-%E7%94%B5%E6%B0%94-%E5%8A%9F%E8%83%BD-%E8%A7%84%E7%A8%8Bi"><span class="toc-number">2.2.4.1.</span> <span class="toc-text"> 接口的特性（机械、电气、功能、规程）（I）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.2.4.2.</span> <span class="toc-text"> 接口设计</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E5%BA%94%E7%94%A8"><span class="toc-number">2.2.4.3.</span> <span class="toc-text"> 接口应用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1i"><span class="toc-number">2.2.5.</span> <span class="toc-text"> 电源设计（I）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%8E%E5%8A%9F%E8%80%97%E8%AE%BE%E8%AE%A1i"><span class="toc-number">2.2.6.</span> <span class="toc-text"> 低功耗设计（I）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E9%9D%A0%E6%80%A7%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.2.7.</span> <span class="toc-text"> 可靠性与安全性设计</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%97%E4%BD%99%E8%AE%BE%E8%AE%A1ii"><span class="toc-number">2.2.7.1.</span> <span class="toc-text"> 冗余设计（II）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%AF%E7%BB%B4%E6%8A%A4%E6%80%A7%E8%AE%BE%E8%AE%A1i"><span class="toc-number">2.2.7.2.</span> <span class="toc-text"> 可维护性设计（I）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%AE%B9%E9%94%99%E4%B8%8E%E6%81%A2%E5%A4%8D%E8%AE%BE%E8%AE%A1ii"><span class="toc-number">2.2.7.3.</span> <span class="toc-text"> 系统容错与恢复设计（II）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E4%BB%BF%E7%9C%9F"><span class="toc-number">2.2.8.</span> <span class="toc-text"> 系统仿真</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.3.</span> <span class="toc-text"> 嵌入式系统软件设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.3.1.</span> <span class="toc-text"> 嵌入式程序设计</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1ii"><span class="toc-number">2.3.1.1.</span> <span class="toc-text"> 汇编语言程序设计（II）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F-c-%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.3.1.2.</span> <span class="toc-text"> 嵌入式 C 语言程序设计</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.3.1.3.</span> <span class="toc-text"> 面向对象程序设计</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.3.2.</span> <span class="toc-text"> 系统软件设计</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E5%8C%96%E8%AE%BE%E8%AE%A1i"><span class="toc-number">2.3.2.1.</span> <span class="toc-text"> 系统初始化设计（I）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A1%AC%E4%BB%B6%E6%8A%BD%E8%B1%A1%E5%B1%82hal-%E6%9D%BF%E7%BA%A7%E6%94%AF%E6%8C%81%E5%8C%85bsp%E8%AE%BE%E8%AE%A1iii"><span class="toc-number">2.3.2.2.</span> <span class="toc-text"> 硬件抽象层（HAL）、板级支持包（BSP）设计（III）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E5%A4%87%E9%A9%B1%E5%8A%A8%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1iii"><span class="toc-number">2.3.2.3.</span> <span class="toc-text"> 设备驱动程序设计（III）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6%E7%9A%84%E7%A7%BB%E6%A4%8Di"><span class="toc-number">2.3.2.4.</span> <span class="toc-text"> 嵌入式系统软件的移植（I）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6%E7%9A%84%E7%A7%BB%E6%A4%8D"><span class="toc-number">2.3.2.5.</span> <span class="toc-text"> 嵌入式系统软件的移植</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.3.3.</span> <span class="toc-text"> 嵌入式操作系统</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%84%E7%90%86%E5%99%A8%E7%AE%A1%E7%90%86-2"><span class="toc-number">2.3.3.1.</span> <span class="toc-text"> 处理器管理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86-2"><span class="toc-number">2.3.3.2.</span> <span class="toc-text"> 存储管理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86"><span class="toc-number">2.3.3.3.</span> <span class="toc-text"> 异常处理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E5%B5%8C%E5%85%A5%E5%BC%8F%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.3.3.4.</span> <span class="toc-text"> 常见嵌入式操作系统</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E6%94%AF%E6%92%91%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.3.4.</span> <span class="toc-text"> 嵌入式支撑系统</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E4%B8%AD%E9%97%B4%E4%BB%B6ii"><span class="toc-number">2.3.4.1.</span> <span class="toc-text"> 嵌入式系统中间件（II）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.3.4.2.</span> <span class="toc-text"> 嵌入式文件系统</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E6%95%B0%E6%8D%AE%E5%BA%93sqlite-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AD%89ii"><span class="toc-number">2.3.4.3.</span> <span class="toc-text"> 嵌入式系统数据库（SQLite 数据库等）（II）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E5%9B%BE%E5%BD%A2%E7%94%A8%E6%88%B7%E6%8E%A5%E5%8F%A3guiii"><span class="toc-number">2.3.4.4.</span> <span class="toc-text"> 嵌入式系统图形用户接口（GUI）（II）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%BD%91%E7%BB%9C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.3.4.5.</span> <span class="toc-text"> 嵌入式网络程序设计</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%AE%9E%E6%97%B6%E7%B3%BB%E7%BB%9F%E4%B8%8E%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.4.</span> <span class="toc-text"> 嵌入式实时系统与分布式系统设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E6%97%B6%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1i"><span class="toc-number">2.4.1.</span> <span class="toc-text"> 实时系统的分析与设计（I）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.4.2.</span> <span class="toc-text"> 分布式系统设计</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E5%8E%9F%E7%90%86i"><span class="toc-number">2.4.2.1.</span> <span class="toc-text"> 分布式系统设计原理（I）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%B3%95i"><span class="toc-number">2.4.2.2.</span> <span class="toc-text"> 分布式系统设计方法（I）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%9A%84%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AFi"><span class="toc-number">2.4.2.3.</span> <span class="toc-text"> 分布式系统的通信技术（I）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E5%BA%94%E7%94%A8ii"><span class="toc-number">2.4.2.4.</span> <span class="toc-text"> 分布式系统应用（II）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E5%BA%94%E7%94%A8"><span class="toc-number">2.5.</span> <span class="toc-text"> 嵌入式系统应用</span></a></li></ol></li></ol>
+      
+  </div>
+</div>
+</div>
+      <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/avatar.webp" data-sizes="auto" alt="Ainavo" class="lazyload">
+  <div class="sidebar-author-name">Ainavo</div>
+  <div class="sidebar-description">一个菜猫</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div>
+    <div class="sidebar-state-number">10</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>分类</div>
+    <div class="sidebar-state-number">0</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>标签</div>
+    <div class="sidebar-state-number">12</div>
+  </div>
+</div>
+<div class="sidebar-social">
+  
+</div>
+<div class="sidebar-menu">
+  
+    <div class="sidebar-menu-link-wrap">
+      <a class="sidebar-menu-link-dummy" href="/" aria-label="首页"></a>
+      <span class="sidebar-menu-icon"></span>
+      <div class="sidebar-menu-link">首页</div>
+    </div>
+  
+    <div class="sidebar-menu-link-wrap">
+      <a class="sidebar-menu-link-dummy" href="/archives" aria-label="归档"></a>
+      <span class="sidebar-menu-icon"></span>
+      <div class="sidebar-menu-link">归档</div>
+    </div>
+  
+    <div class="sidebar-menu-link-wrap">
+      <a class="sidebar-menu-link-dummy" href="/about" aria-label="关于"></a>
+      <span class="sidebar-menu-icon"></span>
+      <div class="sidebar-menu-link">关于</div>
+    </div>
+  
+    <div class="sidebar-menu-link-wrap">
+      <a class="sidebar-menu-link-dummy" href="/friend" aria-label="友链"></a>
+      <span class="sidebar-menu-icon"></span>
+      <div class="sidebar-menu-link">友链</div>
+    </div>
+  
+</div>
+</div>
+    
+  </div>
+  
+    <div class="sidebar-btn-wrapper">
+      <div class="sidebar-toc-btn current"></div>
+      <div class="sidebar-common-btn"></div>
+    </div>
+  
+</nav>
+
+    </div>
+    <div class="site-search">
+      <div class="reimu-popup popup">
+        <div class="reimu-search">
+          <div class="reimu-search-input-icon"></div>
+          <div class="reimu-search-input" id="reimu-search-input"></div>
+          <div class="popup-btn-close"></div>
+        </div>
+        <div class="reimu-results">
+          <div id="reimu-stats"></div>
+          <div id="reimu-hits"></div>
+          <div id="reimu-pagination" class="reimu-pagination"></div>
+        </div>
+      </div>
+    </div>
+    
+<script src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js"></script>
+
+
+<script src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js"></script>
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+<script src="/js/pjax_script.js" data-pjax></script>
+
+
+<script type="module" data-pjax>
+  import PhotoSwipeLightbox from "https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe-lightbox.esm.js";
+  
+  const pswp = () => {
+    if (_$$('.article-entry a.article-gallery-item').length > 0) {
+      new PhotoSwipeLightbox({
+        gallery: '.article-entry',
+        children: 'a.article-gallery-item',
+        pswpModule: () => import("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.esm.js")
+      }).init();
+    }
+    if(_$$('.article-gallery a.article-gallery-item').length > 0) {
+      new PhotoSwipeLightbox({
+        gallery: '.article-gallery',
+        children: 'a.article-gallery-item',
+        pswpModule: () => import("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.esm.js")
+      }).init();
+    }
+    window.lightboxStatus = 'done';
+    window.removeEventListener('lightbox:ready', pswp);
+  }
+  if(window.lightboxStatus === 'ready') {
+    pswp()
+  } else {
+    window.addEventListener('lightbox:ready', pswp);
+  }
+</script>
+
+
+  
+<script src="https://npm.webcache.cn/valine@1.5.1/dist/Valine.min.js" data-pjax></script>
+
+  <script data-pjax>
+    var GUEST_INFO = ['nick', 'mail', 'link'];
+    var guest_info = 'nick,mail,link'.split(',').filter((item) => {
+      return GUEST_INFO.indexOf(item) > -1
+    });
+    var recordIP = JSON.parse('true');
+    var highlight = JSON.parse('true');
+    var visitor = JSON.parse('false');
+
+    new Valine({
+      el: '.vcomment',
+      appId: "c7oTAhUiKwgWVGPFTGuZVjGk-gzGzoHsz",
+      appKey: "wbZf6c0Kw530P4a4YnFRf3gv",
+      placeholder: "Just go go",
+      pageSize: '10',
+      avatar: 'mp',
+      lang: 'zh-cn',
+      recordIP: recordIP,
+      highlight: highlight,
+      visitor: visitor,
+      requiredFields: guest_info,
+      path: window.location.pathname
+    });
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<script src="https://npm.webcache.cn/algoliasearch@4.17.1/dist/algoliasearch-lite.umd.js"></script>
+
+  
+<script src="https://npm.webcache.cn/instantsearch.js@4.56.1/dist/instantsearch.production.min.js"></script>
+
+  
+<script src="/js/algolia_search.js"></script>
+
+  <script>
+    var CONFIG = {
+      root: '/',
+      algolia: {
+        applicationID: "ZRK8ROYLVO",
+        apiKey: "5a58edc6d97807533c4a5165f1085b81",
+        indexName: "Ainavo",
+        hits: {
+          "per_page": parseInt("10")
+        },
+        labels: {
+          "input_placeholder": "搜索.....",
+          "hits_empty": "未发现与 「${query}」相关内容",
+          "hits_stats": "找到${hits}条结果（用时 ${time} ms）"
+        }
+      }
+    };
+  </script>
+
+
+
+  
+<script src="https://npm.webcache.cn/mouse-firework@0.0.4/dist/index.umd.js"></script>
+
+  <script>
+    firework(JSON.parse('{"excludeElements":["a","button"],"particles":[{"shape":"circle","move":["emit"],"easing":"easeOutExpo","colors":["#ff5252","#ff7c7c","#ffafaf","#ffd0d0"],"number":20,"duration":[1200,1800],"shapeOptions":{"radius":[16,32],"alpha":[0.3,0.5]}},{"shape":"circle","move":["diffuse"],"easing":"easeOutExpo","colors":["#ff0000"],"number":1,"duration":[1200,1800],"shapeOptions":{"radius":20,"alpha":[0.2,0.5],"lineWidth":6}}]}'))
+  </script>
+
+
+
+
+
+
+
+  
+<script src="https://npm.webcache.cn/quicklink@2.3.0/dist/quicklink.umd.js"></script>
+
+  <script data-pjax>
+    quicklink.listen({
+      timeout: 3000,
+      priority: true,
+      ignores: []
+    });
+  </script>
+
+
+<div id="lazy-script">
+  <div>
+    
+  </div>
+</div>
+
+
+  <script>
+    console.log(String.raw`%c 
+ ______     ______     __     __    __     __  __    
+/\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+\ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+ \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+  \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                  
+`,'color: #ff5252;')
+    console.log('%c Theme.Reimu v' + '0.2.3' + ' %c https://github.com/D-Sketon/hexo-theme-reimu ', 'color: white; background: #ff5252; padding:5px 0;', 'padding:4px;border:1px solid #ff5252;')
+  </script>
+  
+
+
+
+  
+<script src="https://npm.webcache.cn/busuanzi@2.3.0/bsz.pure.mini.js" async></script>
+
+
+
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.getRegistrations().then((registrations) => {
+      for (let registration of registrations) {
+        registration.unregister();
+      }
+    });
+  }
+</script>
+
+  <!-- hexo injector body_end start -->
+<script src="/js/insert_highlight.js" data-pjax></script>
+<!-- hexo injector body_end end --></body>
+  </html>
+
