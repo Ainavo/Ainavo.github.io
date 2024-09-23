@@ -44,9 +44,7 @@
   
 <link rel="stylesheet" href="/css/style.css">
 
-  
-<link rel="stylesheet" href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css">
-
+  <link rel="preload" href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   
   
   
@@ -235,6 +233,22 @@
         <a class="archives-tag-list-link" href="/tags/电路分析基础/">电路分析基础</a>
       </div>
     
+      <div class="archives-tag-list-item">
+        <a class="archives-tag-list-link" href="/tags/BMS/">BMS</a>
+      </div>
+    
+      <div class="archives-tag-list-item">
+        <a class="archives-tag-list-link" href="/tags/SOC/">SOC</a>
+      </div>
+    
+      <div class="archives-tag-list-item">
+        <a class="archives-tag-list-link" href="/tags/gdb/">gdb</a>
+      </div>
+    
+      <div class="archives-tag-list-item">
+        <a class="archives-tag-list-link" href="/tags/C-C/">C/C++</a>
+      </div>
+    
   </div>
   <div class="category-wrap">
     
@@ -362,7 +376,7 @@
 <div class="sidebar-state">
   <div class="sidebar-state-article">
     <div>文章</div>
-    <div class="sidebar-state-number">10</div>
+    <div class="sidebar-state-number">12</div>
   </div>
   <div class="sidebar-state-category">
     <div>分类</div>
@@ -370,7 +384,7 @@
   </div>
   <div class="sidebar-state-tag">
     <div>标签</div>
-    <div class="sidebar-state-number">12</div>
+    <div class="sidebar-state-number">16</div>
   </div>
 </div>
 <div class="sidebar-social">
@@ -435,10 +449,10 @@
       
         <div>
           <span class="icon-brush"></span>
-          34.1k
+          36k
           &nbsp;|&nbsp;
           <span class="icon-coffee"></span>
-          02:11
+          02:19
         </div>
       
       
@@ -471,7 +485,7 @@
 <div class="sidebar-state">
   <div class="sidebar-state-article">
     <div>文章</div>
-    <div class="sidebar-state-number">10</div>
+    <div class="sidebar-state-number">12</div>
   </div>
   <div class="sidebar-state-category">
     <div>分类</div>
@@ -479,7 +493,7 @@
   </div>
   <div class="sidebar-state-tag">
     <div>标签</div>
-    <div class="sidebar-state-number">12</div>
+    <div class="sidebar-state-number">16</div>
   </div>
 </div>
 <div class="sidebar-social">
@@ -549,21 +563,21 @@
 
 
 <script type="module" data-pjax>
-  import PhotoSwipeLightbox from "https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe-lightbox.esm.js";
+  import PhotoSwipeLightbox from "https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe-lightbox.esm.min.js";
   
   const pswp = () => {
     if (_$$('.article-entry a.article-gallery-item').length > 0) {
       new PhotoSwipeLightbox({
         gallery: '.article-entry',
         children: 'a.article-gallery-item',
-        pswpModule: () => import("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.esm.js")
+        pswpModule: () => import("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.esm.min.js")
       }).init();
     }
     if(_$$('.article-gallery a.article-gallery-item').length > 0) {
       new PhotoSwipeLightbox({
         gallery: '.article-gallery',
         children: 'a.article-gallery-item',
-        pswpModule: () => import("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.esm.js")
+        pswpModule: () => import("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.esm.min.js")
       }).init();
     }
     window.lightboxStatus = 'done';
@@ -617,15 +631,6 @@
 
 
 
-  
-<script src="https://npm.webcache.cn/algoliasearch@4.17.1/dist/algoliasearch-lite.umd.js"></script>
-
-  
-<script src="https://npm.webcache.cn/instantsearch.js@4.56.1/dist/instantsearch.production.min.js"></script>
-
-  
-<script src="/js/algolia_search.js"></script>
-
   <script>
     var CONFIG = {
       root: '/',
@@ -644,6 +649,15 @@
       }
     };
   </script>
+  
+<script src="https://npm.webcache.cn/algoliasearch@4.17.1/dist/algoliasearch-lite.umd.js"></script>
+
+  
+<script src="https://npm.webcache.cn/instantsearch.js@4.56.1/dist/instantsearch.production.min.js" defer></script>
+
+  
+<script src="/js/algolia_search.js" defer></script>
+
 
 
 
@@ -688,7 +702,7 @@
   \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
                                                   
 `,'color: #ff5252;')
-    console.log('%c Theme.Reimu v' + '0.2.3' + ' %c https://github.com/D-Sketon/hexo-theme-reimu ', 'color: white; background: #ff5252; padding:5px 0;', 'padding:4px;border:1px solid #ff5252;')
+    console.log('%c Theme.Reimu v' + '0.2.4' + ' %c https://github.com/D-Sketon/hexo-theme-reimu ', 'color: white; background: #ff5252; padding:5px 0;', 'padding:4px;border:1px solid #ff5252;')
   </script>
   
 

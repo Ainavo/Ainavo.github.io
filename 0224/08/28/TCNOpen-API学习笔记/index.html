@@ -26,15 +26,15 @@
   
 <link rel="stylesheet" href="/css/loader.css">
 
-  <meta name="description" content="TRDP 是一种基于 TCP&#x2F;IP 的通信协议，用于在列车控制系统中进行数据交换。它提供了一种可靠、高效的方式，使列车控制系统能够与其他设备进行通信，实现列车的自动化控制和数据采集。 在TRDP（TraCommunication Network Open Protocol）中，“tlc” 和 “tlp” 通常指的是协议栈中的两个不同层次。 tlc：代表 “TraCommunication L">
+  <meta name="description" content="TRDP 是一种基于 TCP&#x2F;IP 的通信协议，用于在列车控制系统中进行数据交换。它提供了一种可靠、高效的方式，使列车控制系统能够与其他设备进行通信，实现列车的自动化控制和数据采集。 在 TRDP（TraCommunication Network Open Protocol）中，“tlc” 和 “tlp” 通常指的是协议栈中的两个不同层次。 tlc：代表 “TraCommunication">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TCNOpen API学习笔记">
 <meta property="og:url" content="https://ainavo.github.io/0224/08/28/TCNOpen-API%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="Ainavo&#39;s Blog">
-<meta property="og:description" content="TRDP 是一种基于 TCP&#x2F;IP 的通信协议，用于在列车控制系统中进行数据交换。它提供了一种可靠、高效的方式，使列车控制系统能够与其他设备进行通信，实现列车的自动化控制和数据采集。 在TRDP（TraCommunication Network Open Protocol）中，“tlc” 和 “tlp” 通常指的是协议栈中的两个不同层次。 tlc：代表 “TraCommunication L">
+<meta property="og:description" content="TRDP 是一种基于 TCP&#x2F;IP 的通信协议，用于在列车控制系统中进行数据交换。它提供了一种可靠、高效的方式，使列车控制系统能够与其他设备进行通信，实现列车的自动化控制和数据采集。 在 TRDP（TraCommunication Network Open Protocol）中，“tlc” 和 “tlp” 通常指的是协议栈中的两个不同层次。 tlc：代表 “TraCommunication">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="0224-08-27T16:58:21.000Z">
-<meta property="article:modified_time" content="2024-09-05T05:57:27.652Z">
+<meta property="article:modified_time" content="2024-09-12T01:31:26.994Z">
 <meta property="article:author" content="Ainavo">
 <meta property="article:tag" content="TCNOpen API">
 <meta property="article:tag" content="列车通信协议">
@@ -48,9 +48,7 @@
   
 <link rel="stylesheet" href="/css/style.css">
 
-  
-<link rel="stylesheet" href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css">
-
+  <link rel="preload" href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   
   
   
@@ -193,7 +191,7 @@
       <div class="article-date wow slideInLeft">
   <a href="/0224/08/28/TCNOpen-API%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date-link">
     <time datetime="0224-08-27T16:58:21.000Z" itemprop="datePublished">0224-08-28</time>
-    <time style="display: none;" id="post-update-time">2024-09-05</time>
+    <time style="display: none;" id="post-update-time">2024-09-12</time>
   </a>
 </div>
 
@@ -223,20 +221,20 @@
 ### tau_ctrl_types.h File Reference <==> tau_ctrl_types.h 文件参考
 ### tau_dnr.c File Reference <==> tau_dnr.c 文件参考 -->
 <p>TRDP 是一种基于 TCP/IP 的通信协议，用于在列车控制系统中进行数据交换。它提供了一种可靠、高效的方式，使列车控制系统能够与其他设备进行通信，实现列车的自动化控制和数据采集。<br />
-在TRDP（TraCommunication Network Open Protocol）中，“tlc” 和 “tlp” 通常指的是协议栈中的两个不同层次。</p>
-<p>tlc：代表 “TraCommunication Link Control”，即列车通信链路控制层。这一层负责处理数据链路层的功能，包括数据帧的封装、传输错误的检测和纠正、流量控制等。在TRDP中，tlc层提供了可靠的数据传输服务。</p>
-<p>tlp：代表 “TraCommunication Protocol”，即列车通信协议层。这一层负责处理网络层的功能，包括路由选择、分组转发、网络地址转换等。在TRDP中，tlp层提供了列车网络中的通信协议。</p>
-<p>TLc_init 和 tlp_openSession 这两个调用实际上代表了在TRDP协议栈中不同层次的初始化步骤。tlc_init 函数用于初始化tlc层的资源，而 tlp_openSession 函数用于打开一个tlp层的会话，这可能涉及到网络地址的配置、连接的建立等操作。</p>
+在 TRDP（TraCommunication Network Open Protocol）中，“tlc” 和 “tlp” 通常指的是协议栈中的两个不同层次。</p>
+<p>tlc：代表 “TraCommunication Link Control”，即列车通信链路控制层。这一层负责处理数据链路层的功能，包括数据帧的封装、传输错误的检测和纠正、流量控制等。在 TRDP 中，tlc 层提供了可靠的数据传输服务。</p>
+<p>tlp：代表 “TraCommunication Protocol”，即列车通信协议层。这一层负责处理网络层的功能，包括路由选择、分组转发、网络地址转换等。在 TRDP 中，tlp 层提供了列车网络中的通信协议。</p>
+<p>TLc_init 和 tlp_openSession 这两个调用实际上代表了在 TRDP 协议栈中不同层次的初始化步骤。tlc_init 函数用于初始化 tlc 层的资源，而 tlp_openSession 函数用于打开一个 tlp 层的会话，这可能涉及到网络地址的配置、连接的建立等操作。</p>
 <p>以下是一些关键点的总结：</p>
-<p>tlc层负责数据链路层的功能。<br />
-tlp层负责网络层的功能。<br />
-tlc_init 用于初始化tlc层。<br />
-tlp_openSession 用于打开tlp层的会话<br />
+<p>tlc 层负责数据链路层的功能。<br />
+tlp 层负责网络层的功能。<br />
+tlc_init 用于初始化 tlc 层。<br />
+tlp_openSession 用于打开 tlp 层的会话<br />
 TRDP 最小 DEMO：</p>
 <h3 id="tlc_init-函数"><a class="markdownIt-Anchor" href="#tlc_init-函数"></a> tlc_init 函数：</h3>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">EXT_DECL TRDP_ERR_T <span class="title function_">tlc_init</span> <span class="params">(</span></span><br><span class="line"><span class="params">    <span class="type">const</span> TRDP_PRINT_DBG_T pPrintDebugString,</span></span><br><span class="line"><span class="params">    <span class="type">void</span> ∗ pRefCon,</span></span><br><span class="line"><span class="params">    <span class="type">const</span> TRDP_MEM_CONFIG_T ∗ pMemConfig)</span> </span><br><span class="line">    <span class="comment">// 初始化堆区</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">EXT_DECL TRDP_ERR_T <span class="title function_">tlc_init</span> <span class="params">(</span></span><br><span class="line"><span class="params">    <span class="type">const</span> TRDP_PRINT_DBG_T pPrintDebugString,</span></span><br><span class="line"><span class="params">    <span class="type">void</span> ∗ pRefCon,</span></span><br><span class="line"><span class="params">    <span class="type">const</span> TRDP_MEM_CONFIG_T ∗ pMemConfig)</span></span><br><span class="line">    <span class="comment">// 初始化堆区</span></span><br></pre></td></tr></table></figure>
 <ul>
-<li>作用：初始化TRDP协议栈的底层（tlc），包括内存配置和调试打印函数。</li>
+<li>作用：初始化 TRDP 协议栈的底层（tlc），包括内存配置和调试打印函数。</li>
 <li>参数：
 <ul>
 <li><code>pPrintDebugString</code>：指向调试打印函数的指针。</li>
@@ -248,12 +246,12 @@ TRDP 最小 DEMO：</p>
 <h3 id="tlc_opensession-函数"><a class="markdownIt-Anchor" href="#tlc_opensession-函数"></a> tlc_openSession 函数：</h3>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">EXT_DECL TRDP_ERR_T <span class="title function_">tlc_openSession</span> <span class="params">(</span></span><br><span class="line"><span class="params">    TRDP_APP_SESSION_T ∗ pAppHandle,</span></span><br><span class="line"><span class="params">    TRDP_IP_ADDR_T ownIpAddr,</span></span><br><span class="line"><span class="params">    TRDP_IP_ADDR_T leaderIpAddr,</span></span><br><span class="line"><span class="params">    <span class="type">const</span> TRDP_MARSHALL_CONFIG_T ∗ pMarshall,</span></span><br><span class="line"><span class="params">    <span class="type">const</span> TRDP_PD_CONFIG_T ∗ pPdDefault,</span></span><br><span class="line"><span class="params">    <span class="type">const</span> TRDP_MD_CONFIG_T ∗ pMdDefault,</span></span><br><span class="line"><span class="params">    <span class="type">const</span> TRDP_PROCESS_CONFIG_T ∗ pProcessConfig)</span></span><br><span class="line">    <span class="comment">// 打开与TRDP堆的会话</span></span><br></pre></td></tr></table></figure>
 <ul>
-<li>作用：打开一个与TRDP堆的会话，为应用程序分配一个句柄。</li>
+<li>作用：打开一个与 TRDP 堆的会话，为应用程序分配一个句柄。</li>
 <li>参数：
 <ul>
 <li><code>pAppHandle</code>：指向应用程序会话句柄的指针。</li>
-<li><code>ownIpAddr</code>：本地设备的IP地址。</li>
-<li><code>leaderIpAddr</code>：领导者设备的IP地址。</li>
+<li><code>ownIpAddr</code>：本地设备的 IP 地址。</li>
+<li><code>leaderIpAddr</code>：领导者设备的 IP 地址。</li>
 <li><code>pMarshall</code>：指向编组配置结构体的指针。</li>
 <li><code>pPdDefault</code>：指向默认过程数据（PD）配置结构体的指针。</li>
 <li><code>pMdDefault</code>：指向默认消息数据（MD）配置结构体的指针。</li>
@@ -261,6 +259,7 @@ TRDP 最小 DEMO：</p>
 </ul>
 </li>
 </ul>
+<h3 id="tlp_request-函数"><a class="markdownIt-Anchor" href="#tlp_request-函数"></a> tlp_request 函数：</h3>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">EXT_DECL TRDP_ERR_T <span class="title function_">tlp_request</span> <span class="params">(</span></span><br><span class="line"><span class="params">    TRDP_APP_SESSION_T appHandle,</span></span><br><span class="line"><span class="params">    TRDP_SUB_T subHandle,</span></span><br><span class="line"><span class="params">    UINT32 serviceId,</span></span><br><span class="line"><span class="params">    UINT32 comId,</span></span><br><span class="line"><span class="params">    UINT32 etbTopoCnt,</span></span><br><span class="line"><span class="params">    UINT32 opTrnTopoCnt,</span></span><br><span class="line"><span class="params">    TRDP_IP_ADDR_T srcIpAddr,</span></span><br><span class="line"><span class="params">    TRDP_IP_ADDR_T destIpAddr,</span></span><br><span class="line"><span class="params">    UINT32 redId,</span></span><br><span class="line"><span class="params">    TRDP_FLAGS_T pktFlags,</span></span><br><span class="line"><span class="params">    <span class="type">const</span> UINT8 ∗ pData,</span></span><br><span class="line"><span class="params">    UINT32 dataSize,</span></span><br><span class="line"><span class="params">    UINT32 replyComId,</span></span><br><span class="line"><span class="params">    TRDP_IP_ADDR_T replyIpAddr )</span></span><br><span class="line">    <span class="comment">// 用于在 TRDP 网络中发送请求消息</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li>作用：用于在 TRDP 网络中发送请求消息。</li>
@@ -293,13 +292,13 @@ TRDP 最小 DEMO：</p>
 <li><code>pSubHandle</code>：指向订阅句柄的指针。</li>
 <li><code>pUserRef</code>：用户提供的参考值，将与信息结构一起返回。</li>
 <li><code>pfCbFunction</code>：指向订阅者特定回调函数的指针。</li>
-<li><code>serviceId</code>：可选的服务ID，默认值为0。</li>
-<li><code>comId</code>：要接收的数据包的COM ID。</li>
-<li><code>etbTopoCnt</code>：ETB拓扑计数，用于本地通信时为0。</li>
-<li><code>opTrnTopoCnt</code>：操作拓扑计数，用于方向敏感通信时不为0。</li>
-<li><code>srcIpAddr1</code>：源IP地址，地址范围的较低地址。</li>
-<li><code>srcIpAddr2</code>：源IP地址，地址范围的较高地址。</li>
-<li><code>destIpAddr</code>：要加入的IP地址。</li>
+<li><code>serviceId</code>：可选的服务 ID，默认值为 0。</li>
+<li><code>comId</code>：要接收的数据包的 COM ID。</li>
+<li><code>etbTopoCnt</code>：ETB 拓扑计数，用于本地通信时为 0。</li>
+<li><code>opTrnTopoCnt</code>：操作拓扑计数，用于方向敏感通信时不为 0。</li>
+<li><code>srcIpAddr1</code>：源 IP 地址，地址范围的较低地址。</li>
+<li><code>srcIpAddr2</code>：源 IP 地址，地址范围的较高地址。</li>
+<li><code>destIpAddr</code>：要加入的 IP 地址。</li>
 <li><code>pktFlags</code>：数据包标志，如默认、无、编组、回调等。</li>
 <li><code>timeout</code>：超时时间，以微秒为单位。</li>
 <li><code>toBehavior</code>：超时行为。</li>
@@ -316,14 +315,14 @@ TRDP 最小 DEMO：</p>
 <li><code>pPubHandle</code>：指向发布句柄的指针。</li>
 <li><code>pUserRef</code>：用户提供的参考值，将与信息结构一起返回。</li>
 <li><code>pfCbFunction</code>：指向发布者特定回调函数的指针。</li>
-<li><code>serviceId</code>：可选的服务ID，默认值为0。</li>
-<li><code>comId</code>：要发送的数据包的COM ID。</li>
-<li><code>etbTopoCnt</code>：ETB拓扑计数，用于本地通信时为0。</li>
-<li><code>opTrnTopoCnt</code>：操作拓扑计数，用于方向敏感通信时不为0。</li>
-<li><code>srcIpAddr</code>：源IP地址。</li>
-<li><code>destIpAddr</code>：目标IP地址。</li>
+<li><code>serviceId</code>：可选的服务 ID，默认值为 0。</li>
+<li><code>comId</code>：要发送的数据包的 COM ID。</li>
+<li><code>etbTopoCnt</code>：ETB 拓扑计数，用于本地通信时为 0。</li>
+<li><code>opTrnTopoCnt</code>：操作拓扑计数，用于方向敏感通信时不为 0。</li>
+<li><code>srcIpAddr</code>：源 IP 地址。</li>
+<li><code>destIpAddr</code>：目标 IP 地址。</li>
 <li><code>interval</code>：发布间隔时间。</li>
-<li><code>redId</code>：冗余ID。</li>
+<li><code>redId</code>：冗余 ID。</li>
 <li><code>pktFlags</code>：数据包标志，如默认、无、编组、回调等。</li>
 <li><code>pData</code>：指向要发送的数据的指针。</li>
 <li><code>dataSize</code>：数据大小，以字节为单位。</li>
@@ -360,7 +359,7 @@ TRDP 最小 DEMO：</p>
 <h3 id="tlc_process-函数"><a class="markdownIt-Anchor" href="#tlc_process-函数"></a> tlc_process 函数：</h3>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">EXT_DECL TRDP_ERR_T <span class="title function_">tlc_process</span> <span class="params">(</span></span><br><span class="line"><span class="params">    TRDP_APP_SESSION_T appHandle,</span></span><br><span class="line"><span class="params">    TRDP_FDS_T ∗ pRfds,</span></span><br><span class="line"><span class="params">    INT32 ∗ pCount )</span></span><br><span class="line">    <span class="comment">// TRDP处理器的工作循环</span></span><br><span class="line">    <span class="comment">// 搜索队列中待发送的PD和MD，搜索接收队列中待处理的PD和MD（超时），然后调用适当的回调函数。</span></span><br></pre></td></tr></table></figure>
 <ul>
-<li>作用：TRDP处理器的工作循环，处理发送和接收队列中的PD和MD包。</li>
+<li>作用：TRDP 处理器的工作循环，处理发送和接收队列中的 PD 和 MD 包。</li>
 <li>参数：
 <ul>
 <li><code>appHandle</code>：应用程序会话句柄。</li>
@@ -408,21 +407,82 @@ TRDP 最小 DEMO：</p>
 </ul>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">enum</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    TRDP_NO_ERR             = <span class="number">0</span>,    <span class="comment">/**&lt; No error 没有错误 */</span></span><br><span class="line">    TRDP_PARAM_ERR          = <span class="number">-1</span>,   <span class="comment">/**&lt; Parameter missing or out of range 参数错误，参数缺失或超出范围 */</span></span><br><span class="line">    TRDP_INIT_ERR           = <span class="number">-2</span>,   <span class="comment">/**&lt; Call without valid initialization 初始化错误，调用时未进行有效初始化*/</span></span><br><span class="line">    TRDP_NOINIT_ERR         = <span class="number">-3</span>,   <span class="comment">/**&lt; Call with invalid handle 未初始化错误，使用无效句柄进行调用*/</span></span><br><span class="line">    TRDP_TIMEOUT_ERR        = <span class="number">-4</span>,   <span class="comment">/**&lt; Timout 超时错误*/</span></span><br><span class="line">    TRDP_NODATA_ERR         = <span class="number">-5</span>,   <span class="comment">/**&lt; Non blocking mode: no data received 无数据错误，在非阻塞模式下没有接收到数据*/</span></span><br><span class="line">    TRDP_SOCK_ERR           = <span class="number">-6</span>,   <span class="comment">/**&lt; Socket error / option not supported 套接字错误，套接字选项不受支持*/</span></span><br><span class="line">    TRDP_IO_ERR             = <span class="number">-7</span>,   <span class="comment">/**&lt; Socket IO error, data can&#x27;t be received/sent 套接字I/O错误，数据无法接收或发送*/</span></span><br><span class="line">    TRDP_MEM_ERR            = <span class="number">-8</span>,   <span class="comment">/**&lt; No more memory available 内存错误，没有足够的内存可用*/</span></span><br><span class="line">    TRDP_SEMA_ERR           = <span class="number">-9</span>,   <span class="comment">/**&lt; Semaphore not available 信号量错误，信号量不可用*/</span></span><br><span class="line">    TRDP_QUEUE_ERR          = <span class="number">-10</span>,  <span class="comment">/**&lt; Queue empty 队列错误，队列为空*/</span></span><br><span class="line">    TRDP_QUEUE_FULL_ERR     = <span class="number">-11</span>,  <span class="comment">/**&lt; Queue full 队列已满错误，队列已满*/</span></span><br><span class="line">    TRDP_MUTEX_ERR          = <span class="number">-12</span>,  <span class="comment">/**&lt; Mutex not available 互斥锁错误，互斥锁不可用*/</span></span><br><span class="line">    TRDP_THREAD_ERR         = <span class="number">-13</span>,  <span class="comment">/**&lt; Thread error 线程错误*/</span></span><br><span class="line">    TRDP_BLOCK_ERR          = <span class="number">-14</span>,  <span class="comment">/**&lt; System call would have blocked in blocking mode 阻塞错误，在阻塞模式下系统调用会阻塞*/</span></span><br><span class="line">    TRDP_INTEGRATION_ERR    = <span class="number">-15</span>,  <span class="comment">/**&lt; Alignment or endianess for selected target wrong 集成错误，所选目标的对齐方式或字节序错误*/</span></span><br><span class="line">    TRDP_NOCONN_ERR         = <span class="number">-16</span>,  <span class="comment">/**&lt; No TCP connection 无连接错误，没有TCP连接*/</span></span><br><span class="line">    TRDP_NOSESSION_ERR      = <span class="number">-30</span>,  <span class="comment">/**&lt; No such session 无会话错误，没有这样的会话*/</span></span><br><span class="line">    TRDP_SESSION_ABORT_ERR  = <span class="number">-31</span>,  <span class="comment">/**&lt; Session aborted 会话中止错误，会话被中止*/</span></span><br><span class="line">    TRDP_NOSUB_ERR          = <span class="number">-32</span>,  <span class="comment">/**&lt; No subscriber 无订阅错误，没有订阅者*/</span></span><br><span class="line">    TRDP_NOPUB_ERR          = <span class="number">-33</span>,  <span class="comment">/**&lt; No publisher 无发布错误，没有发布者*/</span></span><br><span class="line">    TRDP_NOLIST_ERR         = <span class="number">-34</span>,  <span class="comment">/**&lt; No listener 无监听错误，没有监听者*/</span></span><br><span class="line">    TRDP_CRC_ERR            = <span class="number">-35</span>,  <span class="comment">/**&lt; Wrong CRC CRC错误，循环冗余校验错误*/</span></span><br><span class="line">    TRDP_WIRE_ERR           = <span class="number">-36</span>,  <span class="comment">/**&lt; Wire 线路错误*/</span></span><br><span class="line">    TRDP_TOPO_ERR           = <span class="number">-37</span>,  <span class="comment">/**&lt; Invalid topo count 拓扑错误，拓扑计数无效*/</span></span><br><span class="line">    TRDP_COMID_ERR          = <span class="number">-38</span>,  <span class="comment">/**&lt; Unknown ComId ComId错误，未知的ComId*/</span></span><br><span class="line">    TRDP_STATE_ERR          = <span class="number">-39</span>,  <span class="comment">/**&lt; Call in wrong state 状态错误，在错误的状态下调用*/</span></span><br><span class="line">    TRDP_APP_TIMEOUT_ERR    = <span class="number">-40</span>,  <span class="comment">/**&lt; Application Timeout 应用程序超时错误*/</span></span><br><span class="line">    TRDP_APP_REPLYTO_ERR    = <span class="number">-41</span>,  <span class="comment">/**&lt; Application Reply Sent Timeout 应用程序回复超时错误*/</span></span><br><span class="line">    TRDP_APP_CONFIRMTO_ERR  = <span class="number">-42</span>,  <span class="comment">/**&lt; Application Confirm Sent Timeout 应用程序确认超时错误*/</span></span><br><span class="line">    TRDP_REPLYTO_ERR        = <span class="number">-43</span>,  <span class="comment">/**&lt; Protocol Reply Timeout 协议回复超时错误*/</span></span><br><span class="line">    TRDP_CONFIRMTO_ERR      = <span class="number">-44</span>,  <span class="comment">/**&lt; Protocol Confirm Timeout 协议确认超时错误*/</span></span><br><span class="line">    TRDP_REQCONFIRMTO_ERR   = <span class="number">-45</span>,  <span class="comment">/**&lt; Protocol Confirm Timeout (Request sender) 协议请求确认超时错误*/</span></span><br><span class="line">    TRDP_PACKET_ERR         = <span class="number">-46</span>,  <span class="comment">/**&lt; Incomplete message data packet 数据包错误，消息数据包不完整*/</span></span><br><span class="line">    TRDP_UNRESOLVED_ERR     = <span class="number">-47</span>,  <span class="comment">/**&lt; DNR: address could not be resolved 未解析错误，DNR：地址无法解析*/</span></span><br><span class="line">    TRDP_XML_PARSER_ERR     = <span class="number">-48</span>,  <span class="comment">/**&lt; Returned by the tau_xml subsystem XML解析器错误，由tau_xml子系统返回*/</span></span><br><span class="line">    TRDP_INUSE_ERR          = <span class="number">-49</span>,  <span class="comment">/**&lt; Resource is still in use 资源正在使用错误，资源仍在使用中*/</span></span><br><span class="line">    TRDP_MARSHALLING_ERR    = <span class="number">-50</span>,  <span class="comment">/**&lt; Source size exceeded, dataset mismatch 编组错误，源大小超出，数据集不匹配*/</span></span><br><span class="line">    TRDP_UNKNOWN_ERR        = <span class="number">-99</span>   <span class="comment">/**&lt; Unspecified error 未知错误，未指明的错误*/</span></span><br><span class="line">&#125; TRDP_ERR_T;</span><br></pre></td></tr></table></figure>
 <ul>
-<li>在TRDP（Train Communication Network Open Protocol）中，MD（Message Data）和PD（Process Data）：</li>
+<li>在 TRDP（Train Communication Network Open Protocol）中，MD（Message Data）和 PD（Process Data）：</li>
 <li>Message Data：
 <ul>
-<li>消息数据是指在TRDP网络中传输的非周期数据；</li>
+<li>消息数据是指在 TRDP 网络中传输的非周期数据；</li>
 <li>消息数据通常用于传输控制信息、数据、命令等；</li>
-<li>MD的发送和接收不基于固定的时间间隔，而是根据需求；</li>
-<li>当列车系统中某个设备需要发送一个状态更新，或接收一个配置命令时，就会使用MD进行通信。</li>
+<li>MD 的发送和接收不基于固定的时间间隔，而是根据需求；</li>
+<li>当列车系统中某个设备需要发送一个状态更新，或接收一个配置命令时，就会使用 MD 进行通信。</li>
 </ul>
 </li>
 <li>Process Data：
 <ul>
-<li>过程数据是指在TRDP网络中传输的周期数据；</li>
+<li>过程数据是指在 TRDP 网络中传输的周期数据；</li>
 <li>用于传输实时性要求较高的过程控制数据，如传感器数据、控制信号等；</li>
-<li>PD消息的发送和接收是基于固定的时间间隔，通常是毫秒级的；</li>
-<li>列车上的速度传感器会定期发送PD消息，以确保控制系统能够实时获取列车的速度信息。</li>
+<li>PD 消息的发送和接收是基于固定的时间间隔，通常是毫秒级的；</li>
+<li>列车上的速度传感器会定期发送 PD 消息，以确保控制系统能够实时获取列车的速度信息。</li>
+</ul>
+</li>
+</ul>
+<h3 id="trdp-pd-test-全局变量说明"><a class="markdownIt-Anchor" href="#trdp-pd-test-全局变量说明"></a> TRDP-PD-TEST 全局变量说明</h3>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    UINT8   *p;                                     <span class="comment">/**&lt; pointer to static or allocated memory  */</span></span><br><span class="line">    UINT32  size;                                   <span class="comment">/**&lt; size of static or allocated memory     */</span></span><br><span class="line">    UINT32  prealloc[VOS_MEM_NBLOCKSIZES];          <span class="comment">/**&lt; memory block structure                 */</span></span><br><span class="line">&#125; TRDP_MEM_CONFIG_T;</span><br></pre></td></tr></table></figure>
+<p>结构体：内存管理结构体</p>
+<ul>
+<li>参数：
+<ul>
+<li><code>*p</code>:指向静态或动态分配的内存。</li>
+<li><code>size</code>:内存大小。</li>
+<li><code>prealloc</code>:内存块结构。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** Default PD configuration    */</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    TRDP_PD_CALLBACK_T  pfCbFunction;           <span class="comment">/**&lt; Pointer to PD callback function            */</span></span><br><span class="line">    <span class="type">void</span>                *pRefCon;               <span class="comment">/**&lt; Pointer to user context for call back      */</span></span><br><span class="line">    TRDP_SEND_PARAM_T   sendParam;              <span class="comment">/**&lt; Default send parameters                    */</span></span><br><span class="line">    TRDP_FLAGS_T        flags;                  <span class="comment">/**&lt; Default flags for PD packets               */</span></span><br><span class="line">    UINT32              timeout;                <span class="comment">/**&lt; Default timeout in us                      */</span></span><br><span class="line">    TRDP_TO_BEHAVIOR_T  toBehavior;             <span class="comment">/**&lt; Default timeout behavior                  */</span></span><br><span class="line">    UINT16              port;                   <span class="comment">/**&lt; Port to be used for PD communication (default: 17224)      */</span></span><br><span class="line">&#125; TRDP_PD_CONFIG_T;</span><br></pre></td></tr></table></figure>
+<p>结构体：PD 配置结构体</p>
+<ul>
+<li>参数：
+<ul>
+<li><code>pfCbFunction</code>:指向 PD 回调函数的指针。</li>
+<li><code>pRefCon</code>:指向用户上下文的指针。</li>
+<li><code>sendParam</code>:默认发送参数。</li>
+<li><code>flags</code>:默认 PD 包标志。</li>
+<li><code>timeout</code>:默认超时时间（微秒）。</li>
+<li><code>toBehavior</code>:默认超时行为。</li>
+<li><code>port</code>:PD 通信端口（默认值：17224）。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    TRDP_LABEL_T        hostName;       <span class="comment">/**&lt; Host name  */</span></span><br><span class="line">    TRDP_LABEL_T        leaderName;     <span class="comment">/**&lt; Leader name dependant on redundancy concept   */</span></span><br><span class="line">    TRDP_LABEL_T        type;           <span class="comment">/**&lt; process type #349 */</span></span><br><span class="line">    UINT32              cycleTime;      <span class="comment">/**&lt; TRDP main process cycle time in us  */</span></span><br><span class="line">    UINT32              priority;       <span class="comment">/**&lt; TRDP main process priority (0-255, 0=default, 255=highest)   */</span></span><br><span class="line">    TRDP_OPTION_T       options;        <span class="comment">/**&lt; TRDP options */</span></span><br><span class="line">&#125; TRDP_PROCESS_CONFIG_T;</span><br></pre></td></tr></table></figure>
+<p>结构体：进程配置结构体</p>
+<ul>
+<li>参数：
+<ul>
+<li><code>hostName</code>:主机名称。</li>
+<li><code>leaderName</code>:领导者名称依赖于冗余概念。</li>
+<li><code>type</code>:进程类型（#349）。</li>
+<li><code>cycleTime</code>:TRDP 主进程循环时间（微秒）。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    Type type;                      <span class="comment">/* port type */</span></span><br><span class="line">    TRDP_ERR_T err;                 <span class="comment">/* put/get status */</span></span><br><span class="line">    TRDP_PUB_T ph;                  <span class="comment">/* publish handle */</span></span><br><span class="line">    TRDP_SUB_T sh;                  <span class="comment">/* subscribe handle */</span></span><br><span class="line">    UINT32 comid;                   <span class="comment">/* comid            */</span></span><br><span class="line">    UINT32 repid;                   <span class="comment">/* reply comid (for PULL requests) */</span></span><br><span class="line">    UINT32 size;                    <span class="comment">/* size                            */</span></span><br><span class="line">    TRDP_IP_ADDR_T src;             <span class="comment">/* source ip address               */</span></span><br><span class="line">    TRDP_IP_ADDR_T dst;             <span class="comment">/* destination ip address          */</span></span><br><span class="line">    TRDP_IP_ADDR_T rep;             <span class="comment">/* reply ip address (for PULL requests) */</span></span><br><span class="line">    UINT32 cycle;                   <span class="comment">/* cycle                                */</span></span><br><span class="line">    UINT32 timeout;                 <span class="comment">/* timeout (for SINK ports)             */</span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">char</span> data[TRDP_MAX_PD_DATA_SIZE];       <span class="comment">/* data buffer                          */</span></span><br><span class="line">    <span class="type">int</span> link;                       <span class="comment">/* index of linked port (echo or subscribe) */</span></span><br><span class="line">&#125; Port;</span><br></pre></td></tr></table></figure>
+<p>结构体：端口结构体</p>
+<ul>
+<li>参数：
+<ul>
+<li><code>type</code>:端口类型。</li>
+<li><code>err</code>:put/get 状态。</li>
+<li><code>ph</code>:发布句柄。</li>
+<li><code>sh</code>:订阅句柄。</li>
+<li><code>comid</code>:comid。</li>
+<li><code>repid</code>:回复 comid（用于 PULL 请求）。</li>
+<li><code>size</code>:大小。</li>
+<li><code>src</code>:源 IP 地址。</li>
+<li><code>dst</code>:目标 IP 地址。</li>
+<li><code>rep</code>:回复 IP 地址（用于 PULL 请求）。</li>
+<li><code>cycle</code>:循环。</li>
+<li><code>timeout</code>:超时（用于 SINK 端口）。</li>
+<li><code>data</code>:数据缓冲区。</li>
+<li><code>link</code>:链接端口的索引（回声或订阅）。</li>
 </ul>
 </li>
 </ul>
@@ -487,7 +547,7 @@ TRDP 最小 DEMO：</p>
   <h3 class="toc-title">文章目录</h3>
   <div class="sidebar-toc-wrapper toc-div-class" >
       
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#tlc_init-%E5%87%BD%E6%95%B0"><span class="toc-number">1.</span> <span class="toc-text"> tlc_init 函数：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tlc_opensession-%E5%87%BD%E6%95%B0"><span class="toc-number">2.</span> <span class="toc-text"> tlc_openSession 函数：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tlp_subscribe-%E5%87%BD%E6%95%B0"><span class="toc-number">3.</span> <span class="toc-text"> tlp_subscribe 函数：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tlp_publish-%E5%87%BD%E6%95%B0"><span class="toc-number">4.</span> <span class="toc-text"> tlp_publish 函数：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tlp_getinterval-%E5%87%BD%E6%95%B0"><span class="toc-number">5.</span> <span class="toc-text"> tlp_getInterval 函数：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vos_select-%E5%87%BD%E6%95%B0"><span class="toc-number">6.</span> <span class="toc-text"> vos_select 函数：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tlc_process-%E5%87%BD%E6%95%B0"><span class="toc-number">7.</span> <span class="toc-text"> tlc_process 函数：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tlp_put-%E5%87%BD%E6%95%B0"><span class="toc-number">8.</span> <span class="toc-text"> tlp_put 函数：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tlp_get-%E5%87%BD%E6%95%B0"><span class="toc-number">9.</span> <span class="toc-text"> tlp_get 函数：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vos_threaddelay-%E5%87%BD%E6%95%B0"><span class="toc-number">10.</span> <span class="toc-text"> vos_threadDelay 函数</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#tlc_init-%E5%87%BD%E6%95%B0"><span class="toc-number">1.</span> <span class="toc-text"> tlc_init 函数：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tlc_opensession-%E5%87%BD%E6%95%B0"><span class="toc-number">2.</span> <span class="toc-text"> tlc_openSession 函数：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tlp_request-%E5%87%BD%E6%95%B0"><span class="toc-number">3.</span> <span class="toc-text"> tlp_request 函数：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tlp_subscribe-%E5%87%BD%E6%95%B0"><span class="toc-number">4.</span> <span class="toc-text"> tlp_subscribe 函数：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tlp_publish-%E5%87%BD%E6%95%B0"><span class="toc-number">5.</span> <span class="toc-text"> tlp_publish 函数：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tlp_getinterval-%E5%87%BD%E6%95%B0"><span class="toc-number">6.</span> <span class="toc-text"> tlp_getInterval 函数：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vos_select-%E5%87%BD%E6%95%B0"><span class="toc-number">7.</span> <span class="toc-text"> vos_select 函数：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tlc_process-%E5%87%BD%E6%95%B0"><span class="toc-number">8.</span> <span class="toc-text"> tlc_process 函数：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tlp_put-%E5%87%BD%E6%95%B0"><span class="toc-number">9.</span> <span class="toc-text"> tlp_put 函数：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tlp_get-%E5%87%BD%E6%95%B0"><span class="toc-number">10.</span> <span class="toc-text"> tlp_get 函数：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vos_threaddelay-%E5%87%BD%E6%95%B0"><span class="toc-number">11.</span> <span class="toc-text"> vos_threadDelay 函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#trdp-pd-test-%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E8%AF%B4%E6%98%8E"><span class="toc-number">12.</span> <span class="toc-text"> TRDP-PD-TEST 全局变量说明</span></a></li></ol>
       
   </div>
 </div>
@@ -500,7 +560,7 @@ TRDP 最小 DEMO：</p>
 <div class="sidebar-state">
   <div class="sidebar-state-article">
     <div>文章</div>
-    <div class="sidebar-state-number">10</div>
+    <div class="sidebar-state-number">12</div>
   </div>
   <div class="sidebar-state-category">
     <div>分类</div>
@@ -508,7 +568,7 @@ TRDP 最小 DEMO：</p>
   </div>
   <div class="sidebar-state-tag">
     <div>标签</div>
-    <div class="sidebar-state-number">12</div>
+    <div class="sidebar-state-number">16</div>
   </div>
 </div>
 <div class="sidebar-social">
@@ -578,10 +638,10 @@ TRDP 最小 DEMO：</p>
       
         <div>
           <span class="icon-brush"></span>
-          34.1k
+          36k
           &nbsp;|&nbsp;
           <span class="icon-coffee"></span>
-          02:11
+          02:19
         </div>
       
       
@@ -610,7 +670,7 @@ TRDP 最小 DEMO：</p>
   <h3 class="toc-title">文章目录</h3>
   <div class="sidebar-toc-wrapper toc-div-class" >
       
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#tlc_init-%E5%87%BD%E6%95%B0"><span class="toc-number">1.</span> <span class="toc-text"> tlc_init 函数：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tlc_opensession-%E5%87%BD%E6%95%B0"><span class="toc-number">2.</span> <span class="toc-text"> tlc_openSession 函数：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tlp_subscribe-%E5%87%BD%E6%95%B0"><span class="toc-number">3.</span> <span class="toc-text"> tlp_subscribe 函数：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tlp_publish-%E5%87%BD%E6%95%B0"><span class="toc-number">4.</span> <span class="toc-text"> tlp_publish 函数：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tlp_getinterval-%E5%87%BD%E6%95%B0"><span class="toc-number">5.</span> <span class="toc-text"> tlp_getInterval 函数：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vos_select-%E5%87%BD%E6%95%B0"><span class="toc-number">6.</span> <span class="toc-text"> vos_select 函数：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tlc_process-%E5%87%BD%E6%95%B0"><span class="toc-number">7.</span> <span class="toc-text"> tlc_process 函数：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tlp_put-%E5%87%BD%E6%95%B0"><span class="toc-number">8.</span> <span class="toc-text"> tlp_put 函数：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tlp_get-%E5%87%BD%E6%95%B0"><span class="toc-number">9.</span> <span class="toc-text"> tlp_get 函数：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vos_threaddelay-%E5%87%BD%E6%95%B0"><span class="toc-number">10.</span> <span class="toc-text"> vos_threadDelay 函数</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#tlc_init-%E5%87%BD%E6%95%B0"><span class="toc-number">1.</span> <span class="toc-text"> tlc_init 函数：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tlc_opensession-%E5%87%BD%E6%95%B0"><span class="toc-number">2.</span> <span class="toc-text"> tlc_openSession 函数：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tlp_request-%E5%87%BD%E6%95%B0"><span class="toc-number">3.</span> <span class="toc-text"> tlp_request 函数：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tlp_subscribe-%E5%87%BD%E6%95%B0"><span class="toc-number">4.</span> <span class="toc-text"> tlp_subscribe 函数：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tlp_publish-%E5%87%BD%E6%95%B0"><span class="toc-number">5.</span> <span class="toc-text"> tlp_publish 函数：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tlp_getinterval-%E5%87%BD%E6%95%B0"><span class="toc-number">6.</span> <span class="toc-text"> tlp_getInterval 函数：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vos_select-%E5%87%BD%E6%95%B0"><span class="toc-number">7.</span> <span class="toc-text"> vos_select 函数：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tlc_process-%E5%87%BD%E6%95%B0"><span class="toc-number">8.</span> <span class="toc-text"> tlc_process 函数：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tlp_put-%E5%87%BD%E6%95%B0"><span class="toc-number">9.</span> <span class="toc-text"> tlp_put 函数：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tlp_get-%E5%87%BD%E6%95%B0"><span class="toc-number">10.</span> <span class="toc-text"> tlp_get 函数：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vos_threaddelay-%E5%87%BD%E6%95%B0"><span class="toc-number">11.</span> <span class="toc-text"> vos_threadDelay 函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#trdp-pd-test-%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E8%AF%B4%E6%98%8E"><span class="toc-number">12.</span> <span class="toc-text"> TRDP-PD-TEST 全局变量说明</span></a></li></ol>
       
   </div>
 </div>
@@ -623,7 +683,7 @@ TRDP 最小 DEMO：</p>
 <div class="sidebar-state">
   <div class="sidebar-state-article">
     <div>文章</div>
-    <div class="sidebar-state-number">10</div>
+    <div class="sidebar-state-number">12</div>
   </div>
   <div class="sidebar-state-category">
     <div>分类</div>
@@ -631,7 +691,7 @@ TRDP 最小 DEMO：</p>
   </div>
   <div class="sidebar-state-tag">
     <div>标签</div>
-    <div class="sidebar-state-number">12</div>
+    <div class="sidebar-state-number">16</div>
   </div>
 </div>
 <div class="sidebar-social">
@@ -706,21 +766,21 @@ TRDP 最小 DEMO：</p>
 
 
 <script type="module" data-pjax>
-  import PhotoSwipeLightbox from "https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe-lightbox.esm.js";
+  import PhotoSwipeLightbox from "https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe-lightbox.esm.min.js";
   
   const pswp = () => {
     if (_$$('.article-entry a.article-gallery-item').length > 0) {
       new PhotoSwipeLightbox({
         gallery: '.article-entry',
         children: 'a.article-gallery-item',
-        pswpModule: () => import("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.esm.js")
+        pswpModule: () => import("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.esm.min.js")
       }).init();
     }
     if(_$$('.article-gallery a.article-gallery-item').length > 0) {
       new PhotoSwipeLightbox({
         gallery: '.article-gallery',
         children: 'a.article-gallery-item',
-        pswpModule: () => import("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.esm.js")
+        pswpModule: () => import("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.esm.min.js")
       }).init();
     }
     window.lightboxStatus = 'done';
@@ -774,15 +834,6 @@ TRDP 最小 DEMO：</p>
 
 
 
-  
-<script src="https://npm.webcache.cn/algoliasearch@4.17.1/dist/algoliasearch-lite.umd.js"></script>
-
-  
-<script src="https://npm.webcache.cn/instantsearch.js@4.56.1/dist/instantsearch.production.min.js"></script>
-
-  
-<script src="/js/algolia_search.js"></script>
-
   <script>
     var CONFIG = {
       root: '/',
@@ -801,6 +852,15 @@ TRDP 最小 DEMO：</p>
       }
     };
   </script>
+  
+<script src="https://npm.webcache.cn/algoliasearch@4.17.1/dist/algoliasearch-lite.umd.js"></script>
+
+  
+<script src="https://npm.webcache.cn/instantsearch.js@4.56.1/dist/instantsearch.production.min.js" defer></script>
+
+  
+<script src="/js/algolia_search.js" defer></script>
+
 
 
 
@@ -845,7 +905,7 @@ TRDP 最小 DEMO：</p>
   \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
                                                   
 `,'color: #ff5252;')
-    console.log('%c Theme.Reimu v' + '0.2.3' + ' %c https://github.com/D-Sketon/hexo-theme-reimu ', 'color: white; background: #ff5252; padding:5px 0;', 'padding:4px;border:1px solid #ff5252;')
+    console.log('%c Theme.Reimu v' + '0.2.4' + ' %c https://github.com/D-Sketon/hexo-theme-reimu ', 'color: white; background: #ff5252; padding:5px 0;', 'padding:4px;border:1px solid #ff5252;')
   </script>
   
 
