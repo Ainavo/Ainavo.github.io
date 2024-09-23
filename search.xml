@@ -46,6 +46,27 @@
     
     
     <entry>
+      <title>Linux驱动入门（北京讯为）</title>
+      <link href="/2024/09/06/Linux%E9%A9%B1%E5%8A%A8%E5%85%A5%E9%97%A8%EF%BC%88%E5%8C%97%E4%BA%AC%E8%AE%AF%E4%B8%BA%EF%BC%89/"/>
+      <url>/2024/09/06/Linux%E9%A9%B1%E5%8A%A8%E5%85%A5%E9%97%A8%EF%BC%88%E5%8C%97%E4%BA%AC%E8%AE%AF%E4%B8%BA%EF%BC%89/</url>
+      
+        <content type="html"><![CDATA[<span id="more"></span><h2 id="linux-驱动定义"><a class="markdownIt-Anchor" href="#linux-驱动定义"></a> Linux 驱动定义</h2><h2 id="linux-驱动编译"><a class="markdownIt-Anchor" href="#linux-驱动编译"></a> Linux 驱动编译</h2><h2 id="make但是"><a class="markdownIt-Anchor" href="#make但是"></a> make但是</h2>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+            <tag> Linux驱动 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>VMWare虚拟机常见问题备注</title>
       <link href="/2024/08/05/VMWare%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E5%A4%87%E6%B3%A8/"/>
       <url>/2024/08/05/VMWare%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E5%A4%87%E6%B3%A8/</url>
@@ -80,27 +101,6 @@
             <tag> 嵌入式 </tag>
             
             <tag> 串口协议 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Linux驱动入门（北京迅为）</title>
-      <link href="/2024/06/24/Linux%E9%A9%B1%E5%8A%A8%E5%85%A5%E9%97%A8%EF%BC%88%E5%8C%97%E4%BA%AC%E8%BF%85%E4%B8%BA%EF%BC%89/"/>
-      <url>/2024/06/24/Linux%E9%A9%B1%E5%8A%A8%E5%85%A5%E9%97%A8%EF%BC%88%E5%8C%97%E4%BA%AC%E8%BF%85%E4%B8%BA%EF%BC%89/</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> Linux </tag>
-            
-            <tag> Linux驱动 </tag>
             
         </tags>
       

@@ -6,7 +6,7 @@
   <link href="https://ainavo.github.io/atom.xml" rel="self"/>
   
   <link href="https://ainavo.github.io/"/>
-  <updated>2024-09-20T05:34:30.177Z</updated>
+  <updated>2024-09-23T00:50:54.409Z</updated>
   <id>https://ainavo.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://ainavo.github.io/2024/09/20/BMS%E4%B9%8BSOC%E7%BB%BC%E8%BF%B0/"/>
     <id>https://ainavo.github.io/2024/09/20/BMS%E4%B9%8BSOC%E7%BB%BC%E8%BF%B0/</id>
     <published>2024-09-20T02:08:44.000Z</published>
-    <updated>2024-09-20T05:34:30.177Z</updated>
+    <updated>2024-09-23T00:50:54.409Z</updated>
     
     
       
@@ -71,6 +71,33 @@
   </entry>
   
   <entry>
+    <title>Linux驱动入门（北京讯为）</title>
+    <link href="https://ainavo.github.io/2024/09/06/Linux%E9%A9%B1%E5%8A%A8%E5%85%A5%E9%97%A8%EF%BC%88%E5%8C%97%E4%BA%AC%E8%AE%AF%E4%B8%BA%EF%BC%89/"/>
+    <id>https://ainavo.github.io/2024/09/06/Linux%E9%A9%B1%E5%8A%A8%E5%85%A5%E9%97%A8%EF%BC%88%E5%8C%97%E4%BA%AC%E8%AE%AF%E4%B8%BA%EF%BC%89/</id>
+    <published>2024-09-06T13:35:07.000Z</published>
+    <updated>2024-09-23T00:41:39.161Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;span id=&quot;more&quot;&gt;&lt;/span&gt;
+&lt;h2 id=&quot;linux-驱动定义&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#linux-驱动定义&quot;&gt;&lt;/a&gt; Linux 驱动定义&lt;/h2&gt;
+&lt;h2 id=&quot;linux-驱动编译&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="Linux" scheme="https://ainavo.github.io/tags/Linux/"/>
+    
+    <category term="Linux驱动" scheme="https://ainavo.github.io/tags/Linux%E9%A9%B1%E5%8A%A8/"/>
+    
+  </entry>
+  
+  <entry>
     <title>VMWare虚拟机常见问题备注</title>
     <link href="https://ainavo.github.io/2024/08/05/VMWare%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E5%A4%87%E6%B3%A8/"/>
     <id>https://ainavo.github.io/2024/08/05/VMWare%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E5%A4%87%E6%B3%A8/</id>
@@ -113,23 +140,6 @@
     <category term="嵌入式" scheme="https://ainavo.github.io/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/"/>
     
     <category term="串口协议" scheme="https://ainavo.github.io/tags/%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux驱动入门（北京迅为）</title>
-    <link href="https://ainavo.github.io/2024/06/24/Linux%E9%A9%B1%E5%8A%A8%E5%85%A5%E9%97%A8%EF%BC%88%E5%8C%97%E4%BA%AC%E8%BF%85%E4%B8%BA%EF%BC%89/"/>
-    <id>https://ainavo.github.io/2024/06/24/Linux%E9%A9%B1%E5%8A%A8%E5%85%A5%E9%97%A8%EF%BC%88%E5%8C%97%E4%BA%AC%E8%BF%85%E4%B8%BA%EF%BC%89/</id>
-    <published>2024-06-24T00:15:13.000Z</published>
-    <updated>2024-08-26T01:42:39.441Z</updated>
-    
-    
-    
-    
-    
-    <category term="Linux" scheme="https://ainavo.github.io/tags/Linux/"/>
-    
-    <category term="Linux驱动" scheme="https://ainavo.github.io/tags/Linux%E9%A9%B1%E5%8A%A8/"/>
     
   </entry>
   
@@ -267,7 +277,7 @@
     <link href="https://ainavo.github.io/0224/08/28/TCNOpen-API%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     <id>https://ainavo.github.io/0224/08/28/TCNOpen-API%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</id>
     <published>0224-08-27T16:58:21.000Z</published>
-    <updated>2024-09-12T01:31:26.994Z</updated>
+    <updated>2024-09-23T00:41:39.171Z</updated>
     
     
       
